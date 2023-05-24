@@ -1,6 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html, body {
   overflow: hidden;
   font-family: 'Inter', sans-serif;
+}
+
+/* Add a shadow and blur effect to make the menu at the top more visible */
+.shadow {
+  backdrop-filter: blur(1px);
+  background: rgba(149, 157, 165, 0.2);
+  border: none;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }

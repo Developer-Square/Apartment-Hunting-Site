@@ -20,6 +20,7 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
+      "@/public/*": ["public/*"],
       "@/pages/*": ["src/pages/*"],
       "@/components/*": ["src/components/*"],
       "@/assets/*": ["assets/*"]
