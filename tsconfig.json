@@ -23,7 +23,7 @@
       "@/public/*": ["public/*"],
       "@/pages/*": ["src/pages/*"],
       "@/components/*": ["src/components/*"],
-      "@/assets/*": ["assets/*"]
+      "@/assets/*": ["src/assets/*"]
     }
   },
   "exclude": ["node_modules"],
