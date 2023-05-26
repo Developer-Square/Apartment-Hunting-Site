@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 html, body {
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: 'Inter', sans-serif;
 }
 
@@ -20,4 +20,8 @@ html, body {
   font-size: 25px;
   font-weight: bold;
   color: #fff;
+}
+
+.amenities {
+  background: linear-gradient(180deg, #141b1f 20.39%, #000000 28.77%);
 }

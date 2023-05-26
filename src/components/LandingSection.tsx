@@ -17,7 +17,7 @@ interface LandingSectionImageProps {
 }
 
 const LandingSectionImage = ({ town, img }: LandingSectionImageProps) => (
-  <div className='relative w-28 h-[154px]'>
+  <div className='relative w-28 h-[154px] shadow-xl'>
     <p className='absolute text-[#FFFFFF] font-semibold top-5 left-[50%] translate-x-[-50%]'>
       {town}
     </p>
@@ -28,8 +28,8 @@ const LandingSectionImage = ({ town, img }: LandingSectionImageProps) => (
 const LandingSection = () => {
   return (
     <div>
-      <div className='absolute bottom-[10%] mx-5 w-full'>
-        <button className='w-[320px] h-11 cursor-pointer rounded-2xl bg-[#FEFEFE] font-semibold'>
+      <div className='absolute bottom-[8%] mx-5 w-full'>
+        <button className='w-[320px] text-black h-11 cursor-pointer rounded-2xl bg-[#FEFEFE] font-semibold'>
           Search
           <i className='fa-solid fa-house-chimney ml-1.5'></i>
         </button>
