@@ -12,7 +12,6 @@ const Home = () => {
         alt='Home'
         className='w-full h-full object-cover'
       />
-      <div className='shadow border-0 absolute top-0 left-0 h-12 w-full'></div>
       <div className='max-w-[340px] w-full'>
         <MenuBars setMenu={setShow} />
         <Menu show={show} setShow={setShow} />
