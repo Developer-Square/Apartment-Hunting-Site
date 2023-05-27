@@ -1,6 +1,7 @@
 import LandingPage from '@/assets/home/mobile-landing-page.png';
 import Menu, { MenuBars } from '@/components/Menu';
 import {
+  ContactUsSection,
   LandingSection,
   PopularAmenitiesSection,
   WhatCanYouDoSection,
@@ -29,6 +30,7 @@ const Home = () => {
         <div className='max-w-[330px] mx-auto w-full'>
           <PopularAmenitiesSection />
           <WhatCanYouDoSection />
+          <ContactUsSection />
         </div>
       </div>
     </section>
