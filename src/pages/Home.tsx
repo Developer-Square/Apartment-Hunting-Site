@@ -1,6 +1,10 @@
 import LandingPage from '@/assets/home/mobile-landing-page.png';
 import Menu, { MenuBars } from '@/components/Menu';
-import { LandingSection } from '@/components/index';
+import {
+  LandingSection,
+  PopularAmenitiesSection,
+  WhatCanYouDoSection,
+} from '@/components/index';
 import { useState } from 'react';
 
 const Home = () => {
@@ -14,7 +18,7 @@ const Home = () => {
           alt='Home'
           className='w-full h-full object-cover'
         />
-        <div className='max-w-[340px] w-full'>
+        <div className='max-w-[330px] w-full'>
           <MenuBars setMenu={setShow} />
           <Menu show={show} setShow={setShow} />
           <LandingSection />
@@ -22,9 +26,10 @@ const Home = () => {
       </div>
       {/* Popular Amenities Section */}
       <div className='amenities'>
-        <h4 className='max-w-[340px] mx-auto w-full text-2xl'>
-          Popular amenities for Kenyan apartments.
-        </h4>
+        <div className='max-w-[330px] mx-auto w-full'>
+          <PopularAmenitiesSection />
+          <WhatCanYouDoSection />
+        </div>
       </div>
     </section>
   );

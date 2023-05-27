@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-// @ts-ignore
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -26,6 +24,28 @@ const LandingSectionImage = ({ town, img }: LandingSectionImageProps) => (
 );
 
 const LandingSection = () => {
+  const landingImages = [
+    {
+      town: 'Nairobi',
+      img: Property1,
+    },
+    {
+      town: 'Nakuru',
+      img: Property2,
+    },
+    {
+      town: 'Mombasa',
+      img: Property3,
+    },
+    {
+      town: 'Naivasha',
+      img: Property4,
+    },
+    {
+      town: 'Thika',
+      img: Property5,
+    },
+  ];
   return (
     <div>
       <div className='absolute bottom-[8%] mx-5 w-full'>
@@ -42,24 +62,14 @@ const LandingSection = () => {
               modules={[Navigation]}
               navigation
               pagination={{ clickable: true }}
-              spaceBetween={12}
+              spaceBetween={16}
               slidesPerView={3}
             >
-              <SwiperSlide>
-                <LandingSectionImage town='Nairobi' img={Property1} />
-              </SwiperSlide>
-              <SwiperSlide>
-                <LandingSectionImage town='Nakuru' img={Property2} />
-              </SwiperSlide>
-              <SwiperSlide>
-                <LandingSectionImage town='Mombasa' img={Property3} />
-              </SwiperSlide>
-              <SwiperSlide>
-                <LandingSectionImage town='Naivasha' img={Property4} />
-              </SwiperSlide>
-              <SwiperSlide>
-                <LandingSectionImage town='Thika' img={Property5} />
-              </SwiperSlide>
+              {landingImages.map((image) => (
+                <SwiperSlide key={image.town}>
+                  <LandingSectionImage town={image.town} img={image.img} />
+                </SwiperSlide>
+              ))}
             </Swiper>
           </div>
         </div>

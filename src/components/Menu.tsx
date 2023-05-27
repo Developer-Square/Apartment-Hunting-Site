@@ -28,7 +28,7 @@ const menuItems = [
 ];
 
 const MenuItems = ({ index, item }: { index: number; item: string }) => (
-  <div className='flex flex-col mx-5 mb-10'>
+  <div className='flex flex-col mx-5 mb-10 text-black'>
     <div className='flex mb-[18px] cursor-pointer'>
       <p className='mr-5'>0{index + 1}.</p>
       <p className='uppercase'>{item}</p>
@@ -62,7 +62,7 @@ const Menu = ({
       }}
     >
       <div
-        className='mt-5 mr-5 float-right cursor-pointer'
+        className='mt-5 mr-5 float-right cursor-pointer text-black'
         onClick={() => setShow(false)}
       >
         <i className='fa-solid fa-xmark text-xl'></i>
