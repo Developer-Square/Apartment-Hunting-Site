@@ -1,5 +1,6 @@
 import LandingPage from '@/assets/home/mobile-landing-page.png';
 import Menu, { MenuBars } from '@/components/Menu';
+import OurTopCitiesSection from '@/components/OurTopCitiesSection';
 import {
   AdditionalAbilitiesSection,
   ContactUsSection,
@@ -33,6 +34,7 @@ const Home = () => {
           <WhatCanYouDoSection />
           <ContactUsSection />
           <AdditionalAbilitiesSection />
+          <OurTopCitiesSection />
         </div>
       </div>
     </section>

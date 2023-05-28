@@ -32,7 +32,7 @@ const AdditionalAbilitiesSection = () => {
     setShowContent(item);
   };
   return (
-    <div className='mt-10'>
+    <div className='mt-11'>
       <h4 className='text-2xl uppercase mb-3'>Additional Abilities</h4>
       {data.map((item, index) => (
         <div

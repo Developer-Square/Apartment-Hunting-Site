@@ -48,7 +48,6 @@ const PopularAmenitiesSection = () => {
       <Swiper
         modules={[Navigation]}
         navigation
-        pagination={{ clickable: true }}
         spaceBetween={30}
         slidesPerView={3}
       >

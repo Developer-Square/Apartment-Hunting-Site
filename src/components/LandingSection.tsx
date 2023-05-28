@@ -26,23 +26,23 @@ const LandingSectionImage = ({ town, img }: LandingSectionImageProps) => (
 const LandingSection = () => {
   const landingImages = [
     {
-      town: 'Nairobi',
+      town: 'Kilimani',
       img: Property1,
     },
     {
-      town: 'Nakuru',
+      town: 'Kileleshwa',
       img: Property2,
     },
     {
-      town: 'Mombasa',
+      town: 'Runda',
       img: Property3,
     },
     {
-      town: 'Naivasha',
+      town: 'Westlands',
       img: Property4,
     },
     {
-      town: 'Thika',
+      town: 'Lavington',
       img: Property5,
     },
   ];
