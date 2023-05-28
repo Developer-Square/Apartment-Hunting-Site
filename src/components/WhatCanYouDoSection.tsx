@@ -8,7 +8,7 @@ const WhatCanYouDoSection = () => {
     'Move in Safely',
   ];
   return (
-    <div className='mt-10'>
+    <div className='mt-11'>
       <h4 className='text-2xl uppercase mb-3'>What Can you Do</h4>
       {items.map((item, index) => (
         <div className='mt-6'>
