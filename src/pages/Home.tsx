@@ -4,6 +4,7 @@ import OurTopCitiesSection from '@/components/OurTopCitiesSection';
 import {
   AdditionalAbilitiesSection,
   ContactUsSection,
+  Footer,
   LandingSection,
   PopularAmenitiesSection,
   WhatCanYouDoSection,
@@ -35,6 +36,7 @@ const Home = () => {
           <ContactUsSection />
           <AdditionalAbilitiesSection />
           <OurTopCitiesSection />
+          <Footer />
         </div>
       </div>
     </section>
