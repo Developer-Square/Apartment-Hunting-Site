@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -28,10 +28,6 @@ const PopularAmenitiesSection = () => {
       icon: <i className='fa-solid fa-square-parking text-3xl'></i>,
     },
     {
-      name: '24/7 Security',
-      icon: <i className='fa-solid fa-user-shield text-3xl'></i>,
-    },
-    {
       name: 'Wifi',
       icon: <i className='fa-solid fa-wifi text-3xl'></i>,
     },
@@ -39,7 +35,25 @@ const PopularAmenitiesSection = () => {
       name: 'Pool',
       icon: <i className='fa-solid fa-person-swimming text-3xl'></i>,
     },
+    {
+      name: 'Pet Friendly',
+      icon: <i className='fa-solid fa-dog text-3xl'></i>,
+    },
+    {
+      name: `24/7 Security`,
+      icon: <i className='fa-solid fa-user-shield text-3xl'></i>,
+    },
   ];
+  const [isTablet, setIsTablet] = useState(false);
+
+  useEffect(() => {
+    const width = window.innerWidth;
+    if (width > 639) {
+      setIsTablet(true);
+    } else {
+      setIsTablet(false);
+    }
+  }, []);
   return (
     <>
       <h4 className='text-2xl mb-5'>
@@ -48,8 +62,8 @@ const PopularAmenitiesSection = () => {
       <Swiper
         modules={[Navigation]}
         navigation
-        spaceBetween={30}
-        slidesPerView={3}
+        spaceBetween={isTablet ? 50 : 30}
+        slidesPerView={isTablet ? 5 : 3}
       >
         {amenities.map((amenity) => (
           <SwiperSlide key={amenity.name}>

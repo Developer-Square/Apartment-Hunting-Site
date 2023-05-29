@@ -5,6 +5,7 @@ import Nairobi from '@/assets/home/Nairobi.png';
 import Nakuru from '@/assets/home/Nakuru.png';
 import Limuru from '@/assets/home/Limuru.png';
 import Mombasa from '@/assets/home/Mombasa.png';
+import { useState, useEffect } from 'react';
 
 const OurTopCitiesSection = () => {
   const cities = [
@@ -25,6 +26,16 @@ const OurTopCitiesSection = () => {
       img: Mombasa,
     },
   ];
+  const [isTablet, setIsTablet] = useState(false);
+
+  useEffect(() => {
+    const width = window.innerWidth;
+    if (width > 639) {
+      setIsTablet(true);
+    } else {
+      setIsTablet(false);
+    }
+  }, []);
   return (
     <div className='mt-11'>
       <h4 className='text-2xl uppercase mb-3'>Our Top Cities</h4>
@@ -32,7 +43,7 @@ const OurTopCitiesSection = () => {
         modules={[Navigation]}
         navigation
         spaceBetween={0}
-        slidesPerView={1}
+        slidesPerView={isTablet ? 2 : 1}
       >
         {cities.map((city, index) => (
           <SwiperSlide key={city.name}>

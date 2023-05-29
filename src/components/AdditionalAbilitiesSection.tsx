@@ -16,9 +16,9 @@ const AdditionalAbilitiesSection = () => {
   });
   const { data } = additionalAbilitiesData;
   const style = useSpring({
-    height: showContent ? 'auto' : 0,
-    opacity: showContent ? 1 : 0,
-    config: { duration: 1000 },
+    height: showContent.title.length ? 'auto' : 0,
+    opacity: showContent.title.length ? 1 : 0,
+    config: { duration: 800 },
   });
 
   const handleShowContent = (item: AdditionalAbilitiesData) => {
@@ -31,6 +31,7 @@ const AdditionalAbilitiesSection = () => {
     }
     setShowContent(item);
   };
+  console.log(showContent);
   return (
     <div className='mt-11'>
       <h4 className='text-2xl uppercase mb-3'>Additional Abilities</h4>
@@ -53,9 +54,7 @@ const AdditionalAbilitiesSection = () => {
             {showContent.title !== item.title && <p>{item.cutContent}</p>}
           </div>
           <animated.div style={style}>
-            {showContent.title === item.title
-              ? item.fullContent
-              : item.cutContent}
+            {showContent.title === item.title && item.fullContent}
           </animated.div>
         </div>
       ))}

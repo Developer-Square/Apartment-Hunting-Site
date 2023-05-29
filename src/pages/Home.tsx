@@ -1,4 +1,5 @@
 import LandingPage from '@/assets/home/mobile-landing-page.png';
+import TabletPage from '@/assets/home/tablet-landing-page.jpg';
 import Menu, { MenuBars } from '@/components/Menu';
 import OurTopCitiesSection from '@/components/OurTopCitiesSection';
 import {
@@ -17,20 +18,20 @@ const Home = () => {
     <section className='w-full h-full text-white'>
       {/* Landing Section */}
       <div className='relative w-full h-full'>
-        <img
-          src={LandingPage}
-          alt='Home'
-          className='w-full h-full object-cover'
-        />
+        <picture>
+          <source media='(max-width: 639px)' srcSet={LandingPage} />
+          <source media='(min-width: 640px)' srcSet={TabletPage} />
+          <img src={LandingPage} alt='Landing' />
+        </picture>
         <div className='max-w-[330px] xm:max-w-[360px] w-full'>
           <MenuBars setMenu={setShow} />
           <Menu show={show} setShow={setShow} />
           <LandingSection />
         </div>
       </div>
-      {/* Popular Amenities Section */}
-      <div className='amenities pt-10 xm:pt-14'>
-        <div className='max-w-[330px] xm:max-w-[360px] mx-auto w-full'>
+      {/* Other Sections */}
+      <div className='amenities pt-10 xm:pt-14 sm:pt-8'>
+        <div className='max-w-[330px] xm:max-w-[360px] sm:max-w-[600px] mx-auto w-full'>
           <PopularAmenitiesSection />
           <WhatCanYouDoSection />
           <ContactUsSection />

@@ -1,4 +1,17 @@
+import { useState, useEffect } from 'react';
+
 const ContactUsSection = () => {
+  const [isTablet, setIsTablet] = useState(false);
+
+  useEffect(() => {
+    const width = window.innerWidth;
+    if (width > 639) {
+      setIsTablet(true);
+    } else {
+      setIsTablet(false);
+    }
+  }, []);
+
   return (
     <div className='mt-11 bg-[#FFFFFF] text-black px-4 flex flex-col items-center rounded-[25px]'>
       <p className='pt-5 text-center'>
@@ -9,8 +22,8 @@ const ContactUsSection = () => {
       </button>
       <div className='my-5'>
         <iframe
-          width='300'
-          height='257'
+          width={isTablet ? '572' : '300'}
+          height={isTablet ? '400' : '257'}
           style={{
             borderRadius: '20px',
           }}
