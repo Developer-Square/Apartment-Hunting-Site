@@ -22,15 +22,15 @@ const Home = () => {
           alt='Home'
           className='w-full h-full object-cover'
         />
-        <div className='max-w-[330px] w-full'>
+        <div className='max-w-[330px] xm:max-w-[360px] w-full'>
           <MenuBars setMenu={setShow} />
           <Menu show={show} setShow={setShow} />
           <LandingSection />
         </div>
       </div>
       {/* Popular Amenities Section */}
-      <div className='amenities'>
-        <div className='max-w-[330px] mx-auto w-full'>
+      <div className='amenities pt-10 xm:pt-14'>
+        <div className='max-w-[330px] xm:max-w-[360px] mx-auto w-full'>
           <PopularAmenitiesSection />
           <WhatCanYouDoSection />
           <ContactUsSection />

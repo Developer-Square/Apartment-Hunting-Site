@@ -9,7 +9,7 @@ const Amenity = ({
   amenity: string;
   icon: ReactElement;
 }) => (
-  <div className='h-[120px] w-[110px] rounded-[20px] bg-[#1c252b]'>
+  <div className='h-[120px] w-[110px] xm:w-[120px] rounded-[20px] bg-[#1c252b]'>
     <div className='flex flex-col items-center justify-center h-full w-full'>
       {icon}
       <p className='mt-2'>{amenity}</p>
