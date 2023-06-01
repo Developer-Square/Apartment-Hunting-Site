@@ -5,6 +5,7 @@ import WhatCanYouDoSection from './WhatCanYouDoSection';
 import ContactUsSection from './ContactUsSection';
 import AdditionalAbilitiesSection from './AdditionalAbilitiesSection';
 import Footer from './Footer';
+import Search from './Search';
 
 export {
   Menu,
@@ -14,4 +15,5 @@ export {
   ContactUsSection,
   AdditionalAbilitiesSection,
   Footer,
+  Search,
 };
