@@ -48,7 +48,7 @@ const Home = () => {
       </div>
       {/* Other Sections */}
       <div className='amenities pt-10 xm:pt-14 sm:pt-8'>
-        <div className='max-w-[330px] xm:max-w-[360px] sm:max-w-[600px] md:max-w-[720px] lg:max-w-[850px] mx-auto w-full'>
+        <div className='max-w-[330px] xm:max-w-[360px] sm:max-w-[600px] md:max-w-[720px] lg:max-w-[850px] xl:max-w-[1045px] mx-auto w-full'>
           <PopularAmenitiesSection />
           <WhatCanYouDoSection />
           <ContactUsSection />

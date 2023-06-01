@@ -20,13 +20,13 @@ const InputRange = ({
 
 const Search = () => {
   return (
-    <div className='absolute rounded-l-[10px] left-[45px] rounded-b-[10px] top-[68px] w-[376px] h-[697px]  bg-[#FFFFFF] text-black'>
-      <div className='relative flex flex-col items-center pl-10 pt-36 pr-9'>
-        <h3 className='text-4xl font-semibold w-[260px] mr-auto'>
+    <div className='absolute rounded-l-[10px] left-[4.4%] rounded-b-[10px] top-[6.62%] w-[377px] xl:w-[470px] h-[697px] xl:h-[871px] bg-white text-black'>
+      <div className='relative flex flex-col items-center pl-10 pt-[40%] pr-9'>
+        <h3 className='text-4xl font-semibold w-[260px] xl:w-[360px] mr-auto'>
           House rentals with pools in Kenya
         </h3>
-        <p className='font-medium w-[290px] mt-3'>
-          Book unique houses,vacation rentals and more on Air bnb
+        <p className='font-medium w-[290px] xl:w-[397px] xl:pl-3 mt-3'>
+          Book unique houses,vacation rentals and more on tecHive
         </p>
         <div className='border-black mt-6 border-2 rounded-[10px] w-full h-[75px]'>
           <span className='text-sm mt-2 ml-2'>Location</span>

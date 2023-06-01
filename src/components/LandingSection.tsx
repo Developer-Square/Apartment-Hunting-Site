@@ -64,8 +64,10 @@ const LandingSection = () => {
     const width = window.innerWidth;
     if (width > 639 && width < 767) {
       setCarouselNumber(3);
-    } else if (width >= 768) {
+    } else if (width >= 768 && width < 1279) {
       setCarouselNumber(3);
+    } else if (width >= 1280) {
+      setCarouselNumber(4);
     } else {
       setCarouselNumber(5);
     }
@@ -73,12 +75,12 @@ const LandingSection = () => {
 
   return (
     <div>
-      <div className='absolute bottom-0 sm:bottom-[5%] md:bottom-[4%] lg:bottom-[3%] mx-5 w-full'>
+      <div className='absolute bottom-0 sm:bottom-[5%] md:bottom-[4%] lg:bottom-[3%] xl:bottom-[5.5%] mx-5 w-full'>
         <button className='w-[320px] xm:w-[368px] sm:w-[320px] lg:hidden text-black h-11 cursor-pointer rounded-2xl bg-[#FEFEFE] font-semibold'>
           Search
           <i className='fa-solid fa-house-chimney ml-1.5'></i>
         </button>
-        <div className='w-[890px] mx-auto'>
+        <div className='w-[890px] xl:w-[1085px] mx-auto'>
           <h4 className='font-semibold mt-3.5 text-[#FFFFFF] flex items-center'>
             <span className='mr-2'>Top rated apartments</span>
             <div className='hidden sm:block'>

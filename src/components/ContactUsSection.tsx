@@ -6,15 +6,20 @@ const ContactUsSection = () => {
 
   useEffect(() => {
     const width = window.innerWidth;
+    // Todo: Change this to a switch statement
+    // Change the following into a switch statement.
     if (width > 639 && width < 767) {
       setIframeHeight('400');
       setIframeWidth('572');
     } else if (width >= 768 && width < 1023) {
       setIframeHeight('480');
       setIframeWidth('680');
-    } else if (width >= 1024) {
+    } else if (width >= 1024 && width < 1279) {
       setIframeHeight('500');
       setIframeWidth('453');
+    } else if (width >= 1280) {
+      setIframeWidth('529');
+      setIframeHeight('500');
     } else {
       setIframeHeight('257');
       setIframeWidth('300');
