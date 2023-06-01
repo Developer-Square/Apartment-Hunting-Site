@@ -44,14 +44,20 @@ const PopularAmenitiesSection = () => {
       icon: <i className='fa-solid fa-user-shield text-3xl'></i>,
     },
   ];
-  const [isTablet, setIsTablet] = useState(false);
+  const [carouselNumber, setCarouselNumber] = useState(3);
+  const [spaceBetween, setSpaceBetween] = useState(30);
 
   useEffect(() => {
     const width = window.innerWidth;
-    if (width > 639) {
-      setIsTablet(true);
+    if (width > 639 && width < 767) {
+      setCarouselNumber(5);
+      setSpaceBetween(50);
+    } else if (width >= 768) {
+      setCarouselNumber(6);
+      setSpaceBetween(0);
     } else {
-      setIsTablet(false);
+      setCarouselNumber(3);
+      setSpaceBetween(30);
     }
   }, []);
   return (
@@ -62,8 +68,8 @@ const PopularAmenitiesSection = () => {
       <Swiper
         modules={[Navigation]}
         navigation
-        spaceBetween={isTablet ? 50 : 30}
-        slidesPerView={isTablet ? 5 : 3}
+        spaceBetween={spaceBetween}
+        slidesPerView={carouselNumber}
       >
         {amenities.map((amenity) => (
           <SwiperSlide key={amenity.name}>

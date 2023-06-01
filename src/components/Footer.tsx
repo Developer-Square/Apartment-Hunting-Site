@@ -6,7 +6,7 @@ const Footer = () => {
 
   return (
     <div className='mt-16 border-t-2 border-[#5D5D5D]'>
-      <div className='mt-3.5 flex flex-col items-center'>
+      <div className='mt-3.5 flex flex-col lg:flex-row lg:justify-around items-center'>
         <p className='text-white/[.7] text-sm'>
           © 2023 TecHive LLP. All rights reserved.
         </p>

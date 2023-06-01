@@ -32,8 +32,10 @@ const OurTopCitiesSection = () => {
     const width = window.innerWidth;
     if (width > 639 && width < 767) {
       setCarouselNumber(2);
-    } else if (width >= 768) {
+    } else if (width >= 768 && width < 1023) {
       setCarouselNumber(3);
+    } else if (width >= 1024) {
+      setCarouselNumber(4);
     } else {
       setCarouselNumber(1);
     }

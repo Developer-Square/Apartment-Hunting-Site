@@ -6,6 +6,7 @@ import OurTopCitiesSection from '@/components/OurTopCitiesSection';
 import {
   AdditionalAbilitiesSection,
   ContactUsSection,
+  DesktopMenu,
   Footer,
   LandingSection,
   PopularAmenitiesSection,
@@ -39,6 +40,7 @@ const Home = () => {
             <Menu show={show} setShow={setShow} />
           </div>
           <div className='hidden lg:block'>
+            <DesktopMenu />
             <Search />
           </div>
           <LandingSection />
