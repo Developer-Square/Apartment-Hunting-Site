@@ -17,6 +17,10 @@ html, body {
   border-radius: 10px;
 }
 
+.swiper-button-disabled {
+  display: none;
+}
+
 .swiper-button-prev:after, .swiper-button-next:after {
   font-size: 25px;
   font-weight: bold;

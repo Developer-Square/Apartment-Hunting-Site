@@ -15,7 +15,9 @@ const WhatCanYouDoSection = () => {
           <div className='mt-6'>
             <p className='pb-2.5'>0{index + 1}.</p>
             <div className='border-b border-solid border-[#FFFFFF]'></div>
-            <p className='uppercase pt-2.5'>{item.toLocaleUpperCase()}</p>
+            <p className='uppercase pt-2.5 text-[19px]'>
+              {item.toLocaleUpperCase()}
+            </p>
           </div>
         ))}
       </div>

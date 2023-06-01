@@ -26,14 +26,16 @@ const OurTopCitiesSection = () => {
       img: Mombasa,
     },
   ];
-  const [isTablet, setIsTablet] = useState(false);
 
+  const [carouselNumber, setCarouselNumber] = useState(1);
   useEffect(() => {
     const width = window.innerWidth;
-    if (width > 639) {
-      setIsTablet(true);
+    if (width > 639 && width < 767) {
+      setCarouselNumber(2);
+    } else if (width >= 768) {
+      setCarouselNumber(3);
     } else {
-      setIsTablet(false);
+      setCarouselNumber(1);
     }
   }, []);
   return (
@@ -43,7 +45,7 @@ const OurTopCitiesSection = () => {
         modules={[Navigation]}
         navigation
         spaceBetween={0}
-        slidesPerView={isTablet ? 2 : 1}
+        slidesPerView={carouselNumber}
       >
         {cities.map((city, index) => (
           <SwiperSlide key={city.name}>

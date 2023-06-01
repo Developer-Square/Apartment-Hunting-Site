@@ -1,14 +1,20 @@
 import { useState, useEffect } from 'react';
 
 const ContactUsSection = () => {
-  const [isTablet, setIsTablet] = useState(false);
+  const [iframeWidth, setIframeWidth] = useState('300');
+  const [iframeHeight, setIframeHeight] = useState('257');
 
   useEffect(() => {
     const width = window.innerWidth;
-    if (width > 639) {
-      setIsTablet(true);
+    if (width > 639 && width < 767) {
+      setIframeHeight('400');
+      setIframeWidth('572');
+    } else if (width >= 768) {
+      setIframeHeight('480');
+      setIframeWidth('680');
     } else {
-      setIsTablet(false);
+      setIframeHeight('257');
+      setIframeWidth('300');
     }
   }, []);
 
@@ -22,8 +28,8 @@ const ContactUsSection = () => {
       </button>
       <div className='my-5'>
         <iframe
-          width={isTablet ? '572' : '300'}
-          height={isTablet ? '400' : '257'}
+          width={iframeWidth}
+          height={iframeHeight}
           style={{
             borderRadius: '20px',
           }}
