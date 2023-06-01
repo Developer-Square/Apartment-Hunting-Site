@@ -6,16 +6,25 @@ const Footer = () => {
 
   return (
     <div className='mt-16 border-t-2 border-[#5D5D5D]'>
-      <div className='mt-3.5 flex flex-col lg:flex-row lg:justify-around items-center'>
-        <p className='text-white/[.7] text-sm'>
-          © 2023 TecHive LLP. All rights reserved.
-        </p>
-        <p className='text-white/[.7] text-sm cursor-pointer'>
-          Terms of Service
-        </p>
-        <p className='text-white/[.7] text-sm cursor-pointer'>Privacy Policy</p>
+      <div className='lg:flex flex-col'>
+        <div className='mt-3.5 flex flex-col lg:flex-row lg:justify-around items-center'>
+          <p className='text-white/[.7] text-sm'>
+            © 2023 TecHive LLP. All rights reserved.
+          </p>
+          <p className='text-white/[.7] text-sm cursor-pointer sm:mt-2 lg:mt-0'>
+            Terms of Service
+          </p>
+          <p className='text-white/[.7] text-sm cursor-pointer sm:mt-2 lg:mt-0'>
+            Privacy Policy
+          </p>
+          <div className='sm:mt-2 lg:mt-0'>
+            <i className='fa-brands fa-facebook mr-5 cursor-pointer'></i>
+            <i className='fa-brands fa-instagram mr-5 cursor-pointer'></i>
+            <i className='fa-brands fa-twitter cursor-pointer'></i>
+          </div>
+        </div>
         <div
-          className='flex items-center my-3.5 cursor-pointer'
+          className='flex justify-center items-center my-3.5 cursor-pointer'
           onClick={() => topFunction()}
         >
           <p>Back to top</p>
