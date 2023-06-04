@@ -62,7 +62,7 @@ const PopularAmenitiesSection = () => {
   }, []);
   return (
     <>
-      <h4 className='text-2xl mb-5'>
+      <h4 className='text-2xl mb-5 xl:mt-11'>
         Popular amenities for Kenyan apartments.
       </h4>
       <Swiper

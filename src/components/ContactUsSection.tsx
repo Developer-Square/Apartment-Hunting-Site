@@ -17,8 +17,11 @@ const ContactUsSection = () => {
     } else if (width >= 1024 && width < 1279) {
       setIframeHeight('500');
       setIframeWidth('453');
-    } else if (width >= 1280) {
+    } else if (width >= 1280 && width < 1439) {
       setIframeWidth('529');
+      setIframeHeight('500');
+    } else if (width >= 1440) {
+      setIframeWidth('650');
       setIframeHeight('500');
     } else {
       setIframeHeight('257');
@@ -27,7 +30,7 @@ const ContactUsSection = () => {
   }, []);
 
   return (
-    <div className='mt-11 bg-[#FFFFFF] text-black px-4 flex flex-col lg:flex-row items-center rounded-[25px]'>
+    <div className='mt-11 xl:mt-16 bg-[#FFFFFF] text-black px-4 flex flex-col lg:flex-row items-center rounded-[25px]'>
       <div className='lg:flex flex-col items-center'>
         <p className='pt-5 text-center'>
           We are here to help you discover each properties’ unique potential

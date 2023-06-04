@@ -31,9 +31,8 @@ const AdditionalAbilitiesSection = () => {
     }
     setShowContent(item);
   };
-  console.log(showContent);
   return (
-    <div className='mt-11'>
+    <div className='mt-11 xl:mt-14'>
       <h4 className='text-2xl uppercase mb-3'>Additional Abilities</h4>
       {data.map((item, index) => (
         <div

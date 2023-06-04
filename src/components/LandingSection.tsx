@@ -80,7 +80,7 @@ const LandingSection = () => {
           Search
           <i className='fa-solid fa-house-chimney ml-1.5'></i>
         </button>
-        <div className='w-[890px] xl:w-[1085px] mx-auto'>
+        <div className='w-[890px] xl:w-[1085px] 2xl:w-[1250px] mx-auto'>
           <h4 className='font-semibold mt-3.5 text-[#FFFFFF] flex items-center'>
             <span className='mr-2'>Top rated apartments</span>
             <div className='hidden sm:block'>

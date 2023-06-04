@@ -41,7 +41,7 @@ const OurTopCitiesSection = () => {
     }
   }, []);
   return (
-    <div className='mt-11'>
+    <div className='mt-11 xl:mt-14'>
       <h4 className='text-2xl uppercase mb-3'>Our Top Cities</h4>
       <Swiper
         modules={[Navigation]}
