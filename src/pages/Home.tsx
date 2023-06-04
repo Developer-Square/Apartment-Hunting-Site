@@ -18,7 +18,7 @@ import { useState } from 'react';
 const Home = () => {
   const [show, setShow] = useState(false);
   return (
-    <section className='w-full h-full text-white'>
+    <section className='w-full h-full text-white 2xl:w-[1440px] mx-auto'>
       {/* Landing Section */}
       <div className='relative w-full h-full'>
         <picture>
@@ -31,7 +31,7 @@ const Home = () => {
           <img
             src={LandingPage}
             alt='Landing'
-            className='w-full h-auto md:h-[800px] lg:h-auto'
+            className='w-full h-auto md:h-[800px] lg:h-auto 2xl:h-[1440px]'
           />
         </picture>
         <div className='max-w-[330px] xm:max-w-[360px] w-full'>
@@ -48,7 +48,7 @@ const Home = () => {
       </div>
       {/* Other Sections */}
       <div className='amenities pt-10 xm:pt-14 sm:pt-8'>
-        <div className='max-w-[330px] xm:max-w-[360px] sm:max-w-[600px] md:max-w-[720px] lg:max-w-[850px] xl:max-w-[1045px] mx-auto w-full'>
+        <div className='max-w-[330px] xm:max-w-[360px] sm:max-w-[600px] md:max-w-[720px] lg:max-w-[850px] xl:max-w-[1045px] 2xl:max-w-[1200px] mx-auto w-full'>
           <PopularAmenitiesSection />
           <WhatCanYouDoSection />
           <ContactUsSection />

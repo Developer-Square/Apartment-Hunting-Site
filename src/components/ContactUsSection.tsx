@@ -17,8 +17,11 @@ const ContactUsSection = () => {
     } else if (width >= 1024 && width < 1279) {
       setIframeHeight('500');
       setIframeWidth('453');
-    } else if (width >= 1280) {
+    } else if (width >= 1280 && width < 1439) {
       setIframeWidth('529');
+      setIframeHeight('500');
+    } else if (width >= 1440) {
+      setIframeWidth('650');
       setIframeHeight('500');
     } else {
       setIframeHeight('257');
