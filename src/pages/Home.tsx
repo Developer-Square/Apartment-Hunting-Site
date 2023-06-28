@@ -1,8 +1,8 @@
 import LandingPage from '@/assets/home/mobile-landing-page.png';
 import TabletPage from '@/assets/home/tablet-landing-page.jpg';
 import DesktopPage from '@/assets/home/desktop-landing-page.png';
-import Menu, { MenuBars } from '@/components/Menu';
-import OurTopCitiesSection from '@/components/OurTopCitiesSection';
+import Menu, { MenuBars } from '@/components/home/Menu';
+import OurTopCitiesSection from '@/components/home/OurTopCitiesSection';
 import {
   AdditionalAbilitiesSection,
   ContactUsSection,
@@ -12,15 +12,15 @@ import {
   PopularAmenitiesSection,
   Search,
   WhatCanYouDoSection,
-} from '@/components/index';
+} from '@/components/home/index';
 import { useState } from 'react';
 
 const Home = () => {
   const [show, setShow] = useState(false);
   return (
-    <section className='w-full h-full text-white 2xl:w-[1440px] mx-auto'>
+    <section className='w-full h-full text-white'>
       {/* Landing Section */}
-      <div className='relative w-full h-full'>
+      <div className='relative w-full h-full 2xl:w-[1440px] mx-auto'>
         <picture>
           <source media='(max-width: 639px)' srcSet={LandingPage} />
           <source

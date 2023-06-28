@@ -30,7 +30,7 @@ const ContactUsSection = () => {
   }, []);
 
   return (
-    <div className='mt-11 xl:mt-16 bg-[#FFFFFF] text-black px-4 flex flex-col lg:flex-row items-center rounded-[25px]'>
+    <div className='mt-12 xl:mt-16 bg-[#FFFFFF] text-black px-4 flex flex-col lg:flex-row items-center rounded-[25px]'>
       <div className='lg:flex flex-col items-center'>
         <p className='pt-5 text-center'>
           We are here to help you discover each properties’ unique potential
