@@ -11,14 +11,23 @@ import Property7 from '@/assets/home/Property-11.webp';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { useEffect, useState } from 'react';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 interface LandingSectionImageProps {
   town: string;
   img: string;
+  navigate: NavigateFunction;
 }
 
-const LandingSectionImage = ({ town, img }: LandingSectionImageProps) => (
-  <div className='relative w-28 h-[154px] xm:w-32 xm:h-[174px] sm:w-[125px] sm:h-[154px]  md:w-[220px] md:h-[170px] shadow-xl'>
+const LandingSectionImage = ({
+  town,
+  img,
+  navigate,
+}: LandingSectionImageProps) => (
+  <div
+    className='relative w-28 h-[154px] xm:w-32 xm:h-[174px] sm:w-[125px] sm:h-[154px]  md:w-[220px] md:h-[170px] shadow-xl cursor-pointer'
+    onClick={() => navigate('/apartments')}
+  >
     <div className='hidden sm:block absolute top-0 left-0 w-full h-full bg-black/[.2]'></div>
     <p className='absolute text-[#FFFFFF] font-semibold top-5 left-[50%] translate-x-[-50%]'>
       {town}
@@ -59,6 +68,8 @@ const LandingSection = () => {
       img: Property7,
     },
   ];
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const width = window.innerWidth;
@@ -101,7 +112,11 @@ const LandingSection = () => {
             >
               {landingImages.map((image) => (
                 <SwiperSlide key={image.town}>
-                  <LandingSectionImage town={image.town} img={image.img} />
+                  <LandingSectionImage
+                    town={image.town}
+                    img={image.img}
+                    navigate={navigate}
+                  />
                 </SwiperSlide>
               ))}
             </Swiper>
