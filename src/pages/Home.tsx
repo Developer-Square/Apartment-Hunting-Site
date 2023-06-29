@@ -12,7 +12,7 @@ import {
   PopularAmenitiesSection,
   Search,
   WhatCanYouDoSection,
-} from '@/components/home/index';
+} from '@/components/index';
 import { useState } from 'react';
 
 const Home = () => {

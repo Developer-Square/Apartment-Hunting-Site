@@ -39,7 +39,7 @@ input[type=number] {
   color: #fff;
 }
 
-.body-background, .amenities {
+.apartments-page, .body-background, .amenities {
   background: linear-gradient(180deg, #141b1f 20.39%, #000000 28.77%);
 }
 
