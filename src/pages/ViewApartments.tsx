@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { SearchBar } from '../components';
+import { FilterBackdrop, Filters, SearchBar } from '../components';
 
 const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
+  const [showFilters, setshowFilters] = useState(false);
 
   return (
     <section className='apartments-page w-full h-full mb-5 text-black'>
@@ -15,16 +16,16 @@ const ViewApartmentsPage = () => {
           <p className='text-sm font-bold'>Search location...</p>
           <p className='text-xs text-gray-500'>Click here</p>
         </div>
-        {/* <input
-          type='text'
-          placeholder='Search location...'
-          className='cursor-pointer bg-transparent px-2 text-black outline-none border-none w-60 h-full'
-        /> */}
-        <div className='rounded-full h-7 w-7 border border-black flex items-center justify-center cursor-pointer ml-auto mr-2.5'>
+        <div
+          className='rounded-full h-7 w-7 border border-black flex items-center justify-center cursor-pointer ml-auto mr-2.5'
+          onClick={() => setshowFilters(true)}
+        >
           <i className='fa-solid fa-sliders text-black p-3'></i>
         </div>
       </div>
       <SearchBar show={showSearhBar} setShow={setshowSearhBar} />
+      <FilterBackdrop show={showFilters} />
+      <Filters show={showFilters} setShow={setshowFilters} />
     </section>
   );
 };

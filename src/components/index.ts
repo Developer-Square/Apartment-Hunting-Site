@@ -8,6 +8,8 @@ import Footer from './home/Footer';
 import Search from './home/Search';
 import DesktopMenu from './home/DesktopMenu';
 import SearchBar from './view-apartments/SearchBar';
+import Filters from './view-apartments/Filters';
+import { FilterBackdrop } from './view-apartments/Helpers';
 
 export {
   Menu,
@@ -20,4 +22,6 @@ export {
   Search,
   DesktopMenu,
   SearchBar,
+  Filters,
+  FilterBackdrop,
 };

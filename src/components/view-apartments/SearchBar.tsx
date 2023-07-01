@@ -25,7 +25,7 @@ const SearchBar = ({
         ...props,
       }}
     >
-      <div className='mt-5 ml-5 flex'>
+      <div className='mt-5 ml-5 flex max-w-[370px]'>
         <div
           className='border border-black rounded-full w-7 h-7 flex items-center justify-center cursor-pointer'
           onClick={() => setShow(false)}
@@ -42,7 +42,7 @@ const SearchBar = ({
           className='bg-transparent px-2 text-black outline-none border-none w-60 h-full'
         />
       </div>
-      <div className='mt-5 ml-5'>
+      <div className='mt-5 ml-5 max-w-[370px]'>
         <p className='text-sm font-bold'>Recent Searches</p>
         <div className='mt-3 flex cursor-pointer'>
           <div className='h-12 w-12 bg-[#EBEBEB] flex items-center justify-center rounded-xl'>
