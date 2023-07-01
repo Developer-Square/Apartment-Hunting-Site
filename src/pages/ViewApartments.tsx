@@ -23,9 +23,16 @@ const ViewApartmentsPage = () => {
           <i className='fa-solid fa-sliders text-black p-3'></i>
         </div>
       </div>
-      <SearchBar show={showSearhBar} setShow={setshowSearhBar} />
-      <FilterBackdrop show={showFilters} />
-      <Filters show={showFilters} setShow={setshowFilters} />
+      {/* Hide the SearchBar and Filters components when the other is open */}
+      {!showFilters && (
+        <SearchBar show={showSearhBar} setShow={setshowSearhBar} />
+      )}
+      {!showSearhBar && (
+        <>
+          <FilterBackdrop show={showFilters} />
+          <Filters show={showFilters} setShow={setshowFilters} />
+        </>
+      )}
     </section>
   );
 };

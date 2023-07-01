@@ -53,6 +53,32 @@ const Filters = ({
     breakfast: false,
   });
 
+  const clearAllFilters = () => {
+    setBedrooms('Any');
+    setBathrooms('Any');
+    setPropertyType('');
+    setAmenities({
+      wifi: false,
+      parking: false,
+      washer: false,
+      kitchen: false,
+      gym: false,
+    });
+    setEssentials({
+      dryer: false,
+      heating: false,
+      dedicatedWorkspace: false,
+      tv: false,
+    });
+    setFeatures({
+      pool: false,
+      hotTub: false,
+      evCharger: false,
+      smokingAllowed: false,
+      breakfast: false,
+    });
+  };
+
   return (
     <animated.div
       style={{
@@ -69,7 +95,7 @@ const Filters = ({
       <div className='max-w-[370px] mx-auto'>
         <div className='flex items-center'>
           <i
-            className='fa-solid fa-xmark text-xl mt-5'
+            className='fa-solid fa-xmark text-xl mt-5 cursor-pointer'
             onClick={() => setShow(false)}
           ></i>
           <p className='font-bold text-base text-center mt-5 w-full'>Filters</p>
@@ -177,13 +203,26 @@ const Filters = ({
         )}
         {showMore && (
           <p
-            className='underline mt-7 mb-10 cursor-pointer'
+            className='underline mt-7 mb-32 cursor-pointer'
             onClick={() => setShowMore(false)}
           >
             Show less
           </p>
         )}
       </div>
+      <footer className='absolute w-full bottom-0 mt-5 px-6 py-4 border-t border-black/[.2] h-20'>
+        <div className='flex items-center justify-between'>
+          <p
+            className='underline font-medium cursor-pointer'
+            onClick={() => clearAllFilters()}
+          >
+            Clear all
+          </p>
+          <button className='rounded-lg py-3.5 px-6 bg-black text-white'>
+            No places available
+          </button>
+        </div>
+      </footer>
     </animated.div>
   );
 };
