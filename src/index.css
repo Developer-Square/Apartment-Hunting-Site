@@ -43,6 +43,12 @@ input[type=number] {
   background: linear-gradient(180deg, #141b1f 20.39%, #000000 28.77%);
 }
 
+.preview {
+  border-radius: 6px 9px 9px 6px;
+  background: #F5F5F5;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.10) inset, 1px -1px 2px 0px rgba(0, 0, 0, 0.10) inset, 2px -2px 3px 0px rgba(0, 0, 0, 0.09) inset, 5px -5px 4px 0px rgba(0, 0, 0, 0.05) inset, 8px -8px 5px 0px rgba(0, 0, 0, 0.01) inset, 13px -13px 5px 0px rgba(0, 0, 0, 0.00) inset;
+}
+
 @media screen and (min-width: 1280px) {
   html, body {
     font-size: 22px;

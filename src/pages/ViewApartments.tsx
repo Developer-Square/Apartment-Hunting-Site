@@ -1,5 +1,11 @@
 import { useState } from 'react';
-import { FilterBackdrop, Filters, SearchBar } from '../components';
+import {
+  Apartments,
+  FilterBackdrop,
+  Filters,
+  SearchBar,
+  Map,
+} from '../components';
 
 const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
@@ -7,7 +13,7 @@ const ViewApartmentsPage = () => {
 
   return (
     <section className='apartments-page w-full h-full mb-5 text-black'>
-      <div className=' bg-white relative w-80 h-12 mx-auto rounded-3xl mb-5 flex items-center'>
+      <div className=' bg-white relative w-80 h-12 mx-auto rounded-3xl my-4 flex items-center'>
         <i className='fa-solid fa-magnifying-glass text-black pl-4'></i>
         <div
           className='flex flex-col pl-4 cursor-pointer'
@@ -33,6 +39,10 @@ const ViewApartmentsPage = () => {
           <Filters show={showFilters} setShow={setshowFilters} />
         </>
       )}
+      <div className='text-white'>
+        <Map />
+        <Apartments />
+      </div>
     </section>
   );
 };
