@@ -1,12 +1,15 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import ViewApartments1 from '@/assets/view-apartments/view-apartments-1.png';
 import PropertyManager from '@/assets/view-apartments/property-manager.png';
 import { animated, useSpring } from '@react-spring/web';
 import { useState } from 'react';
+import UserProfileModal from './UserProfileModal';
 
 const Apartments = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isApartmentHovered, setIsApartmentHovered] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const { x } = useSpring({
     from: { x: 0 },
@@ -40,6 +43,8 @@ const Apartments = () => {
       <p className='text-sm w-full text-center font-medium mb-4'>
         Over 1000 apartments
       </p>
+      {showModal ? <UserProfileModal setShowModal={setShowModal} /> : null}
+
       <div
         className='mb-10 px-12'
         onMouseEnter={() => setIsApartmentHovered(true)}
@@ -78,6 +83,7 @@ const Apartments = () => {
               }),
             }}
             className='absolute bottom-2.5 cursor-pointer left-2.5 h-20 w-[78px] flex preview'
+            onClick={() => setShowModal(true)}
           >
             <div className='h-full w-3 border-[1.8px] border-r-[#C6B1A5]/[.6]'></div>
             <div className='flex h-full w-full justify-center items-center'>
