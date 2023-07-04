@@ -3,8 +3,16 @@ import PropertyManager from '@/assets/view-apartments/property-manager.png';
 
 const UserProfileModal = ({
   setShowModal,
+  propertyManager,
+  name,
+  occupation,
+  location,
 }: {
   setShowModal: React.Dispatch<SetStateAction<boolean>>;
+  propertyManager: string;
+  name: string;
+  occupation: string;
+  location: string;
 }) => {
   const confirmedInfo = ['Identity', 'Phone number', 'Email Address'];
 
@@ -28,15 +36,15 @@ const UserProfileModal = ({
                   <div className='relative h-24 w-24 rounded-full'>
                     <div className='absolute top-0 left-0 bg-black/[.2] w-full h-full rounded-full'></div>
                     <img
-                      src={PropertyManager}
+                      src={propertyManager}
                       alt='property manager'
-                      className='w-full h-full'
+                      className='w-full h-full rounded-full'
                     />
                     <div className='absolute bottom-0 right-0'>
                       <i className='fa-solid fa-circle-check text-xl'></i>
                     </div>
                   </div>
-                  <p className='font-bold mt-4 text-[26px]'>Ryan Njoroge</p>
+                  <p className='font-bold mt-4 text-[26px]'>{name}</p>
                   <p className='font-semibold mt-1 text-sm'>
                     <i className='fa-solid fa-trophy'></i> Super Agent
                   </p>
@@ -54,13 +62,11 @@ const UserProfileModal = ({
               <div className='mx-6 my-10 pb-8 text-[#222222] border-b border-black/[.3]'>
                 <div className='flex items-center'>
                   <i className='fa-solid fa-briefcase text-lg'></i>
-                  <p className='ml-4 font-semibold'>My Work: Hospitality</p>
+                  <p className='ml-4 font-semibold'>My Work: {occupation}</p>
                 </div>
                 <div className='flex mt-3 items-center'>
                   <i className='fa-solid fa-location-dot text-lg'></i>
-                  <p className='ml-4 font-semibold'>
-                    Lives in Utawala, Nairobi
-                  </p>
+                  <p className='ml-4 font-semibold'>Lives in {location}</p>
                 </div>
               </div>
               <div className='mx-6 mb-8 pb-8 text-[22px] font-semibold border-b border-black/[.3]'>
