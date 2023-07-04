@@ -39,24 +39,32 @@ const Home = () => {
             <MenuBars setMenu={setShow} />
             <Menu show={show} setShow={setShow} />
           </div>
-          <div className='hidden lg:block'>
-            <DesktopMenu />
-            <Search />
-          </div>
-          <LandingSection />
+          {/* Hide other components when the Menu is open, to reduce the height of the page */}
+          {!show ? (
+            <>
+              <div className='hidden lg:block'>
+                <DesktopMenu />
+                <Search />
+              </div>
+              <LandingSection />
+            </>
+          ) : null}
         </div>
       </div>
       {/* Other Sections */}
-      <div className='amenities pt-10 xm:pt-14 sm:pt-8'>
-        <div className='max-w-[330px] xm:max-w-[360px] sm:max-w-[600px] md:max-w-[720px] lg:max-w-[850px] xl:max-w-[1045px] 2xl:max-w-[1200px] mx-auto w-full'>
-          <PopularAmenitiesSection />
-          <WhatCanYouDoSection />
-          <ContactUsSection />
-          <AdditionalAbilitiesSection />
-          <OurTopCitiesSection />
-          <Footer />
+      {/* Same as above, hide other components when the Menu is open */}
+      {!show ? (
+        <div className='amenities pt-10 xm:pt-14 sm:pt-8'>
+          <div className='max-w-[330px] xm:max-w-[360px] sm:max-w-[600px] md:max-w-[720px] lg:max-w-[850px] xl:max-w-[1045px] 2xl:max-w-[1200px] mx-auto w-full'>
+            <PopularAmenitiesSection />
+            <WhatCanYouDoSection />
+            <ContactUsSection />
+            <AdditionalAbilitiesSection />
+            <OurTopCitiesSection />
+            <Footer />
+          </div>
         </div>
-      </div>
+      ) : null}
     </section>
   );
 };

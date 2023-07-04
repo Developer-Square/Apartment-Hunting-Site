@@ -21,7 +21,7 @@ const InputRange = ({
         value={value}
         onChange={(e) => setValue(parseInt(e.target.value))}
         placeholder={placeholder}
-        className='w-full h-[44px] outline-none ml-2 bg-transparent'
+        className='w-full h-[44px] p-0 border-none outline-none ml-2 bg-transparent'
       />
     </div>
   </div>
@@ -75,7 +75,7 @@ const Search = () => {
                 seterror(''), setlocation(e.target.value);
               }}
               placeholder='Anywhere'
-              className='w-full h-[44px] outline-none border-none ml-2 bg-transparent'
+              className='w-full h-[44px] shadow-transparent p-0 border-transparent !outline-none border-none ml-2 bg-transparent'
             />
           </div>
           <span className='text-xs my-2 text-red-600'>{error}</span>

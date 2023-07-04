@@ -55,7 +55,7 @@ const Menu = ({
         position: 'absolute',
         top: 0,
         backgroundColor: '#FFFFFF',
-        height: '100vh',
+        height: '100%',
         width: '100%',
         zIndex: '10',
         ...props,

@@ -89,10 +89,11 @@ const Filters = ({
         width: '100%',
         zIndex: '10',
         borderRadius: '1rem',
+        overflowY: 'hidden',
         ...props,
       }}
     >
-      <div className='max-w-[370px] mx-auto'>
+      <div className='xm:max-w-[330px] max-w-[360px] mx-auto'>
         <div className='flex items-center'>
           <i
             className='fa-solid fa-xmark text-xl mt-5 cursor-pointer'

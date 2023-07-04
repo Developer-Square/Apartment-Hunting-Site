@@ -39,10 +39,13 @@ const ViewApartmentsPage = () => {
           <Filters show={showFilters} setShow={setshowFilters} />
         </>
       )}
-      <div className='text-white'>
-        <Map />
-        <Apartments />
-      </div>
+      {/* Hide other components when the SearchBar or Filters is open, to reduce the height of the page */}
+      {!showFilters || !showSearhBar ? (
+        <div className='text-white'>
+          <Map />
+          <Apartments />
+        </div>
+      ) : null}
     </section>
   );
 };
