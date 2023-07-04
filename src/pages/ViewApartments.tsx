@@ -10,6 +10,7 @@ import {
 const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
   const [showFilters, setshowFilters] = useState(false);
+  console.log(showSearhBar, showFilters);
 
   return (
     <section className='apartments-page w-full h-full mb-5 text-black'>
@@ -30,10 +31,10 @@ const ViewApartmentsPage = () => {
         </div>
       </div>
       {/* Hide the SearchBar and Filters components when the other is open */}
-      {!showFilters && (
+      {showSearhBar && (
         <SearchBar show={showSearhBar} setShow={setshowSearhBar} />
       )}
-      {!showSearhBar && (
+      {showFilters && (
         <>
           <FilterBackdrop show={showFilters} />
           <Filters show={showFilters} setShow={setshowFilters} />
