@@ -5,6 +5,7 @@ import {
   Filters,
   SearchBar,
   Map,
+  Footer,
 } from '../components';
 
 const ViewApartmentsPage = () => {
@@ -44,6 +45,7 @@ const ViewApartmentsPage = () => {
         <div className='text-white'>
           <Map />
           <Apartments />
+          <Footer />
         </div>
       ) : null}
     </section>

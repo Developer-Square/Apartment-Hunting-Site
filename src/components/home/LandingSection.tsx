@@ -83,6 +83,7 @@ const LandingSection = () => {
       setCarouselNumber(5);
     }
   }, []);
+  console.log(carouselNumber);
 
   return (
     <div>
