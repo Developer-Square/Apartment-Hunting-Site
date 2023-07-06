@@ -1,14 +1,30 @@
 import { animated, useSpring } from '@react-spring/web';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import UserProfileModal from './UserProfileModal';
 import { ApartmentInfoProps } from './Apartments';
+import { Navigation, Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css/pagination';
+import ViewApartments1 from '@/assets/view-apartments/view-apartments-1.png';
+import ViewApartments2 from '@/assets/view-apartments/view-apartments-2.webp';
+import ViewApartments3 from '@/assets/view-apartments/view-apartments-3.webp';
+import ViewApartments4 from '@/assets/view-apartments/view-apartments-4.webp';
+import ViewApartments5 from '@/assets/view-apartments/view-apartments-5.webp';
 
 const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
-  const { title, subtitle, viewApartments, propertyManager, price } = info;
+  const { title, subtitle, propertyManager, price } = info;
+  const viewApartments = [
+    ViewApartments1,
+    ViewApartments2,
+    ViewApartments3,
+    ViewApartments4,
+    ViewApartments5,
+  ];
   const [isHovered, setIsHovered] = useState(false);
   const [isApartmentHovered, setIsApartmentHovered] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [swiperQualities, setswiperQualities] = useState([Pagination]);
 
   const { x } = useSpring({
     from: { x: 0 },
@@ -33,6 +49,14 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
     setIsHovered(false);
     setIsApartmentHovered(false);
   };
+
+  useEffect(() => {
+    if (window.innerWidth > 640) {
+      setswiperQualities([...swiperQualities, Navigation]);
+      return;
+    }
+    setswiperQualities([Pagination]);
+  }, [swiperQualities]);
 
   return (
     <>
@@ -70,11 +94,24 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
               )}
             </div>
           </animated.div>
-          <img
-            src={viewApartments}
-            className='w-full h-full rounded-xl'
-            alt='view apartments'
-          />
+          <Swiper
+            modules={swiperQualities}
+            navigation={swiperQualities.includes(Navigation) ? true : false}
+            pagination={{ clickable: true }}
+            spaceBetween={0}
+            slidesPerView={1}
+            className='w-full h-full'
+          >
+            {viewApartments.map((apartment, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={apartment}
+                  className='w-full h-full rounded-xl'
+                  alt='view apartments'
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
           <animated.div
             style={{
               scale: apartmentX.to({

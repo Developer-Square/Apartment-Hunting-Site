@@ -39,6 +39,19 @@ input[type=number] {
   color: #fff;
 }
 
+/* Custom Swiper Pagination */
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: initial;
+  border-radius: 10px;
+}
+
+.swiper-pagination-bullet-active {
+  background: rgba(255, 255, 255, 1);
+}
+
 .apartments-page, .body-background, .amenities {
   background: linear-gradient(180deg, #141b1f 20.39%, #000000 28.77%);
 }
