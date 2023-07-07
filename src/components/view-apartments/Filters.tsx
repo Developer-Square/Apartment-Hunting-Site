@@ -93,7 +93,7 @@ const Filters = ({
         ...props,
       }}
     >
-      <div className='xm:max-w-[330px] max-w-[360px] mx-auto'>
+      <div className='xm:max-w-[360px] max-w-[330px] mx-auto'>
         <div className='flex items-center'>
           <i
             className='fa-solid fa-xmark text-xl mt-5 cursor-pointer'

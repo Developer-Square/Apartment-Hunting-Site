@@ -25,7 +25,7 @@ const SearchBar = ({
         ...props,
       }}
     >
-      <div className='mt-5 ml-5 flex max-w-[370px]'>
+      <div className='mt-5 ml-5 flex max-w-[330px] xm:max-w-[360px]'>
         <div
           className='border border-black rounded-full w-7 h-7 flex items-center justify-center cursor-pointer'
           onClick={() => setShow(false)}
@@ -34,7 +34,7 @@ const SearchBar = ({
         </div>
         <p className='font-bold text-lg text-center w-full'>Search Form</p>
       </div>
-      <div className=' bg-[#EBEBEB] relative w-[370px] h-[60px] mt-7 mx-auto rounded-xl mb-5 flex items-center'>
+      <div className=' bg-[#EBEBEB] relative w-full h-[60px] mt-7 mx-auto rounded-xl mb-5 flex items-center'>
         <i className='fa-solid fa-magnifying-glass text-black pl-4'></i>
         <input
           type='text'

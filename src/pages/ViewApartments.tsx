@@ -11,10 +11,10 @@ import {
 const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
   const [showFilters, setshowFilters] = useState(false);
-
+  console.log(showSearhBar, showFilters);
   return (
     <section className='apartments-page w-full h-full mb-5 text-black'>
-      <div className=' bg-white relative w-80 h-12 mx-auto rounded-3xl my-4 flex items-center'>
+      <div className=' bg-white relative xm:w-[360px] xm:h-14 w-80 h-12 mx-auto rounded-3xl xm:rounded-[32px] my-4 flex items-center'>
         <i className='fa-solid fa-magnifying-glass text-black pl-4'></i>
         <div
           className='flex flex-col pl-4 cursor-pointer'
@@ -41,7 +41,7 @@ const ViewApartmentsPage = () => {
         </>
       )}
       {/* Hide other components when the SearchBar or Filters is open, to reduce the height of the page */}
-      {!showFilters || !showSearhBar ? (
+      {!showFilters && !showSearhBar ? (
         <div className='text-white'>
           <Map />
           <Apartments />
