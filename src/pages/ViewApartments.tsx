@@ -11,7 +11,6 @@ import {
 const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
   const [showFilters, setshowFilters] = useState(false);
-  console.log(showSearhBar, showFilters);
   return (
     <section className='apartments-page w-full h-full mb-5 text-black'>
       <div className=' bg-white relative xm:w-[360px] xm:h-14 w-80 h-12 mx-auto rounded-3xl xm:rounded-[32px] my-4 flex items-center'>

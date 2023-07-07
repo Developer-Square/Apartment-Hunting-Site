@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useSpring, animated } from '@react-spring/web';
-import React, { SetStateAction } from 'react';
+import React, { SetStateAction, useState } from 'react';
 
 export const FilterBackdrop = ({ show }: { show: boolean }) => {
   const props = useSpring({
@@ -128,5 +128,140 @@ export const AmenitiesList = ({
         </p>
       )}
     </div>
+  );
+};
+
+export const WishListModal = ({
+  setWishListModal,
+  setShowCreateModal,
+  wishlist,
+}: {
+  setWishListModal: React.Dispatch<SetStateAction<boolean>>;
+  setShowCreateModal: React.Dispatch<SetStateAction<boolean>>;
+  wishlist: string[];
+}) => {
+  const handleCreateWishList = () => {
+    setWishListModal(false);
+    setShowCreateModal(true);
+  };
+
+  return (
+    <div className='justify-center items-end flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none text-black'>
+      <div className='relative w-full mt-6 mx-auto'>
+        {/*content*/}
+        <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
+          {/*header*/}
+          <div className='flex items-center w-full p-3.5 border-b mb-5 border-black/[.2]  rounded-t'>
+            <i
+              className='fa-solid fa-xmark text-lg cursor-pointer'
+              onClick={() => setWishListModal(false)}
+            ></i>
+            <p className='text-center font-semibold ml-[30%]'>Your wishlists</p>
+          </div>
+          {/*body*/}
+          <div className='max-h-[85vh] overflow-y-scroll'>
+            <div
+              className='my-3.5 flex items-center mx-4 cursor-pointer'
+              onClick={() => handleCreateWishList()}
+            >
+              <div className='w-16 h-16 flex border border-black/[.4] rounded-lg justify-center items-center'>
+                <i className='fa-solid text-3xl font-normal fa-plus'></i>
+              </div>
+              <p className='ml-3.5 font-semibold'>Create new wishlist</p>
+            </div>
+            {wishlist.length
+              ? wishlist.map((wish, index) => (
+                  <div
+                    key={index}
+                    className='my-4 flex items-center mx-4 cursor-pointer'
+                  >
+                    <div className='flex w-16 h-16 rounded-lg justify-center items-center bg-[#f0efe9]' />
+                    <p className='ml-3.5 font-semibold'>{wish}</p>
+                  </div>
+                ))
+              : null}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const CreateWishListModal = ({
+  showCreateModal,
+  setShowCreateModal,
+  handleCreateWishList,
+}: {
+  showCreateModal: boolean;
+  setShowCreateModal: React.Dispatch<SetStateAction<boolean>>;
+  handleCreateWishList: (name: string) => void;
+}) => {
+  const props = useSpring({
+    from: { y: 0, opacity: 0 },
+    to: { y: showCreateModal ? 0 : 100, opacity: showCreateModal ? 1 : 0 },
+  });
+  const [name, setName] = useState('');
+
+  return (
+    <animated.div
+      style={{
+        position: 'absolute',
+        top: showCreateModal ? 45 : window.innerHeight,
+        backgroundColor: '#FFFFFF',
+        height: 'auto',
+        width: '100%',
+        zIndex: '10',
+        borderRadius: '1rem',
+        overflowY: 'hidden',
+        ...props,
+      }}
+    >
+      <div className='justify-center items-end flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none text-black'>
+        <div className='relative w-full mt-6 mx-auto'>
+          {/*content*/}
+          <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
+            {/*header*/}
+            <div className='flex items-center w-full p-3.5 border-b mb-5 border-black/[.2]  rounded-t'>
+              <i
+                className='fa-solid fa-xmark text-lg cursor-pointer'
+                onClick={() => setShowCreateModal(false)}
+              ></i>
+              <p className='text-center font-semibold ml-[30%]'>
+                Create wishlist
+              </p>
+            </div>
+            {/*body*/}
+            <div className='max-h-[85vh] overflow-y-scroll'>
+              <div className='mt-2 mb-3.5 flex items-center mx-4'>
+                <div className='flex flex-col w-full'>
+                  <input
+                    required
+                    type='text'
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder='Name...'
+                    className='w-full h-[44px] shadow-transparent py-7 rounded-lg px-2 border border-black/[.2] !outline-none  bg-transparent'
+                  />
+                  <p className='text-xs mt-1.5 text-gray-400'>
+                    50 characters maximum
+                  </p>
+                </div>
+              </div>
+              <div className='mt-10 border-t flex justify-center border-black/[.2]'>
+                <button
+                  disabled={name.length ? false : true}
+                  className={`${
+                    name.length ? 'bg-black' : 'bg-black/[.3]'
+                  } my-4 font-semibold py-2.5 rounded-lg text-white w-72`}
+                  onClick={() => handleCreateWishList(name)}
+                >
+                  Create
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </animated.div>
   );
 };

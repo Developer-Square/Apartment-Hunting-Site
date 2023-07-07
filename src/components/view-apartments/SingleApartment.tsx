@@ -10,6 +10,7 @@ import ViewApartments2 from '@/assets/view-apartments/view-apartments-2.webp';
 import ViewApartments3 from '@/assets/view-apartments/view-apartments-3.webp';
 import ViewApartments4 from '@/assets/view-apartments/view-apartments-4.webp';
 import ViewApartments5 from '@/assets/view-apartments/view-apartments-5.webp';
+import { WishListModal, CreateWishListModal } from './Helpers';
 
 const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
   const { title, subtitle, propertyManager, price } = info;
@@ -23,7 +24,10 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
   const [isApartmentHovered, setIsApartmentHovered] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [wishListModal, setWishListModal] = useState(false);
+  const [showCreateModal, setShowCreateModal] = useState(false);
   const [swiperQualities, setswiperQualities] = useState([Pagination]);
+  const [wishlist, setWishlist] = useState<string[]>([]);
 
   const { x: apartmentX } = useSpring({
     from: { x: 0 },
@@ -37,7 +41,25 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
       return;
     }
     setswiperQualities([Pagination]);
-  }, [swiperQualities]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [window.innerWidth]);
+
+  const handleWishListModal = () => {
+    if (isSaved) {
+      setIsSaved(false);
+      return;
+    }
+    setWishListModal((prevState) => !prevState);
+    setIsSaved((prevState) => !prevState);
+  };
+
+  const hanldeCreateWishList = (name: string) => {
+    setWishlist([...wishlist, name]);
+    setShowCreateModal(false);
+    setWishListModal(true);
+  };
+
+  console.log(wishlist.length);
 
   return (
     <>
@@ -48,6 +70,20 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
           occupation='Hospitality'
           location='Utawala, Nairobi'
           setShowModal={setShowModal}
+        />
+      ) : null}
+      {wishListModal ? (
+        <WishListModal
+          wishlist={wishlist}
+          setShowCreateModal={setShowCreateModal}
+          setWishListModal={setWishListModal}
+        />
+      ) : null}
+      {showCreateModal ? (
+        <CreateWishListModal
+          showCreateModal={showCreateModal}
+          handleCreateWishList={hanldeCreateWishList}
+          setShowCreateModal={setShowCreateModal}
         />
       ) : null}
       <div
@@ -69,7 +105,7 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
                 <>
                   <div
                     className='relative'
-                    onClick={() => setIsSaved(!isSaved)}
+                    onClick={() => handleWishListModal()}
                   >
                     {isSaved ? (
                       <i className='absolute top-2.5 cursor-pointer right-4 text-2xl fa-solid text-red-500 fa-heart'></i>
@@ -90,7 +126,7 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
                         output: [1, 0.97, 0.9, 1.1, 0.9, 1.1, 1.03, 1],
                       }),
                     }}
-                    className='absolute bottom-3.5 cursor-pointer left-2.5 h-[76px] w-[70px] flex preview'
+                    className='absolute bottom-3.5 cursor-pointer left-2.5 h-[76px] w-[70px] flex preview z-10'
                     onClick={() => setShowModal(true)}
                   >
                     <div className='h-full w-3 border-[1.8px] border-r-[#C6B1A5]/[.6]'></div>

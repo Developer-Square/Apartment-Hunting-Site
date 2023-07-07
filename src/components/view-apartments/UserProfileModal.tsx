@@ -1,5 +1,4 @@
 import React, { SetStateAction } from 'react';
-import PropertyManager from '@/assets/view-apartments/property-manager.png';
 
 const UserProfileModal = ({
   setShowModal,
