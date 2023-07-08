@@ -59,8 +59,6 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
     setWishListModal(true);
   };
 
-  console.log(wishlist.length);
-
   return (
     <>
       {showModal ? (

@@ -6,8 +6,9 @@ import {
   SearchBar,
   Map,
   Footer,
+  PopupMenu,
+  FilterScrollbar,
 } from '../components';
-import PopupMenu from '@/components/view-apartments/PopupMenu';
 const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
   const [showFilters, setshowFilters] = useState(false);
@@ -43,7 +44,8 @@ const ViewApartmentsPage = () => {
       {/* Hide other components when the SearchBar or Filters is open, to reduce the height of the page */}
       {!showFilters && !showSearhBar ? (
         <div className='text-white'>
-          <Map />
+          <FilterScrollbar />
+          {/* <Map /> */}
           <Apartments />
           <PopupMenu />
           <Footer />

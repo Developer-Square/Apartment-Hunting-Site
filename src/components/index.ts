@@ -11,6 +11,8 @@ import SearchBar from './view-apartments/SearchBar';
 import Filters from './view-apartments/Filters';
 import Apartments from './view-apartments/Apartments';
 import Map from './view-apartments/Map';
+import PopupMenu from './view-apartments/PopupMenu';
+import FilterScrollbar from './view-apartments/FilterScrollbar';
 import { FilterBackdrop } from './view-apartments/Helpers';
 
 export {
@@ -28,4 +30,6 @@ export {
   FilterBackdrop,
   Apartments,
   Map,
+  PopupMenu,
+  FilterScrollbar,
 };
