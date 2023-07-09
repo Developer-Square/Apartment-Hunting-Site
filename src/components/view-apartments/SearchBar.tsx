@@ -44,7 +44,7 @@ const SearchBar = ({
         </div>
         <p className='font-bold text-lg text-center w-full'>Search Form</p>
       </div>
-      <div className=' bg-[#EBEBEB] relative w-full h-[60px] mt-7 mx-auto rounded-xl mb-5 flex items-center'>
+      <div className=' bg-[#EBEBEB] relative w-[92%] h-[60px] mt-7 mx-auto rounded-xl mb-5 flex items-center'>
         <i className='fa-solid fa-magnifying-glass text-black pl-4'></i>
         <input
           type='text'
@@ -52,10 +52,10 @@ const SearchBar = ({
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           onKeyUp={(e) => handleSearch(e)}
-          className='bg-transparent px-2 text-black outline-none border-none w-60 h-full'
+          className='bg-transparent px-2 text-black outline-none border-none w-full h-full'
         />
       </div>
-      <div className='mt-5 ml-5 max-w-[370px]'>
+      <div className='mt-5 ml-5 sm:mx-auto w-full sm:w-[92%]'>
         <p className='text-sm font-bold'>Recent Searches</p>
         <div className='mt-3 flex cursor-pointer'>
           <div className='h-12 w-12 bg-[#EBEBEB] flex items-center justify-center rounded-xl'>

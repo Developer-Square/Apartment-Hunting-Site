@@ -93,7 +93,7 @@ const Filters = ({
         ...props,
       }}
     >
-      <div className='xm:max-w-[360px] max-w-[330px] mx-auto'>
+      <div className='xm:max-w-[360px] max-w-[330px] sm:max-w-[600px] mx-auto'>
         <div className='flex items-center'>
           <i
             className='fa-solid fa-xmark text-xl mt-5 cursor-pointer'
@@ -105,21 +105,21 @@ const Filters = ({
         <div className='mt-5 w-full'>
           <p className='font-bold text-center'>Price range</p>
           <div className='flex mt-6 items-center justify-around'>
-            <div className='w-[32] h-[20] p-3 rounded-2xl flex flex-col border border-black/[.08]'>
+            <div className='w-32 sm:w-40 h-20 p-3 rounded-2xl flex flex-col border border-black/[.08]'>
               <p className='text-xs'>Minimum</p>
               <input
                 type='text'
                 placeholder='Ksh 10,000'
-                className='bg-transparent text-black outline-none border-none w-24 h-full'
+                className='bg-transparent pl-0 text-black outline-none border-none w-24 sm:w-28 h-full'
               />
             </div>
             <span className='h-0.5 w-7 bg-black/[0.5]'></span>
-            <div className='w-[32] h-[20] p-3 rounded-2xl flex flex-col border border-black/[.08]'>
+            <div className='w-32 h-20 sm:w-40 p-3 rounded-2xl flex flex-col border border-black/[.08]'>
               <p className='text-xs'>Maximum</p>
               <input
                 type='text'
                 placeholder='Ksh 100,000'
-                className='bg-transparent text-black outline-none w-24 border-none h-full'
+                className='bg-transparent pl-0 text-black outline-none w-24 sm:w-28 border-none h-full'
               />
             </div>
           </div>
