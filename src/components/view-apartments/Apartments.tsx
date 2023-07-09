@@ -46,15 +46,19 @@ const apartmentInfo: ApartmentInfoProps[] = [
   },
 ];
 
-const Apartments = () => {
+const Apartments = ({ search }: { search: string }) => {
   return (
     <div>
-      {/* <div className='h-9 flex flex-col justify-center items-center'>
-        <span className='w-10 h-1 bg-gray-500 rounded-lg'></span>
-      </div>
-      <p className='text-sm w-full text-center font-medium mb-4'>
-        Over 1000 apartments
-      </p> */}
+      {search.length ? (
+        <>
+          <div className='h-9 flex flex-col justify-center items-center'>
+            <span className='w-10 h-1 bg-gray-500 rounded-lg'></span>
+          </div>
+          <p className='text-sm w-full text-center font-medium mb-4'>
+            Over 1000 apartments
+          </p>
+        </>
+      ) : null}
       {apartmentInfo.map((info, index) => (
         <SingleApartment key={index} info={info} />
       ))}

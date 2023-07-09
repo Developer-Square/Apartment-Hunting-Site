@@ -4,14 +4,24 @@ import { useSpring, animated } from '@react-spring/web';
 const SearchBar = ({
   show,
   setShow,
+  search,
+  setSearch,
 }: {
   show: boolean;
   setShow: React.Dispatch<SetStateAction<boolean>>;
+  search: string;
+  setSearch: React.Dispatch<SetStateAction<string>>;
 }) => {
   const props = useSpring({
     from: { y: -100, opacity: 0 },
     to: { y: show ? 0 : 100, opacity: show ? 1 : 0 },
   });
+
+  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      setShow(false);
+    }
+  };
 
   return (
     <animated.div
@@ -39,6 +49,9 @@ const SearchBar = ({
         <input
           type='text'
           placeholder='Search locations...'
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          onKeyUp={(e) => handleSearch(e)}
           className='bg-transparent px-2 text-black outline-none border-none w-60 h-full'
         />
       </div>

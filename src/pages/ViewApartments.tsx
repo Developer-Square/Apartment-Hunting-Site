@@ -12,6 +12,7 @@ import {
 const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
   const [showFilters, setshowFilters] = useState(false);
+  const [search, setSearch] = useState('');
 
   return (
     <section className='apartments-page w-full h-full mb-5 text-black'>
@@ -21,7 +22,9 @@ const ViewApartmentsPage = () => {
           className='flex flex-col pl-4 cursor-pointer'
           onClick={() => setshowSearhBar(true)}
         >
-          <p className='text-sm font-bold'>Search location...</p>
+          <p className='text-sm font-bold'>
+            {search.length ? search : 'Search location...'}
+          </p>
           <p className='text-xs text-gray-500'>Click here</p>
         </div>
         <div
@@ -33,7 +36,12 @@ const ViewApartmentsPage = () => {
       </div>
       {/* Hide the SearchBar and Filters components when the other is open */}
       {showSearhBar && (
-        <SearchBar show={showSearhBar} setShow={setshowSearhBar} />
+        <SearchBar
+          show={showSearhBar}
+          setShow={setshowSearhBar}
+          search={search}
+          setSearch={setSearch}
+        />
       )}
       {showFilters && (
         <>
@@ -44,9 +52,9 @@ const ViewApartmentsPage = () => {
       {/* Hide other components when the SearchBar or Filters is open, to reduce the height of the page */}
       {!showFilters && !showSearhBar ? (
         <div className='text-white'>
-          <FilterScrollbar />
-          {/* <Map /> */}
-          <Apartments />
+          {!search.length ? <FilterScrollbar /> : null}
+          {search.length ? <Map /> : null}
+          <Apartments search={search} />
           <PopupMenu />
           <Footer />
         </div>
