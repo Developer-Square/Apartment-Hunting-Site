@@ -1,5 +1,5 @@
 import { animated, useSpring } from '@react-spring/web';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import UserProfileModal from './UserProfileModal';
 import { ApartmentInfoProps } from './Apartments';
 import { Navigation, Pagination } from 'swiper';
@@ -26,7 +26,6 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
   const [showModal, setShowModal] = useState(false);
   const [wishListModal, setWishListModal] = useState(false);
   const [showCreateModal, setShowCreateModal] = useState(false);
-  const [swiperQualities, setswiperQualities] = useState([Pagination]);
   const [wishlist, setWishlist] = useState<string[]>([]);
 
   const { x: apartmentX } = useSpring({
@@ -34,15 +33,6 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
     x: isApartmentHovered ? 1 : 0,
     config: { duration: 1000 },
   });
-
-  useEffect(() => {
-    if (window.innerWidth > 640) {
-      setswiperQualities([...swiperQualities, Navigation]);
-      return;
-    }
-    setswiperQualities([Pagination]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [window.innerWidth]);
 
   const handleWishListModal = () => {
     if (isSaved) {
@@ -84,15 +74,16 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
           setShowCreateModal={setShowCreateModal}
         />
       ) : null}
+
       <div
-        className='mb-10 px-12'
+        className='mb-10 px-12 sm:px-6'
         onMouseEnter={() => setIsApartmentHovered(true)}
         onMouseLeave={() => setIsApartmentHovered(false)}
       >
         <div className='relative w-full h-80'>
           <Swiper
-            modules={swiperQualities}
-            navigation={swiperQualities.includes(Navigation) ? true : false}
+            modules={[Navigation, Pagination]}
+            navigation={true}
             pagination={{ clickable: true }}
             spaceBetween={0}
             slidesPerView={1}

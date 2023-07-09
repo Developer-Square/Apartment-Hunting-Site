@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 const filters = [
@@ -56,9 +56,19 @@ const FilterScrollbar = () => {
   const [selectedFilter, setSelectedFilter] = useState<Record<string, string>>(
     filters[0]
   );
+  const [slidesPerView, setSlidesPerView] = useState(4.6);
+
+  useEffect(() => {
+    if (window.innerWidth >= 640) {
+      setSlidesPerView(6);
+      return;
+    }
+    setSlidesPerView(4.6);
+  }, []);
+
   return (
-    <div className='w-full mt-3 mb-10 flex justify-around items-center shadow-md shadow-[#f0efe9]/[.2]'>
-      <Swiper spaceBetween={14} slidesPerView={4}>
+    <div className='w-full mt-3 mb-10 sm:pb-3 flex justify-around items-center shadow-md shadow-[#f0efe9]/[.2]'>
+      <Swiper spaceBetween={14} slidesPerView={slidesPerView}>
         {filters.map((filter, index) => (
           <SwiperSlide key={index}>
             <div

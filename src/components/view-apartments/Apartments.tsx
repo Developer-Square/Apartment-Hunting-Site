@@ -59,9 +59,11 @@ const Apartments = ({ search }: { search: string }) => {
           </p>
         </>
       ) : null}
-      {apartmentInfo.map((info, index) => (
-        <SingleApartment key={index} info={info} />
-      ))}
+      <div className='w-full sm:grid grid-cols-2'>
+        {apartmentInfo.map((info, index) => (
+          <SingleApartment key={index} info={info} />
+        ))}
+      </div>
     </div>
   );
 };
