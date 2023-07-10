@@ -12,7 +12,7 @@ export const FilterBackdrop = ({ show }: { show: boolean }) => {
   return (
     <animated.div
       style={{
-        position: 'absolute',
+        position: 'fixed',
         top: show ? 0 : window.innerHeight,
         backgroundColor: '#FFFFFF',
         height: '100vh',
@@ -265,3 +265,31 @@ export const CreateWishListModal = ({
     </animated.div>
   );
 };
+
+export const NavBarMenu = () => (
+  <div
+    className='md:flex hidden pl-3 pr-2 py-1.5 text-[#f0efe9] border border-[#f0efe9] rounded-3xl items-center cursor-pointer dropdown dropdown-bottom dropdown-end'
+    tabIndex={0}
+  >
+    <i className='fa-solid fa-bars pr-2 text-sm'></i>
+    <i className='fa-solid fa-circle-user text-[28px]'></i>
+    <ul
+      tabIndex={0}
+      className='dropdown-content z-[1] menu p-2 shadow bg-[#141b1f] rounded-box mt-3 w-52'
+    >
+      <li>
+        <a>Login</a>
+      </li>
+      <li>
+        <a>Signup</a>
+      </li>
+      <div className='border border-white/[.3]'></div>
+      <li className='text-white/[.8]'>
+        <a>Decorate Room</a>
+      </li>
+      <li className='text-white/[.8]'>
+        <a>Help</a>
+      </li>
+    </ul>
+  </div>
+);

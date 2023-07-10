@@ -1,4 +1,4 @@
-import { SetStateAction } from 'react';
+import { SetStateAction, useEffect, useState } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 
 const SearchBar = ({
@@ -16,6 +16,13 @@ const SearchBar = ({
     from: { y: -100, opacity: 0 },
     to: { y: show ? 0 : 100, opacity: show ? 1 : 0 },
   });
+  const [largerScreen, setLargerScreen] = useState(false);
+
+  useEffect(() => {
+    if (window.innerWidth >= 768) {
+      setLargerScreen(true);
+    }
+  }, []);
 
   const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
@@ -29,7 +36,7 @@ const SearchBar = ({
         position: 'absolute',
         top: show ? 0 : window.innerHeight,
         backgroundColor: '#FFFFFF',
-        height: '100%',
+        height: largerScreen ? '40%' : '100%',
         width: '100%',
         zIndex: '10',
         ...props,
