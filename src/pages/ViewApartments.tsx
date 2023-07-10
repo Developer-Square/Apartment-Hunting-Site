@@ -16,7 +16,7 @@ const ViewApartmentsPage = () => {
   const [hideMenu, setHideMenu] = useState(false);
 
   useEffect(() => {
-    if (window.innerWidth >= 450) {
+    if (window.innerWidth >= 768) {
       setHideMenu(true);
     }
   }, []);

@@ -30,7 +30,7 @@ const InputRange = ({
 const Search = () => {
   const [location, setlocation] = useState('');
   const [error, seterror] = useState('');
-  const [lowerRange, setlowerRange] = useState(1000);
+  const [lowerRange, setlowerRange] = useState(10000);
   const [upperRange, setupperRange] = useState(100000);
 
   const navigate = useNavigate();

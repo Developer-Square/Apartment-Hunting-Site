@@ -30,8 +30,8 @@ const UserProfileModal = ({
             </div>
             {/*body*/}
             <div className='max-h-[85vh] overflow-y-scroll'>
-              <div className='relative sm:max-w-[400px] sm:mx-auto bg-white mx-6 rounded-3xl shadow-2xl py-8 px-5 flex justify-between gap-5'>
-                <div className='flex flex-2 flex-col items-center'>
+              <div className='relative bg-white mx-6 rounded-3xl shadow-2xl py-8 px-5 flex justify-between gap-5'>
+                <div className='flex flex-2 sm:flex-auto sm:w-[65%] flex-col items-center'>
                   <div className='relative h-24 w-24 rounded-full'>
                     <div className='absolute top-0 left-0 bg-black/[.2] w-full h-full rounded-full'></div>
                     <img

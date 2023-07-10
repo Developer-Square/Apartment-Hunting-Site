@@ -38,6 +38,7 @@ const LandingSectionImage = ({
 
 const LandingSection = () => {
   const [carouselNumber, setCarouselNumber] = useState(3);
+  const [spaceBetween, setSpaceBetween] = useState(30);
   const landingImages = [
     {
       town: 'Kilimani',
@@ -74,13 +75,16 @@ const LandingSection = () => {
   useEffect(() => {
     const width = window.innerWidth;
     if (width > 639 && width < 767) {
-      setCarouselNumber(3);
-    } else if (width >= 768 && width < 1279) {
-      setCarouselNumber(3);
-    } else if (width >= 1280) {
       setCarouselNumber(4);
-    } else {
+    } else if (width >= 768 && width < 1279) {
+      setCarouselNumber(4);
+      setSpaceBetween(60);
+    } else if (width >= 1280) {
       setCarouselNumber(5);
+      setSpaceBetween(60);
+    } else {
+      setCarouselNumber(3);
+      setSpaceBetween(30);
     }
   }, []);
   console.log(carouselNumber);
@@ -92,7 +96,7 @@ const LandingSection = () => {
           Search
           <i className='fa-solid fa-house-chimney ml-1.5'></i>
         </button>
-        <div className='w-[890px] xl:w-[1085px] 2xl:w-[1250px] mx-auto'>
+        <div className='w-full lg:w-[87%] mx-auto'>
           <h4 className='font-semibold mt-3.5 text-[#FFFFFF] flex items-center'>
             <span className='mr-2'>Top rated apartments</span>
             <div className='hidden sm:block'>
@@ -107,8 +111,7 @@ const LandingSection = () => {
             <Swiper
               modules={[Navigation]}
               navigation
-              pagination={{ clickable: true }}
-              spaceBetween={16}
+              spaceBetween={spaceBetween}
               slidesPerView={carouselNumber}
             >
               {landingImages.map((image) => (
