@@ -64,6 +64,14 @@ const Apartments = ({ search }: { search: string }) => {
           <SingleApartment key={index} info={info} />
         ))}
       </div>
+      <div className='flex w-[65%] justify-between mx-auto items-center'>
+        <div className='py-3 px-5 rounded-full shadow-md shadow-white/[.5] cursor-pointer'>
+          <i className='fa-solid fa-angle-left'></i>
+        </div>
+        <div className='py-3 px-5 rounded-full shadow-md shadow-white/[.5] cursor-pointer'>
+          <i className='fa-solid fa-angle-right'></i>
+        </div>
+      </div>
     </div>
   );
 };
