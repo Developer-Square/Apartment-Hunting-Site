@@ -10,7 +10,7 @@ import ViewApartments2 from '@/assets/view-apartments/view-apartments-2.webp';
 import ViewApartments3 from '@/assets/view-apartments/view-apartments-3.webp';
 import ViewApartments4 from '@/assets/view-apartments/view-apartments-4.webp';
 import ViewApartments5 from '@/assets/view-apartments/view-apartments-5.webp';
-import { WishListModal, CreateWishListModal } from './Helpers';
+import { WishListModal, CreateWishListModal, FilterBackdrop } from './Helpers';
 
 const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
   const { title, subtitle, propertyManager, price } = info;
@@ -51,6 +51,10 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
 
   return (
     <>
+      {/* Show the Backdrop whenever any of the modals are open */}
+      {showModal || wishListModal || showCreateModal ? (
+        <FilterBackdrop show={true} />
+      ) : null}
       {showModal ? (
         <UserProfileModal
           propertyManager={propertyManager}
