@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useSpring, animated } from '@react-spring/web';
-import { SetStateAction, useState } from 'react';
+import { SetStateAction, useEffect, useState } from 'react';
 
 import FilterImg from '@/assets/view-apartments/filters.png';
 import { AmenitiesList, NumberOfRooms, PropertyType } from './Helpers';
@@ -52,6 +52,13 @@ const Filters = ({
     smokingAllowed: false,
     breakfast: false,
   });
+  const [largerScreenWidth, setLargerScreenWidth] = useState('100%');
+
+  useEffect(() => {
+    if (window.innerWidth >= 768) {
+      setLargerScreenWidth('640px');
+    }
+  }, []);
 
   const clearAllFilters = () => {
     setBedrooms('Any');
@@ -84,9 +91,11 @@ const Filters = ({
       style={{
         position: 'absolute',
         top: show ? 45 : window.innerHeight,
+        left: '50%',
+        transform: 'translateX(-50%)',
         backgroundColor: '#FFFFFF',
         height: 'auto',
-        width: '100%',
+        width: largerScreenWidth,
         zIndex: '10',
         borderRadius: '1rem',
         overflowY: 'hidden',

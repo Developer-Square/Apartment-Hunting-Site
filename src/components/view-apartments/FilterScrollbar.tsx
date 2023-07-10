@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper';
 
 const filters = [
   {
@@ -52,7 +53,11 @@ const filters = [
   },
 ];
 
-const FilterScrollbar = () => {
+const FilterScrollbar = ({
+  setshowFilters,
+}: {
+  setshowFilters: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const [selectedFilter, setSelectedFilter] = useState<Record<string, string>>(
     filters[0]
   );
@@ -68,7 +73,13 @@ const FilterScrollbar = () => {
 
   return (
     <div className='w-full mt-3 mb-10 sm:pb-3 flex justify-around items-center shadow-md shadow-[#f0efe9]/[.2]'>
-      <Swiper spaceBetween={14} slidesPerView={slidesPerView}>
+      <Swiper
+        spaceBetween={14}
+        slidesPerView={slidesPerView}
+        modules={[Navigation]}
+        navigation
+        className='md:w-[85%]'
+      >
         {filters.map((filter, index) => (
           <SwiperSlide key={index}>
             <div
@@ -93,6 +104,13 @@ const FilterScrollbar = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      <div
+        className='hidden md:flex cursor-pointer mr-5 border border-[#f0efe9]/[.5] rounded-xl ml-2 items-center gap-2 px-2.5 py-2'
+        onClick={() => setshowFilters(true)}
+      >
+        <i className='fa-solid fa-sliders'></i>
+        <p className='text-sm'>Filters</p>
+      </div>
     </div>
   );
 };

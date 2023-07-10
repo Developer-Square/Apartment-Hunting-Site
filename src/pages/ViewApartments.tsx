@@ -76,7 +76,9 @@ const ViewApartmentsPage = () => {
       {/* Hide other components when the SearchBar or Filters is open while on tablet and mobile screens, to reduce the height of the page */}
       {setshowRestOfPage ? (
         <div className='text-white'>
-          {!search.length ? <FilterScrollbar /> : null}
+          {!search.length ? (
+            <FilterScrollbar setshowFilters={setshowFilters} />
+          ) : null}
           {search.length ? <Map /> : null}
           <Apartments search={search} />
           {!hideMenu && <PopupMenu />}
