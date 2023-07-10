@@ -18,7 +18,7 @@ const UserProfileModal = ({
   return (
     <>
       <div className='justify-center items-end flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none text-black'>
-        <div className='relative w-full mt-6 mx-auto'>
+        <div className='relative w-full md:w-[50%] mt-6 mx-auto'>
           {/*content*/}
           <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-[#f0efe9] outline-none focus:outline-none'>
             {/*header*/}
@@ -31,7 +31,7 @@ const UserProfileModal = ({
             {/*body*/}
             <div className='max-h-[85vh] overflow-y-scroll'>
               <div className='relative bg-white mx-6 rounded-3xl shadow-2xl py-8 px-5 flex justify-between gap-5'>
-                <div className='flex flex-2 sm:flex-auto sm:w-[65%] flex-col items-center'>
+                <div className='flex flex-2 sm:flex-auto sm:w-[65%] md:w-[55%] flex-col items-center'>
                   <div className='relative h-24 w-24 rounded-full'>
                     <div className='absolute top-0 left-0 bg-black/[.2] w-full h-full rounded-full'></div>
                     <img
