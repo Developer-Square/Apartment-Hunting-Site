@@ -14,6 +14,7 @@ import Map from './view-apartments/Map';
 import PopupMenu from './view-apartments/PopupMenu';
 import FilterScrollbar from './view-apartments/FilterScrollbar';
 import { FilterBackdrop } from './view-apartments/Helpers';
+import Pagination from './view-apartments/Pagination';
 
 export {
   Menu,
@@ -32,4 +33,5 @@ export {
   Map,
   PopupMenu,
   FilterScrollbar,
+  Pagination,
 };

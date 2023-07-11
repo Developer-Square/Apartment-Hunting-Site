@@ -5,6 +5,7 @@ import PropertyManager2 from '@/assets/view-apartments/property-manager-2.jpg';
 import PropertyManager3 from '@/assets/view-apartments/property-manager-3.jpg';
 import PropertyManager4 from '@/assets/view-apartments/property-manager-4.jpg';
 import PropertyManager5 from '@/assets/view-apartments/property-manager-5.jpg';
+import Pagination from './Pagination';
 
 export interface ApartmentInfoProps {
   propertyManager: string;
@@ -64,14 +65,7 @@ const Apartments = ({ search }: { search: string }) => {
           <SingleApartment key={index} info={info} />
         ))}
       </div>
-      <div className='flex w-[65%] justify-between mx-auto items-center'>
-        <div className='py-3 px-5 rounded-full shadow-md shadow-white/[.5] cursor-pointer'>
-          <i className='fa-solid fa-angle-left'></i>
-        </div>
-        <div className='py-3 px-5 rounded-full shadow-md shadow-white/[.5] cursor-pointer'>
-          <i className='fa-solid fa-angle-right'></i>
-        </div>
-      </div>
+      <Pagination />
     </div>
   );
 };
