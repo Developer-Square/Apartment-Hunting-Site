@@ -53,32 +53,96 @@ const filters = [
   },
 ];
 
+const CustomFilter = ({
+  homeFilter,
+  setHomeFilter,
+  setSelectedFilter,
+}: {
+  homeFilter: boolean;
+  setHomeFilter: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedFilter: React.Dispatch<
+    React.SetStateAction<Record<string, string>>
+  >;
+}) => {
+  return (
+    <div className='flex md:mb-3.5 lg:mb-0'>
+      <div
+        className={`${
+          homeFilter ? 'text-[#f0efe9]' : 'text-[#f0efe9]/[.6]'
+        } flex w-[100px] lg:w-[88px] flex-col items-center cursor-pointer`}
+        onClick={() => {
+          setSelectedFilter({
+            icon: '',
+            text: '',
+          });
+          setHomeFilter(true);
+        }}
+      >
+        <i className='fa-solid fa-house text-[26px] mb-1'></i>
+        <p
+          className={`text-xs pb-1 ${
+            homeFilter ? 'border-b border-[#f0efe9]' : ''
+          } tracking-wider font-semibold mt-0.5`}
+        >
+          Your Search
+        </p>
+      </div>
+      <div className='border-r border-2 border-[#f0efe9]/[.8] h-14 ml-4 lg:ml-7'></div>
+    </div>
+  );
+};
+
 const FilterScrollbar = ({
+  search,
   setshowFilters,
 }: {
+  search: string;
   setshowFilters: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const [selectedFilter, setSelectedFilter] = useState<Record<string, string>>(
     filters[0]
   );
+  const [homeFilter, setHomeFilter] = useState(false);
   const [slidesPerView, setSlidesPerView] = useState(4.6);
+
+  useEffect(() => {
+    if (search.length) {
+      setSelectedFilter({
+        icon: '',
+        text: '',
+      });
+      setHomeFilter(true);
+    }
+  }, [search.length]);
 
   useEffect(() => {
     if (window.innerWidth >= 640) {
       setSlidesPerView(6);
       return;
     }
+
     setSlidesPerView(4.6);
-  }, []);
+  }, [search.length]);
 
   return (
-    <div className='w-full mt-3 mb-10 sm:pb-3 flex justify-around items-center shadow-md shadow-[#f0efe9]/[.2]'>
+    <div
+      className={`w-full mt-3 mb-10 ${
+        search.length ? 'md:px-3 lg:px-5' : ''
+      } sm:pb-3 flex justify-around items-center shadow-md shadow-[#f0efe9]/[.2]`}
+    >
+      {search.length ? (
+        <CustomFilter
+          homeFilter={homeFilter}
+          setHomeFilter={setHomeFilter}
+          setSelectedFilter={setSelectedFilter}
+        />
+      ) : null}
       <Swiper
         spaceBetween={14}
         slidesPerView={slidesPerView}
         modules={[Navigation]}
         navigation
-        className='md:w-[85%]'
+        className='md:w-[83%]'
       >
         {filters.map((filter, index) => (
           <SwiperSlide key={index}>
@@ -88,7 +152,10 @@ const FilterScrollbar = ({
                   ? 'text-[#f0efe9]'
                   : 'text-[#f0efe9]/[.6]'
               } flex flex-col items-center cursor-pointer`}
-              onClick={() => setSelectedFilter(filter)}
+              onClick={() => {
+                setHomeFilter(false);
+                setSelectedFilter(filter);
+              }}
             >
               <i className={filter.icon}></i>
               <p
@@ -105,7 +172,9 @@ const FilterScrollbar = ({
         ))}
       </Swiper>
       <div
-        className='hidden md:flex cursor-pointer mr-5 border border-[#f0efe9]/[.5] rounded-xl ml-2 items-center gap-2 px-2.5 py-2'
+        className={`hidden md:flex ${
+          !search.length ? 'mr-7' : ''
+        } cursor-pointer border border-[#f0efe9]/[.5] rounded-xl ml-3 items-center md:mb-3.5 lg:mb-0 gap-2 px-2.5 py-2`}
         onClick={() => setshowFilters(true)}
       >
         <i className='fa-solid fa-sliders'></i>

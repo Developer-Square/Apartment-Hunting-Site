@@ -16,11 +16,22 @@ const ViewApartmentsPage = () => {
   const [search, setSearch] = useState('');
   const [hideMenu, setHideMenu] = useState(false);
   const [setshowRestOfPage, setSetshowRestOfPage] = useState(true);
+  const [isLargerScreen, setIsLargerScreen] = useState(false);
+
+  useEffect(() => {
+    if (window.innerWidth >= 768) {
+      setIsLargerScreen(true);
+      return;
+    }
+
+    setIsLargerScreen(false);
+  }, []);
 
   useEffect(() => {
     if (window.innerWidth >= 768) {
       setHideMenu(true);
     }
+
     if (showSearhBar || showFilters) {
       if (window.innerWidth < 768) {
         setSetshowRestOfPage(false);
@@ -32,11 +43,11 @@ const ViewApartmentsPage = () => {
 
   return (
     <section className='apartments-page w-full h-full pt-5 text-black'>
-      <div className='w-full md:w-[92%] mb-4 sm:mb-6 md:mx-auto md:flex items-center justify-between'>
-        <div className=' bg-white relative xm:w-[360px] xm:h-14 sm:w-[92%] w-80 h-12 md:w-[80%] md:mx-0 md:h-11 mx-auto rounded-3xl xm:rounded-[32px] flex items-center'>
+      <div className='w-full md:w-[92%] mb-4 sm:mb-6 md:mx-auto md:flex items-center justify-center'>
+        <div className=' bg-white relative xm:w-[360px] xm:h-14 sm:w-[92%] w-80 h-[48px] md:w-[50%] lg:w-[40%] md:mx-auto md:h-[48px] mx-auto rounded-3xl xm:rounded-[32px] flex items-center'>
           <i className='fa-solid fa-magnifying-glass text-black sm:text-lg pl-4'></i>
           <div
-            className='flex flex-col pl-4 cursor-pointer'
+            className='flex flex-col w-full pl-4 cursor-pointer'
             onClick={() => setshowSearhBar(true)}
           >
             <p className='text-sm sm:text-base md:text-sm font-bold'>
@@ -76,8 +87,8 @@ const ViewApartmentsPage = () => {
       {/* Hide other components when the SearchBar or Filters is open while on tablet and mobile screens, to reduce the height of the page */}
       {setshowRestOfPage ? (
         <div className='text-white'>
-          {!search.length ? (
-            <FilterScrollbar setshowFilters={setshowFilters} />
+          {isLargerScreen || !search.length ? (
+            <FilterScrollbar search={search} setshowFilters={setshowFilters} />
           ) : null}
           {search.length ? <Map /> : null}
           <Apartments search={search} />
