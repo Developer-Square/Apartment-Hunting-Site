@@ -58,6 +58,10 @@ const Filters = ({
     if (window.innerWidth >= 768) {
       setLargerScreenWidth('640px');
     }
+
+    if (window.innerWidth >= 1024) {
+      setLargerScreenWidth('768px');
+    }
   }, []);
 
   const clearAllFilters = () => {
@@ -102,7 +106,7 @@ const Filters = ({
         ...props,
       }}
     >
-      <div className='xm:max-w-[360px] max-w-[330px] sm:max-w-[600px] mx-auto'>
+      <div className='xm:max-w-[360px] max-w-[330px] sm:max-w-[600px] lg:max-w-[700px] mx-auto'>
         <div className='flex items-center'>
           <i
             className='fa-solid fa-xmark text-xl mt-5 cursor-pointer'

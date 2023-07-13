@@ -16,15 +16,20 @@ const ViewApartmentsPage = () => {
   const [search, setSearch] = useState('');
   const [hideMenu, setHideMenu] = useState(false);
   const [setshowRestOfPage, setSetshowRestOfPage] = useState(true);
-  const [isLargerScreen, setIsLargerScreen] = useState(false);
+  const [largerScreenWidth, setLargerScreenWidth] = useState('');
 
   useEffect(() => {
-    if (window.innerWidth >= 768) {
-      setIsLargerScreen(true);
+    if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+      setLargerScreenWidth('768px');
       return;
     }
 
-    setIsLargerScreen(false);
+    if (window.innerWidth >= 1024) {
+      setLargerScreenWidth('1024px');
+      return;
+    }
+
+    setLargerScreenWidth('');
   }, []);
 
   useEffect(() => {
@@ -87,11 +92,16 @@ const ViewApartmentsPage = () => {
       {/* Hide other components when the SearchBar or Filters is open while on tablet and mobile screens, to reduce the height of the page */}
       {setshowRestOfPage ? (
         <div className='text-white'>
-          {isLargerScreen || !search.length ? (
+          {/* When a user is on smaller screen(640px to 767px), hide the FilterScrollBar when there's some search text */}
+          {/* But when a user is on a larger screen(768px and above), show the
+          FilterScrollBar whether there's some search text or not.   */}{' '}
+          {largerScreenWidth === '768px' || !search.length ? (
             <FilterScrollbar search={search} setshowFilters={setshowFilters} />
           ) : null}
-          {search.length ? <Map /> : null}
-          <Apartments search={search} />
+          <div className='w-full lg:flex gap-1 mx-2'>
+            {search.length ? <Map /> : null}
+            <Apartments search={search} />
+          </div>
           {!hideMenu && <PopupMenu />}
           <Footer />
         </div>

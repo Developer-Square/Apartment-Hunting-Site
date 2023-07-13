@@ -49,7 +49,7 @@ const apartmentInfo: ApartmentInfoProps[] = [
 
 const Apartments = ({ search }: { search: string }) => {
   return (
-    <div>
+    <div className='lg:flex flex-1 flex-col'>
       {search.length ? (
         <>
           <div className='h-9 flex flex-col justify-center items-center'>
@@ -60,7 +60,12 @@ const Apartments = ({ search }: { search: string }) => {
           </p>
         </>
       ) : null}
-      <div className='w-full sm:grid grid-cols-2'>
+      {/* Show 3 columns when the map is not visible and 2 columns when the map is visible */}
+      <div
+        className={`w-full sm:grid grid-cols-2 ${
+          search.length ? 'lg:grid-cols-2' : 'lg:grid-cols-3'
+        } `}
+      >
         {apartmentInfo.map((info, index) => (
           <SingleApartment key={index} info={info} />
         ))}

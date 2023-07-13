@@ -36,7 +36,7 @@ const SearchBar = ({
         position: 'absolute',
         top: show ? 0 : window.innerHeight,
         backgroundColor: '#FFFFFF',
-        height: largerScreen ? '40%' : '100%',
+        height: largerScreen ? '35%' : '100%',
         width: '100%',
         zIndex: '10',
         ...props,
