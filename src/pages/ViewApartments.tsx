@@ -18,21 +18,6 @@ const ViewApartmentsPage = () => {
   const [search, setSearch] = useState('');
   const [hideMenu, setHideMenu] = useState(false);
   const [setshowRestOfPage, setSetshowRestOfPage] = useState(true);
-  const [largerScreenWidth, setLargerScreenWidth] = useState('');
-
-  useEffect(() => {
-    if (window.innerWidth >= 768 && window.innerWidth < 1024) {
-      setLargerScreenWidth('768px');
-      return;
-    }
-
-    if (window.innerWidth >= 1024) {
-      setLargerScreenWidth('1024px');
-      return;
-    }
-
-    setLargerScreenWidth('');
-  }, []);
 
   useEffect(() => {
     if (window.innerWidth >= 768) {
@@ -60,8 +45,6 @@ const ViewApartmentsPage = () => {
     setshowSearhBar(true);
     topFunction();
   };
-
-  console.log(showFilters);
 
   return (
     <section className='apartments-page w-full h-full pt-5 text-black'>
@@ -118,7 +101,7 @@ const ViewApartmentsPage = () => {
           {/* When a user is on smaller screen(640px to 767px), hide the FilterScrollBar when there's some search text */}
           {/* But when a user is on a larger screen(768px and above), show the
           FilterScrollBar whether there's some search text or not.   */}{' '}
-          {largerScreenWidth === '768px' || !search.length ? (
+          {window.innerWidth >= 768 || !search.length ? (
             <FilterScrollbar
               search={search}
               showFilters={showFilters}

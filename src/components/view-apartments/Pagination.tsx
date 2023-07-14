@@ -37,7 +37,7 @@ const Pagination = () => {
           </div>
         </div>
       ) : (
-        <div className='join w-full flex justify-center items-center text-white'>
+        <div className='join lg:mt-5 w-full flex justify-center items-center text-white'>
           <ReactPaginate
             breakLabel='...'
             nextLabel={

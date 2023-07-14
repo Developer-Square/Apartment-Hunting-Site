@@ -84,7 +84,7 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
         onMouseEnter={() => setIsApartmentHovered(true)}
         onMouseLeave={() => setIsApartmentHovered(false)}
       >
-        <div className='relative w-full h-80'>
+        <div className='relative w-full h-80 lg:h-72'>
           <Swiper
             modules={[Navigation, Pagination]}
             navigation={true}

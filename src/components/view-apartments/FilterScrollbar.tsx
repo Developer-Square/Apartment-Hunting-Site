@@ -143,7 +143,7 @@ const FilterScrollbar = ({
     <>
       {!showFilters ? (
         <div
-          className={`w-full mt-3 mb-10 ${
+          className={`w-full mt-3 mb-10 lg:mb-5 ${
             search.length ? 'md:px-3 lg:px-5' : ''
           } ${
             scrollDirection === 'down'
