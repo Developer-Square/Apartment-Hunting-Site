@@ -10,6 +10,7 @@ import {
   FilterScrollbar,
 } from '../components';
 import { NavBarMenu } from '@/components/view-apartments/Helpers';
+import { useScrollDirection } from 'src/hooks/useScrollDirection';
 const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
   const [showFilters, setshowFilters] = useState(false);
@@ -46,9 +47,17 @@ const ViewApartmentsPage = () => {
     setSetshowRestOfPage(true);
   }, [showSearhBar, showFilters]);
 
+  const scrollDirection = useScrollDirection();
+
   return (
     <section className='apartments-page w-full h-full pt-5 text-black'>
-      <div className='w-full md:w-[92%] mb-4 sm:mb-6 md:mx-auto md:flex items-center justify-center'>
+      <div
+        className={`w-full md:w-[92%] mb-4 sm:mb-6 md:mx-auto md:flex items-center justify-center ${
+          scrollDirection === 'down'
+            ? 'fixed top-0 z-10 bg-[#141b1f] xm:py-3 py-4 md:w-full'
+            : ''
+        }`}
+      >
         <div className=' bg-white relative xm:w-[360px] xm:h-14 sm:w-[92%] w-80 h-[48px] md:w-[50%] lg:w-[40%] md:mx-auto md:h-[48px] mx-auto rounded-3xl xm:rounded-[32px] flex items-center'>
           <i className='fa-solid fa-magnifying-glass text-black sm:text-lg pl-4'></i>
           <div

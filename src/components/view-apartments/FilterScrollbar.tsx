@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
+import { useScrollDirection } from 'src/hooks/useScrollDirection';
 
 const filters = [
   {
@@ -104,6 +105,15 @@ const FilterScrollbar = ({
   );
   const [homeFilter, setHomeFilter] = useState(false);
   const [slidesPerView, setSlidesPerView] = useState(4.6);
+  const [isLargerScreen, setIsLargerScreen] = useState(false);
+
+  useEffect(() => {
+    if (window.innerWidth >= 768) {
+      setIsLargerScreen(true);
+      return;
+    }
+    setIsLargerScreen(false);
+  }, []);
 
   useEffect(() => {
     if (search.length) {
@@ -124,10 +134,14 @@ const FilterScrollbar = ({
     setSlidesPerView(4.6);
   }, [search.length]);
 
+  const scrollDirection = useScrollDirection();
+
   return (
     <div
-      className={`w-full mt-3 mb-10 ${
-        search.length ? 'md:px-3 lg:px-5' : ''
+      className={`w-full mt-3 mb-10 ${search.length ? 'md:px-3 lg:px-5' : ''} ${
+        scrollDirection === 'down'
+          ? 'fixed top-[60px] xm:pt-4.5 pt-5 md:pt-2.5 z-10 bg-[#141b1f]'
+          : ''
       } sm:pb-3 flex justify-around items-center shadow-md shadow-[#f0efe9]/[.2]`}
     >
       {search.length ? (
@@ -141,7 +155,7 @@ const FilterScrollbar = ({
         spaceBetween={14}
         slidesPerView={slidesPerView}
         modules={[Navigation]}
-        navigation
+        navigation={isLargerScreen}
         className='md:w-[83%]'
       >
         {filters.map((filter, index) => (
