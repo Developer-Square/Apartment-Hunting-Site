@@ -11,6 +11,7 @@ import {
 } from '../components';
 import { NavBarMenu } from '@/components/view-apartments/Helpers';
 import { useScrollDirection } from 'src/hooks/useScrollDirection';
+import { useBackToTop } from 'src/hooks/useBackToTop';
 const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
   const [showFilters, setshowFilters] = useState(false);
@@ -48,6 +49,19 @@ const ViewApartmentsPage = () => {
   }, [showSearhBar, showFilters]);
 
   const scrollDirection = useScrollDirection();
+  const { topFunction } = useBackToTop();
+
+  const handleFilters = () => {
+    setshowFilters(true);
+    topFunction();
+  };
+
+  const handleSearchBar = () => {
+    setshowSearhBar(true);
+    topFunction();
+  };
+
+  console.log(showFilters);
 
   return (
     <section className='apartments-page w-full h-full pt-5 text-black'>
@@ -62,7 +76,7 @@ const ViewApartmentsPage = () => {
           <i className='fa-solid fa-magnifying-glass text-black sm:text-lg pl-4'></i>
           <div
             className='flex flex-col w-full pl-4 cursor-pointer'
-            onClick={() => setshowSearhBar(true)}
+            onClick={() => handleSearchBar()}
           >
             <p className='text-sm sm:text-base md:text-sm font-bold'>
               {search.length ? search : 'Search location...'}
@@ -73,7 +87,7 @@ const ViewApartmentsPage = () => {
           </div>
           <div
             className='rounded-full md:hidden h-7 w-7 border border-black flex items-center justify-center cursor-pointer ml-auto mr-2.5'
-            onClick={() => setshowFilters(true)}
+            onClick={() => handleFilters()}
           >
             <i className='fa-solid fa-sliders text-black sm:text-lg p-3'></i>
           </div>
@@ -105,7 +119,11 @@ const ViewApartmentsPage = () => {
           {/* But when a user is on a larger screen(768px and above), show the
           FilterScrollBar whether there's some search text or not.   */}{' '}
           {largerScreenWidth === '768px' || !search.length ? (
-            <FilterScrollbar search={search} setshowFilters={setshowFilters} />
+            <FilterScrollbar
+              search={search}
+              showFilters={showFilters}
+              handleFilters={handleFilters}
+            />
           ) : null}
           <div className='w-full lg:flex gap-1 mx-2'>
             {search.length ? <Map /> : null}

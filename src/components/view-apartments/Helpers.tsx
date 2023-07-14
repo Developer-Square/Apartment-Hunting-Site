@@ -268,7 +268,7 @@ export const CreateWishListModal = ({
 
 export const NavBarMenu = () => (
   <div
-    className='md:flex float-right hidden pl-3 pr-2 py-1.5 text-[#f0efe9] border border-[#f0efe9] rounded-3xl items-center cursor-pointer dropdown dropdown-bottom dropdown-end'
+    className='md:flex float-right hidden pl-3 pr-2 py-1.5 text-[#f0efe9] border border-[#f0efe9] rounded-3xl items-center cursor-pointer dropdown dropdown-bottom dropdown-end z-20'
     tabIndex={0}
   >
     <i className='fa-solid fa-bars pr-2 text-sm'></i>
