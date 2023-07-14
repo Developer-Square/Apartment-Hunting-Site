@@ -21,7 +21,9 @@ const SearchBar = ({
   useEffect(() => {
     if (window.innerWidth >= 768) {
       setLargerScreen(true);
+      return;
     }
+    setLargerScreen(false);
   }, []);
 
   const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
