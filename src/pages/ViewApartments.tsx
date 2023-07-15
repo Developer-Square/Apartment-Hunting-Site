@@ -10,13 +10,13 @@ import {
   FilterScrollbar,
 } from '../components';
 import { NavBarMenu } from '@/components/view-apartments/Helpers';
-import { useScrollDirection } from 'src/hooks/useScrollDirection';
 import { useBackToTop } from 'src/hooks/useBackToTop';
 const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
   const [showFilters, setshowFilters] = useState(false);
   const [search, setSearch] = useState('');
   const [hideMenu, setHideMenu] = useState(false);
+  const [showStickyHeader, setShowStickyHeader] = useState(false);
   const [setshowRestOfPage, setSetshowRestOfPage] = useState(true);
 
   useEffect(() => {
@@ -33,7 +33,16 @@ const ViewApartmentsPage = () => {
     setSetshowRestOfPage(true);
   }, [showSearhBar, showFilters]);
 
-  const scrollDirection = useScrollDirection();
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 21) {
+        setShowStickyHeader(true);
+        return;
+      }
+      setShowStickyHeader(false);
+    });
+  }, [showStickyHeader]);
+
   const { topFunction } = useBackToTop();
 
   const handleFilters = () => {
@@ -49,8 +58,9 @@ const ViewApartmentsPage = () => {
   return (
     <section className='apartments-page w-full h-full pt-5 text-black'>
       <div
+        id='sticky-header'
         className={`w-full md:w-[92%] mb-4 sm:mb-6 md:mx-auto md:flex items-center justify-center ${
-          scrollDirection === 'down'
+          showStickyHeader
             ? 'fixed top-0 z-10 bg-[#141b1f] xm:py-3 py-4 md:w-full'
             : ''
         }`}
@@ -106,6 +116,7 @@ const ViewApartmentsPage = () => {
               search={search}
               showFilters={showFilters}
               handleFilters={handleFilters}
+              showStickyHeader={showStickyHeader}
             />
           ) : null}
           <div className='w-full lg:flex gap-1 mx-2'>

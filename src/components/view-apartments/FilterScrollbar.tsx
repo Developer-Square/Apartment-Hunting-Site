@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
-import { useScrollDirection } from 'src/hooks/useScrollDirection';
 
 const filters = [
   {
@@ -97,10 +96,12 @@ const FilterScrollbar = ({
   search,
   showFilters,
   handleFilters,
+  showStickyHeader,
 }: {
   search: string;
   showFilters: boolean;
   handleFilters: () => void;
+  showStickyHeader: boolean;
 }) => {
   const [selectedFilter, setSelectedFilter] = useState<Record<string, string>>(
     filters[0]
@@ -136,8 +137,6 @@ const FilterScrollbar = ({
     setSlidesPerView(4.6);
   }, [search.length]);
 
-  const scrollDirection = useScrollDirection();
-
   return (
     // Hide the FilterScrollbar component when showing the filters modal
     <>
@@ -146,7 +145,7 @@ const FilterScrollbar = ({
           className={`w-full mt-3 mb-10 lg:mb-5 ${
             search.length ? 'md:px-3 lg:px-5' : ''
           } ${
-            scrollDirection === 'down'
+            showStickyHeader
               ? 'fixed top-[60px] xm:pt-4.5 pt-5 md:pt-2.5 z-10 bg-[#141b1f]'
               : ''
           } sm:pb-3 flex justify-around items-center shadow-md shadow-[#f0efe9]/[.2]`}
