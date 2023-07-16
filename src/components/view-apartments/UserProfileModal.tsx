@@ -6,12 +6,14 @@ const UserProfileModal = ({
   name,
   occupation,
   location,
+  setShowFilterBackdrop,
 }: {
   setShowModal: React.Dispatch<SetStateAction<boolean>>;
   propertyManager: string;
   name: string;
   occupation: string;
   location: string;
+  setShowFilterBackdrop: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const confirmedInfo = ['Identity', 'Phone number', 'Email Address'];
 
@@ -25,7 +27,10 @@ const UserProfileModal = ({
             <div className='flex items-start justify-between p-5  rounded-t'>
               <i
                 className='fa-solid fa-xmark text-lg cursor-pointer'
-                onClick={() => setShowModal(false)}
+                onClick={() => {
+                  setShowModal(false);
+                  setShowFilterBackdrop(false);
+                }}
               ></i>
             </div>
             {/*body*/}

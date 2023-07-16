@@ -71,7 +71,13 @@ const apartmentInfo: ApartmentInfoProps[] = [
   },
 ];
 
-const Apartments = ({ search }: { search: string }) => {
+const Apartments = ({
+  search,
+  setShowFilterBackdrop,
+}: {
+  search: string;
+  setShowFilterBackdrop: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   return (
     <div className='lg:flex flex-1 flex-col'>
       {search.length ? (
@@ -91,7 +97,11 @@ const Apartments = ({ search }: { search: string }) => {
         }`}
       >
         {apartmentInfo.map((info, index) => (
-          <SingleApartment key={index} info={info} />
+          <SingleApartment
+            key={index}
+            setShowFilterBackdrop={setShowFilterBackdrop}
+            info={info}
+          />
         ))}
       </div>
       <Pagination />

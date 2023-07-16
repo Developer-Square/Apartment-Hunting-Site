@@ -135,10 +135,12 @@ export const WishListModal = ({
   setWishListModal,
   setShowCreateModal,
   wishlist,
+  setShowFilterBackdrop,
 }: {
   setWishListModal: React.Dispatch<SetStateAction<boolean>>;
   setShowCreateModal: React.Dispatch<SetStateAction<boolean>>;
   wishlist: string[];
+  setShowFilterBackdrop: React.Dispatch<SetStateAction<boolean>>;
 }) => {
   const handleCreateWishList = () => {
     setWishListModal(false);
@@ -154,7 +156,10 @@ export const WishListModal = ({
           <div className='flex items-center w-full p-3.5 border-b mb-5 border-black/[.2]  rounded-t'>
             <i
               className='fa-solid fa-xmark text-lg cursor-pointer'
-              onClick={() => setWishListModal(false)}
+              onClick={() => {
+                setWishListModal(false);
+                setShowFilterBackdrop(false);
+              }}
             ></i>
             <p className='text-center font-semibold ml-[30%]'>Your wishlists</p>
           </div>
@@ -191,10 +196,12 @@ export const CreateWishListModal = ({
   showCreateModal,
   setShowCreateModal,
   handleCreateWishList,
+  setShowFilterBackdrop,
 }: {
   showCreateModal: boolean;
   setShowCreateModal: React.Dispatch<SetStateAction<boolean>>;
   handleCreateWishList: (name: string) => void;
+  setShowFilterBackdrop: React.Dispatch<SetStateAction<boolean>>;
 }) => {
   const props = useSpring({
     from: { y: 0, opacity: 0 },
@@ -224,7 +231,10 @@ export const CreateWishListModal = ({
             <div className='flex items-center w-full p-3.5 border-b mb-5 border-black/[.2]  rounded-t'>
               <i
                 className='fa-solid fa-xmark text-lg cursor-pointer'
-                onClick={() => setShowCreateModal(false)}
+                onClick={() => {
+                  setShowCreateModal(false);
+                  setShowFilterBackdrop(false);
+                }}
               ></i>
               <p className='text-center font-semibold ml-[30%]'>
                 Create wishlist
