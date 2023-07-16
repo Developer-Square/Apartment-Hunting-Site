@@ -20,6 +20,7 @@ const ViewApartmentsPage = () => {
   const [setshowRestOfPage, setSetshowRestOfPage] = useState(true);
   // Show FilterBackdrop for the apartment modals at 1024px view
   const [showFilterBackdrop, setShowFilterBackdrop] = useState(false);
+  const [showFullMap, setShowFullMap] = useState(false);
 
   useEffect(() => {
     if (window.innerWidth >= 768) {
@@ -102,11 +103,15 @@ const ViewApartmentsPage = () => {
             />
           ) : null}
           <div className='w-full lg:flex gap-1 mx-2'>
-            {search.length ? <Map /> : null}
-            <Apartments
-              search={search}
-              setShowFilterBackdrop={setShowFilterBackdrop}
-            />
+            {search.length ? (
+              <Map showFullMap={showFullMap} setShowFullMap={setShowFullMap} />
+            ) : null}
+            {!showFullMap ? (
+              <Apartments
+                search={search}
+                setShowFilterBackdrop={setShowFilterBackdrop}
+              />
+            ) : null}
           </div>
           {!hideMenu && <PopupMenu />}
           <Footer />
