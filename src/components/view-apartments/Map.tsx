@@ -46,12 +46,12 @@ const Map = ({
     <div
       className={`${
         showFullMap ? 'lg:w-full lg:h-screen' : 'lg:w-[460px]'
-      } relative`}
+      } relative h-[${mapDimension.height}px] md:h-full`}
     >
       {!showMap && (
         <>
           <div
-            className={`sticky flex justify-center items-center  ${
+            className={`hidden lg:flex sticky justify-center items-center  ${
               showFullMap
                 ? 'w-36 h-10 top-[20%] left-[83%]'
                 : 'top-[20%] left-[40%] w-8 h-8'

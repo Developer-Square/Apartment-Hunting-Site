@@ -129,8 +129,13 @@ const FilterScrollbar = ({
   }, [search.length]);
 
   useEffect(() => {
-    if (window.innerWidth >= 640) {
+    if (window.innerWidth >= 640 && window.innerWidth < 1023) {
       setSlidesPerView(6);
+      return;
+    }
+
+    if (window.innerWidth >= 1024) {
+      setSlidesPerView(8);
       return;
     }
 
@@ -142,7 +147,7 @@ const FilterScrollbar = ({
     <>
       {!showFilters ? (
         <div
-          className={`w-full mt-3 mb-10 lg:mb-5 ${
+          className={`w-full mt-3 mb-10 md:mb-3 ${
             search.length ? 'md:px-3 lg:px-5' : ''
           } ${
             showStickyHeader

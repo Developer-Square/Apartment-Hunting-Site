@@ -102,7 +102,7 @@ const ViewApartmentsPage = () => {
               showStickyHeader={showStickyHeader}
             />
           ) : null}
-          <div className='w-full lg:flex gap-1 mx-2'>
+          <div className='w-full lg:flex lg:mx-2'>
             {search.length ? (
               <Map showFullMap={showFullMap} setShowFullMap={setShowFullMap} />
             ) : null}

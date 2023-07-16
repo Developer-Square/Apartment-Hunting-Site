@@ -92,8 +92,10 @@ const Apartments = ({
       ) : null}
       {/* Show 3 columns when the map is not visible and 2 columns when the map is visible */}
       <div
-        className={`w-full lg:h-[80vh] overflow-y-scroll sm:grid grid-cols-2 ${
-          search.length ? 'lg:grid-cols-2' : 'lg:grid-cols-3'
+        className={`w-full sm:grid grid-cols-2 ${
+          search.length
+            ? 'lg:grid-cols-2 lg:h-[80vh] overflow-y-scroll'
+            : 'lg:grid-cols-3 xl:grid-cols-4'
         }`}
       >
         {apartmentInfo.map((info, index) => (

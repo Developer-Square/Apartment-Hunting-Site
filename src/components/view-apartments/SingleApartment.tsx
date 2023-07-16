@@ -105,13 +105,16 @@ const SingleApartment = ({
         onMouseEnter={() => setIsApartmentHovered(true)}
         onMouseLeave={() => setIsApartmentHovered(false)}
       >
-        <div className='relative w-full h-80 lg:h-72'>
+        <div className='relative w-full h-80 lg:h-72 xl:h-[267px]'>
           <Swiper
             modules={[Navigation, Pagination]}
             navigation={true}
             pagination={{ clickable: true }}
             spaceBetween={0}
             slidesPerView={1}
+            style={{
+              height: window.innerWidth >= 1024 ? '267px' : '100%',
+            }}
             className='w-full h-full'
           >
             {viewApartments.map((apartment, index) => (
@@ -127,7 +130,6 @@ const SingleApartment = ({
                       <i className='absolute top-2.5 text-black cursor-pointer right-4 text-2xl fa-regular fa-heart'></i>
                     )}
                   </div>
-
                   <img
                     src={apartment}
                     className='w-full h-full rounded-xl'
@@ -151,7 +153,7 @@ const SingleApartment = ({
                       <img
                         src={propertyManager}
                         alt='profile'
-                        className='rounded-full w-10 h-10'
+                        className='rounded-full w-10 h-10 xl:w-8 xl:h-8'
                       />
                     </div>
                   </animated.div>
@@ -161,9 +163,9 @@ const SingleApartment = ({
           </Swiper>
         </div>
         <div className='mt-3.5'>
-          <p className='font-bold'>{title}</p>
-          <p className='opacity-60 mt-1.5 text-sm'>{subtitle}</p>
-          <p className='mt-1.5'>
+          <p className='font-bold xl:text-sm xl:font-semibold'>{title}</p>
+          <p className='opacity-60 mt-1.5 text-sm xl:text-xs'>{subtitle}</p>
+          <p className='mt-1.5 xl:text-sm'>
             <span className='text-[#1ACA17]'>Ksh </span>
             {price}
           </p>
