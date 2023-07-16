@@ -45,6 +45,30 @@ const apartmentInfo: ApartmentInfoProps[] = [
     subtitle: 'Serene Skyline Retreat',
     price: '32,000',
   },
+  {
+    propertyManager: PropertyManager5,
+    title: 'Mawingu Gardens apartment',
+    subtitle: 'Serene Skyline Retreat',
+    price: '32,000',
+  },
+  {
+    propertyManager: PropertyManager5,
+    title: 'Mawingu Gardens apartment',
+    subtitle: 'Serene Skyline Retreat',
+    price: '32,000',
+  },
+  {
+    propertyManager: PropertyManager5,
+    title: 'Mawingu Gardens apartment',
+    subtitle: 'Serene Skyline Retreat',
+    price: '32,000',
+  },
+  {
+    propertyManager: PropertyManager5,
+    title: 'Mawingu Gardens apartment',
+    subtitle: 'Serene Skyline Retreat',
+    price: '32,000',
+  },
 ];
 
 const Apartments = ({ search }: { search: string }) => {
@@ -62,9 +86,9 @@ const Apartments = ({ search }: { search: string }) => {
       ) : null}
       {/* Show 3 columns when the map is not visible and 2 columns when the map is visible */}
       <div
-        className={`w-full sm:grid grid-cols-2 ${
+        className={`w-full lg:h-[80vh] overflow-y-scroll sm:grid grid-cols-2 ${
           search.length ? 'lg:grid-cols-2' : 'lg:grid-cols-3'
-        } `}
+        }`}
       >
         {apartmentInfo.map((info, index) => (
           <SingleApartment key={index} info={info} />

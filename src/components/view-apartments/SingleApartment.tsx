@@ -80,7 +80,7 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
       ) : null}
 
       <div
-        className='mb-10 px-12 sm:px-6 lg:px-3'
+        className='mb-10 px-12 sm:px-6 lg:pr-5 lg:pl-3'
         onMouseEnter={() => setIsApartmentHovered(true)}
         onMouseLeave={() => setIsApartmentHovered(false)}
       >

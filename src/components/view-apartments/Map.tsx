@@ -16,7 +16,7 @@ const Map = () => {
       setSetShowMap(false);
       setMapDimensions({
         width: '460',
-        height: '87%',
+        height: '100%',
       });
       return;
     }
@@ -27,10 +27,10 @@ const Map = () => {
   }, []);
 
   return (
-    <div className='lg:w-[460px] relative overflow-y-hidden'>
+    <div className='lg:w-[460px] relative'>
       {!showMap && (
         <>
-          <div className='fixed flex justify-center items-center top-[23%] left-[40%] bg-white z-20 shadow-2xl rounded-lg cursor-pointer'>
+          <div className='sticky w-8 h-8 flex justify-center items-center top-[20%] left-[40%] bg-white z-[1] shadow-2xl rounded-lg cursor-pointer'>
             <i className='fa-solid fa-angle-right text-xl py-1 px-3  text-black'></i>
           </div>
           <iframe
@@ -39,7 +39,7 @@ const Map = () => {
             height={mapDimension.height}
             allowFullScreen={false}
             loading='lazy'
-            className='border-0 lg:fixed top-[20%]'
+            className='border-0 lg:sticky top-0'
             referrerPolicy='no-referrer-when-downgrade'
           ></iframe>
         </>
