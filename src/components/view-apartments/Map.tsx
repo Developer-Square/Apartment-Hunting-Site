@@ -53,12 +53,12 @@ const Map = ({
           <div
             className={`hidden lg:flex sticky justify-center items-center  ${
               showFullMap
-                ? 'w-36 h-10 top-[20%] left-[83%]'
-                : 'top-[20%] left-[40%] w-8 h-8'
-            } bg-white transition-all ease-in-out duration-500 text-black font-semibold z-[1] shadow-2xl rounded-lg cursor-pointer`}
+                ? 'w-36 xl:w-32 xl:h-8 h-10 top-[20%] xl:top-[22%] left-[83%]'
+                : 'top-[20%] xl:top-[22%] left-[40%] xl:left-[32%] w-8 h-8'
+            } bg-white transition-all ease-in-out duration-500 text-black font-semibold z-[1] shadow-2xl rounded-lg xl:text-sm cursor-pointer`}
             onClick={() => setShowFullMap((prevState) => !prevState)}
           >
-            <i className='fa-solid fa-angle-right text-xl py-1 px-3  text-black'></i>
+            <i className='fa-solid fa-angle-right text-xl xl:text-lg py-1 px-3  text-black'></i>
             {showFullMap ? 'Show List' : ''}
           </div>
           <iframe

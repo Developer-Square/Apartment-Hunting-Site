@@ -139,8 +139,13 @@ const FilterScrollbar = ({
       return;
     }
 
-    if (window.innerWidth >= 1280) {
+    if (window.innerWidth >= 1280 && window.innerWidth < 1535) {
       setSlidesPerView(9);
+      return;
+    }
+
+    if (window.innerWidth >= 1536) {
+      setSlidesPerView(10);
       return;
     }
 
@@ -152,7 +157,7 @@ const FilterScrollbar = ({
     <>
       {!showFilters ? (
         <div
-          className={`w-full mt-3 xl:mt-0 mb-10 md:mb-3 transition-all ease-in-out duration-1000 ${
+          className={`w-full mt-3 xl:mt-0 mb-10 md:mb-3 xl:mb-8 transition-all ease-in-out duration-1000 ${
             search.length ? 'md:px-3 lg:px-5' : ''
           } ${
             showStickyHeader
@@ -172,7 +177,7 @@ const FilterScrollbar = ({
             slidesPerView={slidesPerView}
             modules={[Navigation]}
             navigation={isLargerScreen}
-            className='md:w-[83%] xl:pt-3.5'
+            className='md:w-[83%] xl:pt-3.5 2xl:py-3'
           >
             {filters.map((filter, index) => (
               <SwiperSlide key={index}>
