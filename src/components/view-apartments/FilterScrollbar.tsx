@@ -153,17 +153,26 @@ const FilterScrollbar = ({
   }, [search.length]);
 
   return (
-    // Hide the FilterScrollbar component when showing the filters modal
-    <>
+    <div
+      className={`w-full shadow-md shadow-[#f0efe9]/[.2] ${
+        showStickyHeader
+          ? 'fixed 2xl:flex 2xl:justify-center top-[90px] h-[107px] z-10 bg-[#141b1f] transition-all ease-in-out duration-1000 2xl:duration-[1.5s]'
+          : ''
+      }`}
+    >
+      {/* The above div is meant to make it easier to give the sticky header a max-width of 1400px */}
+      {/* ... */}
+      {/* Hide the FilterScrollbar component when showing the filters modal */}
+
       {!showFilters ? (
         <div
-          className={`w-full mt-3 xl:mt-0 mb-10 md:mb-3 xl:mb-8 transition-all ease-in-out duration-1000 ${
+          className={`w-full 2xl:max-w-[1400px] 2xl:mx-auto mt-3 xl:mt-0 mb-10 md:mb-3 xl:mb-8 2xl:mb-4 transition-all ease-in-out duration-1000 2xl:duration-[1.5s] ${
             search.length ? 'md:px-3 lg:px-5' : ''
           } ${
             showStickyHeader
               ? 'fixed top-[60px] xl:top-[80px] xm:pt-4.5 pt-5 md:pt-2.5 xl:pt-1 z-10 bg-[#141b1f]'
               : ''
-          } sm:pb-3 xl:pb-0 flex justify-around items-center shadow-md shadow-[#f0efe9]/[.2]`}
+          } sm:pb-3 xl:pb-0 flex justify-around items-center`}
         >
           {search.length ? (
             <CustomFilter
@@ -177,7 +186,7 @@ const FilterScrollbar = ({
             slidesPerView={slidesPerView}
             modules={[Navigation]}
             navigation={isLargerScreen}
-            className='md:w-[83%] xl:pt-3.5 2xl:py-3'
+            className='md:w-[83%] xl:pt-3.5 2xl:pt-5'
           >
             {filters.map((filter, index) => (
               <SwiperSlide key={index}>
@@ -208,7 +217,7 @@ const FilterScrollbar = ({
           </Swiper>
           <div
             className={`hidden md:flex ${
-              !search.length ? 'mr-7' : ''
+              !search.length ? 'mr-8 2xl:ml-auto 2xl:mr-0' : ''
             } cursor-pointer border border-[#f0efe9]/[.5] rounded-xl ml-3 items-center md:mb-3.5 lg:mb-0 gap-2 px-2.5 py-2`}
             onClick={() => handleFilters()}
           >
@@ -217,7 +226,7 @@ const FilterScrollbar = ({
           </div>
         </div>
       ) : null}
-    </>
+    </div>
   );
 };
 

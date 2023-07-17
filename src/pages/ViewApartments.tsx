@@ -60,12 +60,21 @@ const ViewApartmentsPage = () => {
 
   return (
     <section className='apartments-page w-full h-full pt-5 text-black'>
-      <Navbar
-        search={search}
-        showStickyHeader={showStickyHeader}
-        handleFilters={handleFilters}
-        handleSearchBar={handleSearchBar}
-      />
+      {/* The following is meant to make it easier to give the sticky header a max-width of 1400px */}
+      <div
+        className={`w-full ${
+          showStickyHeader
+            ? 'fixed 2xl:flex 2xl:justify-center z-10 h-[90px] bg-[#141b1f]'
+            : ''
+        }`}
+      >
+        <Navbar
+          search={search}
+          showStickyHeader={showStickyHeader}
+          handleFilters={handleFilters}
+          handleSearchBar={handleSearchBar}
+        />
+      </div>
       {/* Hide the SearchBar and Filters components when the other is open */}
       {showSearhBar && (
         <>
@@ -102,7 +111,7 @@ const ViewApartmentsPage = () => {
               showStickyHeader={showStickyHeader}
             />
           ) : null}
-          <div className='w-full lg:flex lg:mx-2'>
+          <div className='w-full lg:flex lg:mx-2 2xl:max-w-[1400px] 2xl:mx-auto'>
             {search.length ? (
               <Map showFullMap={showFullMap} setShowFullMap={setShowFullMap} />
             ) : null}
