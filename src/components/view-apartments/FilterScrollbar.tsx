@@ -80,14 +80,14 @@ const CustomFilter = ({
       >
         <i className='fa-solid fa-house text-[26px] mb-1'></i>
         <p
-          className={`text-xs pb-1 ${
+          className={`text-xs xl:text-[13px] pb-1 ${
             homeFilter ? 'border-b border-[#f0efe9]' : ''
           } tracking-wider font-semibold mt-0.5`}
         >
           Your Search
         </p>
       </div>
-      <div className='border-r border-2 border-[#f0efe9]/[.8] h-14 ml-4 lg:ml-7'></div>
+      <div className='border-r border-2 border-[#f0efe9]/[.8] h-14 xl:h-10 ml-4 lg:ml-7'></div>
     </div>
   );
 };
@@ -134,8 +134,13 @@ const FilterScrollbar = ({
       return;
     }
 
-    if (window.innerWidth >= 1024) {
+    if (window.innerWidth >= 1024 && window.innerWidth < 1279) {
       setSlidesPerView(8);
+      return;
+    }
+
+    if (window.innerWidth >= 1280) {
+      setSlidesPerView(9);
       return;
     }
 
@@ -147,13 +152,13 @@ const FilterScrollbar = ({
     <>
       {!showFilters ? (
         <div
-          className={`w-full mt-3 mb-10 md:mb-3 ${
+          className={`w-full mt-3 xl:mt-0 mb-10 md:mb-3 transition-all ease-in-out duration-1000 ${
             search.length ? 'md:px-3 lg:px-5' : ''
           } ${
             showStickyHeader
-              ? 'fixed top-[60px] xm:pt-4.5 pt-5 md:pt-2.5 z-10 bg-[#141b1f]'
+              ? 'fixed top-[60px] xl:top-[80px] xm:pt-4.5 pt-5 md:pt-2.5 xl:pt-1 z-10 bg-[#141b1f]'
               : ''
-          } sm:pb-3 flex justify-around items-center shadow-md shadow-[#f0efe9]/[.2]`}
+          } sm:pb-3 xl:pb-0 flex justify-around items-center shadow-md shadow-[#f0efe9]/[.2]`}
         >
           {search.length ? (
             <CustomFilter
@@ -167,7 +172,7 @@ const FilterScrollbar = ({
             slidesPerView={slidesPerView}
             modules={[Navigation]}
             navigation={isLargerScreen}
-            className='md:w-[83%]'
+            className='md:w-[83%] xl:pt-3.5'
           >
             {filters.map((filter, index) => (
               <SwiperSlide key={index}>
@@ -184,7 +189,7 @@ const FilterScrollbar = ({
                 >
                   <i className={filter.icon}></i>
                   <p
-                    className={`text-xs pb-1 ${
+                    className={`text-xs xl:text-[14px] pb-1 ${
                       selectedFilter.text === filter.text
                         ? 'border-b border-[#f0efe9]'
                         : ''
@@ -202,8 +207,8 @@ const FilterScrollbar = ({
             } cursor-pointer border border-[#f0efe9]/[.5] rounded-xl ml-3 items-center md:mb-3.5 lg:mb-0 gap-2 px-2.5 py-2`}
             onClick={() => handleFilters()}
           >
-            <i className='fa-solid fa-sliders'></i>
-            <p className='text-sm'>Filters</p>
+            <i className='fa-solid fa-sliders xl:text-xs'></i>
+            <p className='text-sm xl:text-[14px]'>Filters</p>
           </div>
         </div>
       ) : null}

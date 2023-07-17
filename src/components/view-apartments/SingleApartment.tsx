@@ -163,9 +163,9 @@ const SingleApartment = ({
           </Swiper>
         </div>
         <div className='mt-3.5'>
-          <p className='font-bold xl:text-sm xl:font-semibold'>{title}</p>
+          <p className='font-bold xl:font-semibold xl:text-xs'>{title}</p>
           <p className='opacity-60 mt-1.5 text-sm xl:text-xs'>{subtitle}</p>
-          <p className='mt-1.5 xl:text-sm'>
+          <p className='mt-1.5 xl:text-xs'>
             <span className='text-[#1ACA17]'>Ksh </span>
             {price}
           </p>

@@ -45,8 +45,8 @@ const Map = ({
   return (
     <div
       className={`${
-        showFullMap ? 'lg:w-full lg:h-screen' : 'lg:w-[460px]'
-      } relative h-[${mapDimension.height}px] md:h-full`}
+        showFullMap ? 'lg:w-full lg:h-screen' : 'lg:w-[460px] xl:w-[473px]'
+      } relative h-[${mapDimension.height}px]`}
     >
       {!showMap && (
         <>
