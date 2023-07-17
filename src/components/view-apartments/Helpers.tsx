@@ -38,14 +38,14 @@ export const NumberOfRooms = ({
   setCurrentRoom: React.Dispatch<SetStateAction<string>>;
 }) => (
   <div className='mt-4'>
-    <p>{title}</p>
+    <p className='xl:text-sm'>{title}</p>
     <div className='flex justify-start gap-4 mt-2'>
       {rooms.map((room, index) => (
         <span
           key={index}
           className={`w-[65px] flex items-center justify-center h-[33px] ${
             currentRoom === room ? 'bg-black text-white' : 'bg-white text-black'
-          } text-sm rounded-3xl cursor-pointer border border-black/[0.6]`}
+          } text-sm rounded-3xl xl:text-xs cursor-pointer border border-black/[0.6]`}
           onClick={() => setCurrentRoom(room)}
         >
           {room}
@@ -73,7 +73,7 @@ export const PropertyType = ({
     onClick={() => setPropertyType(content)}
   >
     <i className={icon}></i>
-    <p className='pl-5'>{content}</p>
+    <p className='pl-5 xl:text-sm'>{content}</p>
   </div>
 );
 
@@ -96,8 +96,10 @@ export const AmenitiesList = ({
 }) => {
   return (
     <div className='mt-8'>
-      <p className='font-bold'>{title}</p>
-      {title === 'Amenities' && <p className='mt-3 mb-5'>Popular in Kenya</p>}
+      <p className='font-bold xl:text-sm'>{title}</p>
+      {title === 'Amenities' && (
+        <p className='mt-3 mb-5 xl:text-sm'>Popular in Kenya</p>
+      )}
       {amenitiesList.map((amenity, index) => (
         <div key={index} className='flex items-center mt-4'>
           <input
@@ -111,9 +113,9 @@ export const AmenitiesList = ({
                 [amenity]: !amenities[amenity],
               })
             }
-            className='checkbox checkbox-primary checkbox-lg'
+            className='checkbox checkbox-primary checkbox-lg xl:checkbox-md'
           />
-          <p className='text-lg ml-3.5'>
+          <p className='text-lg xl:text-sm ml-3.5'>
             {amenity.charAt(0).toUpperCase() + amenity.slice(1)}
           </p>
         </div>
@@ -121,7 +123,7 @@ export const AmenitiesList = ({
 
       {topAmenities && !showMore && (
         <p
-          className='underline mt-7 mb-32 cursor-pointer'
+          className='underline mt-7 mb-32 xl:text-sm cursor-pointer'
           onClick={() => setShowMore(true)}
         >
           Show more
@@ -161,7 +163,9 @@ export const WishListModal = ({
                 setShowFilterBackdrop(false);
               }}
             ></i>
-            <p className='text-center font-semibold ml-[30%]'>Your wishlists</p>
+            <p className='text-center font-semibold ml-[30%] xl:text-sm'>
+              Your wishlists
+            </p>
           </div>
           {/*body*/}
           <div className='max-h-[85vh] overflow-y-scroll'>
@@ -169,10 +173,12 @@ export const WishListModal = ({
               className='my-3.5 flex items-center mx-4 cursor-pointer'
               onClick={() => handleCreateWishList()}
             >
-              <div className='w-16 h-16 flex border border-black/[.4] rounded-lg justify-center items-center'>
-                <i className='fa-solid text-3xl font-normal fa-plus'></i>
+              <div className='w-16 h-16 xl:w-12 xl:h-12 flex border border-black/[.4] rounded-lg justify-center items-center'>
+                <i className='fa-solid text-3xl xl:text-xl font-normal fa-plus'></i>
               </div>
-              <p className='ml-3.5 font-semibold'>Create new wishlist</p>
+              <p className='ml-3.5 font-semibold xl:text-sm'>
+                Create new wishlist
+              </p>
             </div>
             {wishlist.length
               ? wishlist.map((wish, index) => (
@@ -236,7 +242,7 @@ export const CreateWishListModal = ({
                   setShowFilterBackdrop(false);
                 }}
               ></i>
-              <p className='text-center font-semibold ml-[30%]'>
+              <p className='text-center xl:text-sm font-semibold ml-[30%]'>
                 Create wishlist
               </p>
             </div>
@@ -250,7 +256,7 @@ export const CreateWishListModal = ({
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder='Name...'
-                    className='w-full h-[44px] shadow-transparent py-7 rounded-lg px-2 border border-black/[.2] !outline-none  bg-transparent'
+                    className='w-full shadow-transparent py-7 xl:py-3.5 rounded-lg px-2 border xl:text-sm border-black/[.2] !outline-none  bg-transparent'
                   />
                   <p className='text-xs mt-1.5 text-gray-400'>
                     50 characters maximum
@@ -262,7 +268,7 @@ export const CreateWishListModal = ({
                   disabled={name.length ? false : true}
                   className={`${
                     name.length ? 'bg-black' : 'bg-black/[.3]'
-                  } my-4 font-semibold py-2.5 rounded-lg text-white w-72`}
+                  } my-4 font-semibold py-2.5 xl:text-sm rounded-lg text-white w-72`}
                   onClick={() => handleCreateWishList(name)}
                 >
                   Create
@@ -285,7 +291,7 @@ export const NavBarMenu = () => (
     <i className='fa-solid fa-circle-user text-[28px]'></i>
     <ul
       tabIndex={0}
-      className='dropdown-content z-[1] menu p-2 shadow bg-[#141b1f] rounded-box mt-3 w-52'
+      className='dropdown-content z-[1] menu p-2 shadow bg-[#141b1f] rounded-box mt-3 w-52 xl:text-sm'
     >
       <li>
         <a>Login</a>

@@ -50,13 +50,16 @@ const UserProfileModal = ({
                   </div>
                   <p className='font-bold mt-4 text-[26px]'>{name}</p>
                   <p className='font-semibold mt-1 text-sm'>
-                    <i className='fa-solid fa-trophy'></i> Super Agent
+                    <i className='fa-solid fa-trophy xl:text-sm'></i> Super
+                    Agent
                   </p>
                 </div>
                 <div className='flex flex-1 flex-col justify-center'>
                   <div className='flex flex-col'>
                     <p className='font-bold text-xl'>3</p>
-                    <p className='text-xs pb-3'>Years as a Manager</p>
+                    <p className='text-xs pb-3 xl:text-[14px]'>
+                      Years as a Manager
+                    </p>
                     <div className='border-b border-black/[.3]'></div>
                   </div>
                 </div>
@@ -65,15 +68,19 @@ const UserProfileModal = ({
               {/* Rest of Body */}
               <div className='mx-6 my-10 pb-8 text-[#222222] border-b border-black/[.3]'>
                 <div className='flex items-center'>
-                  <i className='fa-solid fa-briefcase text-lg'></i>
-                  <p className='ml-4 font-semibold'>My Work: {occupation}</p>
+                  <i className='fa-solid fa-briefcase text-lg xl:text-base'></i>
+                  <p className='ml-4 font-semibold xl:text-sm'>
+                    My Work: {occupation}
+                  </p>
                 </div>
                 <div className='flex mt-3 items-center'>
-                  <i className='fa-solid fa-location-dot text-lg'></i>
-                  <p className='ml-4 font-semibold'>Lives in {location}</p>
+                  <i className='fa-solid fa-location-dot text-lg xl:text-base'></i>
+                  <p className='ml-4 font-semibold xl:text-sm'>
+                    Lives in {location}
+                  </p>
                 </div>
               </div>
-              <div className='mx-6 mb-8 pb-8 text-[22px] font-semibold border-b border-black/[.3]'>
+              <div className='mx-6 mb-8 pb-8 text-[22px] xl:text-[20px] font-semibold border-b border-black/[.3]'>
                 <p>Ryan Njoroge's Confirmed information</p>
                 {confirmedInfo.map((info, index) => (
                   <div
@@ -81,13 +88,13 @@ const UserProfileModal = ({
                     key={index}
                   >
                     <i className='fa-solid fa-check mr-3'></i>
-                    <p>{info}</p>
+                    <p className='xl:text-sm'>{info}</p>
                   </div>
                 ))}
               </div>
               <div className='mx-6 mb-8 flex items-center font-semibold text-black cursor-pointer'>
-                <i className='fa-solid fa-flag'></i>
-                <p className='underline ml-3'>Report this profile</p>
+                <i className='fa-solid fa-flag xl:text-sm'></i>
+                <p className='underline ml-3 xl:text-sm'>Report this profile</p>
               </div>
             </div>
           </div>

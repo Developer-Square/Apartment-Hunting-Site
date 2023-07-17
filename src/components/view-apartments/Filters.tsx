@@ -112,18 +112,20 @@ const Filters = ({
             className='fa-solid fa-xmark text-xl mt-5 cursor-pointer'
             onClick={() => setShow(false)}
           ></i>
-          <p className='font-bold text-base text-center mt-5 w-full'>Filters</p>
+          <p className='font-bold text-base text-center xl:text-sm mt-5 w-full'>
+            Filters
+          </p>
         </div>
         <img src={FilterImg} alt='filters' className='mt-5 w-full' />
         <div className='mt-5 w-full'>
-          <p className='font-bold text-center'>Price range</p>
+          <p className='font-bold text-center xl:text-sm'>Price range</p>
           <div className='flex mt-6 items-center justify-around'>
             <div className='w-32 sm:w-40 h-20 p-3 rounded-2xl flex flex-col border border-black/[.08]'>
               <p className='text-xs'>Minimum</p>
               <input
                 type='text'
                 placeholder='Ksh 10,000'
-                className='bg-transparent pl-0 text-black outline-none border-none w-24 sm:w-28 h-full'
+                className='bg-transparent pl-0 text-black outline-none border-none w-24 sm:w-28 h-full xl:text-sm'
               />
             </div>
             <span className='h-0.5 w-7 bg-black/[0.5]'></span>
@@ -132,14 +134,14 @@ const Filters = ({
               <input
                 type='text'
                 placeholder='Ksh 100,000'
-                className='bg-transparent pl-0 text-black outline-none w-24 sm:w-28 border-none h-full'
+                className='bg-transparent pl-0 text-black outline-none w-24 sm:w-28 border-none h-full xl:text-sm'
               />
             </div>
           </div>
         </div>
         <div className='mt-10 bg-black/[0.4] w-full h-[0.5px]'></div>
         <div className='mt-5'>
-          <p className='font-bold'>Rooms and Beds</p>
+          <p className='font-bold xl:text-sm'>Rooms and Beds</p>
           <NumberOfRooms
             rooms={rooms}
             title='Bedrooms'
@@ -156,7 +158,7 @@ const Filters = ({
         </div>
         <div className='mt-14 bg-black/[0.4] w-full h-[1px]'></div>
         <div className='mt-5'>
-          <p className='font-bold'>Property Type</p>
+          <p className='font-bold xl:text-sm'>Property Type</p>
           <div className='mt-7 flex gap-8'>
             <PropertyType
               icon='fa-solid fa-house text-3xl pl-5'
@@ -217,7 +219,7 @@ const Filters = ({
         )}
         {showMore && (
           <p
-            className='underline mt-7 mb-32 cursor-pointer'
+            className='underline mt-7 xl:text-sm mb-32 cursor-pointer'
             onClick={() => setShowMore(false)}
           >
             Show less
@@ -227,12 +229,12 @@ const Filters = ({
       <footer className='absolute w-full bottom-0 mt-5 px-6 py-4 border-t border-black/[.2] h-20'>
         <div className='flex items-center justify-between'>
           <p
-            className='underline font-medium cursor-pointer'
+            className='underline font-medium cursor-pointer xl:text-sm'
             onClick={() => clearAllFilters()}
           >
             Clear all
           </p>
-          <button className='rounded-lg py-3.5 px-6 bg-black text-white'>
+          <button className='rounded-lg xl:text-sm xl:py-2.5 xl:px-3 py-3.5 px-6 bg-black text-white'>
             No places available
           </button>
         </div>
