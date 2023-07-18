@@ -151,82 +151,84 @@ const FilterScrollbar = ({
 
     setSlidesPerView(4.6);
   }, [search.length]);
+  console.log(showFilters);
 
   return (
-    <div
-      className={`w-full shadow-md shadow-[#f0efe9]/[.2] ${
-        showStickyHeader
-          ? 'fixed 2xl:flex 2xl:justify-center top-[90px] h-[107px] z-10 bg-[#141b1f] transition-all ease-in-out duration-1000 2xl:duration-[1.5s]'
-          : ''
-      }`}
-    >
-      {/* The above div is meant to make it easier to give the sticky header a max-width of 1400px */}
-      {/* ... */}
+    <>
       {/* Hide the FilterScrollbar component when showing the filters modal */}
-
       {!showFilters ? (
         <div
-          className={`w-full 2xl:max-w-[1400px] 2xl:mx-auto mt-3 xl:mt-0 mb-10 md:mb-3 xl:mb-8 2xl:mb-4 transition-all ease-in-out duration-1000 2xl:duration-[1.5s] ${
-            search.length ? 'md:px-3 lg:px-5' : ''
-          } ${
+          className={`w-full shadow-md shadow-[#f0efe9]/[.2] ${
             showStickyHeader
-              ? 'fixed top-[60px] xl:top-[80px] xm:pt-4.5 pt-5 md:pt-2.5 xl:pt-1 z-10 bg-[#141b1f]'
+              ? 'fixed 2xl:flex 2xl:justify-center top-[90px] h-auto 2xl:h-[107px] z-10 bg-[#141b1f] transition-all ease-in-out duration-1000 2xl:duration-[1.5s]'
               : ''
-          } sm:pb-3 xl:pb-0 flex justify-around items-center`}
+          }`}
         >
-          {search.length ? (
-            <CustomFilter
-              homeFilter={homeFilter}
-              setHomeFilter={setHomeFilter}
-              setSelectedFilter={setSelectedFilter}
-            />
-          ) : null}
-          <Swiper
-            spaceBetween={14}
-            slidesPerView={slidesPerView}
-            modules={[Navigation]}
-            navigation={isLargerScreen}
-            className='md:w-[83%] xl:pt-3.5 2xl:pt-5'
-          >
-            {filters.map((filter, index) => (
-              <SwiperSlide key={index}>
-                <div
-                  className={`${
-                    selectedFilter.text === filter.text
-                      ? 'text-[#f0efe9]'
-                      : 'text-[#f0efe9]/[.6]'
-                  } flex flex-col items-center cursor-pointer`}
-                  onClick={() => {
-                    setHomeFilter(false);
-                    setSelectedFilter(filter);
-                  }}
-                >
-                  <i className={filter.icon}></i>
-                  <p
-                    className={`text-xs xl:text-[14px] pb-1 ${
-                      selectedFilter.text === filter.text
-                        ? 'border-b border-[#f0efe9]'
-                        : ''
-                    } tracking-wider font-semibold mt-0.5`}
-                  >
-                    {filter.text}
-                  </p>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          {/* The above div is meant to make it easier to give the sticky header a max-width of 1400px */}
+          {/* ... */}
           <div
-            className={`hidden md:flex ${
-              !search.length ? 'mr-8 2xl:ml-auto 2xl:mr-0' : ''
-            } cursor-pointer border border-[#f0efe9]/[.5] rounded-xl ml-3 items-center md:mb-3.5 lg:mb-0 gap-2 px-2.5 py-2`}
-            onClick={() => handleFilters()}
+            className={`w-full 2xl:max-w-[1400px] 2xl:mx-auto mt-3 xl:mt-0 mb-2 md:mb-3 xl:mb-8 2xl:mb-4 transition-all ease-in-out duration-1000 2xl:duration-[1.5s] ${
+              search.length ? 'md:px-3 lg:px-5' : ''
+            } ${
+              showStickyHeader
+                ? 'fixed top-[60px] xl:top-[80px] xm:pt-4.5 pt-5 md:pt-2.5 xl:pt-1 z-10 bg-[#141b1f]'
+                : ''
+            } sm:pb-3 xl:pb-0 flex justify-around items-center`}
           >
-            <i className='fa-solid fa-sliders xl:text-xs'></i>
-            <p className='text-sm xl:text-[14px]'>Filters</p>
+            {search.length ? (
+              <CustomFilter
+                homeFilter={homeFilter}
+                setHomeFilter={setHomeFilter}
+                setSelectedFilter={setSelectedFilter}
+              />
+            ) : null}
+            <Swiper
+              spaceBetween={14}
+              slidesPerView={slidesPerView}
+              modules={[Navigation]}
+              navigation={isLargerScreen}
+              className='md:w-[83%] xl:pt-3.5 2xl:pt-5'
+            >
+              {filters.map((filter, index) => (
+                <SwiperSlide key={index}>
+                  <div
+                    className={`${
+                      selectedFilter.text === filter.text
+                        ? 'text-[#f0efe9]'
+                        : 'text-[#f0efe9]/[.6]'
+                    } flex flex-col items-center cursor-pointer`}
+                    onClick={() => {
+                      setHomeFilter(false);
+                      setSelectedFilter(filter);
+                    }}
+                  >
+                    <i className={filter.icon}></i>
+                    <p
+                      className={`text-xs xl:text-[14px] pb-1 ${
+                        selectedFilter.text === filter.text
+                          ? 'border-b border-[#f0efe9]'
+                          : ''
+                      } tracking-wider font-semibold mt-0.5`}
+                    >
+                      {filter.text}
+                    </p>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <div
+              className={`hidden md:flex ${
+                !search.length ? 'mr-8 2xl:ml-auto 2xl:mr-0' : ''
+              } cursor-pointer border border-[#f0efe9]/[.5] rounded-xl ml-3 items-center md:mb-3.5 lg:mb-0 gap-2 px-2.5 py-2`}
+              onClick={() => handleFilters()}
+            >
+              <i className='fa-solid fa-sliders xl:text-xs'></i>
+              <p className='text-sm xl:text-[14px]'>Filters</p>
+            </div>
           </div>
         </div>
       ) : null}
-    </div>
+    </>
   );
 };
 

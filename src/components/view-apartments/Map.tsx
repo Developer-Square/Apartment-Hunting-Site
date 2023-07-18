@@ -28,7 +28,7 @@ const Map = ({
       setSetShowMap(true);
     }
 
-    if (window.innerWidth >= 1024) {
+    if (window.innerWidth >= 1024 && window.innerWidth < 1535) {
       setSetShowMap(false);
       setMapDimensions({
         width: '460',
@@ -36,6 +36,16 @@ const Map = ({
       });
       return;
     }
+
+    if (window.innerWidth >= 1536) {
+      setSetShowMap(false);
+      setMapDimensions({
+        width: '568',
+        height: '100%',
+      });
+      return;
+    }
+
     setMapDimensions({
       width: '100%',
       height: '475',
@@ -45,7 +55,9 @@ const Map = ({
   return (
     <div
       className={`${
-        showFullMap ? 'lg:w-full lg:h-screen' : 'lg:w-[460px] xl:w-[473px]'
+        showFullMap
+          ? 'lg:w-full lg:h-screen'
+          : 'lg:w-[460px] xl:w-[473px] 2xl:w-[568px]'
       } relative h-[${mapDimension.height}px]`}
     >
       {!showMap && (
@@ -54,7 +66,7 @@ const Map = ({
             className={`hidden lg:flex sticky justify-center items-center  ${
               showFullMap
                 ? 'w-36 xl:w-32 xl:h-8 h-10 top-[20%] xl:top-[22%] left-[83%]'
-                : 'top-[20%] xl:top-[22%] left-[40%] xl:left-[32%] w-8 h-8'
+                : 'top-[20%] xl:top-[22%] left-[40%] xl:left-[32%] 2xl:left-[37%] w-8 h-8'
             } bg-white transition-all ease-in-out duration-500 text-black font-semibold z-[1] shadow-2xl rounded-lg xl:text-sm cursor-pointer`}
             onClick={() => setShowFullMap((prevState) => !prevState)}
           >

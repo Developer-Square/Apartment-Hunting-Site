@@ -55,7 +55,7 @@ const Filters = ({
   const [largerScreenWidth, setLargerScreenWidth] = useState('100%');
 
   useEffect(() => {
-    if (window.innerWidth >= 768) {
+    if (window.innerWidth >= 768 && window.innerWidth < 1023) {
       setLargerScreenWidth('640px');
     }
 
@@ -107,7 +107,7 @@ const Filters = ({
       }}
     >
       <div className='xm:max-w-[360px] max-w-[330px] sm:max-w-[600px] lg:max-w-[700px] mx-auto'>
-        <div className='flex items-center'>
+        <div className='flex items-center border-b border-black/[.2]'>
           <i
             className='fa-solid fa-xmark text-xl mt-5 cursor-pointer'
             onClick={() => setShow(false)}
@@ -116,117 +116,119 @@ const Filters = ({
             Filters
           </p>
         </div>
-        <img src={FilterImg} alt='filters' className='mt-5 w-full' />
-        <div className='mt-5 w-full'>
-          <p className='font-bold text-center xl:text-sm'>Price range</p>
-          <div className='flex mt-6 items-center justify-around'>
-            <div className='w-32 sm:w-40 h-20 p-3 rounded-2xl flex flex-col border border-black/[.08]'>
-              <p className='text-xs'>Minimum</p>
-              <input
-                type='text'
-                placeholder='Ksh 10,000'
-                className='bg-transparent pl-0 text-black outline-none border-none w-24 sm:w-28 h-full xl:text-sm'
+        <div className='w-full max-h-[790px] overflow-y-scroll'>
+          <img src={FilterImg} alt='filters' className='mt-5 w-full' />
+          <div className='mt-5 w-full'>
+            <p className='font-bold text-center xl:text-sm'>Price range</p>
+            <div className='flex mt-6 items-center justify-around'>
+              <div className='w-32 sm:w-40 h-20 p-3 rounded-2xl flex flex-col border border-black/[.08]'>
+                <p className='text-xs'>Minimum</p>
+                <input
+                  type='text'
+                  placeholder='Ksh 10,000'
+                  className='bg-transparent pl-0 text-black outline-none border-none w-24 sm:w-28 h-full xl:text-sm'
+                />
+              </div>
+              <span className='h-0.5 w-7 bg-black/[0.5]'></span>
+              <div className='w-32 h-20 sm:w-40 p-3 rounded-2xl flex flex-col border border-black/[.08]'>
+                <p className='text-xs'>Maximum</p>
+                <input
+                  type='text'
+                  placeholder='Ksh 100,000'
+                  className='bg-transparent pl-0 text-black outline-none w-24 sm:w-28 border-none h-full xl:text-sm'
+                />
+              </div>
+            </div>
+          </div>
+          <div className='mt-10 bg-black/[0.4] w-full h-[0.5px]'></div>
+          <div className='mt-5'>
+            <p className='font-bold xl:text-sm'>Rooms and Beds</p>
+            <NumberOfRooms
+              rooms={rooms}
+              title='Bedrooms'
+              currentRoom={bedrooms}
+              setCurrentRoom={setBedrooms}
+            />
+            <div className='mt-5'></div>
+            <NumberOfRooms
+              rooms={rooms}
+              title='Bathrooms'
+              currentRoom={bathrooms}
+              setCurrentRoom={setBathrooms}
+            />
+          </div>
+          <div className='mt-14 bg-black/[0.4] w-full h-[1px]'></div>
+          <div className='mt-5'>
+            <p className='font-bold xl:text-sm'>Property Type</p>
+            <div className='mt-7 flex gap-8'>
+              <PropertyType
+                icon='fa-solid fa-house text-3xl pl-5'
+                content='House'
+                propertyType={propertyType}
+                setPropertyType={setPropertyType}
+              />
+              <PropertyType
+                icon='fa-solid fa-building text-3xl pl-5'
+                content='Apartment'
+                propertyType={propertyType}
+                setPropertyType={setPropertyType}
               />
             </div>
-            <span className='h-0.5 w-7 bg-black/[0.5]'></span>
-            <div className='w-32 h-20 sm:w-40 p-3 rounded-2xl flex flex-col border border-black/[.08]'>
-              <p className='text-xs'>Maximum</p>
-              <input
-                type='text'
-                placeholder='Ksh 100,000'
-                className='bg-transparent pl-0 text-black outline-none w-24 sm:w-28 border-none h-full xl:text-sm'
+            <div className='mt-8 flex gap-8'>
+              <PropertyType
+                icon='fa-solid fa-house-flood-water text-3xl pl-5'
+                content='Townhouse'
+                propertyType={propertyType}
+                setPropertyType={setPropertyType}
+              />
+              <PropertyType
+                icon='fa-solid fa-hotel text-3xl pl-5'
+                content='Hotel'
+                propertyType={propertyType}
+                setPropertyType={setPropertyType}
               />
             </div>
           </div>
-        </div>
-        <div className='mt-10 bg-black/[0.4] w-full h-[0.5px]'></div>
-        <div className='mt-5'>
-          <p className='font-bold xl:text-sm'>Rooms and Beds</p>
-          <NumberOfRooms
-            rooms={rooms}
-            title='Bedrooms'
-            currentRoom={bedrooms}
-            setCurrentRoom={setBedrooms}
+          <AmenitiesList
+            title='Amenities'
+            amenitiesList={amenitiesList}
+            amenities={amenities}
+            setAmenities={setAmenities}
+            topAmenities={true}
+            showMore={showMore}
+            setShowMore={setShowMore}
           />
-          <div className='mt-5'></div>
-          <NumberOfRooms
-            rooms={rooms}
-            title='Bathrooms'
-            currentRoom={bathrooms}
-            setCurrentRoom={setBathrooms}
-          />
+          {showMore && (
+            <>
+              <AmenitiesList
+                title='Essentials'
+                amenitiesList={essentialsList}
+                amenities={essentials}
+                setAmenities={setEssentials}
+                topAmenities={false}
+                setShowMore={() => {}}
+              />
+              <AmenitiesList
+                title='Features'
+                amenitiesList={featuresList}
+                amenities={features}
+                setAmenities={setFeatures}
+                topAmenities={false}
+                setShowMore={() => {}}
+              />
+            </>
+          )}
+          {showMore && (
+            <p
+              className='underline mt-7 xl:text-sm mb-32 cursor-pointer'
+              onClick={() => setShowMore(false)}
+            >
+              Show less
+            </p>
+          )}
         </div>
-        <div className='mt-14 bg-black/[0.4] w-full h-[1px]'></div>
-        <div className='mt-5'>
-          <p className='font-bold xl:text-sm'>Property Type</p>
-          <div className='mt-7 flex gap-8'>
-            <PropertyType
-              icon='fa-solid fa-house text-3xl pl-5'
-              content='House'
-              propertyType={propertyType}
-              setPropertyType={setPropertyType}
-            />
-            <PropertyType
-              icon='fa-solid fa-building text-3xl pl-5'
-              content='Apartment'
-              propertyType={propertyType}
-              setPropertyType={setPropertyType}
-            />
-          </div>
-          <div className='mt-8 flex gap-8'>
-            <PropertyType
-              icon='fa-solid fa-house-flood-water text-3xl pl-5'
-              content='Townhouse'
-              propertyType={propertyType}
-              setPropertyType={setPropertyType}
-            />
-            <PropertyType
-              icon='fa-solid fa-hotel text-3xl pl-5'
-              content='Hotel'
-              propertyType={propertyType}
-              setPropertyType={setPropertyType}
-            />
-          </div>
-        </div>
-        <AmenitiesList
-          title='Amenities'
-          amenitiesList={amenitiesList}
-          amenities={amenities}
-          setAmenities={setAmenities}
-          topAmenities={true}
-          showMore={showMore}
-          setShowMore={setShowMore}
-        />
-        {showMore && (
-          <>
-            <AmenitiesList
-              title='Essentials'
-              amenitiesList={essentialsList}
-              amenities={essentials}
-              setAmenities={setEssentials}
-              topAmenities={false}
-              setShowMore={() => {}}
-            />
-            <AmenitiesList
-              title='Features'
-              amenitiesList={featuresList}
-              amenities={features}
-              setAmenities={setFeatures}
-              topAmenities={false}
-              setShowMore={() => {}}
-            />
-          </>
-        )}
-        {showMore && (
-          <p
-            className='underline mt-7 xl:text-sm mb-32 cursor-pointer'
-            onClick={() => setShowMore(false)}
-          >
-            Show less
-          </p>
-        )}
       </div>
-      <footer className='absolute w-full bottom-0 mt-5 px-6 py-4 border-t border-black/[.2] h-20'>
+      <footer className='absolute bg-white w-full bottom-0 mt-5 px-6 py-4 border-t border-black/[.2] h-20'>
         <div className='flex items-center justify-between'>
           <p
             className='underline font-medium cursor-pointer xl:text-sm'

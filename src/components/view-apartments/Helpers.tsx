@@ -151,7 +151,7 @@ export const WishListModal = ({
 
   return (
     <div className='justify-center items-end md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none text-black'>
-      <div className='relative w-full md:w-[60%] mt-6 mx-auto'>
+      <div className='relative w-full md:w-[60%] xl:w-[50%] mt-6 mx-auto'>
         {/*content*/}
         <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
           {/*header*/}
@@ -230,7 +230,7 @@ export const CreateWishListModal = ({
       }}
     >
       <div className='justify-center items-end md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none text-black'>
-        <div className='relative w-full md:w-[60%] mt-6 mx-auto'>
+        <div className='relative w-full md:w-[60%] xl:w-[50%] mt-6 mx-auto'>
           {/*content*/}
           <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
             {/*header*/}
