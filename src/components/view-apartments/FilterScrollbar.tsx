@@ -167,7 +167,7 @@ const FilterScrollbar = ({
           {/* The above div is meant to make it easier to give the sticky header a max-width of 1400px */}
           {/* ... */}
           <div
-            className={`w-full 2xl:max-w-[1400px] 2xl:mx-auto mt-3 xl:mt-0 mb-2 md:mb-3 xl:mb-8 2xl:mb-4 transition-all ease-in-out duration-1000 2xl:duration-[1.5s] ${
+            className={`w-full 2xl:max-w-[1400px] 3xl:max-w-[1700px]  2xl:mx-auto mt-3 xl:mt-0 mb-2 md:mb-3 xl:mb-8 2xl:mb-4 transition-all ease-in-out duration-1000 2xl:duration-[1.5s] ${
               search.length ? 'md:px-3 lg:px-5' : ''
             } ${
               showStickyHeader

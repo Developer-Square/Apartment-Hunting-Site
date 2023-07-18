@@ -5,7 +5,7 @@ const Footer = () => {
   };
 
   return (
-    <div className='mt-16 border-t-2 2xl:max-w-[1400px] 2xl:mx-auto border-[#5D5D5D]'>
+    <div className='mt-16 border-t-2 2xl:max-w-[1400px] 3xl:max-w-[1700px] 2xl:mx-auto border-[#5D5D5D]'>
       <div className='lg:flex flex-col'>
         <div className='mt-3.5 flex flex-col lg:flex-row lg:justify-around items-center'>
           <p className='text-white/[.7] text-sm xl:text-xs'>

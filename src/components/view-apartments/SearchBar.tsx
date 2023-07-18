@@ -42,7 +42,7 @@ const SearchBar = ({
         ...props,
       }}
     >
-      <div className='mt-5 ml-5 flex max-w-[330px] xm:max-w-[360px]'>
+      <div className='mt-5 ml-5 flex max-w-[330px] xm:max-w-[360px] 2xl:max-w-[100%] 2xl:w-[50%] 2xl:mx-auto'>
         <div
           className='border border-black rounded-full w-7 h-7 flex items-center justify-center cursor-pointer'
           onClick={() => setShow(false)}
@@ -53,7 +53,7 @@ const SearchBar = ({
           Search Form
         </p>
       </div>
-      <div className=' bg-[#EBEBEB] relative w-[92%] h-[60px] mt-7 mx-auto rounded-xl mb-5 flex items-center'>
+      <div className=' bg-[#EBEBEB] relative w-[92%] 2xl:w-[50%] h-[60px] mt-7 mx-auto rounded-xl mb-5 flex items-center'>
         <i className='fa-solid fa-magnifying-glass text-black pl-4'></i>
         <input
           type='text'
@@ -64,7 +64,7 @@ const SearchBar = ({
           className='bg-transparent px-2 text-black outline-none border-none w-full h-full xl:text-sm'
         />
       </div>
-      <div className='mt-5 ml-5 sm:mx-auto w-full sm:w-[92%]'>
+      <div className='mt-5 ml-5 sm:mx-auto w-full sm:w-[92%] 2xl:w-[50%] xl:mr-auto'>
         <p className='text-sm font-bold xl:text-xs'>Recent Searches</p>
         <div className='mt-3 flex cursor-pointer'>
           <div className='h-12 w-12 xl:h-10 xl:w-10 bg-[#EBEBEB] flex items-center justify-center rounded-xl'>

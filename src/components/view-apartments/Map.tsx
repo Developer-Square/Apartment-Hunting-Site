@@ -57,7 +57,7 @@ const Map = ({
       className={`${
         showFullMap
           ? 'lg:w-full lg:h-screen'
-          : 'lg:w-[460px] xl:w-[473px] 2xl:w-[568px]'
+          : 'lg:w-[460px] xl:w-[473px] 2xl:w-[568px] 3xl:w-[768px]'
       } relative h-[${mapDimension.height}px]`}
     >
       {!showMap && (
@@ -65,8 +65,8 @@ const Map = ({
           <div
             className={`hidden lg:flex sticky justify-center items-center  ${
               showFullMap
-                ? 'w-36 xl:w-32 xl:h-8 h-10 top-[20%] xl:top-[22%] left-[83%]'
-                : 'top-[20%] xl:top-[22%] left-[40%] xl:left-[32%] 2xl:left-[37%] w-8 h-8'
+                ? 'w-36 xl:w-32 xl:h-8 h-10 top-[20%] xl:top-[22%] left-[83%] 3xl:left-[76%]'
+                : 'top-[20%] xl:top-[22%] left-[40%] xl:left-[32%] 2xl:left-[37%] 3xl:left-[43%] w-8 h-8'
             } bg-white transition-all ease-in-out duration-500 text-black font-semibold z-[1] shadow-2xl rounded-lg xl:text-sm cursor-pointer`}
             onClick={() => setShowFullMap((prevState) => !prevState)}
           >

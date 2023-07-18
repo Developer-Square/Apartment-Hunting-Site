@@ -46,7 +46,7 @@ const Search = () => {
   };
 
   return (
-    <div className='absolute rounded-l-[10px] left-[4.4%] rounded-b-[10px] top-[6.62%] w-[377px] xl:w-[470px] h-[697px] xl:h-[871px] 2xl:w-[529px] 2xl:h-[981px] bg-white text-black'>
+    <div className='absolute rounded-l-[10px] left-[4.4%] rounded-b-[10px] top-[6.62%] w-[377px] xl:w-[470px] h-[697px] xl:h-[871px] 2xl:w-[529px] 3xl:w-[650px] 2xl:h-[981px] bg-white text-black'>
       <div className='relative flex flex-col items-center pl-10 pt-[40%] 2xl:pt-[35%] pr-9'>
         <h3 className='text-4xl font-semibold w-[260px] xl:w-[360px] mr-auto'>
           House rentals with pools in Kenya
