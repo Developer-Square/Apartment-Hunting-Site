@@ -1,5 +1,5 @@
 import { animated, useSpring } from '@react-spring/web';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import UserProfileModal from './UserProfileModal';
 import { ApartmentInfoProps } from './Apartments';
 import { Navigation, Pagination } from 'swiper';
@@ -12,7 +12,13 @@ import ViewApartments4 from '@/assets/view-apartments/view-apartments-4.webp';
 import ViewApartments5 from '@/assets/view-apartments/view-apartments-5.webp';
 import { WishListModal, CreateWishListModal, FilterBackdrop } from './Helpers';
 
-const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
+const SingleApartment = ({
+  info,
+  setShowFilterBackdrop,
+}: {
+  info: ApartmentInfoProps;
+  setShowFilterBackdrop: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const { title, subtitle, propertyManager, price } = info;
   const viewApartments = [
     ViewApartments1,
@@ -27,6 +33,7 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
   const [wishListModal, setWishListModal] = useState(false);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [wishlist, setWishlist] = useState<string[]>([]);
+  const [isLargerScreen, setIsLargerScreen] = useState(false);
 
   const { x: apartmentX } = useSpring({
     from: { x: 0 },
@@ -34,17 +41,27 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
     config: { duration: 1000 },
   });
 
+  useEffect(() => {
+    if (window.innerWidth >= 1024) {
+      setIsLargerScreen(true);
+      return;
+    }
+    setIsLargerScreen(false);
+  }, []);
+
   const handleWishListModal = () => {
     if (isSaved) {
       setIsSaved(false);
       return;
     }
+    setShowFilterBackdrop((prevState) => !prevState);
     setWishListModal((prevState) => !prevState);
     setIsSaved((prevState) => !prevState);
   };
 
   const hanldeCreateWishList = (name: string) => {
     setWishlist([...wishlist, name]);
+    setShowFilterBackdrop(true);
     setShowCreateModal(false);
     setWishListModal(true);
   };
@@ -52,9 +69,10 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
   return (
     <>
       {/* Show the Backdrop whenever any of the modals are open */}
-      {showModal || wishListModal || showCreateModal ? (
-        <FilterBackdrop show={true} />
-      ) : null}
+      {showModal || wishListModal || showCreateModal
+        ? // Only show the backdrop in 768px view and below.
+          !isLargerScreen && <FilterBackdrop show={true} />
+        : null}
       {showModal ? (
         <UserProfileModal
           propertyManager={propertyManager}
@@ -62,6 +80,7 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
           occupation='Hospitality'
           location='Utawala, Nairobi'
           setShowModal={setShowModal}
+          setShowFilterBackdrop={setShowFilterBackdrop}
         />
       ) : null}
       {wishListModal ? (
@@ -69,6 +88,7 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
           wishlist={wishlist}
           setShowCreateModal={setShowCreateModal}
           setWishListModal={setWishListModal}
+          setShowFilterBackdrop={setShowFilterBackdrop}
         />
       ) : null}
       {showCreateModal ? (
@@ -76,21 +96,25 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
           showCreateModal={showCreateModal}
           handleCreateWishList={hanldeCreateWishList}
           setShowCreateModal={setShowCreateModal}
+          setShowFilterBackdrop={setShowFilterBackdrop}
         />
       ) : null}
 
       <div
-        className='mb-10 px-12 sm:px-6 lg:px-3'
+        className='mb-10 px-12 sm:px-6 lg:pr-5 lg:pl-3 xl:px-3'
         onMouseEnter={() => setIsApartmentHovered(true)}
         onMouseLeave={() => setIsApartmentHovered(false)}
       >
-        <div className='relative w-full h-80'>
+        <div className='relative w-full h-80 lg:h-72 xl:h-[267px]'>
           <Swiper
             modules={[Navigation, Pagination]}
             navigation={true}
             pagination={{ clickable: true }}
             spaceBetween={0}
             slidesPerView={1}
+            style={{
+              height: window.innerWidth >= 1024 ? '267px' : '100%',
+            }}
             className='w-full h-full'
           >
             {viewApartments.map((apartment, index) => (
@@ -106,7 +130,6 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
                       <i className='absolute top-2.5 text-black cursor-pointer right-4 text-2xl fa-regular fa-heart'></i>
                     )}
                   </div>
-
                   <img
                     src={apartment}
                     className='w-full h-full rounded-xl'
@@ -120,14 +143,17 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
                       }),
                     }}
                     className='absolute bottom-3.5 cursor-pointer left-2.5 h-[76px] w-[70px] flex preview z-10'
-                    onClick={() => setShowModal(true)}
+                    onClick={() => {
+                      setShowFilterBackdrop(true);
+                      setShowModal(true);
+                    }}
                   >
                     <div className='h-full w-3 border-[1.8px] border-r-[#C6B1A5]/[.6]'></div>
                     <div className='flex h-full w-full justify-center items-center'>
                       <img
                         src={propertyManager}
                         alt='profile'
-                        className='rounded-full w-10 h-10'
+                        className='rounded-full w-10 h-10 xl:w-8 xl:h-8'
                       />
                     </div>
                   </animated.div>
@@ -137,9 +163,9 @@ const SingleApartment = ({ info }: { info: ApartmentInfoProps }) => {
           </Swiper>
         </div>
         <div className='mt-3.5'>
-          <p className='font-bold'>{title}</p>
-          <p className='opacity-60 mt-1.5 text-sm'>{subtitle}</p>
-          <p className='mt-1.5'>
+          <p className='font-bold xl:font-semibold xl:text-xs'>{title}</p>
+          <p className='opacity-60 mt-1.5 text-sm xl:text-xs'>{subtitle}</p>
+          <p className='mt-1.5 xl:text-xs'>
             <span className='text-[#1ACA17]'>Ksh </span>
             {price}
           </p>

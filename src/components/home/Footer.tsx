@@ -5,16 +5,16 @@ const Footer = () => {
   };
 
   return (
-    <div className='mt-16 border-t-2 border-[#5D5D5D]'>
+    <div className='mt-16 border-t-2 2xl:max-w-[1400px] 3xl:max-w-[1700px] 2xl:mx-auto border-[#5D5D5D]'>
       <div className='lg:flex flex-col'>
         <div className='mt-3.5 flex flex-col lg:flex-row lg:justify-around items-center'>
-          <p className='text-white/[.7] text-sm'>
+          <p className='text-white/[.7] text-sm xl:text-xs'>
             © 2023 TecHive LLP. All rights reserved.
           </p>
-          <p className='text-white/[.7] text-sm cursor-pointer sm:mt-2 lg:mt-0'>
+          <p className='text-white/[.7] text-sm xl:text-xs cursor-pointer sm:mt-2 lg:mt-0'>
             Terms of Service
           </p>
-          <p className='text-white/[.7] text-sm cursor-pointer sm:mt-2 lg:mt-0'>
+          <p className='text-white/[.7] text-sm xl:text-xs cursor-pointer sm:mt-2 lg:mt-0'>
             Privacy Policy
           </p>
           <div className='sm:mt-2 lg:mt-0'>
@@ -27,7 +27,7 @@ const Footer = () => {
           className='flex justify-center items-center my-3.5 cursor-pointer'
           onClick={() => topFunction()}
         >
-          <p>Back to top</p>
+          <p className='xl:text-xs'>Back to top</p>
           <i className='fa-solid fa-arrow-up ml-2'></i>
         </div>
       </div>
