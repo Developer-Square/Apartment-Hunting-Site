@@ -16,12 +16,20 @@ const SearchBar = ({
     from: { y: -100, opacity: 0 },
     to: { y: show ? 0 : 100, opacity: show ? 1 : 0 },
   });
-  const [largerScreen, setLargerScreen] = useState(false);
+  const [largerScreen, setLargerScreen] = useState('100%');
 
   useEffect(() => {
-    if (window.innerWidth >= 768) {
-      setLargerScreen(true);
+    if (window.innerWidth >= 768 && window.innerWidth < 1279) {
+      setLargerScreen('35%');
+      return;
     }
+
+    if (window.innerWidth >= 1280) {
+      setLargerScreen('45%');
+      return;
+    }
+
+    setLargerScreen('100%');
   }, []);
 
   const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -36,7 +44,7 @@ const SearchBar = ({
         position: 'absolute',
         top: show ? 0 : window.innerHeight,
         backgroundColor: '#FFFFFF',
-        height: largerScreen ? '35%' : '100%',
+        height: largerScreen,
         width: '100%',
         zIndex: '10',
         ...props,

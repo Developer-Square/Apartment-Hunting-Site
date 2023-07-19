@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   Apartments,
   FilterBackdrop,
@@ -21,6 +21,7 @@ const ViewApartmentsPage = () => {
   // Show FilterBackdrop for the apartment modals at 1024px view
   const [showFilterBackdrop, setShowFilterBackdrop] = useState(false);
   const [showFullMap, setShowFullMap] = useState(false);
+  const [showFilterScrollbar, setShowFilterScrollbar] = useState(false);
 
   useEffect(() => {
     if (window.innerWidth >= 768) {
@@ -45,6 +46,15 @@ const ViewApartmentsPage = () => {
       setShowStickyHeader(false);
     });
   }, [showStickyHeader]);
+
+  // Hide the filter scrollbar when any of the modals are open.
+  useMemo(() => {
+    if (showSearhBar || showFilters || showFilterBackdrop) {
+      setShowFilterScrollbar(true);
+    } else {
+      setShowFilterScrollbar(false);
+    }
+  }, [showSearhBar, showFilters, showFilterBackdrop]);
 
   const { topFunction } = useBackToTop();
 
@@ -106,7 +116,9 @@ const ViewApartmentsPage = () => {
           {window.innerWidth >= 768 || !search.length ? (
             <FilterScrollbar
               search={search}
-              showFilters={showFilters || showFilterBackdrop}
+              showFilters={
+                window.innerWidth >= 1024 ? showFilterScrollbar : showFilters
+              }
               handleFilters={handleFilters}
               showStickyHeader={showStickyHeader}
             />

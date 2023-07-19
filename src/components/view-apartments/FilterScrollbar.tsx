@@ -151,7 +151,6 @@ const FilterScrollbar = ({
 
     setSlidesPerView(4.6);
   }, [search.length]);
-  console.log(showFilters);
 
   return (
     <>
