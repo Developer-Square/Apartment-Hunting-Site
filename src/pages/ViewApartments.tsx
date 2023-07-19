@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   Apartments,
   FilterBackdrop,
@@ -9,18 +9,25 @@ import {
   PopupMenu,
   FilterScrollbar,
 } from '../components';
-import { NavBarMenu } from '@/components/view-apartments/Helpers';
+import { useBackToTop } from 'src/hooks/useBackToTop';
+import Navbar from '@/components/view-apartments/Navbar';
 const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
   const [showFilters, setshowFilters] = useState(false);
   const [search, setSearch] = useState('');
   const [hideMenu, setHideMenu] = useState(false);
+  const [showStickyHeader, setShowStickyHeader] = useState(false);
   const [setshowRestOfPage, setSetshowRestOfPage] = useState(true);
+  // Show FilterBackdrop for the apartment modals at 1024px view
+  const [showFilterBackdrop, setShowFilterBackdrop] = useState(false);
+  const [showFullMap, setShowFullMap] = useState(false);
+  const [showFilterScrollbar, setShowFilterScrollbar] = useState(false);
 
   useEffect(() => {
     if (window.innerWidth >= 768) {
       setHideMenu(true);
     }
+
     if (showSearhBar || showFilters) {
       if (window.innerWidth < 768) {
         setSetshowRestOfPage(false);
@@ -30,30 +37,53 @@ const ViewApartmentsPage = () => {
     setSetshowRestOfPage(true);
   }, [showSearhBar, showFilters]);
 
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 21) {
+        setShowStickyHeader(true);
+        return;
+      }
+      setShowStickyHeader(false);
+    });
+  }, [showStickyHeader]);
+
+  // Hide the filter scrollbar when any of the modals are open.
+  useMemo(() => {
+    if (showSearhBar || showFilters || showFilterBackdrop) {
+      setShowFilterScrollbar(true);
+    } else {
+      setShowFilterScrollbar(false);
+    }
+  }, [showSearhBar, showFilters, showFilterBackdrop]);
+
+  const { topFunction } = useBackToTop();
+
+  const handleFilters = () => {
+    setshowFilters(true);
+    topFunction();
+  };
+
+  const handleSearchBar = () => {
+    setshowSearhBar(true);
+    topFunction();
+  };
+
   return (
     <section className='apartments-page w-full h-full pt-5 text-black'>
-      <div className='w-full md:w-[92%] mb-4 sm:mb-6 md:mx-auto md:flex items-center justify-between'>
-        <div className=' bg-white relative xm:w-[360px] xm:h-14 sm:w-[92%] w-80 h-12 md:w-[80%] md:mx-0 md:h-11 mx-auto rounded-3xl xm:rounded-[32px] flex items-center'>
-          <i className='fa-solid fa-magnifying-glass text-black sm:text-lg pl-4'></i>
-          <div
-            className='flex flex-col pl-4 cursor-pointer'
-            onClick={() => setshowSearhBar(true)}
-          >
-            <p className='text-sm sm:text-base md:text-sm font-bold'>
-              {search.length ? search : 'Search location...'}
-            </p>
-            <p className='text-xs sm:text-sm md:text-xs text-gray-500'>
-              Click here
-            </p>
-          </div>
-          <div
-            className='rounded-full md:hidden h-7 w-7 border border-black flex items-center justify-center cursor-pointer ml-auto mr-2.5'
-            onClick={() => setshowFilters(true)}
-          >
-            <i className='fa-solid fa-sliders text-black sm:text-lg p-3'></i>
-          </div>
-        </div>
-        <NavBarMenu />
+      {/* The following is meant to make it easier to give the sticky header a max-width of 1400px */}
+      <div
+        className={`w-full ${
+          showStickyHeader
+            ? 'fixed 2xl:flex 2xl:justify-center z-10 h-[90px] bg-[#141b1f]'
+            : ''
+        }`}
+      >
+        <Navbar
+          search={search}
+          showStickyHeader={showStickyHeader}
+          handleFilters={handleFilters}
+          handleSearchBar={handleSearchBar}
+        />
       </div>
       {/* Hide the SearchBar and Filters components when the other is open */}
       {showSearhBar && (
@@ -76,11 +106,34 @@ const ViewApartmentsPage = () => {
       {/* Hide other components when the SearchBar or Filters is open while on tablet and mobile screens, to reduce the height of the page */}
       {setshowRestOfPage ? (
         <div className='text-white'>
-          {!search.length ? (
-            <FilterScrollbar setshowFilters={setshowFilters} />
+          {/* Show FilterBackdrop for the apartment modals at 1024px view */}
+          {showFilterBackdrop && window.innerWidth >= 1024 ? (
+            <FilterBackdrop show={true} />
           ) : null}
-          {search.length ? <Map /> : null}
-          <Apartments search={search} />
+          {/* When a user is on smaller screen(640px to 767px), hide the FilterScrollBar when there's some search text */}
+          {/* But when a user is on a larger screen(768px and above), show the
+          FilterScrollBar whether there's some search text or not.   */}{' '}
+          {window.innerWidth >= 768 || !search.length ? (
+            <FilterScrollbar
+              search={search}
+              showFilters={
+                window.innerWidth >= 1024 ? showFilterScrollbar : showFilters
+              }
+              handleFilters={handleFilters}
+              showStickyHeader={showStickyHeader}
+            />
+          ) : null}
+          <div className='w-full lg:flex lg:mx-2 2xl:max-w-[1400px] 3xl:max-w-[1700px] 2xl:mx-auto'>
+            {search.length ? (
+              <Map showFullMap={showFullMap} setShowFullMap={setShowFullMap} />
+            ) : null}
+            {!showFullMap ? (
+              <Apartments
+                search={search}
+                setShowFilterBackdrop={setShowFilterBackdrop}
+              />
+            ) : null}
+          </div>
           {!hideMenu && <PopupMenu />}
           <Footer />
         </div>

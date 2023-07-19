@@ -45,24 +45,65 @@ const apartmentInfo: ApartmentInfoProps[] = [
     subtitle: 'Serene Skyline Retreat',
     price: '32,000',
   },
+  {
+    propertyManager: PropertyManager5,
+    title: 'Mawingu Gardens apartment',
+    subtitle: 'Serene Skyline Retreat',
+    price: '32,000',
+  },
+  {
+    propertyManager: PropertyManager5,
+    title: 'Mawingu Gardens apartment',
+    subtitle: 'Serene Skyline Retreat',
+    price: '32,000',
+  },
+  {
+    propertyManager: PropertyManager5,
+    title: 'Mawingu Gardens apartment',
+    subtitle: 'Serene Skyline Retreat',
+    price: '32,000',
+  },
+  {
+    propertyManager: PropertyManager5,
+    title: 'Mawingu Gardens apartment',
+    subtitle: 'Serene Skyline Retreat',
+    price: '32,000',
+  },
 ];
 
-const Apartments = ({ search }: { search: string }) => {
+const Apartments = ({
+  search,
+  setShowFilterBackdrop,
+}: {
+  search: string;
+  setShowFilterBackdrop: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   return (
-    <div>
+    <div className='lg:flex flex-1 flex-col'>
       {search.length ? (
         <>
           <div className='h-9 flex flex-col justify-center items-center'>
-            <span className='w-10 h-1 bg-gray-500 rounded-lg'></span>
+            <span className='w-10 h-1 xl:w-8 bg-gray-500 rounded-lg'></span>
           </div>
-          <p className='text-sm w-full text-center font-medium mb-4'>
+          <p className='text-sm xl:text-xs w-full text-center font-medium mb-4'>
             Over 1000 apartments
           </p>
         </>
       ) : null}
-      <div className='w-full sm:grid grid-cols-2'>
+      {/* Show 3 columns when the map is not visible and 2 columns when the map is visible */}
+      <div
+        className={`w-full sm:grid grid-cols-2 ${
+          search.length
+            ? 'lg:grid-cols-2 xl:grid-cols-3 lg:h-[80vh] overflow-y-scroll'
+            : 'lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5'
+        }`}
+      >
         {apartmentInfo.map((info, index) => (
-          <SingleApartment key={index} info={info} />
+          <SingleApartment
+            key={index}
+            setShowFilterBackdrop={setShowFilterBackdrop}
+            info={info}
+          />
         ))}
       </div>
       <Pagination />

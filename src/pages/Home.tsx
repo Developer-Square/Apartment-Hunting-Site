@@ -20,7 +20,7 @@ const Home = () => {
   return (
     <section className='w-full h-full text-white'>
       {/* Landing Section */}
-      <div className='relative w-full h-full 2xl:w-[1440px] mx-auto'>
+      <div className='relative w-full h-full 2xl:w-[1440px] 3xl:w-[1700px] mx-auto'>
         <picture>
           <source media='(max-width: 639px)' srcSet={LandingPage} />
           <source
@@ -31,7 +31,7 @@ const Home = () => {
           <img
             src={LandingPage}
             alt='Landing'
-            className='w-full h-auto md:h-[800px] lg:h-auto 2xl:h-[1440px]'
+            className='w-full h-auto md:h-[800px] lg:h-auto 2xl:h-[1440px] 3xl:max-w-[1700px]'
           />
         </picture>
         <div className='max-w-[330px] xm:max-w-[360px] w-full'>
@@ -55,7 +55,7 @@ const Home = () => {
       {/* Same as above, hide other components when the Menu is open */}
       {!show ? (
         <div className='amenities pt-10 xm:pt-14 sm:pt-8'>
-          <div className='max-w-[330px] xm:max-w-[360px] sm:max-w-[600px] md:max-w-[720px] lg:max-w-[850px] xl:max-w-[1045px] 2xl:max-w-[1200px] mx-auto w-full'>
+          <div className='max-w-[330px] xm:max-w-[360px] sm:max-w-[600px] md:max-w-[720px] lg:max-w-[850px] xl:max-w-[1045px] 2xl:max-w-[1200px] 3xl:max-w-[1700px] mx-auto w-full'>
             <PopularAmenitiesSection />
             <WhatCanYouDoSection />
             <ContactUsSection />

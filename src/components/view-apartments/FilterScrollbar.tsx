@@ -53,65 +53,181 @@ const filters = [
   },
 ];
 
-const FilterScrollbar = ({
-  setshowFilters,
+const CustomFilter = ({
+  homeFilter,
+  setHomeFilter,
+  setSelectedFilter,
 }: {
-  setshowFilters: React.Dispatch<React.SetStateAction<boolean>>;
+  homeFilter: boolean;
+  setHomeFilter: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedFilter: React.Dispatch<
+    React.SetStateAction<Record<string, string>>
+  >;
+}) => {
+  return (
+    <div className='flex md:mb-3.5 lg:mb-0'>
+      <div
+        className={`${
+          homeFilter ? 'text-[#f0efe9]' : 'text-[#f0efe9]/[.6]'
+        } flex w-[100px] lg:w-[88px] flex-col items-center cursor-pointer`}
+        onClick={() => {
+          setSelectedFilter({
+            icon: '',
+            text: '',
+          });
+          setHomeFilter(true);
+        }}
+      >
+        <i className='fa-solid fa-house text-[26px] mb-1'></i>
+        <p
+          className={`text-xs xl:text-[13px] pb-1 ${
+            homeFilter ? 'border-b border-[#f0efe9]' : ''
+          } tracking-wider font-semibold mt-0.5`}
+        >
+          Your Search
+        </p>
+      </div>
+      <div className='border-r border-2 border-[#f0efe9]/[.8] h-14 xl:h-10 ml-4 lg:ml-7'></div>
+    </div>
+  );
+};
+
+const FilterScrollbar = ({
+  search,
+  showFilters,
+  handleFilters,
+  showStickyHeader,
+}: {
+  search: string;
+  showFilters: boolean;
+  handleFilters: () => void;
+  showStickyHeader: boolean;
 }) => {
   const [selectedFilter, setSelectedFilter] = useState<Record<string, string>>(
     filters[0]
   );
+  const [homeFilter, setHomeFilter] = useState(false);
   const [slidesPerView, setSlidesPerView] = useState(4.6);
+  const [isLargerScreen, setIsLargerScreen] = useState(false);
 
   useEffect(() => {
-    if (window.innerWidth >= 640) {
+    if (window.innerWidth >= 768) {
+      setIsLargerScreen(true);
+      return;
+    }
+    setIsLargerScreen(false);
+  }, []);
+
+  useEffect(() => {
+    if (search.length) {
+      setSelectedFilter({
+        icon: '',
+        text: '',
+      });
+      setHomeFilter(true);
+    }
+  }, [search.length]);
+
+  useEffect(() => {
+    if (window.innerWidth >= 640 && window.innerWidth < 1023) {
       setSlidesPerView(6);
       return;
     }
+
+    if (window.innerWidth >= 1024 && window.innerWidth < 1279) {
+      setSlidesPerView(8);
+      return;
+    }
+
+    if (window.innerWidth >= 1280 && window.innerWidth < 1535) {
+      setSlidesPerView(9);
+      return;
+    }
+
+    if (window.innerWidth >= 1536) {
+      setSlidesPerView(10);
+      return;
+    }
+
     setSlidesPerView(4.6);
-  }, []);
+  }, [search.length]);
 
   return (
-    <div className='w-full mt-3 mb-10 sm:pb-3 flex justify-around items-center shadow-md shadow-[#f0efe9]/[.2]'>
-      <Swiper
-        spaceBetween={14}
-        slidesPerView={slidesPerView}
-        modules={[Navigation]}
-        navigation
-        className='md:w-[85%]'
-      >
-        {filters.map((filter, index) => (
-          <SwiperSlide key={index}>
-            <div
-              className={`${
-                selectedFilter.text === filter.text
-                  ? 'text-[#f0efe9]'
-                  : 'text-[#f0efe9]/[.6]'
-              } flex flex-col items-center cursor-pointer`}
-              onClick={() => setSelectedFilter(filter)}
+    <>
+      {/* Hide the FilterScrollbar component when showing the filters modal */}
+      {!showFilters ? (
+        <div
+          className={`w-full shadow-md shadow-[#f0efe9]/[.2] ${
+            showStickyHeader
+              ? 'fixed 2xl:flex 2xl:justify-center top-[90px] h-auto 2xl:h-[107px] z-10 bg-[#141b1f] transition-all ease-in-out duration-1000 2xl:duration-[1.5s]'
+              : ''
+          }`}
+        >
+          {/* The above div is meant to make it easier to give the sticky header a max-width of 1400px */}
+          {/* ... */}
+          <div
+            className={`w-full 2xl:max-w-[1400px] 3xl:max-w-[1700px]  2xl:mx-auto mt-3 xl:mt-0 mb-2 md:mb-3 xl:mb-8 2xl:mb-4 transition-all ease-in-out duration-1000 2xl:duration-[1.5s] ${
+              search.length ? 'md:px-3 lg:px-5' : ''
+            } ${
+              showStickyHeader
+                ? 'fixed top-[60px] xl:top-[80px] xm:pt-4.5 pt-5 md:pt-2.5 xl:pt-1 z-10 bg-[#141b1f]'
+                : ''
+            } sm:pb-3 xl:pb-0 flex justify-around items-center`}
+          >
+            {search.length ? (
+              <CustomFilter
+                homeFilter={homeFilter}
+                setHomeFilter={setHomeFilter}
+                setSelectedFilter={setSelectedFilter}
+              />
+            ) : null}
+            <Swiper
+              spaceBetween={14}
+              slidesPerView={slidesPerView}
+              modules={[Navigation]}
+              navigation={isLargerScreen}
+              className='md:w-[83%] xl:pt-3.5 2xl:pt-5'
             >
-              <i className={filter.icon}></i>
-              <p
-                className={`text-xs pb-1 ${
-                  selectedFilter.text === filter.text
-                    ? 'border-b border-[#f0efe9]'
-                    : ''
-                } tracking-wider font-semibold mt-0.5`}
-              >
-                {filter.text}
-              </p>
+              {filters.map((filter, index) => (
+                <SwiperSlide key={index}>
+                  <div
+                    className={`${
+                      selectedFilter.text === filter.text
+                        ? 'text-[#f0efe9]'
+                        : 'text-[#f0efe9]/[.6]'
+                    } flex flex-col items-center cursor-pointer`}
+                    onClick={() => {
+                      setHomeFilter(false);
+                      setSelectedFilter(filter);
+                    }}
+                  >
+                    <i className={filter.icon}></i>
+                    <p
+                      className={`text-xs xl:text-[14px] pb-1 ${
+                        selectedFilter.text === filter.text
+                          ? 'border-b border-[#f0efe9]'
+                          : ''
+                      } tracking-wider font-semibold mt-0.5`}
+                    >
+                      {filter.text}
+                    </p>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <div
+              className={`hidden md:flex ${
+                !search.length ? 'mr-8 2xl:ml-auto 2xl:mr-0' : ''
+              } cursor-pointer border border-[#f0efe9]/[.5] rounded-xl ml-3 items-center md:mb-3.5 lg:mb-0 gap-2 px-2.5 py-2`}
+              onClick={() => handleFilters()}
+            >
+              <i className='fa-solid fa-sliders xl:text-xs'></i>
+              <p className='text-sm xl:text-[14px]'>Filters</p>
             </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <div
-        className='hidden md:flex cursor-pointer mr-5 border border-[#f0efe9]/[.5] rounded-xl ml-2 items-center gap-2 px-2.5 py-2'
-        onClick={() => setshowFilters(true)}
-      >
-        <i className='fa-solid fa-sliders'></i>
-        <p className='text-sm'>Filters</p>
-      </div>
-    </div>
+          </div>
+        </div>
+      ) : null}
+    </>
   );
 };
 
