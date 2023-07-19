@@ -5,7 +5,7 @@ const Pagination = () => {
   const [isLargerScreen, setIsLargerScreen] = useState(false);
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
-  const [itemOffset, setItemOffset] = useState(0);
+  const [, setItemOffset] = useState(0);
   const [activePage, setActivePage] = useState(1);
   const itemsPerPage = 5;
   const items = Array.from({ length: 100 }, (_, i) => `Item ${i + 1}`);

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
-import { useScrollDirection } from 'src/hooks/useScrollDirection';
 
 const filters = [
   {
@@ -158,8 +157,6 @@ const FilterScrollbar = ({
 
     setSlidesPerView(4.6);
   }, [search.length]);
-
-  const scrollDirection = useScrollDirection();
 
   return (
     <>
