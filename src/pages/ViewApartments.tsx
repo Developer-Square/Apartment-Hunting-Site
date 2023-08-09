@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import {
   Apartments,
   FilterBackdrop,
@@ -11,6 +11,7 @@ import {
 } from '../components';
 import { useBackToTop } from 'src/hooks/useBackToTop';
 import Navbar from '@/components/view-apartments/Navbar';
+import { ModalContext } from '@/context/modalContext';
 const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
   const [showFilters, setshowFilters] = useState(false);
@@ -22,22 +23,30 @@ const ViewApartmentsPage = () => {
   const [showFullMap, setShowFullMap] = useState(false);
   const [showFilterScrollbar, setShowFilterScrollbar] = useState(false);
 
-  useEffect(() => {
-    if (window.innerWidth >= 768) {
-      setHideMenu(true);
-    }
-  }, []);
+  const { showModal } = useContext(ModalContext);
 
   useEffect(() => {
-    // Stop outside scrolling when any of the following modals are open.
-    if (showSearhBar || showFilters) {
-      document.body.classList.add('body-style');
+    if (window.innerWidth >= 768) {
       setHideMenu(true);
       return;
     }
     setHideMenu(false);
+  }, []);
+
+  useEffect(() => {
+    // Stop outside scrolling when any of the following modals are open.
+    if (showSearhBar || showFilters || showModal) {
+      document.body.classList.add('body-style');
+      setHideMenu(true);
+      return;
+    }
+
+    // Hide the popup menu on larger screens.
+    if (window.innerWidth <= 768) {
+      setHideMenu(false);
+    }
     document.body.classList.remove('body-style');
-  }, [showSearhBar, showFilters]);
+  }, [showSearhBar, showFilters, showModal]);
 
   useEffect(() => {
     window.addEventListener('scroll', () => {

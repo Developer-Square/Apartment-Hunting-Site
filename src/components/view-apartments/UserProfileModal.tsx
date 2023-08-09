@@ -1,4 +1,4 @@
-import React, { SetStateAction } from 'react';
+import React from 'react';
 
 const UserProfileModal = ({
   setShowModal,
@@ -8,7 +8,7 @@ const UserProfileModal = ({
   location,
   setShowFilterBackdrop,
 }: {
-  setShowModal: React.Dispatch<SetStateAction<boolean>>;
+  setShowModal: (showModal: boolean) => void;
   propertyManager: string;
   name: string;
   occupation: string;
@@ -100,7 +100,6 @@ const UserProfileModal = ({
           </div>
         </div>
       </div>
-      <div className='opacity-25 fixed inset-0 z-40 bg-black'></div>
     </>
   );
 };

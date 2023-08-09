@@ -1,5 +1,5 @@
 import { animated, useSpring } from '@react-spring/web';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import UserProfileModal from './UserProfileModal';
 import { ApartmentInfoProps } from './Apartments';
 import { Navigation, Pagination } from 'swiper';
@@ -11,6 +11,7 @@ import ViewApartments3 from '@/assets/view-apartments/view-apartments-3.webp';
 import ViewApartments4 from '@/assets/view-apartments/view-apartments-4.webp';
 import ViewApartments5 from '@/assets/view-apartments/view-apartments-5.webp';
 import { WishListModal, CreateWishListModal, FilterBackdrop } from './Helpers';
+import { ModalContext } from '@/context/modalContext';
 
 const SingleApartment = ({
   info,
@@ -29,11 +30,12 @@ const SingleApartment = ({
   ];
   const [isApartmentHovered, setIsApartmentHovered] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
-  const [showModal, setShowModal] = useState(false);
   const [wishListModal, setWishListModal] = useState(false);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [wishlist, setWishlist] = useState<string[]>([]);
   const [isLargerScreen, setIsLargerScreen] = useState(false);
+
+  const { showModal, setShowModal } = useContext(ModalContext);
 
   const { x: apartmentX } = useSpring({
     from: { x: 0 },
