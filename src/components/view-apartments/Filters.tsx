@@ -52,15 +52,21 @@ const Filters = ({
     breakfast: false,
   });
   const [largerScreenWidth, setLargerScreenWidth] = useState('100%');
+  const [largerScreenHeight, setLargerScreenHeight] = useState('740px');
 
   useEffect(() => {
     if (window.innerWidth >= 768 && window.innerWidth < 1023) {
-      setLargerScreenWidth('640px');
+      setLargerScreenWidth('720px');
+      return;
     }
 
     if (window.innerWidth >= 1024) {
       setLargerScreenWidth('768px');
+      setLargerScreenHeight('647px');
+      return;
     }
+    setLargerScreenWidth('100%');
+    setLargerScreenHeight('740px');
   }, []);
 
   const clearAllFilters = () => {
@@ -97,11 +103,11 @@ const Filters = ({
         left: '50%',
         transform: 'translateX(-50%)',
         backgroundColor: '#FFFFFF',
-        height: '100vh',
+        height: largerScreenHeight,
         width: largerScreenWidth,
         zIndex: '10',
         borderRadius: '1rem',
-        overflowY: 'hidden',
+        overflow: 'hidden',
         ...props,
       }}
     >
@@ -226,7 +232,7 @@ const Filters = ({
           )}
         </div>
       </div>
-      <footer className='absolute bg-white w-full bottom-0 mt-5 px-6 py-4 border-t border-black/[.2] h-20'>
+      <footer className='absolute bg-white w-full bottom-0 mt-5 px-6 pt-3 border-t border-black/[.2] h-16'>
         <div className='flex items-center justify-between'>
           <p
             className='underline font-medium cursor-pointer xl:text-sm'

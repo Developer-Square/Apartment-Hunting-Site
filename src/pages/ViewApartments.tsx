@@ -17,7 +17,6 @@ const ViewApartmentsPage = () => {
   const [search, setSearch] = useState('');
   const [hideMenu, setHideMenu] = useState(false);
   const [showStickyHeader, setShowStickyHeader] = useState(false);
-  const [showRestOfPage, setshowRestOfPage] = useState(true);
   // Show FilterBackdrop for the apartment modals at 1024px view
   const [showFilterBackdrop, setShowFilterBackdrop] = useState(false);
   const [showFullMap, setShowFullMap] = useState(false);
@@ -27,14 +26,17 @@ const ViewApartmentsPage = () => {
     if (window.innerWidth >= 768) {
       setHideMenu(true);
     }
+  }, []);
 
+  useEffect(() => {
+    // Stop outside scrolling when any of the following modals are open.
     if (showSearhBar || showFilters) {
-      if (window.innerWidth < 768) {
-        setshowRestOfPage(false);
-        return;
-      }
+      document.body.classList.add('body-style');
+      setHideMenu(true);
+      return;
     }
-    setshowRestOfPage(true);
+    setHideMenu(false);
+    document.body.classList.remove('body-style');
   }, [showSearhBar, showFilters]);
 
   useEffect(() => {
@@ -104,40 +106,38 @@ const ViewApartmentsPage = () => {
         </>
       )}
       {/* Hide other components when the SearchBar or Filters is open while on tablet and mobile screens, to reduce the height of the page */}
-      {showRestOfPage ? (
-        <div className='text-white'>
-          {/* Show FilterBackdrop for the apartment modals at 1024px view */}
-          {showFilterBackdrop && window.innerWidth >= 1024 ? (
-            <FilterBackdrop show={true} />
-          ) : null}
-          {/* When a user is on smaller screen(640px to 767px), hide the FilterScrollBar when there's some search text */}
-          {/* But when a user is on a larger screen(768px and above), show the
+      <div className={`text-white ${showFilters ? 'overflow-y-hidden' : ''}`}>
+        {/* Show FilterBackdrop for the apartment modals at 1024px view */}
+        {showFilterBackdrop && window.innerWidth >= 1024 ? (
+          <FilterBackdrop show={true} />
+        ) : null}
+        {/* When a user is on smaller screen(640px to 767px), hide the FilterScrollBar when there's some search text */}
+        {/* But when a user is on a larger screen(768px and above), show the
           FilterScrollBar whether there's some search text or not.   */}{' '}
-          {window.innerWidth >= 768 || !search.length ? (
-            <FilterScrollbar
+        {window.innerWidth >= 768 || !search.length ? (
+          <FilterScrollbar
+            search={search}
+            showFilters={
+              window.innerWidth >= 1024 ? showFilterScrollbar : showFilters
+            }
+            handleFilters={handleFilters}
+            showStickyHeader={showStickyHeader}
+          />
+        ) : null}
+        <div className='w-full lg:flex lg:mx-2 2xl:max-w-[1400px] 3xl:max-w-[1700px] 2xl:mx-auto'>
+          {search.length ? (
+            <Map showFullMap={showFullMap} setShowFullMap={setShowFullMap} />
+          ) : null}
+          {!showFullMap ? (
+            <Apartments
               search={search}
-              showFilters={
-                window.innerWidth >= 1024 ? showFilterScrollbar : showFilters
-              }
-              handleFilters={handleFilters}
-              showStickyHeader={showStickyHeader}
+              setShowFilterBackdrop={setShowFilterBackdrop}
             />
           ) : null}
-          <div className='w-full lg:flex lg:mx-2 2xl:max-w-[1400px] 3xl:max-w-[1700px] 2xl:mx-auto'>
-            {search.length ? (
-              <Map showFullMap={showFullMap} setShowFullMap={setShowFullMap} />
-            ) : null}
-            {!showFullMap ? (
-              <Apartments
-                search={search}
-                setShowFilterBackdrop={setShowFilterBackdrop}
-              />
-            ) : null}
-          </div>
-          {!hideMenu && <PopupMenu />}
-          <Footer />
         </div>
-      ) : null}
+        {!hideMenu && <PopupMenu />}
+        <Footer />
+      </div>
     </section>
   );
 };

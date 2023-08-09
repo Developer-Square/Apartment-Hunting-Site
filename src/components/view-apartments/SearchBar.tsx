@@ -20,12 +20,12 @@ const SearchBar = ({
 
   useEffect(() => {
     if (window.innerWidth >= 768 && window.innerWidth < 1279) {
-      setLargerScreen('35%');
+      setLargerScreen('15%');
       return;
     }
 
     if (window.innerWidth >= 1280) {
-      setLargerScreen('45%');
+      setLargerScreen('25%');
       return;
     }
 

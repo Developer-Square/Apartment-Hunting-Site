@@ -5,8 +5,14 @@
 
 html, body {
   overflow-x: hidden;
+  width: 100%;
   font-family: 'Inter', sans-serif;
   font-size: 17px;
+}
+
+.body-style {
+  position: fixed;
+  overflow-y: hidden;
 }
 
 /* Chrome, Safari, Edge, Opera */
