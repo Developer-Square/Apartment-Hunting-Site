@@ -68,8 +68,10 @@ export const PropertyType = ({
 }) => (
   <div
     className={`${
-      content === propertyType ? 'bg-black text-white' : 'border-black/[0.4]'
-    } flex flex-col gap-2 justify-center sm:justify-around border w-32 sm:w-72 h-28 sm:h-52 rounded-xl cursor-pointer hover hover:border-black/[0.1] hover:text-black/[0.5]`}
+      content === propertyType
+        ? 'bg-black text-white hover:text-white/[0.8]'
+        : 'border-black/[0.4] hover:border-black/[0.1] hover:text-black/[0.5]'
+    } flex flex-col gap-2 justify-center sm:justify-around border w-32 sm:w-72 h-28 sm:h-52 rounded-xl cursor-pointer`}
     onClick={() => setPropertyType(content)}
   >
     <i className={icon}></i>

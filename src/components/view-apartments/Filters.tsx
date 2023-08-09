@@ -3,7 +3,6 @@
 import { useSpring, animated } from '@react-spring/web';
 import { SetStateAction, useEffect, useState } from 'react';
 
-import FilterImg from '@/assets/view-apartments/filters.png';
 import { AmenitiesList, NumberOfRooms, PropertyType } from './Helpers';
 
 const Filters = ({
@@ -98,7 +97,7 @@ const Filters = ({
         left: '50%',
         transform: 'translateX(-50%)',
         backgroundColor: '#FFFFFF',
-        height: 'auto',
+        height: '100vh',
         width: largerScreenWidth,
         zIndex: '10',
         borderRadius: '1rem',
@@ -107,7 +106,7 @@ const Filters = ({
       }}
     >
       <div className='xm:max-w-[360px] max-w-[330px] sm:max-w-[600px] lg:max-w-[700px] mx-auto'>
-        <div className='flex items-center border-b border-black/[.2]'>
+        <div className='flex items-center border-b pb-2.5 border-black/[.2]'>
           <i
             className='fa-solid fa-xmark text-xl mt-5 cursor-pointer'
             onClick={() => setShow(false)}
@@ -117,7 +116,6 @@ const Filters = ({
           </p>
         </div>
         <div className='w-full max-h-[790px] overflow-y-scroll'>
-          <img src={FilterImg} alt='filters' className='mt-5 w-full' />
           <div className='mt-5 w-full'>
             <p className='font-bold text-center xl:text-sm'>Price range</p>
             <div className='flex mt-6 items-center justify-around'>

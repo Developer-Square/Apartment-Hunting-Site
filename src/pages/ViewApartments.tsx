@@ -17,7 +17,7 @@ const ViewApartmentsPage = () => {
   const [search, setSearch] = useState('');
   const [hideMenu, setHideMenu] = useState(false);
   const [showStickyHeader, setShowStickyHeader] = useState(false);
-  const [setshowRestOfPage, setSetshowRestOfPage] = useState(true);
+  const [showRestOfPage, setshowRestOfPage] = useState(true);
   // Show FilterBackdrop for the apartment modals at 1024px view
   const [showFilterBackdrop, setShowFilterBackdrop] = useState(false);
   const [showFullMap, setShowFullMap] = useState(false);
@@ -30,11 +30,11 @@ const ViewApartmentsPage = () => {
 
     if (showSearhBar || showFilters) {
       if (window.innerWidth < 768) {
-        setSetshowRestOfPage(false);
+        setshowRestOfPage(false);
         return;
       }
     }
-    setSetshowRestOfPage(true);
+    setshowRestOfPage(true);
   }, [showSearhBar, showFilters]);
 
   useEffect(() => {
@@ -104,7 +104,7 @@ const ViewApartmentsPage = () => {
         </>
       )}
       {/* Hide other components when the SearchBar or Filters is open while on tablet and mobile screens, to reduce the height of the page */}
-      {setshowRestOfPage ? (
+      {showRestOfPage ? (
         <div className='text-white'>
           {/* Show FilterBackdrop for the apartment modals at 1024px view */}
           {showFilterBackdrop && window.innerWidth >= 1024 ? (
