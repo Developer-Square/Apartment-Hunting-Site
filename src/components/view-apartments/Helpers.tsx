@@ -284,30 +284,36 @@ export const CreateWishListModal = ({
   );
 };
 
-export const NavBarMenu = () => (
-  <div
-    className='md:flex float-right hidden pl-3 pr-2 py-1.5 text-[#f0efe9] border border-[#f0efe9] rounded-3xl items-center cursor-pointer dropdown dropdown-bottom dropdown-end z-20'
-    tabIndex={0}
-  >
-    <i className='fa-solid fa-bars pr-2 text-sm'></i>
-    <i className='fa-solid fa-circle-user text-[28px]'></i>
-    <ul
+export const NavBarMenu = () => {
+  const [showMenu, setShowMenu] = useState(false);
+  return (
+    <div
+      className='md:flex float-right hidden pl-3 pr-2 py-1.5 text-[#f0efe9] border border-[#f0efe9] rounded-3xl items-center cursor-pointer dropdown dropdown-bottom dropdown-end z-20'
       tabIndex={0}
-      className='dropdown-content z-[1] menu p-2 shadow bg-[#141b1f] rounded-box mt-3 w-52 xl:text-sm'
+      onClick={() => setShowMenu((prevState) => !prevState)}
     >
-      <li>
-        <a>Login</a>
-      </li>
-      <li>
-        <a>Signup</a>
-      </li>
-      <div className='border border-white/[.3]'></div>
-      <li className='text-white/[.8]'>
-        <a>Decorate Room</a>
-      </li>
-      <li className='text-white/[.8]'>
-        <a>Help</a>
-      </li>
-    </ul>
-  </div>
-);
+      <i className='fa-solid fa-bars pr-2 text-sm'></i>
+      <i className='fa-solid fa-circle-user text-[28px]'></i>
+      {showMenu ? (
+        <ul
+          tabIndex={0}
+          className='dropdown-content z-[1] menu p-2 shadow bg-[#141b1f] rounded-box mt-3 w-52 xl:text-sm'
+        >
+          <li>
+            <a>Login</a>
+          </li>
+          <li>
+            <a>Signup</a>
+          </li>
+          <div className='border border-white/[.3]'></div>
+          <li className='text-white/[.8]'>
+            <a>Decorate Room</a>
+          </li>
+          <li className='text-white/[.8]'>
+            <a>Help</a>
+          </li>
+        </ul>
+      ) : null}
+    </div>
+  );
+};

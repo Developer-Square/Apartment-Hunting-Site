@@ -10,7 +10,7 @@ const Map = ({
   const [showMap, setSetShowMap] = useState(false);
   const [mapDimension, setMapDimensions] = useState({
     width: '100%',
-    height: '475',
+    height: '416',
   });
 
   useMemo(() => {
@@ -26,6 +26,11 @@ const Map = ({
   useEffect(() => {
     if (window.innerWidth >= 768 && window.innerWidth < 1024) {
       setSetShowMap(true);
+      setMapDimensions({
+        width: '0',
+        height: '0',
+      });
+      return;
     }
 
     if (window.innerWidth >= 1024 && window.innerWidth < 1535) {
@@ -46,9 +51,10 @@ const Map = ({
       return;
     }
 
+    setSetShowMap(false);
     setMapDimensions({
       width: '100%',
-      height: '475',
+      height: '416',
     });
   }, []);
 
@@ -58,15 +64,18 @@ const Map = ({
         showFullMap
           ? 'lg:w-full lg:h-screen'
           : 'lg:w-[460px] xl:w-[473px] 2xl:w-[568px] 3xl:w-[768px]'
-      } relative h-[${mapDimension.height}px]`}
+      } relative`}
+      style={{
+        height: `${mapDimension.height}px`,
+      }}
     >
       {!showMap && (
         <>
           <div
             className={`hidden lg:flex sticky justify-center items-center  ${
               showFullMap
-                ? 'w-36 xl:w-32 xl:h-8 h-10 top-[20%] xl:top-[22%] left-[83%] 2xl:top-[26%] 3xl:left-[76%]'
-                : 'top-[20%] xl:top-[22%] left-[40%] xl:left-[32%] 2xl:top-[25%] 2xl:left-[37%] 3xl:left-[43%] w-8 h-8'
+                ? 'w-36 xl:w-32 xl:h-8 h-10 top-[33%] left-[83%] 2xl:top-[35%] 3xl:left-[76%]'
+                : 'top-[22%] left-[32%] 2xl:top-[22%] 2xl:left-[37%] 3xl:left-[43%] w-8 h-8'
             } bg-white transition-all ease-in-out duration-500 text-black font-semibold z-[1] shadow-2xl rounded-lg xl:text-sm cursor-pointer`}
             onClick={() => setShowFullMap((prevState) => !prevState)}
           >

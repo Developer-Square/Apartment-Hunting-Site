@@ -119,7 +119,7 @@ const SingleApartment = ({
       ) : null}
 
       <div
-        className='mb-10 px-12 sm:px-6 lg:pr-5 lg:pl-3 xl:px-3'
+        className='mb-10 px-8 sm:px-6 lg:pr-5 lg:pl-3 xl:px-3'
         onMouseEnter={() => setIsApartmentHovered(true)}
         onMouseLeave={() => setIsApartmentHovered(false)}
       >
