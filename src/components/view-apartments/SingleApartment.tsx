@@ -34,14 +34,30 @@ const SingleApartment = ({
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [wishlist, setWishlist] = useState<string[]>([]);
   const [isLargerScreen, setIsLargerScreen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-  const { showModal, setShowModal } = useContext(ModalContext);
+  const { setHideMenu } = useContext(ModalContext);
 
   const { x: apartmentX } = useSpring({
     from: { x: 0 },
     x: isApartmentHovered ? 1 : 0,
     config: { duration: 1000 },
   });
+
+  useEffect(() => {
+    // Stop outside scrolling when any of the following modals are open.
+    if (showModal) {
+      document.body.classList.add('body-style');
+      setHideMenu(true);
+      return;
+    }
+
+    // Hide the popup menu on larger screens.
+    if (window.innerWidth <= 768) {
+      setHideMenu(false);
+    }
+    document.body.classList.remove('body-style');
+  }, [setHideMenu, showModal]);
 
   useEffect(() => {
     if (window.innerWidth >= 1024) {

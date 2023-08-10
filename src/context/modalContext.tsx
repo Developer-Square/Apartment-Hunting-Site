@@ -1,8 +1,8 @@
 import { createContext, useState } from 'react';
 
 interface ModalContextProps {
-  showModal: boolean;
-  setShowModal: (showModal: boolean) => void;
+  hideMenu: boolean;
+  setHideMenu: (showModal: boolean) => void;
 }
 
 export const ModalContext = createContext<ModalContextProps>(
@@ -10,12 +10,12 @@ export const ModalContext = createContext<ModalContextProps>(
 );
 
 export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
-  const [showModal, setShowModal] = useState(false);
+  const [hideMenu, setHideMenu] = useState(false);
   return (
     <ModalContext.Provider
       value={{
-        showModal,
-        setShowModal,
+        hideMenu,
+        setHideMenu,
       }}
     >
       {children}

@@ -16,14 +16,13 @@ const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
   const [showFilters, setshowFilters] = useState(false);
   const [search, setSearch] = useState('');
-  const [hideMenu, setHideMenu] = useState(false);
   const [showStickyHeader, setShowStickyHeader] = useState(false);
   // Show FilterBackdrop for the apartment modals at 1024px view
   const [showFilterBackdrop, setShowFilterBackdrop] = useState(false);
   const [showFullMap, setShowFullMap] = useState(false);
   const [showFilterScrollbar, setShowFilterScrollbar] = useState(false);
 
-  const { showModal } = useContext(ModalContext);
+  const { hideMenu, setHideMenu } = useContext(ModalContext);
 
   useEffect(() => {
     if (window.innerWidth >= 768) {
@@ -31,11 +30,11 @@ const ViewApartmentsPage = () => {
       return;
     }
     setHideMenu(false);
-  }, []);
+  }, [setHideMenu]);
 
   useEffect(() => {
     // Stop outside scrolling when any of the following modals are open.
-    if (showSearhBar || showFilters || showModal) {
+    if (showSearhBar || showFilters) {
       document.body.classList.add('body-style');
       setHideMenu(true);
       return;
@@ -46,7 +45,7 @@ const ViewApartmentsPage = () => {
       setHideMenu(false);
     }
     document.body.classList.remove('body-style');
-  }, [showSearhBar, showFilters, showModal]);
+  }, [showSearhBar, showFilters, setHideMenu]);
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
