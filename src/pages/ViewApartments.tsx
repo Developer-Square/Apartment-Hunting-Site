@@ -96,7 +96,7 @@ const ViewApartmentsPage = () => {
 
   return (
     <section className='apartments-page w-full h-full pt-5 text-black'>
-      {/* The following is meant to make it easier to give the sticky header a max-width of 1400px */}
+      {/* The following is meant to make it easier to give the sticky header a max-width of 1500px */}
       <div
         className={`w-full ${
           showStickySearchBar
@@ -156,7 +156,7 @@ const ViewApartmentsPage = () => {
             showStickyHeader={showStickyFilterBar}
           />
         ) : null}
-        <div className='w-full lg:flex lg:mx-2 2xl:max-w-[1400px] 3xl:max-w-[1700px] 2xl:mx-auto'>
+        <div className='w-full lg:flex lg:mx-2 2xl:max-w-[1500px] 3xl:max-w-[1700px] 2xl:mx-auto'>
           {search.length ? (
             <Map showFullMap={showFullMap} setShowFullMap={setShowFullMap} />
           ) : null}

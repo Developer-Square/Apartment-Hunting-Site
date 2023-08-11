@@ -14,7 +14,7 @@ const Navbar = ({
   return (
     <div
       id='sticky-header'
-      className={`w-full md:w-[92%] 2xl:max-w-[1400px] 3xl:max-w-[1700px] mb-4 sm:mb-6 xl:mb-1 md:mx-auto md:flex items-center justify-center ${
+      className={`w-full md:w-[92%] 2xl:max-w-[1500px] 3xl:max-w-[1700px] mb-4 sm:mb-6 xl:mb-1 md:mx-auto md:flex items-center justify-center ${
         showStickyHeader
           ? 'fixed top-0 z-10 bg-[#141b1f] xm:py-3 py-4 md:w-full'
           : ''

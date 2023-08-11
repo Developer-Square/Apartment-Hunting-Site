@@ -130,7 +130,7 @@ const Filters = ({
                 <input
                   type='text'
                   placeholder='Ksh 10,000'
-                  className='bg-transparent pl-0 text-black outline-none border-none w-24 sm:w-28 h-full xl:text-sm'
+                  className='bg-transparent pl-0 text-black outline-none border-none focus:ring-0 w-24 sm:w-28 h-full xl:text-sm'
                 />
               </div>
               <span className='h-0.5 w-7 bg-black/[0.5]'></span>
@@ -139,7 +139,7 @@ const Filters = ({
                 <input
                   type='text'
                   placeholder='Ksh 100,000'
-                  className='bg-transparent pl-0 text-black outline-none w-24 sm:w-28 border-none h-full xl:text-sm'
+                  className='bg-transparent pl-0 text-black outline-none w-24 sm:w-28 border-none focus:ring-0 h-full xl:text-sm'
                 />
               </div>
             </div>
@@ -222,7 +222,7 @@ const Filters = ({
           )}
           {showMore && (
             <p
-              className='underline mt-7 xl:text-sm mb-44 cursor-pointer'
+              className='underline mt-7 xl:text-sm mb-44 2xl:mb-60 cursor-pointer'
               onClick={() => setShowMore(false)}
             >
               Show less

@@ -127,7 +127,7 @@ export const AmenitiesList = ({
 
       {topAmenities && !showMore && (
         <p
-          className='underline mt-7 mb-44 xl:text-sm cursor-pointer'
+          className='underline mt-7 mb-44 2xl:mb-60 xl:text-sm cursor-pointer'
           onClick={() => setShowMore(true)}
         >
           Show more
