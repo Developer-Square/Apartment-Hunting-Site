@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const InputRange = ({
   text,
@@ -33,7 +32,9 @@ const Search = () => {
   const [lowerRange, setlowerRange] = useState(10000);
   const [upperRange, setupperRange] = useState(100000);
 
-  const navigate = useNavigate();
+  const handleNavigate = () => {
+    window.open('/apartments', '_blank');
+  };
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
@@ -42,7 +43,7 @@ const Search = () => {
       return;
     }
 
-    navigate('/apartments');
+    handleNavigate();
   };
 
   return (
