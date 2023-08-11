@@ -16,11 +16,13 @@ const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
   const [showFilters, setshowFilters] = useState(false);
   const [search, setSearch] = useState('');
-  const [showStickyHeader, setShowStickyHeader] = useState(false);
+  const [showStickySearchBar, setShowStickySearchBar] = useState(false);
+  const [showStickyFilterBar, setShowStickyFilterBar] = useState(false);
   // Show FilterBackdrop for the apartment modals at 1024px view
   const [showFilterBackdrop, setShowFilterBackdrop] = useState(false);
   const [showFullMap, setShowFullMap] = useState(false);
   const [showFilterScrollbar, setShowFilterScrollbar] = useState(false);
+  const [showFilterBtn, setShowFilterBtn] = useState(false);
 
   const { hideMenu, setHideMenu } = useContext(ModalContext);
 
@@ -50,12 +52,21 @@ const ViewApartmentsPage = () => {
   useEffect(() => {
     window.addEventListener('scroll', () => {
       if (window.scrollY > 21) {
-        setShowStickyHeader(true);
+        // When on larger screens show the filter button.
+        // Else show the FilterScrollbar.
+        if (window.innerWidth >= 1024) {
+          setShowFilterBtn(true);
+        } else {
+          setShowStickyFilterBar(true);
+        }
+        setShowStickySearchBar(true);
         return;
       }
-      setShowStickyHeader(false);
+      setShowStickySearchBar(false);
+      setShowStickyFilterBar(false);
+      setShowFilterBtn(false);
     });
-  }, [showStickyHeader]);
+  }, []);
 
   // Hide the filter scrollbar when any of the modals are open.
   useMemo(() => {
@@ -78,19 +89,24 @@ const ViewApartmentsPage = () => {
     topFunction();
   };
 
+  const handleShowFilters = () => {
+    setShowFilterBtn(false);
+    setShowStickyFilterBar(true);
+  };
+
   return (
     <section className='apartments-page w-full h-full pt-5 text-black'>
       {/* The following is meant to make it easier to give the sticky header a max-width of 1400px */}
       <div
         className={`w-full ${
-          showStickyHeader
-            ? 'fixed 2xl:flex 2xl:justify-center z-10 h-[90px] bg-[#141b1f]'
+          showStickySearchBar
+            ? 'fixed 2xl:flex 2xl:justify-center z-10 h-[70px] bg-[#141b1f]'
             : ''
         }`}
       >
         <Navbar
           search={search}
-          showStickyHeader={showStickyHeader}
+          showStickyHeader={showStickySearchBar}
           handleFilters={handleFilters}
           handleSearchBar={handleSearchBar}
         />
@@ -119,9 +135,17 @@ const ViewApartmentsPage = () => {
         {showFilterBackdrop && window.innerWidth >= 1024 ? (
           <FilterBackdrop show={true} />
         ) : null}
+        {/* When a user is scrolling hide the FilterScrollbar and show a button instead, this is done to save space on the screen */}
+        {showFilterBtn ? (
+          <button
+            className='fixed top-[100px] xl:top-[110px] left-[50%] translate-x-[-50%] py-3.5 px-5 2xl:py-2.5 2xl:px-4 2xl:text-xs rounded-full text-sm h-auto z-10 bg-[#141b1f] transition-all ease-in-out duration-[1.5s]'
+            onClick={() => handleShowFilters()}
+          >
+            Show Filters
+          </button>
+        ) : null}
         {/* When a user is on smaller screen(640px to 767px), hide the FilterScrollBar when there's some search text */}
-        {/* But when a user is on a larger screen(768px and above), show the
-          FilterScrollBar whether there's some search text or not.   */}{' '}
+        {/* But when a user is on a larger screen(768px and above), show the FilterScrollBar whether there's some search text or not.   */}{' '}
         {window.innerWidth >= 768 || !search.length ? (
           <FilterScrollbar
             search={search}
@@ -129,7 +153,7 @@ const ViewApartmentsPage = () => {
               window.innerWidth >= 1024 ? showFilterScrollbar : showFilters
             }
             handleFilters={handleFilters}
-            showStickyHeader={showStickyHeader}
+            showStickyHeader={showStickyFilterBar}
           />
         ) : null}
         <div className='w-full lg:flex lg:mx-2 2xl:max-w-[1400px] 3xl:max-w-[1700px] 2xl:mx-auto'>

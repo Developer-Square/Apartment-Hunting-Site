@@ -71,7 +71,7 @@ export const PropertyType = ({
       content === propertyType
         ? 'bg-black text-white hover:text-white/[0.8]'
         : 'border-black/[0.4] hover:border-black/[0.1] hover:text-black/[0.5]'
-    } flex flex-col gap-2 justify-center sm:justify-around border w-32 sm:w-72 h-28 sm:h-52 rounded-xl cursor-pointer`}
+    } flex flex-col gap-2 justify-center sm:justify-around border w-36 sm:w-64 h-28 sm:h-48 md:w-32 md:h-28 lg:w-[160px] lg:h-[120px] rounded-xl cursor-pointer`}
     onClick={() => setPropertyType(content)}
   >
     <i className={icon}></i>
@@ -102,30 +102,32 @@ export const AmenitiesList = ({
       {title === 'Amenities' && (
         <p className='mt-3 mb-5 xl:text-sm'>Popular in Kenya</p>
       )}
-      {amenitiesList.map((amenity, index) => (
-        <div key={index} className='flex items-center mt-4'>
-          <input
-            type='checkbox'
-            // @ts-ignore
-            checked={amenities[amenity]}
-            onChange={() =>
-              setAmenities({
-                ...amenities,
-                // @ts-ignore
-                [amenity]: !amenities[amenity],
-              })
-            }
-            className='checkbox checkbox-primary checkbox-lg xl:checkbox-md'
-          />
-          <p className='text-lg xl:text-sm ml-3.5'>
-            {amenity.charAt(0).toUpperCase() + amenity.slice(1)}
-          </p>
-        </div>
-      ))}
+      <div className='grid md:grid-cols-2'>
+        {amenitiesList.map((amenity, index) => (
+          <div key={index} className='flex items-center mt-4'>
+            <input
+              type='checkbox'
+              // @ts-ignore
+              checked={amenities[amenity]}
+              onChange={() =>
+                setAmenities({
+                  ...amenities,
+                  // @ts-ignore
+                  [amenity]: !amenities[amenity],
+                })
+              }
+              className='checkbox checkbox-primary checkbox-lg xl:checkbox-md'
+            />
+            <p className='text-lg xl:text-sm ml-3.5'>
+              {amenity.charAt(0).toUpperCase() + amenity.slice(1)}
+            </p>
+          </div>
+        ))}
+      </div>
 
       {topAmenities && !showMore && (
         <p
-          className='underline mt-7 mb-32 xl:text-sm cursor-pointer'
+          className='underline mt-7 mb-44 xl:text-sm cursor-pointer'
           onClick={() => setShowMore(true)}
         >
           Show more

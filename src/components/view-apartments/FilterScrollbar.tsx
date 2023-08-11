@@ -176,7 +176,7 @@ const FilterScrollbar = ({
               search.length ? 'md:px-3 lg:px-5' : ''
             } ${
               showStickyHeader
-                ? 'fixed top-[60px] xl:top-[80px] xm:pt-4.5 pt-5 md:pt-2.5 xl:pt-1 z-10 bg-[#141b1f]'
+                ? 'fixed top-[60px] xl:top-[80px] 2xl:top-[90px] xm:pt-4.5 pt-5 md:pt-2.5 xl:pt-1 z-10 bg-[#141b1f]'
                 : ''
             } sm:pb-3 xl:pb-0 flex justify-around items-center`}
           >

@@ -111,7 +111,7 @@ const Filters = ({
         ...props,
       }}
     >
-      <div className='xm:max-w-[360px] max-w-[330px] sm:max-w-[600px] lg:max-w-[700px] mx-auto'>
+      <div className='xm:max-w-[360px] max-w-[330px] sm:max-w-[600px] lg:max-w-[700px] mx-auto overflow-hidden'>
         <div className='flex items-center border-b pb-2.5 border-black/[.2]'>
           <i
             className='fa-solid fa-xmark text-xl mt-5 cursor-pointer'
@@ -164,7 +164,7 @@ const Filters = ({
           <div className='mt-14 bg-black/[0.4] w-full h-[1px]'></div>
           <div className='mt-5'>
             <p className='font-bold xl:text-sm'>Property Type</p>
-            <div className='mt-7 flex gap-8'>
+            <div className='grid grid-cols-2 md:grid-cols-4 gap-4 mt-7'>
               <PropertyType
                 icon='fa-solid fa-house text-3xl pl-5'
                 content='House'
@@ -177,8 +177,6 @@ const Filters = ({
                 propertyType={propertyType}
                 setPropertyType={setPropertyType}
               />
-            </div>
-            <div className='mt-8 flex gap-8'>
               <PropertyType
                 icon='fa-solid fa-house-flood-water text-3xl pl-5'
                 content='Townhouse'
@@ -224,7 +222,7 @@ const Filters = ({
           )}
           {showMore && (
             <p
-              className='underline mt-7 xl:text-sm mb-32 cursor-pointer'
+              className='underline mt-7 xl:text-sm mb-44 cursor-pointer'
               onClick={() => setShowMore(false)}
             >
               Show less

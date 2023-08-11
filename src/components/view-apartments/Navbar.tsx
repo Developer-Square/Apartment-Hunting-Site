@@ -20,7 +20,7 @@ const Navbar = ({
           : ''
       }`}
     >
-      <div className=' bg-white relative xm:w-[360px] xm:h-14 sm:w-[92%] w-80 h-[48px] md:w-[50%] lg:w-[40%] xl:h-[58px] md:mx-auto md:h-[48px] mx-auto rounded-3xl xm:rounded-[32px] flex items-center'>
+      <div className=' bg-white relative mt-2 xm:w-[360px] xm:h-14 sm:w-[92%] w-80 h-[48px] md:w-[50%] lg:w-[40%] xl:h-[58px] md:mx-auto md:h-[48px] mx-auto rounded-3xl xm:rounded-[32px] flex items-center'>
         <i className='fa-solid fa-magnifying-glass text-black sm:text-lg xl:text-base pl-4'></i>
         <div
           className='flex flex-col w-full pl-4 cursor-pointer'
