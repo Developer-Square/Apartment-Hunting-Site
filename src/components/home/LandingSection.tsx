@@ -85,8 +85,6 @@ const LandingSection = () => {
       setSpaceBetween(30);
     }
   }, []);
-  console.log(carouselNumber);
-
   return (
     <div>
       <div className='absolute bottom-0 sm:bottom-[5%] md:bottom-[4%] lg:bottom-[3%] xl:bottom-[5.5%] mx-5 w-full'>

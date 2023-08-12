@@ -5,6 +5,7 @@
 
 html, body {
   overflow-x: hidden;
+  height: 100vh;
   width: 100%;
   font-family: 'Inter', sans-serif;
   font-size: 17px;
@@ -13,6 +14,10 @@ html, body {
 .body-style {
   position: fixed;
   overflow-y: hidden;
+}
+
+.bg-color {
+  background: #0b1920;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -25,6 +30,12 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+.stickyHeader {
+  height: 70px;
+  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 /* Custom Swiper Buttons */

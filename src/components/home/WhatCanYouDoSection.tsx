@@ -12,7 +12,7 @@ const WhatCanYouDoSection = () => {
       <h4 className='text-2xl uppercase mb-3'>What Can you Do</h4>
       <div className='sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6'>
         {items.map((item, index) => (
-          <div className='mt-6'>
+          <div className='mt-6' key={index}>
             <p className='pb-2.5 sm:text-[19px] lg:text-[21px] xl:text-[22px]'>
               0{index + 1}.
             </p>
