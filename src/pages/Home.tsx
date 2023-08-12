@@ -1,7 +1,6 @@
 import LandingPage from '@/assets/home/mobile-landing-page.png';
 import TabletPage from '@/assets/home/tablet-landing-page.jpg';
 import DesktopPage from '@/assets/home/desktop-landing-page.png';
-import Menu, { MenuBars } from '@/components/home/Menu';
 import OurTopCitiesSection from '@/components/home/OurTopCitiesSection';
 import {
   AdditionalAbilitiesSection,
@@ -16,6 +15,7 @@ import {
 import { useEffect, useState } from 'react';
 
 import ProfileImg from '@/assets/home/Logo - dark surface.png';
+import MobileMenu from '@/components/home/MobileMenu';
 
 const Home = () => {
   const [show, setShow] = useState(false);
@@ -60,21 +60,12 @@ const Home = () => {
           />
         </picture>
         <div className='max-w-[330px] xm:max-w-[360px] w-full'>
-          <div
-            className={`lg:hidden fixed top-0 z-20 w-full transition-all ease-in-out duration-[1.5s] ${
-              showStickyHeader ? 'stickyHeader' : ''
-            }`}
-          >
-            <img
-              src={ProfileImg}
-              alt='profile'
-              className='absolute top-3 left-5 cursor-pointer w-11 h-11 rounded-full'
-            />
-            <MenuBars setMenu={setShow} />
-          </div>
-          <div className='lg:hidden'>
-            <Menu show={show} setShow={setShow} />
-          </div>
+          <MobileMenu
+            show={show}
+            setShow={setShow}
+            showStickyHeader={showStickyHeader}
+            ProfileImg={ProfileImg}
+          />
           <div className='hidden lg:block'>
             <DesktopMenu />
             <Search />
