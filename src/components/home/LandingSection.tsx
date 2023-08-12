@@ -85,7 +85,6 @@ const LandingSection = () => {
       setSpaceBetween(30);
     }
   }, []);
-  console.log(carouselNumber);
 
   return (
     <div>

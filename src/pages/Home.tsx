@@ -13,12 +13,37 @@ import {
   Search,
   WhatCanYouDoSection,
 } from '@/components/index';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import ProfileImg from '@/assets/home/Logo - dark surface.png';
 
 const Home = () => {
   const [show, setShow] = useState(false);
+  const [showStickyHeader, setShowStickyHeader] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 21) {
+        setShowStickyHeader(true);
+        return;
+      }
+      setShowStickyHeader(false);
+    });
+  }, []);
+
+  useEffect(() => {
+    // Stop outside scrolling when any of the modals are open.
+    if (show && window.innerWidth < 1024) {
+      document.body.classList.add('body-style');
+      return;
+    }
+    document.body.classList.remove('body-style');
+  }, [show]);
+
   return (
-    <section className='w-full h-full text-white'>
+    <section
+      className={`w-full ${show ? 'h-screen' : 'h-full'} bg-color text-white`}
+    >
       {/* Landing Section */}
       <div className='relative w-full h-full 2xl:w-[1440px] 3xl:w-[1700px] mx-auto'>
         <picture>
@@ -35,36 +60,40 @@ const Home = () => {
           />
         </picture>
         <div className='max-w-[330px] xm:max-w-[360px] w-full'>
-          <div className='lg:hidden'>
+          <div
+            className={`lg:hidden fixed top-0 z-20 w-full transition-all ease-in-out duration-[1.5s] ${
+              showStickyHeader ? 'stickyHeader' : ''
+            }`}
+          >
+            <img
+              src={ProfileImg}
+              alt='profile'
+              className='absolute top-3 left-5 cursor-pointer w-11 h-11 rounded-full'
+            />
             <MenuBars setMenu={setShow} />
+          </div>
+          <div className='lg:hidden'>
             <Menu show={show} setShow={setShow} />
           </div>
-          {/* Hide other components when the Menu is open, to reduce the height of the page */}
-          {!show ? (
-            <>
-              <div className='hidden lg:block'>
-                <DesktopMenu />
-                <Search />
-              </div>
-              <LandingSection />
-            </>
-          ) : null}
+          <div className='hidden lg:block'>
+            <DesktopMenu />
+            <Search />
+          </div>
+          <LandingSection />
         </div>
       </div>
       {/* Other Sections */}
-      {/* Same as above, hide other components when the Menu is open */}
-      {!show ? (
-        <div className='amenities pt-10 xm:pt-14 sm:pt-8'>
-          <div className='max-w-[330px] xm:max-w-[360px] sm:max-w-[600px] md:max-w-[720px] lg:max-w-[850px] xl:max-w-[1045px] 2xl:max-w-[1200px] 3xl:max-w-[1700px] mx-auto w-full'>
-            <PopularAmenitiesSection />
-            <WhatCanYouDoSection />
-            <ContactUsSection />
-            <AdditionalAbilitiesSection />
-            <OurTopCitiesSection />
-            <Footer />
-          </div>
+
+      <div className='amenities pt-10 xm:pt-14 sm:pt-8'>
+        <div className='max-w-[330px] xm:max-w-[360px] sm:max-w-[600px] md:max-w-[720px] lg:max-w-[850px] xl:max-w-[1045px] 2xl:max-w-[1200px] 3xl:max-w-[1700px] mx-auto w-full'>
+          <PopularAmenitiesSection />
+          <WhatCanYouDoSection />
+          <ContactUsSection />
+          <AdditionalAbilitiesSection />
+          <OurTopCitiesSection />
+          <Footer />
         </div>
-      ) : null}
+      </div>
     </section>
   );
 };
