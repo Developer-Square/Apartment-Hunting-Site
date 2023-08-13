@@ -35,9 +35,11 @@ const ContactUsSection = () => {
         <p className='pt-5 text-center'>
           We are here to help you discover each properties’ unique potential
         </p>
-        <button className='mt-5 w-[230px] h-[45px] bg-[#40655E] text-white rounded-[20px]'>
-          Contact Us
-        </button>
+        <div className='w-full flex justify-center'>
+          <button className='mt-5 w-[230px] h-[45px] bg-[#40655E] text-white rounded-[20px]'>
+            Contact Us
+          </button>
+        </div>
       </div>
       <div className='my-5'>
         <iframe

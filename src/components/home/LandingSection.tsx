@@ -75,7 +75,7 @@ const LandingSection = () => {
     if (width > 639 && width < 767) {
       setCarouselNumber(4);
     } else if (width >= 768 && width < 1279) {
-      setCarouselNumber(4);
+      setCarouselNumber(3);
       setSpaceBetween(60);
     } else if (width >= 1280) {
       setCarouselNumber(5);
@@ -93,7 +93,7 @@ const LandingSection = () => {
           Search
           <i className='fa-solid fa-house-chimney ml-1.5'></i>
         </button>
-        <div className='w-full md:w-[87%] mx-auto'>
+        <div className='w-full mx-auto'>
           <h4 className='font-semibold mt-3.5 text-[#FFFFFF] flex items-center'>
             <span className='mr-2'>Top rated apartments</span>
             <div className='hidden sm:block'>

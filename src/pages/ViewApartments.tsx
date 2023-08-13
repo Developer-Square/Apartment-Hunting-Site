@@ -100,7 +100,7 @@ const ViewApartmentsPage = () => {
       <div
         className={`w-full ${
           showStickySearchBar
-            ? 'fixed 2xl:flex 2xl:justify-center z-10 h-[70px] bg-[#141b1f]'
+            ? 'fixed top-0 2xl:flex 2xl:justify-center z-10 h-[105px] bg-[#141b1f]'
             : ''
         }`}
       >

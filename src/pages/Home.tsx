@@ -56,7 +56,7 @@ const Home = () => {
           <img
             src={LandingPage}
             alt='Landing'
-            className='w-full h-auto md:h-[800px] lg:h-auto 2xl:h-[1440px] 3xl:max-w-[1700px]'
+            className='w-full h-auto sm:h-[800px] lg:h-auto 2xl:h-[1440px] 3xl:max-w-[1700px]'
           />
         </picture>
         <div className='max-w-[330px] xm:max-w-[360px] w-full'>

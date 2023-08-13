@@ -165,7 +165,7 @@ const FilterScrollbar = ({
         <div
           className={`w-full shadow-md shadow-[#f0efe9]/[.2] ${
             showStickyHeader
-              ? 'fixed 2xl:flex 2xl:justify-center top-[90px] h-auto 2xl:h-[107px] z-10 bg-[#141b1f] transition-all ease-in-out duration-1000 2xl:duration-[1.5s]'
+              ? 'fixed 2xl:flex 2xl:justify-center top-[90px] h-auto 2xl:h-[87px] z-10 bg-[#141b1f] transition-all ease-in-out duration-1000 2xl:duration-[1.5s]'
               : ''
           }`}
         >
