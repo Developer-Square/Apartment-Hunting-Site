@@ -68,8 +68,10 @@ export const PropertyType = ({
 }) => (
   <div
     className={`${
-      content === propertyType ? 'bg-black text-white' : 'border-black/[0.4]'
-    } flex flex-col gap-2 justify-center sm:justify-around border w-32 sm:w-72 h-28 sm:h-52 rounded-xl cursor-pointer hover hover:border-black/[0.1] hover:text-black/[0.5]`}
+      content === propertyType
+        ? 'bg-black text-white hover:text-white/[0.8]'
+        : 'border-black/[0.4] hover:border-black/[0.1] hover:text-black/[0.5]'
+    } flex flex-col gap-2 justify-center sm:justify-around border w-36 sm:w-64 h-28 sm:h-48 md:w-32 md:h-28 lg:w-[160px] lg:h-[120px] rounded-xl cursor-pointer`}
     onClick={() => setPropertyType(content)}
   >
     <i className={icon}></i>
@@ -100,30 +102,32 @@ export const AmenitiesList = ({
       {title === 'Amenities' && (
         <p className='mt-3 mb-5 xl:text-sm'>Popular in Kenya</p>
       )}
-      {amenitiesList.map((amenity, index) => (
-        <div key={index} className='flex items-center mt-4'>
-          <input
-            type='checkbox'
-            // @ts-ignore
-            checked={amenities[amenity]}
-            onChange={() =>
-              setAmenities({
-                ...amenities,
-                // @ts-ignore
-                [amenity]: !amenities[amenity],
-              })
-            }
-            className='checkbox checkbox-primary checkbox-lg xl:checkbox-md'
-          />
-          <p className='text-lg xl:text-sm ml-3.5'>
-            {amenity.charAt(0).toUpperCase() + amenity.slice(1)}
-          </p>
-        </div>
-      ))}
+      <div className='grid md:grid-cols-2'>
+        {amenitiesList.map((amenity, index) => (
+          <div key={index} className='flex items-center mt-4'>
+            <input
+              type='checkbox'
+              // @ts-ignore
+              checked={amenities[amenity]}
+              onChange={() =>
+                setAmenities({
+                  ...amenities,
+                  // @ts-ignore
+                  [amenity]: !amenities[amenity],
+                })
+              }
+              className='checkbox checkbox-primary checkbox-lg xl:checkbox-md'
+            />
+            <p className='text-lg xl:text-sm ml-3.5'>
+              {amenity.charAt(0).toUpperCase() + amenity.slice(1)}
+            </p>
+          </div>
+        ))}
+      </div>
 
       {topAmenities && !showMore && (
         <p
-          className='underline mt-7 mb-32 xl:text-sm cursor-pointer'
+          className='underline mt-7 mb-44 2xl:mb-60 xl:text-sm cursor-pointer'
           onClick={() => setShowMore(true)}
         >
           Show more
@@ -282,30 +286,36 @@ export const CreateWishListModal = ({
   );
 };
 
-export const NavBarMenu = () => (
-  <div
-    className='md:flex float-right hidden pl-3 pr-2 py-1.5 text-[#f0efe9] border border-[#f0efe9] rounded-3xl items-center cursor-pointer dropdown dropdown-bottom dropdown-end z-20'
-    tabIndex={0}
-  >
-    <i className='fa-solid fa-bars pr-2 text-sm'></i>
-    <i className='fa-solid fa-circle-user text-[28px]'></i>
-    <ul
+export const NavBarMenu = () => {
+  const [showMenu, setShowMenu] = useState(false);
+  return (
+    <div
+      className='md:flex float-right hidden pl-3 pr-2 py-1.5 text-[#f0efe9] border border-[#f0efe9] rounded-3xl items-center cursor-pointer dropdown dropdown-bottom dropdown-end z-20'
       tabIndex={0}
-      className='dropdown-content z-[1] menu p-2 shadow bg-[#141b1f] rounded-box mt-3 w-52 xl:text-sm'
+      onClick={() => setShowMenu((prevState) => !prevState)}
     >
-      <li>
-        <a>Login</a>
-      </li>
-      <li>
-        <a>Signup</a>
-      </li>
-      <div className='border border-white/[.3]'></div>
-      <li className='text-white/[.8]'>
-        <a>Decorate Room</a>
-      </li>
-      <li className='text-white/[.8]'>
-        <a>Help</a>
-      </li>
-    </ul>
-  </div>
-);
+      <i className='fa-solid fa-bars pr-2 text-sm'></i>
+      <i className='fa-solid fa-circle-user text-[28px]'></i>
+      {showMenu ? (
+        <ul
+          tabIndex={0}
+          className='dropdown-content z-[1] menu p-2 shadow bg-[#141b1f] rounded-box mt-3 w-52 xl:text-sm'
+        >
+          <li>
+            <a>Login</a>
+          </li>
+          <li>
+            <a>Signup</a>
+          </li>
+          <div className='border border-white/[.3]'></div>
+          <li className='text-white/[.8]'>
+            <a>Decorate Room</a>
+          </li>
+          <li className='text-white/[.8]'>
+            <a>Help</a>
+          </li>
+        </ul>
+      ) : null}
+    </div>
+  );
+};

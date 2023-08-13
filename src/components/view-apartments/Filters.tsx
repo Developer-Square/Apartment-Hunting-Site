@@ -3,7 +3,6 @@
 import { useSpring, animated } from '@react-spring/web';
 import { SetStateAction, useEffect, useState } from 'react';
 
-import FilterImg from '@/assets/view-apartments/filters.png';
 import { AmenitiesList, NumberOfRooms, PropertyType } from './Helpers';
 
 const Filters = ({
@@ -53,15 +52,21 @@ const Filters = ({
     breakfast: false,
   });
   const [largerScreenWidth, setLargerScreenWidth] = useState('100%');
+  const [largerScreenHeight, setLargerScreenHeight] = useState('740px');
 
   useEffect(() => {
     if (window.innerWidth >= 768 && window.innerWidth < 1023) {
-      setLargerScreenWidth('640px');
+      setLargerScreenWidth('720px');
+      return;
     }
 
     if (window.innerWidth >= 1024) {
       setLargerScreenWidth('768px');
+      setLargerScreenHeight('647px');
+      return;
     }
+    setLargerScreenWidth('100%');
+    setLargerScreenHeight('740px');
   }, []);
 
   const clearAllFilters = () => {
@@ -98,16 +103,16 @@ const Filters = ({
         left: '50%',
         transform: 'translateX(-50%)',
         backgroundColor: '#FFFFFF',
-        height: 'auto',
+        height: largerScreenHeight,
         width: largerScreenWidth,
         zIndex: '10',
         borderRadius: '1rem',
-        overflowY: 'hidden',
+        overflow: 'hidden',
         ...props,
       }}
     >
-      <div className='xm:max-w-[360px] max-w-[330px] sm:max-w-[600px] lg:max-w-[700px] mx-auto'>
-        <div className='flex items-center border-b border-black/[.2]'>
+      <div className='xm:max-w-[360px] max-w-[330px] sm:max-w-[600px] lg:max-w-[700px] mx-auto overflow-hidden'>
+        <div className='flex items-center border-b pb-2.5 border-black/[.2]'>
           <i
             className='fa-solid fa-xmark text-xl mt-5 cursor-pointer'
             onClick={() => setShow(false)}
@@ -117,7 +122,6 @@ const Filters = ({
           </p>
         </div>
         <div className='w-full max-h-[790px] overflow-y-scroll'>
-          <img src={FilterImg} alt='filters' className='mt-5 w-full' />
           <div className='mt-5 w-full'>
             <p className='font-bold text-center xl:text-sm'>Price range</p>
             <div className='flex mt-6 items-center justify-around'>
@@ -126,7 +130,7 @@ const Filters = ({
                 <input
                   type='text'
                   placeholder='Ksh 10,000'
-                  className='bg-transparent pl-0 text-black outline-none border-none w-24 sm:w-28 h-full xl:text-sm'
+                  className='bg-transparent pl-0 text-black outline-none border-none focus:ring-0 w-24 sm:w-28 h-full xl:text-sm'
                 />
               </div>
               <span className='h-0.5 w-7 bg-black/[0.5]'></span>
@@ -135,7 +139,7 @@ const Filters = ({
                 <input
                   type='text'
                   placeholder='Ksh 100,000'
-                  className='bg-transparent pl-0 text-black outline-none w-24 sm:w-28 border-none h-full xl:text-sm'
+                  className='bg-transparent pl-0 text-black outline-none w-24 sm:w-28 border-none focus:ring-0 h-full xl:text-sm'
                 />
               </div>
             </div>
@@ -160,7 +164,7 @@ const Filters = ({
           <div className='mt-14 bg-black/[0.4] w-full h-[1px]'></div>
           <div className='mt-5'>
             <p className='font-bold xl:text-sm'>Property Type</p>
-            <div className='mt-7 flex gap-8'>
+            <div className='grid grid-cols-2 md:grid-cols-4 gap-4 mt-7'>
               <PropertyType
                 icon='fa-solid fa-house text-3xl pl-5'
                 content='House'
@@ -173,8 +177,6 @@ const Filters = ({
                 propertyType={propertyType}
                 setPropertyType={setPropertyType}
               />
-            </div>
-            <div className='mt-8 flex gap-8'>
               <PropertyType
                 icon='fa-solid fa-house-flood-water text-3xl pl-5'
                 content='Townhouse'
@@ -220,7 +222,7 @@ const Filters = ({
           )}
           {showMore && (
             <p
-              className='underline mt-7 xl:text-sm mb-32 cursor-pointer'
+              className='underline mt-7 xl:text-sm mb-44 2xl:mb-60 cursor-pointer'
               onClick={() => setShowMore(false)}
             >
               Show less
@@ -228,7 +230,7 @@ const Filters = ({
           )}
         </div>
       </div>
-      <footer className='absolute bg-white w-full bottom-0 mt-5 px-6 py-4 border-t border-black/[.2] h-20'>
+      <footer className='absolute bg-white w-full bottom-0 mt-5 px-6 pt-3 border-t border-black/[.2] h-16'>
         <div className='flex items-center justify-between'>
           <p
             className='underline font-medium cursor-pointer xl:text-sm'

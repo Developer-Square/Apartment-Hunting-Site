@@ -1,4 +1,4 @@
-import React, { SetStateAction } from 'react';
+import React from 'react';
 
 const UserProfileModal = ({
   setShowModal,
@@ -8,7 +8,7 @@ const UserProfileModal = ({
   location,
   setShowFilterBackdrop,
 }: {
-  setShowModal: React.Dispatch<SetStateAction<boolean>>;
+  setShowModal: (showModal: boolean) => void;
   propertyManager: string;
   name: string;
   occupation: string;
@@ -19,12 +19,12 @@ const UserProfileModal = ({
 
   return (
     <>
-      <div className='justify-center items-end flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none text-black'>
-        <div className='relative w-full md:w-[50%] lg:w-[40%] 2xl:w-[30%] 3xl:w-[20%] mt-6 mx-auto'>
+      <div className='justify-center items-end md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none text-black'>
+        <div className='relative w-full md:w-[390px] 2xl:w-[30%] 3xl:w-[20%] mx-auto'>
           {/*content*/}
-          <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-[#f0efe9] outline-none focus:outline-none'>
+          <div className='border-0 rounded-3xl shadow-lg relative flex flex-col w-full bg-[#f0efe9] outline-none focus:outline-none'>
             {/*header*/}
-            <div className='flex items-start justify-between p-5  rounded-t'>
+            <div className='flex items-start justify-between p-5 xl:p-3  rounded-t'>
               <i
                 className='fa-solid fa-xmark text-lg cursor-pointer'
                 onClick={() => {
@@ -80,7 +80,7 @@ const UserProfileModal = ({
                   </p>
                 </div>
               </div>
-              <div className='mx-6 mb-8 pb-8 text-[22px] xl:text-[20px] font-semibold border-b border-black/[.3]'>
+              <div className='mx-6 mb-5 pb-8 text-[22px] xl:text-[20px] font-semibold border-b border-black/[.3]'>
                 <p>Ryan Njoroge's Confirmed information</p>
                 {confirmedInfo.map((info, index) => (
                   <div
@@ -92,7 +92,7 @@ const UserProfileModal = ({
                   </div>
                 ))}
               </div>
-              <div className='mx-6 mb-8 flex items-center font-semibold text-black cursor-pointer'>
+              <div className='mx-6 mb-6 flex items-center font-semibold text-black cursor-pointer'>
                 <i className='fa-solid fa-flag xl:text-sm'></i>
                 <p className='underline ml-3 xl:text-sm'>Report this profile</p>
               </div>
@@ -100,7 +100,6 @@ const UserProfileModal = ({
           </div>
         </div>
       </div>
-      <div className='opacity-25 fixed inset-0 z-40 bg-black'></div>
     </>
   );
 };

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const InputRange = ({
   text,
@@ -21,7 +20,7 @@ const InputRange = ({
         value={value}
         onChange={(e) => setValue(parseInt(e.target.value))}
         placeholder={placeholder}
-        className='w-full h-[44px] p-0 border-none outline-none ml-2 bg-transparent'
+        className='w-full h-[44px] p-0 border-none focus:ring-0 outline-none ml-2 bg-transparent'
       />
     </div>
   </div>
@@ -33,7 +32,9 @@ const Search = () => {
   const [lowerRange, setlowerRange] = useState(10000);
   const [upperRange, setupperRange] = useState(100000);
 
-  const navigate = useNavigate();
+  const handleNavigate = () => {
+    window.open('/apartments', '_blank');
+  };
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
@@ -42,7 +43,7 @@ const Search = () => {
       return;
     }
 
-    navigate('/apartments');
+    handleNavigate();
   };
 
   return (
@@ -75,7 +76,7 @@ const Search = () => {
                 seterror(''), setlocation(e.target.value);
               }}
               placeholder='Anywhere'
-              className='w-full h-[44px] shadow-transparent p-0 border-transparent !outline-none border-none ml-2 bg-transparent'
+              className='w-full h-[44px] shadow-transparent p-0 border-transparent focus:ring-0 !outline-none border-none ml-2 bg-transparent'
             />
           </div>
           <span className='text-xs my-2 text-red-600'>{error}</span>

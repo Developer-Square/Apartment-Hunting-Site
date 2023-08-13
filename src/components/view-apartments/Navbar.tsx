@@ -14,13 +14,13 @@ const Navbar = ({
   return (
     <div
       id='sticky-header'
-      className={`w-full md:w-[92%] 2xl:max-w-[1400px] 3xl:max-w-[1700px] mb-4 sm:mb-6 xl:mb-1 md:mx-auto md:flex items-center justify-center ${
+      className={`w-full md:w-[92%] 2xl:max-w-[1500px] 3xl:max-w-[1700px] mb-4 sm:mb-6 xl:mb-1 md:mx-auto md:flex items-center justify-center ${
         showStickyHeader
           ? 'fixed top-0 z-10 bg-[#141b1f] xm:py-3 py-4 md:w-full'
           : ''
       }`}
     >
-      <div className=' bg-white relative xm:w-[360px] xm:h-14 sm:w-[92%] w-80 h-[48px] md:w-[50%] lg:w-[40%] xl:h-[58px] md:mx-auto md:h-[48px] mx-auto rounded-3xl xm:rounded-[32px] flex items-center'>
+      <div className=' bg-white relative mt-2 xm:w-[360px] xm:h-14 sm:w-[92%] w-80 h-[48px] md:w-[50%] lg:w-[40%] xl:h-[58px] md:mx-auto md:h-[48px] mx-auto rounded-3xl xm:rounded-[32px] flex items-center'>
         <i className='fa-solid fa-magnifying-glass text-black sm:text-lg xl:text-base pl-4'></i>
         <div
           className='flex flex-col w-full pl-4 cursor-pointer'

@@ -5,8 +5,24 @@
 
 html, body {
   overflow-x: hidden;
+  width: 100%;
   font-family: 'Inter', sans-serif;
   font-size: 17px;
+}
+
+.body-style {
+  position: fixed;
+  overflow-y: hidden;
+}
+
+.bg-color {
+  background: #0b1920;
+}
+
+.stickyHeader {
+  height: 70px;
+  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 /* Chrome, Safari, Edge, Opera */

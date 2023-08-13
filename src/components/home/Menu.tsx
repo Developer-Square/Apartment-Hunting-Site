@@ -8,7 +8,7 @@ export const MenuBars = ({
 }) => {
   return (
     <div
-      className='absolute top-5 right-5 cursor-pointer'
+      className='absolute top-6 right-5 cursor-pointer'
       onClick={() => setMenu(true)}
     >
       <div className='bg-[#FFFFFF] h-0.5 w-6 mb-1'></div>
@@ -57,7 +57,7 @@ const Menu = ({
         backgroundColor: '#FFFFFF',
         height: '100%',
         width: '100%',
-        zIndex: '10',
+        zIndex: '30',
         ...props,
       }}
     >

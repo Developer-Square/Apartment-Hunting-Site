@@ -1,5 +1,5 @@
 import { animated, useSpring } from '@react-spring/web';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import UserProfileModal from './UserProfileModal';
 import { ApartmentInfoProps } from './Apartments';
 import { Navigation, Pagination } from 'swiper';
@@ -11,6 +11,7 @@ import ViewApartments3 from '@/assets/view-apartments/view-apartments-3.webp';
 import ViewApartments4 from '@/assets/view-apartments/view-apartments-4.webp';
 import ViewApartments5 from '@/assets/view-apartments/view-apartments-5.webp';
 import { WishListModal, CreateWishListModal, FilterBackdrop } from './Helpers';
+import { ModalContext } from '@/context/modalContext';
 
 const SingleApartment = ({
   info,
@@ -29,17 +30,34 @@ const SingleApartment = ({
   ];
   const [isApartmentHovered, setIsApartmentHovered] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
-  const [showModal, setShowModal] = useState(false);
   const [wishListModal, setWishListModal] = useState(false);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [wishlist, setWishlist] = useState<string[]>([]);
   const [isLargerScreen, setIsLargerScreen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const { setHideMenu } = useContext(ModalContext);
 
   const { x: apartmentX } = useSpring({
     from: { x: 0 },
     x: isApartmentHovered ? 1 : 0,
     config: { duration: 1000 },
   });
+
+  useEffect(() => {
+    // Stop outside scrolling when any of the following modals are open.
+    if (showModal) {
+      document.body.classList.add('body-style');
+      setHideMenu(true);
+      return;
+    }
+
+    // Hide the popup menu on larger screens.
+    if (window.innerWidth <= 768) {
+      setHideMenu(false);
+    }
+    document.body.classList.remove('body-style');
+  }, [setHideMenu, showModal]);
 
   useEffect(() => {
     if (window.innerWidth >= 1024) {
@@ -101,7 +119,7 @@ const SingleApartment = ({
       ) : null}
 
       <div
-        className='mb-10 px-12 sm:px-6 lg:pr-5 lg:pl-3 xl:px-3'
+        className='mb-10 px-8 sm:px-6 lg:pr-5 lg:pl-3 xl:px-3'
         onMouseEnter={() => setIsApartmentHovered(true)}
         onMouseLeave={() => setIsApartmentHovered(false)}
       >
