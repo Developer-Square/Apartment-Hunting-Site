@@ -20,7 +20,7 @@ const SingleApartment = ({
   info: ApartmentInfoProps;
   setShowFilterBackdrop: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const { title, subtitle, propertyManager, price } = info;
+  const { title, subtitle, propertyManager, price, id } = info;
   const viewApartments = [
     ViewApartments1,
     ViewApartments2,
@@ -84,6 +84,12 @@ const SingleApartment = ({
     setWishListModal(true);
   };
 
+  const handleNavigation = () => {
+    // Store info in localStorage to be used in the new tab created for view-apartment-detail-page.
+    localStorage.setItem('apartmentInfo', JSON.stringify(info));
+    window.open(`/view-apartment/${id}`, '_blank');
+  };
+
   return (
     <>
       {/* Show the Backdrop whenever any of the modals are open */}
@@ -119,7 +125,7 @@ const SingleApartment = ({
       ) : null}
 
       <div
-        className='mb-10 px-8 sm:px-6 lg:pr-5 lg:pl-3 xl:px-3'
+        className='mb-10 px-8 cursor-pointer sm:px-6 lg:pr-5 lg:pl-3 xl:px-3'
         onMouseEnter={() => setIsApartmentHovered(true)}
         onMouseLeave={() => setIsApartmentHovered(false)}
       >
@@ -152,6 +158,7 @@ const SingleApartment = ({
                     src={apartment}
                     className='w-full h-full rounded-xl'
                     alt='view apartments'
+                    onClick={() => handleNavigation()}
                   />
                   <animated.div
                     style={{

@@ -159,7 +159,7 @@ export const WishListModal = ({
         {/*content*/}
         <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
           {/*header*/}
-          <div className='flex items-center w-full p-3.5 border-b mb-5 border-black/[.2]  rounded-t'>
+          <div className='flex items-center w-full p-3.5 border-b mb-5 border-black/[.2] rounded-t'>
             <i
               className='fa-solid fa-xmark text-lg cursor-pointer'
               onClick={() => {
