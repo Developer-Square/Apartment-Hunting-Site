@@ -1,3 +1,7 @@
-import { AboutApartmentModal, AmenitiesModal } from './Helpers';
+import {
+  AboutApartmentModal,
+  AmenitiesModal,
+  ReportApartmentModal,
+} from './Helpers';
 
-export { AboutApartmentModal, AmenitiesModal };
+export { AboutApartmentModal, AmenitiesModal, ReportApartmentModal };

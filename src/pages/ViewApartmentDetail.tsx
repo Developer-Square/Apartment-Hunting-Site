@@ -5,6 +5,8 @@ import {
 } from '@/components/view-apartments/Helpers';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Navigation } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import ApartmentVideo from '@/assets/view-apartment-detail-page/video_3.mp4';
 import Apartment1 from '@/assets/view-apartment-detail-page/view-apartment-1.webp';
 import Apartment2 from '@/assets/view-apartment-detail-page/view-apartment-2.webp';
@@ -14,7 +16,14 @@ import Profile from '@/assets/view-apartments/property-manager-9.jpg';
 import {
   AboutApartmentModal,
   AmenitiesModal,
+  ReportApartmentModal,
 } from '@/components/view-apartment-detail';
+import PropertyManager1 from '@/assets/view-apartments/property-manager.png';
+import PropertyManager2 from '@/assets/view-apartments/property-manager-2.jpg';
+import PropertyManager3 from '@/assets/view-apartments/property-manager-3.jpg';
+import PropertyManager4 from '@/assets/view-apartments/property-manager-4.jpg';
+import PropertyManager5 from '@/assets/view-apartments/property-manager-5.jpg';
+import SimilarApartment from '@/components/view-apartment-detail/SimilarApartment';
 
 export interface IAmenitiesProps {
   title: string;
@@ -111,6 +120,44 @@ const amenities: IAmenitiesProps[] = [
   },
 ];
 
+const apartmentInfo: ApartmentInfoProps[] = [
+  {
+    id: 1,
+    propertyManager: PropertyManager2,
+    title: 'Haven woods apartments',
+    subtitle: 'Nairobi apartment with 3 bedrooms',
+    price: '20,000',
+  },
+  {
+    id: 2,
+    propertyManager: PropertyManager3,
+    title: 'Serenity heights apartment',
+    subtitle: 'Stunning loft apartment facing the indian ocean',
+    price: '25,000',
+  },
+  {
+    id: 3,
+    propertyManager: PropertyManager1,
+    title: 'Harmony haven apartments',
+    subtitle: 'Haven apartments stunning view of Nakuru city',
+    price: '35,000',
+  },
+  {
+    id: 4,
+    propertyManager: PropertyManager4,
+    title: 'Jambo Heights apartment',
+    subtitle: 'Elevated Urban Living',
+    price: '17,000',
+  },
+  {
+    id: 5,
+    propertyManager: PropertyManager5,
+    title: 'Mawingu Gardens apartment',
+    subtitle: 'Serene Skyline Retreat',
+    price: '32,000',
+  },
+];
+
 const ViewApartmentDetailPage = () => {
   const [isSaved, setIsSaved] = useState(false);
   const [wishListModal, setWishListModal] = useState(false);
@@ -119,6 +166,7 @@ const ViewApartmentDetailPage = () => {
   const [amenitiesModal, setAmenitiesModal] = useState(false);
   const [wishlist, setWishlist] = useState<string[]>([]);
   const [cleanedInfo, setCleanedInfo] = useState({} as ApartmentInfoProps);
+  const [reportApartmentModal, setReportApartmentModal] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -179,6 +227,11 @@ const ViewApartmentDetailPage = () => {
         <AmenitiesModal
           amenities={amenities}
           setAmenitiesModal={setAmenitiesModal}
+        />
+      ) : null}
+      {reportApartmentModal ? (
+        <ReportApartmentModal
+          setReportApartmentModal={setReportApartmentModal}
         />
       ) : null}
       {showCreateModal ? (
@@ -280,6 +333,51 @@ const ViewApartmentDetailPage = () => {
               Show all 11 amenities
             </button>
           </div>
+          <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
+          <div>
+            <p className='text-left'>Nairobi, Kenya</p>
+            <iframe
+              src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255282.43284925167!2d36.7203741732993!3d-1.3021282380375216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f11655c311541%3A0x9dd769ac1c10b897!2sNairobi%20County!5e0!3m2!1sen!2ske!4v1692081502773!5m2!1sen!2ske'
+              width='100%'
+              height='250'
+              style={{ border: 0 }}
+              allowFullScreen={false}
+              loading='lazy'
+              referrerPolicy='no-referrer-when-downgrade'
+            ></iframe>
+          </div>
+          <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
+          <h2 className='font-semibold text-xl mb-6'>Similar Apartments</h2>
+          <Swiper
+            modules={[Navigation]}
+            navigation
+            spaceBetween={0}
+            slidesPerView={1}
+          >
+            {apartmentInfo.map((info, index) => (
+              <SwiperSlide key={index}>
+                <SimilarApartment key={index} info={info} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
+          <div>
+            <h2 className='text-lg font-semibold cursor-pointer'>
+              Report this apartment
+            </h2>
+            <div
+              className='flex items-center cursor-pointer'
+              onClick={() => setReportApartmentModal(true)}
+            >
+              <p className='mt-3'>
+                If you come across any listing on our platform that appears
+                inaccurate, misleading, or suspicious, we encourage you to
+                report it.
+              </p>
+              <i className='fa-solid fa-chevron-right mt-4 ml-2'></i>
+            </div>
+          </div>
+          <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
         </div>
       </main>
     </section>
