@@ -1,6 +1,8 @@
 import { IAmenitiesProps } from '@/pages/ViewApartmentDetail';
-import { SetStateAction } from 'react';
+import { SetStateAction, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ViewApartments2 from '@/assets/view-apartments/view-apartments-2.webp';
+import { ApartmentInfoProps } from '../view-apartments/Apartments';
 
 export const AboutApartmentModal = ({
   setAboutApartmentModal,
@@ -151,6 +153,103 @@ export const ReportApartmentModal = ({
             <button className='bg-red-600 w-full mt-3 h-12 text-white rounded-md'>
               Report
             </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const ReserveVisitModal = ({
+  setReserveVisitModal,
+}: {
+  setReserveVisitModal: React.Dispatch<SetStateAction<boolean>>;
+}) => {
+  const [cleanedInfo, setCleanedInfo] = useState({} as ApartmentInfoProps);
+
+  useEffect(() => {
+    const info = localStorage.getItem('apartmentInfo');
+    const cleanedInfo = info ? JSON.parse(info) : null;
+    setCleanedInfo(cleanedInfo);
+  }, []);
+
+  return (
+    <div className='justify-center items-end md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none text-black'>
+      <div className='relative h-full w-full md:w-[60%] xl:w-[50%] mt-6 mx-auto'>
+        {/*content*/}
+        <div className='border-0 h-full shadow-lg relative flex flex-col w-full bg-white px-6 outline-none focus:outline-none'>
+          {/*header*/}
+          <div className='flex items-center w-full h-16'>
+            <i
+              className='fa-solid fa-chevron-left text-lg cursor-pointer'
+              onClick={() => {
+                setReserveVisitModal(false);
+              }}
+            ></i>
+            <h4 className='font-semibold w-full text-center'>
+              Request a visit
+            </h4>
+          </div>
+          {/*body*/}
+          <div className='max-h-[100vh] overflow-y-scroll text-base'>
+            <div className='mt-4 mb-6'>
+              <img
+                src={ViewApartments2}
+                alt='apartment'
+                className='w-32 h-24 rounded-lg'
+              />
+              <div className='mt-2'>
+                <p className='text-sm'>{cleanedInfo.title}</p>
+                <p className='text-xs text-[#717171]'>{cleanedInfo.subtitle}</p>
+                <div className='flex items-center mt-0.5'>
+                  <i className='fa-solid text-sm fa-award mr-1'></i>
+                  <p className='text-xs text-[#717171] font-semibold'>
+                    Super agent
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className='border-b border-[1px] border-[black]/[.9]'></div>
+            <div className='my-6 '>
+              <h2 className='text-xl mb-6 font-semibold'>Your Visit</h2>
+              <div className='flex w-full justify-between mb-6'>
+                <div className='flex flex-col'>
+                  <p className='font-semibold text-sm mb-1'>Dates</p>
+                  <p>Aug 14-15</p>
+                </div>
+                <p className='font-semibold text-sm underline'>Edit</p>
+              </div>
+              <div className='flex w-full justify-between mb-6'>
+                <div className='flex flex-col'>
+                  <p className='font-semibold text-sm mb-1'>Guests</p>
+                  <p>1 guest</p>
+                </div>
+                <p className='font-semibold text-sm underline'>Edit</p>
+              </div>
+            </div>
+            <div className='border-b border-[1px] border-[black]/[.9]'></div>
+            <div className='my-6'>
+              <h2 className='text-xl mb-6 font-semibold'>Price details</h2>
+              <div className='flex w-full justify-between mb-3'>
+                <p>Transport fee(Ksh 500 x 1)</p>
+                <p>Ksh 500</p>
+              </div>
+              <div className='flex w-full justify-between mb-3'>
+                <p>Food</p>
+                <p>Ksh 800</p>
+              </div>
+              <div className='flex w-full justify-between mb-5'>
+                <p>Cleaning fee</p>
+                <p>Ksh 300</p>
+              </div>
+              <div className='flex w-full justify-between mt-5'>
+                <p className='underline font-semibold'>Total(Ksh)</p>
+                <p className='underline font-semibold'>Ksh 1500</p>
+              </div>
+              <div className='mt-3 flex justify-end'>
+                <p className='underline font-semibold'>More Info</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

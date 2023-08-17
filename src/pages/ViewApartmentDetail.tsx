@@ -17,6 +17,7 @@ import {
   AboutApartmentModal,
   AmenitiesModal,
   ReportApartmentModal,
+  ReserveVisitModal,
 } from '@/components/view-apartment-detail';
 import PropertyManager1 from '@/assets/view-apartments/property-manager.png';
 import PropertyManager2 from '@/assets/view-apartments/property-manager-2.jpg';
@@ -164,6 +165,7 @@ const ViewApartmentDetailPage = () => {
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [aboutApartmentModal, setAboutApartmentModal] = useState(false);
   const [amenitiesModal, setAmenitiesModal] = useState(false);
+  const [reserveVisitModal, setReserveVisitModal] = useState(false);
   const [wishlist, setWishlist] = useState<string[]>([]);
   const [cleanedInfo, setCleanedInfo] = useState({} as ApartmentInfoProps);
   const [reportApartmentModal, setReportApartmentModal] = useState(false);
@@ -233,6 +235,9 @@ const ViewApartmentDetailPage = () => {
         <ReportApartmentModal
           setReportApartmentModal={setReportApartmentModal}
         />
+      ) : null}
+      {reserveVisitModal ? (
+        <ReserveVisitModal setReserveVisitModal={setReserveVisitModal} />
       ) : null}
       {showCreateModal ? (
         <CreateWishListModal
@@ -347,19 +352,21 @@ const ViewApartmentDetailPage = () => {
             ></iframe>
           </div>
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
-          <h2 className='font-semibold text-xl mb-6'>Similar Apartments</h2>
-          <Swiper
-            modules={[Navigation]}
-            navigation
-            spaceBetween={0}
-            slidesPerView={1}
-          >
-            {apartmentInfo.map((info, index) => (
-              <SwiperSlide key={index}>
-                <SimilarApartment key={index} info={info} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          <div>
+            <h2 className='font-semibold text-xl mb-6'>Similar Apartments</h2>
+            <Swiper
+              modules={[Navigation]}
+              navigation
+              spaceBetween={0}
+              slidesPerView={1}
+            >
+              {apartmentInfo.map((info, index) => (
+                <SwiperSlide key={index}>
+                  <SimilarApartment key={index} info={info} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
           <div>
             <h2 className='text-lg font-semibold cursor-pointer'>
@@ -378,6 +385,20 @@ const ViewApartmentDetailPage = () => {
             </div>
           </div>
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
+          <div className='fixed flex justify-between items-center bg-[#141b1f] bottom-0 left-0 z-20 w-full h-20 px-6'>
+            <div className='flex flex-col justify-center'>
+              <p className='font-semibold text-sm'>Ksh 1500</p>
+              <p className='font-semibold text-sm underline cursor-pointer'>
+                Aug 13-Aug 14
+              </p>
+            </div>
+            <button
+              className='h-12 bg-white rounded-lg text-black w-[150px]'
+              onClick={() => setReserveVisitModal(true)}
+            >
+              Reserve Visit
+            </button>
+          </div>
         </div>
       </main>
     </section>
