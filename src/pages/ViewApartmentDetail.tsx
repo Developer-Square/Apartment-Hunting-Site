@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useSpring, animated } from '@react-spring/web';
 import ApartmentVideo from '@/assets/view-apartment-detail-page/video_3.mp4';
 import Apartment1 from '@/assets/view-apartment-detail-page/view-apartment-1.webp';
 import Apartment2 from '@/assets/view-apartment-detail-page/view-apartment-2.webp';
@@ -25,6 +26,7 @@ import PropertyManager3 from '@/assets/view-apartments/property-manager-3.jpg';
 import PropertyManager4 from '@/assets/view-apartments/property-manager-4.jpg';
 import PropertyManager5 from '@/assets/view-apartments/property-manager-5.jpg';
 import SimilarApartment from '@/components/view-apartment-detail/SimilarApartment';
+import MarketPriceGraph from '@/components/view-apartment-detail/MarketPriceGraph';
 
 export interface IAmenitiesProps {
   title: string;
@@ -169,6 +171,7 @@ const ViewApartmentDetailPage = () => {
   const [wishlist, setWishlist] = useState<string[]>([]);
   const [cleanedInfo, setCleanedInfo] = useState({} as ApartmentInfoProps);
   const [reportApartmentModal, setReportApartmentModal] = useState(false);
+  const [showContent, setShowContent] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -206,6 +209,15 @@ const ViewApartmentDetailPage = () => {
   const handleRouteBack = () => {
     navigate('/apartments');
   };
+
+  const style = useSpring({
+    height: showContent ? 'auto' : 0,
+    opacity: showContent ? 1 : 0,
+    config: { duration: 500 },
+  });
+
+  const content =
+    'Source: tecHiveApartments.com The fair price serves as a guide and is based on the average price of similar listings with shared characteristics such as location, category and more. The algorithm is applied on the data entered by estate agents on tecHiveApartments.';
 
   return (
     <section className='body-background w-full h-full text-white'>
@@ -247,6 +259,7 @@ const ViewApartmentDetailPage = () => {
           setShowFilterBackdrop={() => console.log('')}
         />
       ) : null}
+      {/* Navbar */}
       <header className='flex justify-between items-center px-4 h-16'>
         <i
           className='fa-solid cursor-pointer text-lg fa-chevron-left'
@@ -261,6 +274,7 @@ const ViewApartmentDetailPage = () => {
         </div>
       </header>
       <main>
+        {/* 3D apartment tour */}
         <div className='relative h-[630px]'>
           <video
             width='100%'
@@ -281,6 +295,7 @@ const ViewApartmentDetailPage = () => {
           </span>
           <p className='text-sm font-bold underline'>Nairobi, Kenya</p>
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
+          {/* Alternative apartment pictures */}
           <div className='text-base'>
             <p className='mb-4'>
               Alternatively you can also view professional apartment pictures
@@ -305,6 +320,7 @@ const ViewApartmentDetailPage = () => {
             />
           </div>
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
+          {/* Description */}
           <div className='flex flex-col'>
             <p className='text-base'>
               Centrally located at the heart of Kilimani, a few minutes walk or
@@ -321,6 +337,7 @@ const ViewApartmentDetailPage = () => {
             </div>
           </div>
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
+          {/* What this place offers */}
           <div>
             <h2 className='font-semibold text-xl mb-6'>
               What this place offers
@@ -339,8 +356,30 @@ const ViewApartmentDetailPage = () => {
             </button>
           </div>
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
+          {/* Market Price */}
+          <div className='border-white/[.4] border mb-6 rounded-lg w-full py-3 px-4'>
+            82% of similar properties in Kilimani with 2 bedrooms have a lower
+            asking price.
+            <div className='flex items-center mt-2 text-[#230ee7]'>
+              <p
+                className='cursor-pointer'
+                onClick={() => setShowContent((prevState) => !prevState)}
+              >
+                Show
+              </p>
+              {showContent ? (
+                <i className='fa-solid fa-caret-up ml-1'></i>
+              ) : (
+                <i className='fa-solid fa-caret-down ml-1'></i>
+              )}
+            </div>
+            <animated.div style={style}>{content}</animated.div>
+          </div>
+          <MarketPriceGraph />
+          <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
+          {/* Map */}
           <div>
-            <p className='text-left'>Nairobi, Kenya</p>
+            <p className='text-left mb-3'>Nairobi, Kenya</p>
             <iframe
               src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255282.43284925167!2d36.7203741732993!3d-1.3021282380375216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f11655c311541%3A0x9dd769ac1c10b897!2sNairobi%20County!5e0!3m2!1sen!2ske!4v1692081502773!5m2!1sen!2ske'
               width='100%'
@@ -352,6 +391,7 @@ const ViewApartmentDetailPage = () => {
             ></iframe>
           </div>
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
+          {/* Similar apartments */}
           <div>
             <h2 className='font-semibold text-xl mb-6'>Similar Apartments</h2>
             <Swiper
@@ -368,12 +408,13 @@ const ViewApartmentDetailPage = () => {
             </Swiper>
           </div>
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
+          {/* Report apartment */}
           <div>
             <h2 className='text-lg font-semibold cursor-pointer'>
               Report this apartment
             </h2>
             <div
-              className='flex items-center cursor-pointer'
+              className='flex items-center cursor-pointer mb-10'
               onClick={() => setReportApartmentModal(true)}
             >
               <p className='mt-3'>
@@ -385,6 +426,7 @@ const ViewApartmentDetailPage = () => {
             </div>
           </div>
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
+          {/* Reserve visit tab */}
           <div className='fixed flex justify-between items-center bg-[#141b1f] bottom-0 left-0 z-20 w-full h-20 px-6'>
             <div className='flex flex-col justify-center'>
               <p className='font-semibold text-sm'>Ksh 1500</p>
