@@ -219,6 +219,8 @@ const ViewApartmentDetailPage = () => {
   const content =
     'Source: tecHiveApartments.com The fair price serves as a guide and is based on the average price of similar listings with shared characteristics such as location, category and more. The algorithm is applied on the data entered by estate agents on tecHiveApartments.';
 
+  const confirmedInfo = ['Identity', 'Phone number', 'Email Address'];
+
   return (
     <section className='body-background w-full h-full text-white'>
       {/* Show the Backdrop whenever any of the modals are open */}
@@ -357,25 +359,88 @@ const ViewApartmentDetailPage = () => {
           </div>
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
           {/* Market Price */}
-          <div className='border-white/[.4] border mb-6 rounded-lg w-full py-3 px-4'>
-            82% of similar properties in Kilimani with 2 bedrooms have a lower
-            asking price.
-            <div className='flex items-center mt-2 text-[#230ee7]'>
-              <p
-                className='cursor-pointer'
-                onClick={() => setShowContent((prevState) => !prevState)}
-              >
-                Show
-              </p>
-              {showContent ? (
-                <i className='fa-solid fa-caret-up ml-1'></i>
-              ) : (
-                <i className='fa-solid fa-caret-down ml-1'></i>
-              )}
+          <div>
+            <div className='border-white/[.4] border mb-6 rounded-lg w-full py-3 px-4'>
+              82% of similar properties in Kilimani with 2 bedrooms have a lower
+              asking price.
+              <div className='flex items-center mt-2 text-[#230ee7]'>
+                <p
+                  className='cursor-pointer'
+                  onClick={() => setShowContent((prevState) => !prevState)}
+                >
+                  Show
+                </p>
+                {showContent ? (
+                  <i className='fa-solid fa-caret-up ml-1'></i>
+                ) : (
+                  <i className='fa-solid fa-caret-down ml-1'></i>
+                )}
+              </div>
+              <animated.div style={style}>{content}</animated.div>
             </div>
-            <animated.div style={style}>{content}</animated.div>
+            <MarketPriceGraph />
           </div>
-          <MarketPriceGraph />
+          <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
+          {/* Profile section */}
+          <div>
+            <h1 className='text-xl mb-4 font-bold'>Meet your Agent</h1>
+            <div className='relative border-white/[.4] border rounded-3xl shadow-2xl py-8 px-5 flex justify-between gap-5'>
+              <div className='flex flex-2 sm:flex-auto sm:w-[65%] md:w-[55%] flex-col items-center'>
+                <div className='relative h-24 w-24 rounded-full'>
+                  <div className='absolute top-0 left-0 bg-black/[.2] w-full h-full rounded-full'></div>
+                  <img
+                    src={PropertyManager1}
+                    alt='property manager'
+                    className='w-full h-full rounded-full'
+                  />
+                  <div className='absolute bottom-0 right-0'>
+                    <i className='fa-solid fa-circle-check text-xl'></i>
+                  </div>
+                </div>
+                <p className='font-bold mt-4 text-[26px]'>Ryan Njoroge</p>
+                <p className='font-semibold mt-1 text-sm'>
+                  <i className='fa-solid fa-trophy xl:text-sm'></i> Super Agent
+                </p>
+              </div>
+              <div className='flex flex-1 flex-col justify-center'>
+                <div className='flex flex-col'>
+                  <p className='font-bold text-xl'>3</p>
+                  <p className='text-xs pb-3 xl:text-[14px]'>
+                    Years as a Manager
+                  </p>
+                  <div className='border-b border-black/[.3]'></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Rest of Body */}
+            <div className='mx-6 my-10 pb-8 text-white border-b border-white/[.3]'>
+              <div className='flex items-center'>
+                <i className='fa-solid fa-briefcase text-lg xl:text-base'></i>
+                <p className='ml-4 font-semibold xl:text-sm'>
+                  My Work: Hospitality
+                </p>
+              </div>
+              <div className='flex mt-3 items-center'>
+                <i className='fa-solid fa-location-dot text-lg xl:text-base'></i>
+                <p className='ml-4 font-semibold xl:text-sm'>
+                  Lives in Nairobi, Kenya
+                </p>
+              </div>
+            </div>
+            <div className='mx-6 text-[22px] xl:text-[20px] font-semibold'>
+              <p>Ryan Njoroge's Confirmed information</p>
+              {confirmedInfo.map((info, index) => (
+                <div
+                  className='flex font-normal text-base items-center mt-4'
+                  key={index}
+                >
+                  <i className='fa-solid fa-check mr-3'></i>
+                  <p className='xl:text-sm'>{info}</p>
+                </div>
+              ))}
+            </div>
+          </div>
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
           {/* Map */}
           <div>
