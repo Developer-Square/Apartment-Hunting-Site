@@ -61,9 +61,9 @@ export const AmenitiesModal = ({
     <div className='justify-center items-end md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none text-black'>
       <div className='relative h-full w-full md:w-[60%] xl:w-[50%] mt-6 mx-auto'>
         {/*content*/}
-        <div className='border-0 h-full shadow-lg relative flex flex-col w-full bg-white px-6 outline-none focus:outline-none'>
+        <div className='border-0 h-full shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
           {/*header*/}
-          <div className='flex items-center w-full h-12 mt-2'>
+          <div className='flex items-center w-full h-12 mt-2 px-6'>
             <i
               className='fa-solid fa-chevron-left text-lg cursor-pointer'
               onClick={() => {
@@ -72,7 +72,7 @@ export const AmenitiesModal = ({
             ></i>
           </div>
           {/*body*/}
-          <div className='max-h-[100vh] overflow-y-scroll text-base'>
+          <div className='max-h-[100vh] px-6  overflow-y-scroll text-base'>
             <h1 className='text-left mt-4 mb-7 text-2xl font-bold xl:text-sm'>
               What this place offers
             </h1>
@@ -177,9 +177,9 @@ export const ReserveVisitModal = ({
     <div className='justify-center items-end md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none text-black'>
       <div className='relative h-full w-full md:w-[60%] xl:w-[50%] mt-6 mx-auto'>
         {/*content*/}
-        <div className='border-0 h-full shadow-lg relative flex flex-col w-full bg-white px-6 outline-none focus:outline-none'>
+        <div className='border-0 h-full shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
           {/*header*/}
-          <div className='flex items-center w-full h-16'>
+          <div className='flex items-center w-full h-16 px-6'>
             <i
               className='fa-solid fa-chevron-left text-lg cursor-pointer'
               onClick={() => {
@@ -191,7 +191,7 @@ export const ReserveVisitModal = ({
             </h4>
           </div>
           {/*body*/}
-          <div className='max-h-[100vh] overflow-y-scroll text-base'>
+          <div className='max-h-[100vh] overflow-y-scroll px-6 text-base'>
             <div className='mt-4 mb-6'>
               <img
                 src={ViewApartments2}

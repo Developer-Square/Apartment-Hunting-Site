@@ -389,7 +389,7 @@ const ViewApartmentDetailPage = () => {
                 <div className='relative h-24 w-24 rounded-full'>
                   <div className='absolute top-0 left-0 bg-black/[.2] w-full h-full rounded-full'></div>
                   <img
-                    src={PropertyManager1}
+                    src={PropertyManager5}
                     alt='property manager'
                     className='w-full h-full rounded-full'
                   />
