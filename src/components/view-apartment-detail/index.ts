@@ -11,6 +11,7 @@ import ThreeDApartmentVideo from './ThreeDApartmentVideo';
 import WhatThisPlaceOffers from './WhatThisPlaceOffers';
 import AlternativePictures from './AlternativePictures';
 import SimilarApartments from './SimilarApartment';
+import { MobileNav, DesktopNav } from './Navbar';
 
 export {
   AboutApartmentModal,
@@ -24,4 +25,6 @@ export {
   WhatThisPlaceOffers,
   AlternativePictures,
   SimilarApartments,
+  MobileNav,
+  DesktopNav,
 };

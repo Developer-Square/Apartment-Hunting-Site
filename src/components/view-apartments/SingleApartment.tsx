@@ -5,7 +5,6 @@ import { ApartmentInfoProps } from './Apartments';
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/pagination';
-import ViewApartments1 from '@/assets/view-apartments/view-apartments-1.png';
 import ViewApartments2 from '@/assets/view-apartments/view-apartments-2.webp';
 import ViewApartments3 from '@/assets/view-apartments/view-apartments-3.webp';
 import ViewApartments4 from '@/assets/view-apartments/view-apartments-4.webp';
@@ -22,7 +21,6 @@ const SingleApartment = ({
 }) => {
   const { title, subtitle, propertyManager, price, id } = info;
   const viewApartments = [
-    ViewApartments1,
     ViewApartments2,
     ViewApartments3,
     ViewApartments4,

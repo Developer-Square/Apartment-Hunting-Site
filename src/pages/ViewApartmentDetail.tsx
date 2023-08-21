@@ -4,7 +4,6 @@ import {
   FilterBackdrop,
 } from '@/components/view-apartments/Helpers';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useSpring, animated } from '@react-spring/web';
 
 import { ApartmentInfoProps } from '@/components/view-apartments/Apartments';
@@ -19,6 +18,8 @@ import {
   Map,
   Profile,
   SimilarApartments,
+  MobileNav,
+  DesktopNav,
 } from '@/components/view-apartment-detail';
 import PropertyManager5 from '@/assets/view-apartments/property-manager-5.jpg';
 import { ThreeDApartmentVideo } from '@/components/view-apartment-detail/index';
@@ -119,7 +120,6 @@ const amenities: IAmenitiesProps[] = [
 ];
 
 const ViewApartmentDetailPage = () => {
-  const [isSaved, setIsSaved] = useState(false);
   const [wishListModal, setWishListModal] = useState(false);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [aboutApartmentModal, setAboutApartmentModal] = useState(false);
@@ -129,7 +129,7 @@ const ViewApartmentDetailPage = () => {
   const [cleanedInfo, setCleanedInfo] = useState({} as ApartmentInfoProps);
   const [reportApartmentModal, setReportApartmentModal] = useState(false);
   const [showContent, setShowContent] = useState(false);
-  const navigate = useNavigate();
+  const [isSmallerScreen, setIsSmallerScreen] = useState(false);
 
   useEffect(() => {
     // Stop outside scrolling when any of the following modals are open.
@@ -147,24 +147,18 @@ const ViewApartmentDetailPage = () => {
     setCleanedInfo(cleanedInfo);
   }, []);
 
-  const handleWishListModal = () => {
-    if (isSaved) {
-      setIsSaved(false);
+  useEffect(() => {
+    if (window.innerWidth >= 768) {
+      setIsSmallerScreen(false);
       return;
     }
-    setWishListModal((prevState) => !prevState);
-    setIsSaved((prevState) => !prevState);
-  };
+    setIsSmallerScreen(true);
+  }, []);
 
   const hanldeCreateWishList = (name: string) => {
     setWishlist([...wishlist, name]);
     setShowCreateModal(false);
     setWishListModal(true);
-  };
-
-  // Only available for mobile and tablet screens
-  const handleRouteBack = () => {
-    navigate('/apartments');
   };
 
   const style = useSpring({
@@ -217,26 +211,35 @@ const ViewApartmentDetailPage = () => {
         />
       ) : null}
       {/* Navbar */}
-      <header className='flex justify-between items-center px-4 h-16'>
-        <i
-          className='fa-solid cursor-pointer text-lg fa-chevron-left'
-          onClick={() => handleRouteBack()}
-        ></i>
-        <div className='flex'>
-          <i className='fa-solid cursor-pointer text-lg fa-arrow-up-from-bracket pr-5'></i>
-          <i
-            className='fa-regular cursor-pointer text-lg fa-heart'
-            onClick={() => handleWishListModal()}
-          ></i>
-        </div>
+      <header className='flex justify-between items-center px-4 md:px-10 h-16 md:h-20'>
+        {isSmallerScreen ? (
+          <MobileNav setWishListModal={setWishListModal} />
+        ) : (
+          <DesktopNav />
+        )}
       </header>
       <main>
         {/* 3D apartment tour */}
         <ThreeDApartmentVideo />
         <div className='p-6'>
-          <h1 className='text-[24px] font-semibold mb-2'>
-            {cleanedInfo.title}
-          </h1>
+          <div className='md:flex w-full justify-between'>
+            <h1 className='text-[24px] font-semibold mb-2'>
+              {cleanedInfo.title}
+            </h1>
+            <div className='hidden md:flex justify-between'>
+              <div className='flex mr-5 cursor-pointer items-center'>
+                <i className='fa-solid text-lg fa-arrow-up-from-bracket pr-2'></i>
+                <p className='underline underline-offset-1'>Share</p>
+              </div>
+              <div className='flex mr-5 cursor-pointer items-center'>
+                <i
+                  className='fa-regular cursor-pointer text-lg pr-2 fa-heart'
+                  onClick={() => handleWishListModal()}
+                ></i>
+                <p className='underline underline-offset-1'>Save</p>
+              </div>
+            </div>
+          </div>
           <div className='flex'>
             <span className='flex items-center text-sm mb-1'>
               <i className='fa-solid fa-award mr-2'></i>
@@ -335,7 +338,7 @@ const ViewApartmentDetailPage = () => {
           </div>
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
           {/* Reserve visit tab */}
-          <div className='fixed flex justify-between items-center bg-[#141b1f] bottom-0 left-0 z-20 w-full h-20 px-6'>
+          <div className='md:hidden fixed flex justify-between items-center bg-[#141b1f] bottom-0 left-0 z-20 w-full h-20 px-6'>
             <div className='flex flex-col justify-center'>
               <p className='font-semibold text-sm'>Ksh 1500</p>
               <p className='font-semibold text-sm underline cursor-pointer'>
