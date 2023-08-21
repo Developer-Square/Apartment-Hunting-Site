@@ -5,28 +5,23 @@ import {
 } from '@/components/view-apartments/Helpers';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Navigation } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { useSpring, animated } from '@react-spring/web';
-import ApartmentVideo from '@/assets/view-apartment-detail-page/video_3.mp4';
-import Apartment1 from '@/assets/view-apartment-detail-page/view-apartment-1.webp';
-import Apartment2 from '@/assets/view-apartment-detail-page/view-apartment-2.webp';
-import Apartment3 from '@/assets/view-apartment-detail-page/view-apartment-3.webp';
+
 import { ApartmentInfoProps } from '@/components/view-apartments/Apartments';
-import Profile from '@/assets/view-apartments/property-manager-9.jpg';
 import {
   AboutApartmentModal,
+  AlternativePictures,
   AmenitiesModal,
+  MarketPriceGraph,
   ReportApartmentModal,
   ReserveVisitModal,
+  WhatThisPlaceOffers,
+  Map,
+  Profile,
+  SimilarApartments,
 } from '@/components/view-apartment-detail';
-import PropertyManager1 from '@/assets/view-apartments/property-manager.png';
-import PropertyManager2 from '@/assets/view-apartments/property-manager-2.jpg';
-import PropertyManager3 from '@/assets/view-apartments/property-manager-3.jpg';
-import PropertyManager4 from '@/assets/view-apartments/property-manager-4.jpg';
 import PropertyManager5 from '@/assets/view-apartments/property-manager-5.jpg';
-import SimilarApartment from '@/components/view-apartment-detail/SimilarApartment';
-import MarketPriceGraph from '@/components/view-apartment-detail/MarketPriceGraph';
+import { ThreeDApartmentVideo } from '@/components/view-apartment-detail/index';
 
 export interface IAmenitiesProps {
   title: string;
@@ -123,44 +118,6 @@ const amenities: IAmenitiesProps[] = [
   },
 ];
 
-const apartmentInfo: ApartmentInfoProps[] = [
-  {
-    id: 1,
-    propertyManager: PropertyManager2,
-    title: 'Haven woods apartments',
-    subtitle: 'Nairobi apartment with 3 bedrooms',
-    price: '20,000',
-  },
-  {
-    id: 2,
-    propertyManager: PropertyManager3,
-    title: 'Serenity heights apartment',
-    subtitle: 'Stunning loft apartment facing the indian ocean',
-    price: '25,000',
-  },
-  {
-    id: 3,
-    propertyManager: PropertyManager1,
-    title: 'Harmony haven apartments',
-    subtitle: 'Haven apartments stunning view of Nakuru city',
-    price: '35,000',
-  },
-  {
-    id: 4,
-    propertyManager: PropertyManager4,
-    title: 'Jambo Heights apartment',
-    subtitle: 'Elevated Urban Living',
-    price: '17,000',
-  },
-  {
-    id: 5,
-    propertyManager: PropertyManager5,
-    title: 'Mawingu Gardens apartment',
-    subtitle: 'Serene Skyline Retreat',
-    price: '32,000',
-  },
-];
-
 const ViewApartmentDetailPage = () => {
   const [isSaved, setIsSaved] = useState(false);
   const [wishListModal, setWishListModal] = useState(false);
@@ -219,8 +176,6 @@ const ViewApartmentDetailPage = () => {
   const content =
     'Source: tecHiveApartments.com The fair price serves as a guide and is based on the average price of similar listings with shared characteristics such as location, category and more. The algorithm is applied on the data entered by estate agents on tecHiveApartments.';
 
-  const confirmedInfo = ['Identity', 'Phone number', 'Email Address'];
-
   return (
     <section className='body-background w-full h-full text-white'>
       {/* Show the Backdrop whenever any of the modals are open */}
@@ -277,16 +232,7 @@ const ViewApartmentDetailPage = () => {
       </header>
       <main>
         {/* 3D apartment tour */}
-        <div className='relative h-[630px]'>
-          <video
-            width='100%'
-            height='100%'
-            className='w-full h-full absolute top-0 left-[50%] transform translate-x-[-50%]'
-            controls={true}
-          >
-            <source src={ApartmentVideo} type='video/mp4' />
-          </video>
-        </div>
+        <ThreeDApartmentVideo />
         <div className='p-6'>
           <h1 className='text-[24px] font-semibold mb-2'>
             {cleanedInfo.title}
@@ -298,25 +244,14 @@ const ViewApartmentDetailPage = () => {
           <p className='text-sm font-bold underline'>Nairobi, Kenya</p>
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
           {/* Alternative apartment pictures */}
-          <div className='text-base'>
-            <p className='mb-4'>
-              Alternatively you can also view professional apartment pictures
-            </p>
-            <div className='grid grid-cols-2 gap-2 cursor-pointer'>
-              <img src={Apartment1} className='w-full h-full' alt='apartment' />
-              <div className='flex flex-col'>
-                <img src={Apartment2} className='mb-3' alt='apartment' />
-                <img src={Apartment3} alt='apartment' />
-              </div>
-            </div>
-          </div>
+          <AlternativePictures />
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
           <div className='flex justify-between'>
             <h1 className='text-[20px] font-semibold mb-2'>
               Entire apartment <br /> managed by Roronoa Z.
             </h1>
             <img
-              src={Profile}
+              src={PropertyManager5}
               className='w-12 h-12 rounded-full'
               alt='profile'
             />
@@ -340,23 +275,10 @@ const ViewApartmentDetailPage = () => {
           </div>
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
           {/* What this place offers */}
-          <div>
-            <h2 className='font-semibold text-xl mb-6'>
-              What this place offers
-            </h2>
-            {amenities.slice(0, 5).map((amenity, index) => (
-              <div className='flex items-center mb-3' key={index}>
-                <i className={`${amenity.available[0].icon}`}></i>
-                <p>{amenity.available[0].text}</p>
-              </div>
-            ))}
-            <button
-              className='mt-4 h-12 w-full rounded-lg border border-white/[.4]'
-              onClick={() => setAmenitiesModal(true)}
-            >
-              Show all 11 amenities
-            </button>
-          </div>
+          <WhatThisPlaceOffers
+            amenities={amenities}
+            setAmenitiesModal={setAmenitiesModal}
+          />
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
           {/* Market Price */}
           <div>
@@ -382,96 +304,13 @@ const ViewApartmentDetailPage = () => {
           </div>
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
           {/* Profile section */}
-          <div>
-            <h1 className='text-xl mb-4 font-bold'>Meet your Agent</h1>
-            <div className='relative border-white/[.4] border rounded-3xl shadow-2xl py-8 px-5 flex justify-between gap-5'>
-              <div className='flex flex-2 sm:flex-auto sm:w-[65%] md:w-[55%] flex-col items-center'>
-                <div className='relative h-24 w-24 rounded-full'>
-                  <div className='absolute top-0 left-0 bg-black/[.2] w-full h-full rounded-full'></div>
-                  <img
-                    src={PropertyManager5}
-                    alt='property manager'
-                    className='w-full h-full rounded-full'
-                  />
-                  <div className='absolute bottom-0 right-0'>
-                    <i className='fa-solid fa-circle-check text-xl'></i>
-                  </div>
-                </div>
-                <p className='font-bold mt-4 text-[26px]'>Ryan Njoroge</p>
-                <p className='font-semibold mt-1 text-sm'>
-                  <i className='fa-solid fa-trophy xl:text-sm'></i> Super Agent
-                </p>
-              </div>
-              <div className='flex flex-1 flex-col justify-center'>
-                <div className='flex flex-col'>
-                  <p className='font-bold text-xl'>3</p>
-                  <p className='text-xs pb-3 xl:text-[14px]'>
-                    Years as a Manager
-                  </p>
-                  <div className='border-b border-black/[.3]'></div>
-                </div>
-              </div>
-            </div>
-
-            {/* Rest of Body */}
-            <div className='mx-6 my-10 pb-8 text-white border-b border-white/[.3]'>
-              <div className='flex items-center'>
-                <i className='fa-solid fa-briefcase text-lg xl:text-base'></i>
-                <p className='ml-4 font-semibold xl:text-sm'>
-                  My Work: Hospitality
-                </p>
-              </div>
-              <div className='flex mt-3 items-center'>
-                <i className='fa-solid fa-location-dot text-lg xl:text-base'></i>
-                <p className='ml-4 font-semibold xl:text-sm'>
-                  Lives in Nairobi, Kenya
-                </p>
-              </div>
-            </div>
-            <div className='mx-6 text-[22px] xl:text-[20px] font-semibold'>
-              <p>Ryan Njoroge's Confirmed information</p>
-              {confirmedInfo.map((info, index) => (
-                <div
-                  className='flex font-normal text-base items-center mt-4'
-                  key={index}
-                >
-                  <i className='fa-solid fa-check mr-3'></i>
-                  <p className='xl:text-sm'>{info}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+          <Profile profile={PropertyManager5} />
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
           {/* Map */}
-          <div>
-            <p className='text-left mb-3'>Nairobi, Kenya</p>
-            <iframe
-              src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255282.43284925167!2d36.7203741732993!3d-1.3021282380375216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f11655c311541%3A0x9dd769ac1c10b897!2sNairobi%20County!5e0!3m2!1sen!2ske!4v1692081502773!5m2!1sen!2ske'
-              width='100%'
-              height='250'
-              style={{ border: 0 }}
-              allowFullScreen={false}
-              loading='lazy'
-              referrerPolicy='no-referrer-when-downgrade'
-            ></iframe>
-          </div>
+          <Map />
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
           {/* Similar apartments */}
-          <div>
-            <h2 className='font-semibold text-xl mb-6'>Similar Apartments</h2>
-            <Swiper
-              modules={[Navigation]}
-              navigation
-              spaceBetween={0}
-              slidesPerView={1}
-            >
-              {apartmentInfo.map((info, index) => (
-                <SwiperSlide key={index}>
-                  <SimilarApartment key={index} info={info} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
+          <SimilarApartments />
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
           {/* Report apartment */}
           <div>
