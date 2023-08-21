@@ -11,6 +11,7 @@ import PropertyManager3 from '@/assets/view-apartments/property-manager-3.jpg';
 import PropertyManager4 from '@/assets/view-apartments/property-manager-4.jpg';
 import PropertyManager5 from '@/assets/view-apartments/property-manager-5.jpg';
 import { ApartmentInfoProps } from '../view-apartments/Apartments';
+import { useEffect, useState } from 'react';
 
 const apartmentInfo: ApartmentInfoProps[] = [
   {
@@ -101,14 +102,27 @@ const SimilarApartment = ({ info }: { info: ApartmentInfoProps }) => {
 };
 
 const SimilarApartments = () => {
+  const [slidesPerView, setSlidesPerView] = useState(1);
+  const [spaceBetween, setSpaceBetween] = useState(0);
+
+  useEffect(() => {
+    if (window.innerWidth >= 640 && window.innerWidth < 767) {
+      setSlidesPerView(2);
+      setSpaceBetween(16);
+      return;
+    }
+    setSlidesPerView(1);
+    setSpaceBetween(0);
+  }, []);
+
   return (
     <div>
       <h2 className='font-semibold text-xl mb-6'>Similar Apartments</h2>
       <Swiper
         modules={[Navigation]}
         navigation
-        spaceBetween={0}
-        slidesPerView={1}
+        spaceBetween={spaceBetween}
+        slidesPerView={slidesPerView}
       >
         {apartmentInfo.map((info, index) => (
           <SwiperSlide key={index}>

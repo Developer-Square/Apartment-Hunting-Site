@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   AreaChart,
   Area,
@@ -35,9 +36,19 @@ const data = [
 ];
 
 const MarketPriceGraph = () => {
+  const [graphWidth, setGraphWidth] = useState(340);
+
+  useEffect(() => {
+    if (window.innerWidth >= 640 && window.innerWidth < 767) {
+      setGraphWidth(600);
+      return;
+    }
+    setGraphWidth(340);
+  }, []);
+
   return (
     <AreaChart
-      width={340}
+      width={graphWidth}
       height={400}
       data={data}
       margin={{

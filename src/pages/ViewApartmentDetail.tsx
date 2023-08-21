@@ -237,11 +237,15 @@ const ViewApartmentDetailPage = () => {
           <h1 className='text-[24px] font-semibold mb-2'>
             {cleanedInfo.title}
           </h1>
-          <span className='flex items-center text-sm mb-1'>
-            <i className='fa-solid fa-award mr-2'></i>
-            <p>Super Agent</p>
-          </span>
-          <p className='text-sm font-bold underline'>Nairobi, Kenya</p>
+          <div className='flex'>
+            <span className='flex items-center text-sm mb-1'>
+              <i className='fa-solid fa-award mr-2'></i>
+              <p>Super Agent</p>
+            </span>
+            <p className='text-sm font-bold sm:ml-3 underline'>
+              Nairobi, Kenya
+            </p>
+          </div>
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
           {/* Alternative apartment pictures */}
           <AlternativePictures />

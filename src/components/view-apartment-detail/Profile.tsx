@@ -2,9 +2,9 @@ const Profile = ({ profile }: { profile: string }) => {
   const confirmedInfo = ['Identity', 'Phone number', 'Email Address'];
   return (
     <div>
-      <h1 className='text-xl mb-4 font-bold'>Meet your Agent</h1>
-      <div className='relative border-white/[.4] border rounded-3xl shadow-2xl py-8 px-5 flex justify-between gap-5'>
-        <div className='flex flex-2 sm:flex-auto sm:w-[65%] md:w-[55%] flex-col items-center'>
+      <h1 className='text-xl mb-4 sm:mb-6 font-bold'>Meet your Agent</h1>
+      <div className='relative border-white/[.4] border rounded-3xl shadow-2xl py-8 px-5 flex justify-between sm:w-[65%] mx-auto gap-5'>
+        <div className='flex flex-2 sm:flex-auto flex-col items-center'>
           <div className='relative h-24 w-24 rounded-full'>
             <div className='absolute top-0 left-0 bg-black/[.2] w-full h-full rounded-full'></div>
             <img
@@ -31,7 +31,7 @@ const Profile = ({ profile }: { profile: string }) => {
       </div>
 
       {/* Rest of Body */}
-      <div className='mx-6 my-10 pb-8 text-white border-b border-white/[.3]'>
+      <div className='my-10 pb-8 text-white border-b border-white/[.3]'>
         <div className='flex items-center'>
           <i className='fa-solid fa-briefcase text-lg xl:text-base'></i>
           <p className='ml-4 font-semibold xl:text-sm'>My Work: Hospitality</p>
@@ -43,7 +43,7 @@ const Profile = ({ profile }: { profile: string }) => {
           </p>
         </div>
       </div>
-      <div className='mx-6 text-[22px] xl:text-[20px] font-semibold'>
+      <div className='text-[22px] xl:text-[20px] font-semibold'>
         <p>Ryan Njoroge's Confirmed information</p>
         {confirmedInfo.map((info, index) => (
           <div

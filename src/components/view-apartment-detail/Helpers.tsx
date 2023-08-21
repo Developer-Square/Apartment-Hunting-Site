@@ -192,13 +192,13 @@ export const ReserveVisitModal = ({
           </div>
           {/*body*/}
           <div className='max-h-[100vh] overflow-y-scroll px-6 text-base'>
-            <div className='mt-4 mb-6'>
+            <div className='mt-4 mb-6 sm:flex'>
               <img
                 src={ViewApartments2}
                 alt='apartment'
                 className='w-32 h-24 rounded-lg'
               />
-              <div className='mt-2'>
+              <div className='mt-2 sm:mt-0 sm:ml-4'>
                 <p className='text-sm'>{cleanedInfo.title}</p>
                 <p className='text-xs text-[#717171]'>{cleanedInfo.subtitle}</p>
                 <div className='flex items-center mt-0.5'>
@@ -249,6 +249,16 @@ export const ReserveVisitModal = ({
               <div className='mt-3 flex justify-end'>
                 <p className='underline font-semibold'>More Info</p>
               </div>
+            </div>
+            <div className='flex flex-col w-full items-center mt-10 mb-6'>
+              <div className='text-xs w-[95%]'>
+                By selecting the button below, I agree to the Visiting House
+                Rules, Ground rules for guests, and that tecHiveApartments can
+                charge my payment method if I’m responsible for damage.
+              </div>
+              <button className='bg-black mt-6 rounded-lg h-14 w-[95%] text-white'>
+                Confirm and pay
+              </button>
             </div>
           </div>
         </div>
