@@ -82,6 +82,34 @@ input[type=number] {
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.10) inset, 1px -1px 2px 0px rgba(0, 0, 0, 0.10) inset, 2px -2px 3px 0px rgba(0, 0, 0, 0.09) inset, 5px -5px 4px 0px rgba(0, 0, 0, 0.05) inset, 8px -8px 5px 0px rgba(0, 0, 0, 0.01) inset, 13px -13px 5px 0px rgba(0, 0, 0, 0.00) inset;
 }
 
+/* ViewApartmentDetail page */
+.sticky-form {
+  margin: 24px auto;
+  height: fit-content;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid rgb(221, 221, 221, 0.2);
+  box-shadow: rgba(255, 255, 255, 0.12) 0px 6px 16px;
+}
+
+.react-datepicker__input-container > input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+.react-datepicker__input-container > input:focus {
+  border: none;
+  --tw-ring-color: none;
+}
+
+.react-datepicker__input-container > input[type='text'] {
+  font-size: 14px;
+  padding: 0 0.75rem 0 0.75rem;
+}
+
 @media screen and (min-width: 1280px) {
   html, body {
     font-size: 22px;

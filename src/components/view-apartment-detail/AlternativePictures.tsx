@@ -11,8 +11,14 @@ const AlternativePictures = () => {
       <div className='grid grid-cols-2 gap-2 cursor-pointer'>
         <img src={Apartment1} className='w-full h-full' alt='apartment' />
         <div className='flex flex-col'>
-          <img src={Apartment2} className='mb-3' alt='apartment' />
-          <img src={Apartment3} alt='apartment' />
+          <div className='md:grid grid-cols-2 gap-2'>
+            <img src={Apartment2} className='mb-3' alt='apartment' />
+            <img src={Apartment2} className='hidden md:block' alt='apartment' />
+          </div>
+          <div className='md:grid grid-cols-2 gap-2'>
+            <img src={Apartment3} alt='apartment' className='' />
+            <img src={Apartment3} className='hidden md:block' alt='apartment' />
+          </div>
         </div>
       </div>
     </div>

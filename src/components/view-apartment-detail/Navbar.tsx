@@ -6,10 +6,13 @@ import { NavBarMenu } from '../view-apartments/Helpers';
 
 export const MobileNav = ({
   setWishListModal,
+  isSaved,
+  setIsSaved,
 }: {
   setWishListModal: React.Dispatch<React.SetStateAction<boolean>>;
+  isSaved: boolean;
+  setIsSaved: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const [isSaved, setIsSaved] = useState(false);
   const navigate = useNavigate();
 
   const handleWishListModal = () => {
