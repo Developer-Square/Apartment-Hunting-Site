@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -9,7 +9,7 @@ const ReserveVisitForm = () => {
     setDate(date);
   };
   return (
-    <div className={`sticky-form w-[80%] h-auto sticky top-20`}>
+    <div className={`hidden md:block sticky-form w-[80%] h-auto sticky top-20`}>
       <h3 className='text-xl font-bold'>Ksh 500 /day</h3>
       <div className='flex'>
         <div className='w-full border border-white/[.2] my-6 h-14 rounded-tl-lg'>

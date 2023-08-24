@@ -40,7 +40,12 @@ const MarketPriceGraph = () => {
 
   useEffect(() => {
     if (window.innerWidth >= 640 && window.innerWidth < 767) {
-      setGraphWidth(600);
+      setGraphWidth(615);
+      return;
+    }
+
+    if (window.innerWidth >= 768 && window.innerWidth < 1023) {
+      setGraphWidth(740);
       return;
     }
     setGraphWidth(340);

@@ -133,15 +133,24 @@ const ViewApartmentDetailPage = () => {
   const [isSaved, setIsSaved] = useState(false);
   const [isSmallerScreen, setIsSmallerScreen] = useState(false);
 
+  const show =
+    wishListModal ||
+    showCreateModal ||
+    aboutApartmentModal ||
+    amenitiesModal ||
+    reportApartmentModal ||
+    reserveVisitModal ||
+    showCreateModal;
+
   useEffect(() => {
     // Stop outside scrolling when any of the following modals are open.
-    if (wishListModal || showCreateModal) {
+    if (show) {
       document.body.classList.add('body-style');
       return;
     }
 
     document.body.classList.remove('body-style');
-  }, [showCreateModal, wishListModal]);
+  }, [show]);
 
   useEffect(() => {
     const info = localStorage.getItem('apartmentInfo');
@@ -184,7 +193,7 @@ const ViewApartmentDetailPage = () => {
   return (
     <section className='body-background w-full h-full text-white'>
       {/* Show the Backdrop whenever any of the modals are open */}
-      {wishListModal || showCreateModal ? (
+      {show ? (
         // Only show the backdrop in 768px view and below.
         <FilterBackdrop show={true} />
       ) : null}

@@ -65,7 +65,7 @@ const SimilarApartment = ({ info }: { info: ApartmentInfoProps }) => {
   };
 
   return (
-    <div className='mb-5 px-1 cursor-pointer sm:px-6 lg:pr-5 lg:pl-3 xl:px-3'>
+    <div className='mb-5 px-1 cursor-pointer sm:pr-4 lg:px-0'>
       <div className='relative w-full h-[200px] lg:h-72 xl:h-[267px]'>
         <Swiper
           modules={[Pagination]}
@@ -111,6 +111,13 @@ const SimilarApartments = () => {
       setSpaceBetween(16);
       return;
     }
+
+    if (window.innerWidth >= 768 && window.innerWidth < 1023) {
+      setSlidesPerView(3);
+      setSpaceBetween(0);
+      return;
+    }
+
     setSlidesPerView(1);
     setSpaceBetween(0);
   }, []);
