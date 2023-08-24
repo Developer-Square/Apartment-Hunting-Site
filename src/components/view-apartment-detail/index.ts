@@ -12,6 +12,7 @@ import WhatThisPlaceOffers from './WhatThisPlaceOffers';
 import AlternativePictures from './AlternativePictures';
 import SimilarApartments from './SimilarApartment';
 import { MobileNav, DesktopNav } from './Navbar';
+import ReserveVisitForm from './ReserveVisitForm';
 
 export {
   AboutApartmentModal,
@@ -27,4 +28,5 @@ export {
   SimilarApartments,
   MobileNav,
   DesktopNav,
+  ReserveVisitForm,
 };

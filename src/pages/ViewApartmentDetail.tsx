@@ -5,8 +5,6 @@ import {
 } from '@/components/view-apartments/Helpers';
 import { useState, useEffect } from 'react';
 import { useSpring, animated } from '@react-spring/web';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 
 import { ApartmentInfoProps } from '@/components/view-apartments/Apartments';
 import {
@@ -22,6 +20,7 @@ import {
   SimilarApartments,
   MobileNav,
   DesktopNav,
+  ReserveVisitForm,
 } from '@/components/view-apartment-detail';
 import PropertyManager5 from '@/assets/view-apartments/property-manager-5.jpg';
 import { ThreeDApartmentVideo } from '@/components/view-apartment-detail/index';
@@ -133,7 +132,6 @@ const ViewApartmentDetailPage = () => {
   const [showContent, setShowContent] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [isSmallerScreen, setIsSmallerScreen] = useState(false);
-  const [date, setDate] = useState(new Date());
 
   useEffect(() => {
     // Stop outside scrolling when any of the following modals are open.
@@ -179,10 +177,6 @@ const ViewApartmentDetailPage = () => {
     opacity: showContent ? 1 : 0,
     config: { duration: 500 },
   });
-
-  const onChange = (date: Date) => {
-    setDate(date);
-  };
 
   const content =
     'Source: tecHiveApartments.com The fair price serves as a guide and is based on the average price of similar listings with shared characteristics such as location, category and more. The algorithm is applied on the data entered by estate agents on tecHiveApartments.';
@@ -311,41 +305,7 @@ const ViewApartmentDetailPage = () => {
                 setAmenitiesModal={setAmenitiesModal}
               />
             </div>
-            <div className='sticky-form w-[80%] h-auto'>
-              <h3 className='text-xl font-bold'>Ksh 500 /day</h3>
-              <div className='flex'>
-                <div className='w-full border border-white/[.2] my-6 h-14 rounded-tl-lg'>
-                  <p className='pt-2 px-4 text-xs uppercase'>Check-in</p>
-                  <DatePicker selected={date} onChange={onChange} />
-                </div>
-                <div className='w-full border border-white/[.2] my-6 h-14 border-l-0 rounded-tr-lg'>
-                  <p className='pt-2 px-4 text-xs uppercase'>Check-out</p>
-                  <DatePicker selected={date} onChange={onChange} />
-                </div>
-              </div>
-              <select className='select select-bordered w-full max-w-xs focus:ring-0 focus:outline-none focus:border-none text-sm font-normal'>
-                <option selected>1 guest</option>
-                <option>2 guests</option>
-                <option>3 guests</option>
-                <option>4+ guests</option>
-              </select>
-              <button className='w-full h-12 my-6 rounded-lg bg-white text-black font-semibold'>
-                Book
-              </button>
-              <div className='flex justify-between'>
-                <p className='underline underline-offset-4'>Travel fee</p>
-                <p>Ksh 250</p>
-              </div>
-              <div className='flex py-4 justify-between'>
-                <p className='underline underline-offset-4'>Cleaning fee</p>
-                <p>Ksh 550</p>
-              </div>
-              <div className='pb-4 border-b border-[#f0efe9]/[.4]'></div>
-              <div className='font-semibold flex mt-4 justify-between'>
-                <p>Total</p>
-                <p>Ksh 1500</p>
-              </div>
-            </div>
+            <ReserveVisitForm />
           </div>
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
           {/* Market Price */}
