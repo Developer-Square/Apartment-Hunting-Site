@@ -37,6 +37,8 @@ const data = [
 
 const MarketPriceGraph = () => {
   const [graphWidth, setGraphWidth] = useState(340);
+  const [left, setLeft] = useState(0);
+  const [right, setRight] = useState(30);
 
   useEffect(() => {
     if (window.innerWidth >= 640 && window.innerWidth < 767) {
@@ -53,6 +55,13 @@ const MarketPriceGraph = () => {
       setGraphWidth(1000);
       return;
     }
+
+    if (window.innerWidth >= 1280 && window.innerWidth < 1536) {
+      setGraphWidth(1210);
+      setLeft(20);
+      setRight(0);
+      return;
+    }
     setGraphWidth(340);
   }, []);
 
@@ -63,8 +72,8 @@ const MarketPriceGraph = () => {
       data={data}
       margin={{
         top: 10,
-        right: 30,
-        left: 0,
+        right,
+        left,
         bottom: 0,
       }}
     >

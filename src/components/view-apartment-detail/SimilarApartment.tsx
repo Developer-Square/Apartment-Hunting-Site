@@ -130,7 +130,9 @@ const SimilarApartments = () => {
 
   return (
     <div>
-      <h2 className='font-semibold text-xl mb-6'>Similar Apartments</h2>
+      <h2 className='font-semibold text-xl xl:text-lg mb-6'>
+        Similar Apartments
+      </h2>
       <Swiper
         modules={[Navigation]}
         navigation

@@ -299,7 +299,7 @@ export const NavBarMenu = () => {
       {showMenu ? (
         <ul
           tabIndex={0}
-          className='dropdown-content z-[1] menu p-2 shadow bg-[#141b1f] rounded-box mt-3 w-52 xl:text-sm'
+          className='dropdown-content z-[1] menu p-2 shadow bg-[#141b1f] rounded-box mt-3 w-52 xl:text-[16px]'
         >
           <li>
             <a>Login</a>

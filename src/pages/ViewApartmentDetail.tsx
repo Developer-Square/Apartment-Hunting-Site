@@ -39,7 +39,7 @@ const amenities: IAmenitiesProps[] = [
     title: 'Bathroom',
     available: [
       {
-        icon: 'fa-solid text-lg fa-shower mr-3.5',
+        icon: 'fa-solid text-lg xl:text-base fa-shower mr-3.5',
         text: 'Hot water',
       },
     ],
@@ -48,11 +48,11 @@ const amenities: IAmenitiesProps[] = [
     title: 'Laundry',
     available: [
       {
-        icon: 'fa-solid text-lg fa-socks mr-3.5',
+        icon: 'fa-solid text-lg xl:text-base fa-socks mr-3.5',
         text: 'Laundry washer',
       },
       {
-        icon: 'fa-solid text-lg fa-shirt mr-3.5',
+        icon: 'fa-solid text-lg xl:text-base fa-shirt mr-3.5',
         text: 'Wardrobe',
       },
     ],
@@ -61,7 +61,7 @@ const amenities: IAmenitiesProps[] = [
     title: 'Entertainment',
     available: [
       {
-        icon: 'fa-solid text-lg fa-tv mr-3.5',
+        icon: 'fa-solid text-lg xl:text-base fa-tv mr-3.5',
         text: 'Cable tv',
       },
     ],
@@ -70,7 +70,7 @@ const amenities: IAmenitiesProps[] = [
     title: 'Internet',
     available: [
       {
-        icon: 'fa-solid text-lg fa-wifi mr-3.5',
+        icon: 'fa-solid text-lg xl:text-base fa-wifi mr-3.5',
         text: 'Wifi',
       },
     ],
@@ -79,7 +79,7 @@ const amenities: IAmenitiesProps[] = [
     title: 'Kitchen',
     available: [
       {
-        icon: 'fa-solid text-lg fa-utensils mr-3.5',
+        icon: 'fa-solid text-lg xl:text-base fa-utensils mr-3.5',
         text: 'Dining room',
       },
     ],
@@ -88,7 +88,7 @@ const amenities: IAmenitiesProps[] = [
     title: 'Outdoor',
     available: [
       {
-        icon: 'fa-solid text-lg fa-seedling mr-3.5',
+        icon: 'fa-solid text-lg xl:text-base fa-seedling mr-3.5',
         text: 'Outdoor compound',
       },
     ],
@@ -97,15 +97,15 @@ const amenities: IAmenitiesProps[] = [
     title: 'Parking and facilities',
     available: [
       {
-        icon: 'fa-solid text-lg fa-dumbbell mr-3.5',
+        icon: 'fa-solid text-lg xl:text-base fa-dumbbell mr-3.5',
         text: 'Gym',
       },
       {
-        icon: 'fa-solid text-lg fa-square-parking mr-3.5',
+        icon: 'fa-solid text-lg xl:text-base fa-square-parking mr-3.5',
         text: 'Free parking',
       },
       {
-        icon: 'fa-solid text-lg fa-elevator mr-3.5',
+        icon: 'fa-solid text-lg xl:text-base fa-elevator mr-3.5',
         text: 'Elevator',
       },
     ],
@@ -114,7 +114,7 @@ const amenities: IAmenitiesProps[] = [
     title: 'Services',
     available: [
       {
-        icon: 'fa-solid text-lg fa-paw mr-3.5',
+        icon: 'fa-solid text-lg xl:text-base fa-paw mr-3.5',
         text: 'Pets allowed',
       },
     ],
@@ -248,29 +248,33 @@ const ViewApartmentDetailPage = () => {
         <ThreeDApartmentVideo />
         <div className='px-6 pt-6'>
           <div className='md:flex w-full justify-between'>
-            <h1 className='text-[24px] font-semibold mb-2'>
+            <h1 className='text-[24px] xl:text-[22px] font-semibold mb-2'>
               {cleanedInfo.title}
             </h1>
             <div className='hidden md:flex justify-between'>
               <div className='flex mr-5 cursor-pointer items-center'>
-                <i className='fa-solid text-lg fa-arrow-up-from-bracket pr-2'></i>
-                <p className='underline underline-offset-1'>Share</p>
+                <i className='fa-solid text-lg xl:text-[17px] fa-arrow-up-from-bracket pr-2'></i>
+                <p className='underline underline-offset-1 xl:text-[17px]'>
+                  Share
+                </p>
               </div>
               <div
                 className='flex mr-5 cursor-pointer items-center'
                 onClick={() => handleWishListModal()}
               >
-                <i className='fa-regular cursor-pointer text-lg pr-2 fa-heart'></i>
-                <p className='underline underline-offset-1'>Save</p>
+                <i className='fa-regular cursor-pointer text-lg pr-2 fa-heart xl:text-[17px]'></i>
+                <p className='underline underline-offset-1 xl:text-[17px]'>
+                  Save
+                </p>
               </div>
             </div>
           </div>
           <div className='flex'>
-            <span className='flex items-center text-sm mb-1'>
+            <span className='flex items-center text-sm xl:text-[15px] mb-1'>
               <i className='fa-solid fa-award mr-2'></i>
               <p>Super Agent</p>
             </span>
-            <p className='text-sm font-bold sm:ml-3 underline'>
+            <p className='text-sm xl:text-[15px] font-bold sm:ml-3 underline'>
               Nairobi, Kenya
             </p>
           </div>
@@ -282,7 +286,7 @@ const ViewApartmentDetailPage = () => {
             <div>
               <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
               <div className='flex justify-between'>
-                <h1 className='text-[20px] font-semibold mb-2'>
+                <h1 className='text-[20px] xl:text-[18px] font-semibold mb-2'>
                   Entire apartment <br /> managed by Roronoa Z.
                 </h1>
                 <img
@@ -294,7 +298,7 @@ const ViewApartmentDetailPage = () => {
               <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
               {/* Description */}
               <div className='flex flex-col'>
-                <p className='text-base'>
+                <p className='text-base xl:text-[17px]'>
                   Centrally located at the heart of Kilimani, a few minutes walk
                   or drive to major shopping center's( Yahya, Junction Mall),
                   famous eateries and the main landmarks of Nairobi, is the The
@@ -304,7 +308,9 @@ const ViewApartmentDetailPage = () => {
                   className='flex items-center mt-4 text-sm cursor-pointer'
                   onClick={() => setAboutApartmentModal(true)}
                 >
-                  <span className='font-semibold underline'>Show More</span>
+                  <span className='font-semibold xl:text-[17px] underline'>
+                    Show More
+                  </span>
                   <i className='fa-solid mt-1 ml-2 fa-chevron-right'></i>
                 </div>
               </div>
@@ -320,7 +326,7 @@ const ViewApartmentDetailPage = () => {
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
           {/* Market Price */}
           <div>
-            <div className='border-white/[.4] border mb-6 rounded-lg w-full py-3 px-4'>
+            <div className='border-white/[.4] border mb-6 rounded-lg w-full xl:w-[65%] py-3 px-4 xl:text-sm'>
               82% of similar properties in Kilimani with 2 bedrooms have a lower
               asking price.
               <div className='flex items-center mt-2 text-[#230ee7]'>
@@ -352,19 +358,24 @@ const ViewApartmentDetailPage = () => {
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
           {/* Report apartment */}
           <div>
-            <h2 className='text-lg font-semibold cursor-pointer'>
-              Report this apartment
-            </h2>
+            <div className='flex items-center'>
+              <h2
+                className='text-lg xl:text-base font-semibold underline underline-offset-4 cursor-pointer'
+                onClick={() => setReportApartmentModal(true)}
+              >
+                Report this apartment
+              </h2>
+            </div>
             <div
               className='flex items-center cursor-pointer mb-10'
               onClick={() => setReportApartmentModal(true)}
             >
-              <p className='mt-3'>
+              <p className='mt-3 xl:text-sm'>
                 If you come across any listing on our platform that appears
                 inaccurate, misleading, or suspicious, we encourage you to
                 report it.
               </p>
-              <i className='fa-solid fa-chevron-right mt-4 ml-2'></i>
+              <i className='block xl:hidden fa-solid fa-chevron-right mt-4 ml-2'></i>
             </div>
           </div>
           <div className='mt-6 border-b border-[#f0efe9]/[.4]'></div>

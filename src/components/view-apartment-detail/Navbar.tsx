@@ -112,7 +112,7 @@ export const DesktopNav = () => {
         >
           {navbarItems.map((item, index) => (
             <p
-              className='mr-6 cursor-pointer hover:underline hover:underline-offset-4'
+              className='mr-6 cursor-pointer hover:underline hover:underline-offset-4 xl:text-[17px]'
               key={index}
               onClick={() => handleNavigation(item)}
             >
@@ -125,7 +125,7 @@ export const DesktopNav = () => {
           <img
             src={ProfileImg}
             alt='profile'
-            className='cursor-pointer w-11 h-11 rounded-full'
+            className='cursor-pointer w-11 h-11 xl:w-10 xl:h-10 rounded-full'
             onClick={() => navigate('/')}
           />
           <NavBarMenu />

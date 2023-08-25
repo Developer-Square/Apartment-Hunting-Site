@@ -2,7 +2,9 @@ const Profile = ({ profile }: { profile: string }) => {
   const confirmedInfo = ['Identity', 'Phone number', 'Email Address'];
   return (
     <div id='agent'>
-      <h1 className='text-xl mb-4 sm:mb-6 font-bold'>Meet your Agent</h1>
+      <h1 className='text-xl xl:text-lg mb-4 sm:mb-6 font-bold'>
+        Meet your Agent
+      </h1>
       <div className='md:grid grid-cols-2 gap-6'>
         <div className='relative md:hidden border-white/[.4] border rounded-3xl shadow-2xl py-8 px-5 flex justify-between sm:w-[65%] mx-auto gap-5'>
           <div className='flex flex-2 sm:flex-auto flex-col items-center'>
@@ -40,11 +42,11 @@ const Profile = ({ profile }: { profile: string }) => {
               className='w-14 h-14 rounded-full mr-4'
             />
             <div className='flex flex-col'>
-              <p className='font-semibold text-lg'>Roronoa Zoro</p>
-              <p className='text-xs'>Joined in May 2017</p>
+              <p className='font-semibold text-lg xl:text-base'>Roronoa Zoro</p>
+              <p className='text-xs xl:text-[14px]'>Joined in May 2017</p>
             </div>
           </div>
-          <div className='w-[90%] mt-3'>
+          <div className='w-[90%] xl:text-sm mt-3'>
             <p>
               Alex, your welcoming and proficient apartment property manager,
               ensures a pleasant living experience while efficiently addressing
