@@ -4,7 +4,7 @@ import Apartment3 from '@/assets/view-apartment-detail-page/view-apartment-3.web
 
 const AlternativePictures = () => {
   return (
-    <div className='text-base'>
+    <div className='text-base' id='photos'>
       <p className='mb-4'>
         Alternatively you can also view professional apartment pictures
       </p>

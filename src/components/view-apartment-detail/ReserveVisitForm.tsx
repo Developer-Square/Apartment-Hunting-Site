@@ -21,8 +21,11 @@ const ReserveVisitForm = () => {
           <DatePicker selected={date} onChange={onChange} />
         </div>
       </div>
-      <select className='select select-bordered w-full max-w-xs focus:ring-0 focus:outline-none focus:border-none text-sm font-normal'>
-        <option selected>1 guest</option>
+      <select
+        className='select select-bordered w-full max-w-xs focus:ring-0 focus:outline-none focus:border-none text-sm font-normal'
+        defaultValue=''
+      >
+        <option>1 guest</option>
         <option>2 guests</option>
         <option>3 guests</option>
         <option>4+ guests</option>

@@ -63,6 +63,42 @@ export const DesktopNav = () => {
     });
   }, [scrollHeight]);
 
+  const handleNavigation = (item: string) => {
+    const videoTour = document.getElementById('video-tour');
+    const photos = document.getElementById('photos');
+    const amenities = document.getElementById('amenities');
+    const agent = document.getElementById('agent');
+    const location = document.getElementById('location');
+
+    switch (item) {
+      case 'Video Tour':
+        videoTour?.scrollIntoView({
+          behavior: 'smooth',
+        });
+        break;
+      case 'Photos':
+        photos?.scrollIntoView({
+          behavior: 'smooth',
+        });
+        break;
+      case 'Amenities':
+        amenities?.scrollIntoView({
+          behavior: 'smooth',
+        });
+        break;
+      case 'Agent':
+        agent?.scrollIntoView({
+          behavior: 'smooth',
+        });
+        break;
+      case 'Location':
+        location?.scrollIntoView({
+          behavior: 'smooth',
+        });
+        break;
+    }
+  };
+
   return (
     <>
       {/* Show the sticky header when the user scrolls past a certain point. Otherwise show the normal header */}
@@ -78,6 +114,7 @@ export const DesktopNav = () => {
             <p
               className='mr-6 cursor-pointer hover:underline hover:underline-offset-4'
               key={index}
+              onClick={() => handleNavigation(item)}
             >
               {item}
             </p>

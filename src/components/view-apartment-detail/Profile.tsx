@@ -1,7 +1,7 @@
 const Profile = ({ profile }: { profile: string }) => {
   const confirmedInfo = ['Identity', 'Phone number', 'Email Address'];
   return (
-    <div>
+    <div id='agent'>
       <h1 className='text-xl mb-4 sm:mb-6 font-bold'>Meet your Agent</h1>
       <div className='md:grid grid-cols-2 gap-6'>
         <div className='relative md:hidden border-white/[.4] border rounded-3xl shadow-2xl py-8 px-5 flex justify-between sm:w-[65%] mx-auto gap-5'>

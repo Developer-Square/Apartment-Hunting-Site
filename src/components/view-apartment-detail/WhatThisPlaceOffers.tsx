@@ -9,7 +9,7 @@ const WhatThisPlaceOffers = ({
   setAmenitiesModal: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
-    <div>
+    <div id='amenities'>
       <h2 className='font-semibold text-xl mb-6'>What this place offers</h2>
       {amenities.slice(0, 5).map((amenity, index) => (
         <div className='flex items-center mb-3' key={index}>
