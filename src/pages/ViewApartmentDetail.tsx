@@ -24,6 +24,7 @@ import {
 } from '@/components/view-apartment-detail';
 import PropertyManager5 from '@/assets/view-apartments/property-manager-5.jpg';
 import { ThreeDApartmentVideo } from '@/components/view-apartment-detail/index';
+import { Footer } from '../components';
 
 export interface IAmenitiesProps {
   title: string;
@@ -245,7 +246,7 @@ const ViewApartmentDetailPage = () => {
       <main>
         {/* 3D apartment tour */}
         <ThreeDApartmentVideo />
-        <div className='p-6'>
+        <div className='px-6 pt-6'>
           <div className='md:flex w-full justify-between'>
             <h1 className='text-[24px] font-semibold mb-2'>
               {cleanedInfo.title}
@@ -366,7 +367,7 @@ const ViewApartmentDetailPage = () => {
               <i className='fa-solid fa-chevron-right mt-4 ml-2'></i>
             </div>
           </div>
-          <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
+          <div className='mt-6 border-b border-[#f0efe9]/[.4]'></div>
           {/* Reserve visit tab */}
           <div className='md:hidden fixed flex justify-between items-center bg-[#141b1f] bottom-0 left-0 z-20 w-full h-20 px-6'>
             <div className='flex flex-col justify-center'>
@@ -384,6 +385,7 @@ const ViewApartmentDetailPage = () => {
           </div>
         </div>
       </main>
+      <Footer />
     </section>
   );
 };
