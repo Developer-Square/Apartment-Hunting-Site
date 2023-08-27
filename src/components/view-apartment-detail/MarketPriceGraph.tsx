@@ -56,7 +56,7 @@ const MarketPriceGraph = () => {
       return;
     }
 
-    if (window.innerWidth >= 1280 && window.innerWidth < 1536) {
+    if (window.innerWidth >= 1280) {
       setGraphWidth(1210);
       setLeft(20);
       setRight(0);

@@ -11,7 +11,7 @@ export const AboutApartmentModal = ({
 }) => {
   return (
     <div className='justify-center items-end md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none text-black'>
-      <div className='relative h-full w-full md:h-[90%] md:w-[90%] lg:w-[80%] xl:w-[60%] mt-6 md:mt-0 mx-auto'>
+      <div className='relative h-full w-full md:h-[90%] md:w-[90%] lg:w-[80%] xl:w-[60%] 2xl:max-w-[768px] mt-6 md:mt-0 mx-auto'>
         {/*content*/}
         <div className='border-0 h-full md:rounded-xl shadow-lg relative flex flex-col w-full bg-white px-6 outline-none focus:outline-none'>
           {/*header*/}
@@ -61,7 +61,7 @@ export const AmenitiesModal = ({
 }) => {
   return (
     <div className='justify-center items-end md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none text-black'>
-      <div className='relative h-full w-full md:h-[90%] md:w-[90%] lg:w-[80%] xl:w-[60%] mt-6 md:mt-0 mx-auto'>
+      <div className='relative h-full w-full md:h-[90%] md:w-[90%] lg:w-[80%] xl:w-[60%] 2xl:max-w-[768px] mt-6 md:mt-0 mx-auto'>
         {/*content*/}
         <div className='border-0 h-full md:rounded-xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
           {/*header*/}
@@ -110,11 +110,11 @@ export const ReportApartmentModal = ({
 
   return (
     <div className='justify-center items-end md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none text-black'>
-      <div className='relative h-full w-full md:h-[90%] md:w-[90%] lg:w-[80%] xl:w-[60%] mt-6 md:mt-0 mx-auto'>
+      <div className='relative h-full w-full md:h-[90%] md:w-[90%] lg:w-[80%] xl:w-[60%] 2xl:max-w-[768px] mt-6 md:mt-0 mx-auto'>
         {/*content*/}
-        <div className='border-0 h-full md:rounded-xl shadow-lg relative flex flex-col w-full bg-white px-6 outline-none focus:outline-none'>
+        <div className='border-0 h-full md:rounded-xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
           {/*header*/}
-          <div className='flex items-center w-full h-12'>
+          <div className='flex items-center w-full h-12 px-6 '>
             <i
               className='fa-solid fa-chevron-left text-lg cursor-pointer'
               onClick={() => {
@@ -124,10 +124,10 @@ export const ReportApartmentModal = ({
           </div>
           {/*body*/}
           <div className='max-h-[100vh] overflow-y-scroll text-base'>
-            <h1 className='text-left xl:text-lg mt-2 mb-5 text-2xl font-bold '>
+            <h1 className='text-left xl:text-lg px-6 mt-2 mb-5 text-2xl font-bold '>
               Report Policy
             </h1>
-            <p className='xl:text-sm'>
+            <p className='xl:text-sm px-6'>
               If you come across any listing on our platform that appears
               inaccurate, misleading, or suspicious, we encourage you to report
               it.
@@ -143,10 +143,12 @@ export const ReportApartmentModal = ({
             </p>
             <div className='my-4'></div>
 
-            <p className='mb-1 xl:text-sm'>Tell us what happened(optional):</p>
+            <p className='mb-1 xl:text-sm px-6'>
+              Tell us what happened(optional):
+            </p>
             <textarea
               placeholder='What is the issue?'
-              className='textarea textarea-bordered textarea-md w-full max-w-xs bg-transparent focus:ring-0'
+              className='textarea textarea-bordered mx-6 textarea-md w-full max-w-xs bg-transparent focus:ring-0'
             ></textarea>
             <p
               className='underline text-sm cursor-pointer text-red-500 mt-7 text-center'
@@ -154,7 +156,7 @@ export const ReportApartmentModal = ({
             >
               Safety tips
             </p>
-            <button className='bg-red-600 w-full mt-3 h-12 text-white rounded-md xl:text-sm'>
+            <button className='bg-red-600 mt-3 xl:mb-5 mx-4 sm:mx-8 xl:mx-6 w-[90%] h-12 text-white rounded-md xl:text-sm'>
               Report
             </button>
           </div>
