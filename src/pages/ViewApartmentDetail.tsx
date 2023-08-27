@@ -21,6 +21,7 @@ import {
   MobileNav,
   DesktopNav,
   ReserveVisitForm,
+  ShareApartmentModal,
 } from '@/components/view-apartment-detail';
 import PropertyManager5 from '@/assets/view-apartments/property-manager-5.jpg';
 import { ThreeDApartmentVideo } from '@/components/view-apartment-detail/index';
@@ -133,6 +134,7 @@ const ViewApartmentDetailPage = () => {
   const [showContent, setShowContent] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [isSmallerScreen, setIsSmallerScreen] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
 
   const show =
     wishListModal ||
@@ -141,7 +143,8 @@ const ViewApartmentDetailPage = () => {
     amenitiesModal ||
     reportApartmentModal ||
     reserveVisitModal ||
-    showCreateModal;
+    showCreateModal ||
+    showShareModal;
 
   useEffect(() => {
     // Stop outside scrolling when any of the following modals are open.
@@ -231,6 +234,9 @@ const ViewApartmentDetailPage = () => {
           setShowFilterBackdrop={() => console.log('')}
         />
       ) : null}
+      {showShareModal ? (
+        <ShareApartmentModal setShareApartmentModal={setShowShareModal} />
+      ) : null}
       {/* Navbar */}
       <header className='flex justify-between items-center px-4 md:px-10 h-16 md:h-20'>
         {isSmallerScreen ? (
@@ -238,12 +244,13 @@ const ViewApartmentDetailPage = () => {
             isSaved={isSaved}
             setIsSaved={setIsSaved}
             setWishListModal={setWishListModal}
+            setShowShareModal={setShowShareModal}
           />
         ) : (
           <DesktopNav />
         )}
       </header>
-      <main className=''>
+      <main>
         {/* 3D apartment tour */}
         <ThreeDApartmentVideo />
         <div className='px-6 pt-6 2xl:max-w-[1280px] mx-auto'>

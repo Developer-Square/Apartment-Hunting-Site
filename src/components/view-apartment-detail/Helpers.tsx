@@ -252,9 +252,6 @@ export const ReserveVisitModal = ({
                 <p className='underline font-semibold'>Total(Ksh)</p>
                 <p className='underline font-semibold'>Ksh 1500</p>
               </div>
-              <div className='mt-3 flex justify-end'>
-                <p className='underline font-semibold'>More Info</p>
-              </div>
             </div>
             <div className='flex flex-col w-full items-center mt-10 mb-6'>
               <div className='text-xs w-[95%]'>
@@ -265,6 +262,122 @@ export const ReserveVisitModal = ({
               <button className='bg-black mt-6 rounded-lg h-14 w-[95%] text-white'>
                 Confirm and pay
               </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const ShareApartmentModal = ({
+  setShareApartmentModal,
+}: {
+  setShareApartmentModal: React.Dispatch<SetStateAction<boolean>>;
+}) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  const links = [
+    {
+      icon: <i className='fa-regular mr-4 fa-copy text-xl xl:text-base'></i>,
+      name: 'Copy link',
+    },
+    {
+      icon: (
+        <i className='fa-regular mr-4 fa-envelope text-xl xl:text-base'></i>
+      ),
+      name: 'Email',
+    },
+    {
+      icon: (
+        <i className='fa-brands mr-4 fa-instagram text-[#FF3040] text-xl xl:text-base'></i>
+      ),
+      name: 'Instagram',
+    },
+    {
+      icon: (
+        <i className='fa-brands mr-4 fa-facebook text-[#3f47e9] text-xl xl:text-base'></i>
+      ),
+      name: 'Facebook',
+    },
+    {
+      icon: (
+        <i className='fa-brands mr-4 fa-facebook-messenger text-[#3f47e9] text-xl xl:text-base'></i>
+      ),
+      name: 'Messenger',
+    },
+    {
+      icon: (
+        <i className='fa-brands mr-4 fa-whatsapp text-[#3ae646] text-xl xl:text-base'></i>
+      ),
+      name: 'Whatsapp',
+    },
+    {
+      icon: (
+        <i className='fa-brands mr-4 fa-x-twitter text-xl xl:text-base'></i>
+      ),
+      name: 'Twitter',
+    },
+    {
+      icon: <i className='fa-solid mr-4 fa-code text-xl xl:text-base'></i>,
+      name: 'Embed',
+    },
+  ];
+
+  useEffect(() => {
+    if (window.innerWidth > 450) {
+      setIsMobile(true);
+    }
+  }, []);
+
+  const shortenLinkName = (name: string) => {
+    return name.length > 6 ? name.slice(0, 6) + '...' : name;
+  };
+
+  return (
+    <div className='justify-center items-end md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none text-black'>
+      <div className='relative h-[80%] w-full md:h-[85%] md:w-[80%] lg:w-[568px] mt-6 md:mt-0 mx-auto'>
+        {/*content*/}
+        <div className='border-0 rounded-t-xl h-full md:rounded-xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
+          {/*header*/}
+          <div className='flex items-center w-full h-12 px-6'>
+            <i
+              className='fa-solid fa-chevron-left text-lg cursor-pointer'
+              onClick={() => {
+                setShareApartmentModal(false);
+              }}
+            ></i>
+          </div>
+          {/*body*/}
+          <div className='max-h-[100vh] overflow-y-scroll text-base'>
+            <h1 className='text-left mt-4 mb-7 px-6 xl:mb-4 text-2xl font-bold xl:text-base'>
+              Share this apartment
+            </h1>
+            <div className='mt-4 mb-6 flex px-6'>
+              <img
+                src={ViewApartments2}
+                alt='apartment'
+                className='w-20 h-20 xl:w-16 xl:h-16 mr-4 rounded-lg'
+              />
+              <div className='mt-2 sm:mt-0 sm:ml-4 xl:ml-0'>
+                <p className='text-base xl:text-sm'>Haven woods apartments</p>
+                <p className='text-sm xl:text-xs text-[#717171]'>
+                  Nairobi apartment with 3 bedrooms
+                </p>
+              </div>
+            </div>
+            <div className='grid grid-cols-2 gap-4 mt-5 px-6'>
+              {links.map((link, index) => (
+                <div
+                  key={index}
+                  className='border cursor-pointer flex items-center border-black/[.2] py-5 px-4 xl:py-3 xl:px-3 xl:mb-0 mb-2 rounded-xl'
+                >
+                  {link.icon}
+                  <p className='xl:text-sm'>
+                    {!isMobile ? shortenLinkName(link.name) : link.name}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

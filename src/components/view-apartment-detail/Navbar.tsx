@@ -6,10 +6,12 @@ import { NavBarMenu } from '../view-apartments/Helpers';
 
 export const MobileNav = ({
   setWishListModal,
+  setShowShareModal,
   isSaved,
   setIsSaved,
 }: {
   setWishListModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowShareModal: React.Dispatch<React.SetStateAction<boolean>>;
   isSaved: boolean;
   setIsSaved: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
@@ -36,7 +38,10 @@ export const MobileNav = ({
         onClick={() => handleRouteBack()}
       ></i>
       <div className='flex'>
-        <i className='fa-solid cursor-pointer text-lg fa-arrow-up-from-bracket pr-5'></i>
+        <i
+          className='fa-solid cursor-pointer text-lg fa-arrow-up-from-bracket pr-5'
+          onClick={() => setShowShareModal(true)}
+        ></i>
         <i
           className='fa-regular cursor-pointer text-lg fa-heart'
           onClick={() => handleWishListModal()}

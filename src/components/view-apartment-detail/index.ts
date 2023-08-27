@@ -3,6 +3,7 @@ import {
   AmenitiesModal,
   ReportApartmentModal,
   ReserveVisitModal,
+  ShareApartmentModal,
 } from './Helpers';
 import Map from './Map';
 import MarketPriceGraph from './MarketPriceGraph';
@@ -29,4 +30,5 @@ export {
   MobileNav,
   DesktopNav,
   ReserveVisitForm,
+  ShareApartmentModal,
 };
