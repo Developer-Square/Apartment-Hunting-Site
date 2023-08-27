@@ -250,7 +250,7 @@ const ViewApartmentDetailPage = () => {
           <DesktopNav />
         )}
       </header>
-      <main>
+      <main className=''>
         {/* 3D apartment tour */}
         <ThreeDApartmentVideo />
         <div className='px-6 pt-6 2xl:max-w-[1280px] mx-auto'>
