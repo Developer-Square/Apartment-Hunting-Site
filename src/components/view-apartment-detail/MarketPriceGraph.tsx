@@ -87,8 +87,8 @@ const MarketPriceGraph = () => {
           <stop offset='95%' stopColor='#ed0909' stopOpacity={0} />
         </linearGradient>
       </defs>
-      <XAxis dataKey='name' />
-      <YAxis />
+      <XAxis dataKey='name' className='xl:text-sm' />
+      <YAxis className='xl:text-sm' />
       <CartesianGrid strokeDasharray='3 3' />
       <Tooltip />
       <Area

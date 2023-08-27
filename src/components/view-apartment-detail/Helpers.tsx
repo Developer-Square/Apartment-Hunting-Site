@@ -25,10 +25,10 @@ export const AboutApartmentModal = ({
           </div>
           {/*body*/}
           <div className='max-h-[100vh] overflow-y-scroll text-base'>
-            <h1 className='text-left mt-4 mb-7 text-2xl font-bold xl:text-sm'>
+            <h1 className='text-left mt-4 mb-7 xl:mb-4 text-2xl font-bold xl:text-base'>
               About this apartment
             </h1>
-            <p>
+            <p className='xl:text-sm'>
               Centrally located at the heart of Kilimani, a few minutes walk or
               drive to major shopping center's( Yahya, Junction Mall), famous
               eateries and the main landmarks of Nairobi, is the The View at
@@ -37,8 +37,10 @@ export const AboutApartmentModal = ({
               the wider Kilimani and Westland's areas. Guests have access to
               reliable WIFI, parking, and a well equipped gym
             </p>
-            <h2 className='font-semibold mt-6 text-lg'>The apartment</h2>
-            <p>
+            <h2 className='font-semibold mt-6 text-lg xl:text-base'>
+              The apartment
+            </h2>
+            <p className='xl:text-sm'>
               Located on a high floor with unobstructed views, the apartment
               offers great view of the famous Nairobi skyline and serene
               environment.
@@ -73,19 +75,21 @@ export const AmenitiesModal = ({
           </div>
           {/*body*/}
           <div className='max-h-[100vh] px-6  overflow-y-scroll text-base'>
-            <h1 className='text-left mt-4 mb-7 text-2xl font-bold xl:text-sm'>
+            <h1 className='text-left mt-4 mb-7 text-2xl font-bold xl:text-base'>
               What this place offers
             </h1>
             {amenities.map((amenity, index) => (
               <div className='mb-10' key={index}>
-                <h4 className='font-semibold mt-6 mb-4'>{amenity.title}</h4>
+                <h4 className='font-semibold mt-6 mb-4 xl:text-base'>
+                  {amenity.title}
+                </h4>
                 {amenity.available.map((available, index) => (
                   <div
                     className='flex items-center py-5 border-b border-black/[.1]'
                     key={index}
                   >
                     <i className={`${available.icon}`}></i>
-                    <p>{available.text}</p>
+                    <p className='xl:text-sm'>{available.text}</p>
                   </div>
                 ))}
               </div>
@@ -120,10 +124,10 @@ export const ReportApartmentModal = ({
           </div>
           {/*body*/}
           <div className='max-h-[100vh] overflow-y-scroll text-base'>
-            <h1 className='text-left mt-2 mb-5 text-2xl font-bold xl:text-sm'>
+            <h1 className='text-left xl:text-lg mt-2 mb-5 text-2xl font-bold '>
               Report Policy
             </h1>
-            <p>
+            <p className='xl:text-sm'>
               If you come across any listing on our platform that appears
               inaccurate, misleading, or suspicious, we encourage you to report
               it.
@@ -139,7 +143,7 @@ export const ReportApartmentModal = ({
             </p>
             <div className='my-4'></div>
 
-            <p className='mb-1'>Tell us what happened(optional):</p>
+            <p className='mb-1 xl:text-sm'>Tell us what happened(optional):</p>
             <textarea
               placeholder='What is the issue?'
               className='textarea textarea-bordered textarea-md w-full max-w-xs bg-transparent focus:ring-0'
@@ -150,7 +154,7 @@ export const ReportApartmentModal = ({
             >
               Safety tips
             </p>
-            <button className='bg-red-600 w-full mt-3 h-12 text-white rounded-md'>
+            <button className='bg-red-600 w-full mt-3 h-12 text-white rounded-md xl:text-sm'>
               Report
             </button>
           </div>

@@ -124,6 +124,12 @@ const SimilarApartments = () => {
       return;
     }
 
+    if (window.innerWidth >= 1280 && window.innerWidth < 1536) {
+      setSlidesPerView(5);
+      setSpaceBetween(16);
+      return;
+    }
+
     setSlidesPerView(1);
     setSpaceBetween(0);
   }, []);
