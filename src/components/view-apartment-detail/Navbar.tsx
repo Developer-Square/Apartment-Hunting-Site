@@ -104,21 +104,23 @@ export const DesktopNav = () => {
       {/* Show the sticky header when the user scrolls past a certain point. Otherwise show the normal header */}
       {showStickyHeader ? (
         <div
-          className={`flex items-center transition-all ease-in-out duration-[1s] ${
+          className={`transition-all ease-in-out duration-[1s] ${
             showStickyHeader
-              ? 'fixed top-0 left-0 w-full bg-[#141b1f]/[.9] px-10 z-20 h-20'
+              ? 'fixed top-0 left-0 w-full bg-[#141b1f]/[.9] px-10 2xl:px-0 z-20 '
               : ''
           }`}
         >
-          {navbarItems.map((item, index) => (
-            <p
-              className='mr-6 cursor-pointer hover:underline hover:underline-offset-4 xl:text-sm'
-              key={index}
-              onClick={() => handleNavigation(item)}
-            >
-              {item}
-            </p>
-          ))}
+          <div className='w-full h-20 xl:h-16 flex items-center 2xl:max-w-[1280px] mx-auto'>
+            {navbarItems.map((item, index) => (
+              <p
+                className='mr-6 cursor-pointer hover:underline hover:underline-offset-4 xl:text-sm'
+                key={index}
+                onClick={() => handleNavigation(item)}
+              >
+                {item}
+              </p>
+            ))}
+          </div>
         </div>
       ) : (
         <>

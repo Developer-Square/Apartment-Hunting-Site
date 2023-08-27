@@ -243,10 +243,10 @@ const ViewApartmentDetailPage = () => {
           <DesktopNav />
         )}
       </header>
-      <main>
+      <main className=''>
         {/* 3D apartment tour */}
         <ThreeDApartmentVideo />
-        <div className='px-6 pt-6'>
+        <div className='px-6 pt-6 2xl:max-w-[1280px] mx-auto'>
           <div className='md:flex w-full justify-between'>
             <h1 className='text-[24px] xl:text-[22px] font-semibold mb-2'>
               {cleanedInfo.title}

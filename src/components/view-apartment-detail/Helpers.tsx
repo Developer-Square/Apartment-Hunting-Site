@@ -11,7 +11,7 @@ export const AboutApartmentModal = ({
 }) => {
   return (
     <div className='justify-center items-end md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none text-black'>
-      <div className='relative h-full w-full md:h-[90%] md:w-[90%] lg:w-[80%] xl:w-[60%] mt-6 md:mt-0 mx-auto'>
+      <div className='relative h-full w-full md:h-[90%] md:w-[90%] lg:w-[80%] xl:w-[60%] 2xl:max-w-[768px] mt-6 md:mt-0 mx-auto'>
         {/*content*/}
         <div className='border-0 h-full md:rounded-xl shadow-lg relative flex flex-col w-full bg-white px-6 outline-none focus:outline-none'>
           {/*header*/}
@@ -61,7 +61,7 @@ export const AmenitiesModal = ({
 }) => {
   return (
     <div className='justify-center items-end md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none text-black'>
-      <div className='relative h-full w-full md:h-[90%] md:w-[90%] lg:w-[80%] xl:w-[60%] mt-6 md:mt-0 mx-auto'>
+      <div className='relative h-full w-full md:h-[90%] md:w-[90%] lg:w-[80%] xl:w-[60%] 2xl:max-w-[768px] mt-6 md:mt-0 mx-auto'>
         {/*content*/}
         <div className='border-0 h-full md:rounded-xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
           {/*header*/}
@@ -110,7 +110,7 @@ export const ReportApartmentModal = ({
 
   return (
     <div className='justify-center items-end md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none text-black'>
-      <div className='relative h-full w-full md:h-[90%] md:w-[90%] lg:w-[80%] xl:w-[60%] mt-6 md:mt-0 mx-auto'>
+      <div className='relative h-full w-full md:h-[90%] md:w-[90%] lg:w-[80%] xl:w-[60%] 2xl:max-w-[768px] mt-6 md:mt-0 mx-auto'>
         {/*content*/}
         <div className='border-0 h-full md:rounded-xl shadow-lg relative flex flex-col w-full bg-white px-6 outline-none focus:outline-none'>
           {/*header*/}
