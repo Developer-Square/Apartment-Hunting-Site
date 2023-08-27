@@ -112,7 +112,7 @@ export const DesktopNav = () => {
         >
           {navbarItems.map((item, index) => (
             <p
-              className='mr-6 cursor-pointer hover:underline hover:underline-offset-4 xl:text-[17px]'
+              className='mr-6 cursor-pointer hover:underline hover:underline-offset-4 xl:text-sm'
               key={index}
               onClick={() => handleNavigation(item)}
             >

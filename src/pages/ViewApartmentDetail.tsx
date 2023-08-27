@@ -253,19 +253,15 @@ const ViewApartmentDetailPage = () => {
             </h1>
             <div className='hidden md:flex justify-between'>
               <div className='flex mr-5 cursor-pointer items-center'>
-                <i className='fa-solid text-lg xl:text-[17px] fa-arrow-up-from-bracket pr-2'></i>
-                <p className='underline underline-offset-1 xl:text-[17px]'>
-                  Share
-                </p>
+                <i className='fa-solid text-lg xl:text-sm fa-arrow-up-from-bracket pr-2'></i>
+                <p className='underline underline-offset-1 xl:text-sm'>Share</p>
               </div>
               <div
                 className='flex mr-5 cursor-pointer items-center'
                 onClick={() => handleWishListModal()}
               >
-                <i className='fa-regular cursor-pointer text-lg pr-2 fa-heart xl:text-[17px]'></i>
-                <p className='underline underline-offset-1 xl:text-[17px]'>
-                  Save
-                </p>
+                <i className='fa-regular cursor-pointer text-lg pr-2 fa-heart xl:text-sm'></i>
+                <p className='underline underline-offset-1 xl:text-sm'>Save</p>
               </div>
             </div>
           </div>
@@ -298,7 +294,7 @@ const ViewApartmentDetailPage = () => {
               <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
               {/* Description */}
               <div className='flex flex-col'>
-                <p className='text-base xl:text-[17px]'>
+                <p className='text-base xl:text-sm'>
                   Centrally located at the heart of Kilimani, a few minutes walk
                   or drive to major shopping center's( Yahya, Junction Mall),
                   famous eateries and the main landmarks of Nairobi, is the The
@@ -308,7 +304,7 @@ const ViewApartmentDetailPage = () => {
                   className='flex items-center mt-4 text-sm cursor-pointer'
                   onClick={() => setAboutApartmentModal(true)}
                 >
-                  <span className='font-semibold xl:text-[17px] underline'>
+                  <span className='font-semibold xl:text-sm underline'>
                     Show More
                   </span>
                   <i className='fa-solid mt-1 ml-2 fa-chevron-right'></i>

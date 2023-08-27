@@ -16,7 +16,7 @@ const WhatThisPlaceOffers = ({
       {amenities.slice(0, 5).map((amenity, index) => (
         <div className='flex items-center mb-3' key={index}>
           <i className={`${amenity.available[0].icon}`}></i>
-          <p className='xl:text-[17px]'>{amenity.available[0].text}</p>
+          <p className='xl:text-sm'>{amenity.available[0].text}</p>
         </div>
       ))}
       <button
