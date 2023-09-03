@@ -173,6 +173,27 @@ export const ReserveVisitModal = ({
 }) => {
   const [cleanedInfo, setCleanedInfo] = useState({} as ApartmentInfoProps);
 
+  const paymentOptions = [
+    {
+      name: 'Credit or Debit card',
+      icon: (
+        <i className='fa-regular text-xl text-black/[.5] fa-credit-card mr-3'></i>
+      ),
+    },
+    {
+      name: 'Paypal',
+      icon: (
+        <i className='fa-brands fa-paypal text-xl text-black/[.5] mr-3'></i>
+      ),
+    },
+    {
+      name: 'Google pay',
+      icon: (
+        <i className='fa-brands fa-google-pay text-xl text-black/[.5] mr-3'></i>
+      ),
+    },
+  ];
+
   useEffect(() => {
     const info = localStorage.getItem('apartmentInfo');
     const cleanedInfo = info ? JSON.parse(info) : null;
@@ -216,6 +237,7 @@ export const ReserveVisitModal = ({
               </div>
             </div>
             <div className='border-b border-[1px] border-[black]/[.9]'></div>
+            {/* Trip Details */}
             <div className='my-6 '>
               <h2 className='text-xl mb-6 font-semibold'>Your Visit</h2>
               <div className='flex w-full justify-between mb-6'>
@@ -234,6 +256,7 @@ export const ReserveVisitModal = ({
               </div>
             </div>
             <div className='border-b border-[1px] border-[black]/[.9]'></div>
+            {/* Price Details */}
             <div className='my-6'>
               <h2 className='text-xl mb-6 font-semibold'>Price details</h2>
               <div className='flex w-full justify-between mb-3'>
@@ -253,6 +276,61 @@ export const ReserveVisitModal = ({
                 <p className='underline font-semibold'>Ksh 1500</p>
               </div>
             </div>
+            <div className='border-b border-[1px] border-[black]/[.9]'></div>
+            {/* Payment options */}
+            <div className='my-6'>
+              <p className='text-xl mb-4'>Pay with:</p>
+              {paymentOptions.map((option, index) => (
+                <div
+                  key={index}
+                  className='flex items-center mb-4 cursor-pointer'
+                >
+                  {option.icon}
+                  <p>{option.name}</p>
+                </div>
+              ))}
+            </div>
+            <div className='border-b border-[1px] border-[black]/[.9]'></div>
+            {/* Requirements */}
+            <div className='my-6'>
+              <p className='text-xl mb-4'>Required for your visit</p>
+              <div className='flex items-center'>
+                <div className='flex flex-col mr-4'>
+                  <p className='font-semibold'>Phone number</p>
+                  <p>Add and confirm your phone number to get visit updates</p>
+                </div>
+                <button className='border border-black py-2 rounded-lg px-3.5 font-semibold'>
+                  Add
+                </button>
+              </div>
+            </div>
+            <div className='border-b border-[1px] border-[black]/[.9]'></div>
+            {/* Cancellation policy */}
+            <div className='my-6'>
+              <h3 className='text-xl font-semibold mb-4'>
+                Cancellation Policy
+              </h3>
+              <p>
+                This booking is non-refundable.
+                <span className='underline ml-1 cursor-pointer underline-offset-2 font-semibold'>
+                  Learn more
+                </span>
+              </p>
+            </div>
+            <div className='border-b border-[1px] border-[black]/[.9]'></div>
+            {/* Cancellation policy */}
+            <div className='my-6'>
+              <h3 className='text-xl font-semibold mb-4'>Ground rules</h3>
+              <p>
+                We ask every guest to remember a few simple things about what
+                makes a great guest.
+              </p>
+              <ul className='mt-3 list-disc px-6'>
+                <li>Follow the house rules</li>
+                <li>Treat your Host’s home like your own</li>
+              </ul>
+            </div>
+            <div className='border-b border-[1px] border-[black]/[.9]'></div>
             <div className='flex flex-col w-full items-center mt-10 mb-6'>
               <div className='text-xs w-[95%]'>
                 By selecting the button below, I agree to the Visiting House
