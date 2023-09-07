@@ -55,6 +55,14 @@ input[type=number] {
   color: #fff;
 }
 
+.similar-apartments-arrows > .swiper-button-next, .similar-apartments-arrows > .swiper-button-prev {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.similar-apartments-arrows > .swiper-button-next:after, .similar-apartments-arrows > .swiper-button-prev:after {
+  color: #333;
+}
+
 /* Custom Swiper Pagination */
 .swiper-pagination-bullet {
   width: 8px;

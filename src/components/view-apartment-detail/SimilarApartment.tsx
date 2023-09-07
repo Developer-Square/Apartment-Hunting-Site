@@ -144,6 +144,7 @@ const SimilarApartments = () => {
         navigation
         spaceBetween={spaceBetween}
         slidesPerView={slidesPerView}
+        className='similar-apartments-arrows'
       >
         {apartmentInfo.map((info, index) => (
           <SwiperSlide key={index}>

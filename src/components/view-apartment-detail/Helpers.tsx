@@ -2,7 +2,6 @@ import { IAmenitiesProps } from '@/pages/ViewApartmentDetail';
 import { SetStateAction, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ViewApartments2 from '@/assets/view-apartments/view-apartments-2.webp';
-import GooglePay from '@/assets/view-apartment-detail-page/google-pay.svg';
 import { ApartmentInfoProps } from '../view-apartments/Apartments';
 
 export const AboutApartmentModal = ({
