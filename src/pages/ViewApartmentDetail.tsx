@@ -26,6 +26,7 @@ import {
 import PropertyManager5 from '@/assets/view-apartments/property-manager-5.jpg';
 import { ThreeDApartmentVideo } from '@/components/view-apartment-detail/index';
 import { Footer } from '../components';
+import { ConfirmAndPayModal } from '@/components/view-apartment-detail/Helpers';
 
 export interface IAmenitiesProps {
   title: string;
@@ -135,6 +136,7 @@ const ViewApartmentDetailPage = () => {
   const [isSaved, setIsSaved] = useState(false);
   const [isSmallerScreen, setIsSmallerScreen] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
+  const [showConfirmAndPayModal, setShowConfirmAndPayModal] = useState(false);
 
   const show =
     wishListModal ||
@@ -144,7 +146,8 @@ const ViewApartmentDetailPage = () => {
     reportApartmentModal ||
     reserveVisitModal ||
     showCreateModal ||
-    showShareModal;
+    showShareModal ||
+    showConfirmAndPayModal;
 
   useEffect(() => {
     // Stop outside scrolling when any of the following modals are open.
@@ -237,6 +240,9 @@ const ViewApartmentDetailPage = () => {
       {showShareModal ? (
         <ShareApartmentModal setShareApartmentModal={setShowShareModal} />
       ) : null}
+      {showConfirmAndPayModal ? (
+        <ConfirmAndPayModal setConfirmAndPayModal={setShowConfirmAndPayModal} />
+      ) : null}
       {/* Navbar */}
       <header className='flex justify-between items-center px-4 md:px-10 h-16 md:h-20'>
         {isSmallerScreen ? (
@@ -324,7 +330,9 @@ const ViewApartmentDetailPage = () => {
                 setAmenitiesModal={setAmenitiesModal}
               />
             </div>
-            <ReserveVisitForm />
+            <ReserveVisitForm
+              setShowConfirmAndPayModal={setShowConfirmAndPayModal}
+            />
           </div>
           <div className='my-6 border-b border-[#f0efe9]/[.4]'></div>
           {/* Market Price */}

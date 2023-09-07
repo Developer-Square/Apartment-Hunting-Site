@@ -2,6 +2,7 @@ import { IAmenitiesProps } from '@/pages/ViewApartmentDetail';
 import { SetStateAction, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ViewApartments2 from '@/assets/view-apartments/view-apartments-2.webp';
+import GooglePay from '@/assets/view-apartment-detail-page/google-pay.svg';
 import { ApartmentInfoProps } from '../view-apartments/Apartments';
 
 export const AboutApartmentModal = ({
@@ -456,6 +457,246 @@ export const ShareApartmentModal = ({
                   </p>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const ConfirmAndPayModal = ({
+  setConfirmAndPayModal,
+}: {
+  setConfirmAndPayModal: React.Dispatch<SetStateAction<boolean>>;
+}) => {
+  const [cleanedInfo, setCleanedInfo] = useState({} as ApartmentInfoProps);
+
+  useEffect(() => {
+    const info = localStorage.getItem('apartmentInfo');
+    const cleanedInfo = info ? JSON.parse(info) : null;
+    setCleanedInfo(cleanedInfo);
+  }, []);
+
+  return (
+    <div className='justify-center items-end md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none text-black'>
+      <div className='relative h-full w-full mx-auto'>
+        {/*content*/}
+        <div className='border-0 h-full shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
+          {/*header*/}
+          <div className='flex items-center w-full h-16 px-6 my-3 2xl:max-w-[1280px] 2xl:mx-auto'>
+            <i
+              className='fa-solid fa-chevron-left text-lg cursor-pointer'
+              onClick={() => {
+                setConfirmAndPayModal(false);
+              }}
+            ></i>
+            <h4 className='font-semibold w-full text-center'>
+              Confirm and Pay
+            </h4>
+          </div>
+          {/*body*/}
+          <div className='max-h-[100vh] overflow-y-scroll px-6 text-base md:grid grid-cols-2 gap-10 lg:gap-16 2xl:max-w-[1280px] 2xl:mx-auto 2xl:px-0'>
+            <div>
+              {/* Trip Details */}
+              <div className='my-6'>
+                <h2 className='text-xl xl:text-lg mb-6 font-semibold'>
+                  Your Visit
+                </h2>
+                <div className='flex w-full justify-between mb-6'>
+                  <div className='flex flex-col'>
+                    <p className='font-semibold text-sm xl:text-xs mb-1'>
+                      Dates
+                    </p>
+                    <p className='xl:text-sm'>Aug 14-15</p>
+                  </div>
+                  <p className='font-semibold text-sm xl:text-xs underline'>
+                    Edit
+                  </p>
+                </div>
+                <div className='flex w-full justify-between mb-6'>
+                  <div className='flex flex-col'>
+                    <p className='font-semibold text-sm xl:text-xs mb-1'>
+                      Guests
+                    </p>
+                    <p className='xl:text-sm'>1 guest</p>
+                  </div>
+                  <p className='font-semibold text-sm xl:text-xs underline'>
+                    Edit
+                  </p>
+                </div>
+              </div>
+              {/* Payment options */}
+              <div className='border-b border-[1px] border-[black]/[.9]'></div>
+              <div className='my-6'>
+                <h4 className='font-semibold text-xl xl:text-lg'>Pay with</h4>
+                <div className='flex mb-4'>
+                  <i className='fa-brands text-xl mr-3 fa-cc-visa'></i>
+                  <i className='fa-brands text-xl mr-3 fa-cc-mastercard'></i>
+                  <i className='fa-brands text-xl mr-3 fa-cc-paypal'></i>
+                  <i className='fa-brands text-xl mr-3 fa-google-pay'></i>
+                </div>
+                <select className='select mb-4 select-bordered border border-black/[.5] focus:border-black focus:outline-none focus:ring-0 bg-transparent w-full'>
+                  <option selected className='font-normal xl:text-sm'>
+                    Credit or Debit card
+                  </option>
+                  <option className='font-normal xl:text-sm'>Paypal</option>
+                  <option className='font-normal xl:text-sm'>Google Pay</option>
+                </select>
+                <input
+                  type='text'
+                  placeholder='4352 3534 3532 2431'
+                  className='border border-black/[.5] h-14 rounded-t-lg focus:border-black focus:outline-none focus:ring-0 w-full xl:text-sm'
+                />
+                <div className='flex'>
+                  <input
+                    type='text'
+                    placeholder='MM/YY'
+                    className='border border-black/[.5] h-14 rounded-bl-lg focus:border-black focus:outline-none focus:ring-0 w-full xl:text-sm'
+                  />
+                  <input
+                    type='text'
+                    placeholder='CVV'
+                    className='border border-black/[.5] h-14 rounded-br-lg focus:border-black focus:outline-none focus:ring-0 w-full xl:text-sm'
+                  />
+                </div>
+                <h4 className='my-3 font-semibold'>Billing address</h4>
+                <input
+                  type='text'
+                  placeholder='Street address'
+                  className='border border-black/[.5] h-14 rounded-t-lg focus:border-black focus:outline-none focus:ring-0 w-full xl:text-sm'
+                />
+                <input
+                  type='text'
+                  placeholder='Apt or suite number'
+                  className='border border-black/[.5] h-14 focus:border-black focus:outline-none focus:ring-0 w-full xl:text-sm'
+                />
+                <input
+                  type='text'
+                  placeholder='City'
+                  className='border border-black/[.5] h-14 focus:border-black focus:outline-none focus:ring-0 w-full xl:text-sm'
+                />
+                <div className='flex'>
+                  <input
+                    type='text'
+                    placeholder='State'
+                    className='border border-black/[.5] h-14 rounded-bl-lg focus:border-black focus:outline-none focus:ring-0 w-full xl:text-sm'
+                  />
+                  <input
+                    type='text'
+                    placeholder='ZIP code'
+                    className='border border-black/[.5] h-14 rounded-br-lg focus:border-black focus:outline-none focus:ring-0 w-full xl:text-sm'
+                  />
+                </div>
+                <input
+                  type='text'
+                  placeholder='Country/Region'
+                  className='border border-black/[.5] h-14 my-4 rounded-lg focus:border-black focus:outline-none focus:ring-0 w-full xl:text-sm'
+                />
+              </div>
+              <div className='border-b border-[1px] border-[black]/[.9]'></div>
+              {/* Requirements */}
+              <div className='my-6'>
+                <p className='text-xl xl:text-lg font-semibold mb-4'>
+                  Required for your visit
+                </p>
+                <div className='flex items-center'>
+                  <div className='flex flex-col mr-4'>
+                    <p className='font-semibold xl:text-sm'>Phone number</p>
+                    <p className='xl:text-sm'>
+                      Add and confirm your phone number to get visit updates
+                    </p>
+                  </div>
+                  <button className='border border-black py-2 rounded-lg px-3.5 font-semibold xl:text-sm'>
+                    Add
+                  </button>
+                </div>
+              </div>
+              <div className='border-b border-[1px] border-[black]/[.9]'></div>
+              {/* Cancellation policy */}
+              <div className='my-6'>
+                <h3 className='text-xl xl:text-lg font-semibold mb-4'>
+                  Cancellation Policy
+                </h3>
+                <p className='xl:text-sm'>
+                  This booking is non-refundable.
+                  <span className='underline ml-1 cursor-pointer underline-offset-2 font-semibold'>
+                    Learn more
+                  </span>
+                </p>
+              </div>
+              <div className='border-b border-[1px] border-[black]/[.9]'></div>
+              {/* Ground rules */}
+              <div className='my-6'>
+                <h3 className='text-xl xl:text-lg font-semibold mb-4'>
+                  Ground rules
+                </h3>
+                <p className='xl:text-sm'>
+                  We ask every guest to remember a few simple things about what
+                  makes a great guest.
+                </p>
+                <ul className='mt-3 xl:text-sm list-disc px-6'>
+                  <li>Follow the house rules</li>
+                  <li>Treat your Host’s home like your own</li>
+                </ul>
+              </div>
+              <div className='border-b border-[1px] border-[black]/[.9]'></div>
+              <div className='flex flex-col w-full items-center mt-10 mb-6'>
+                <div className='text-xs w-[95%]'>
+                  By selecting the button below, I agree to the Visiting House
+                  Rules, Ground rules for guests, and that tecHiveApartments can
+                  charge my payment method if I’m responsible for damage.
+                </div>
+                <button className='bg-black mt-6 rounded-lg h-14 w-[95%] text-white'>
+                  Confirm and pay
+                </button>
+              </div>
+            </div>
+            <div className='lg:w-[90%] xl:w-[85%] lg:mx-auto'>
+              <div className='border border-black p-7 rounded-xl sticky top-0'>
+                <div className='mt-4 mb-6 sm:flex'>
+                  <img
+                    src={ViewApartments2}
+                    alt='apartment'
+                    className='w-32 h-24 rounded-lg'
+                  />
+                  <div className='mt-2 sm:mt-0 sm:ml-4'>
+                    <p className='text-sm'>{cleanedInfo.title}</p>
+                    <p className='text-xs text-[#717171]'>
+                      {cleanedInfo.subtitle}
+                    </p>
+                    <div className='flex items-center mt-0.5'>
+                      <i className='fa-solid text-sm fa-award mr-1'></i>
+                      <p className='text-xs text-[#717171] font-semibold'>
+                        Super agent
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className='border-b border-[1px] border-[black]/[.9]'></div>
+                {/* Price Details */}
+                <div className='my-6'>
+                  <h2 className='text-xl xl:text-lg mb-6 font-semibold'>
+                    Price details
+                  </h2>
+                  <div className='flex w-full justify-between mb-3 xl:text-sm'>
+                    <p>Transport fee(Ksh 500 x 1)</p>
+                    <p>Ksh 500</p>
+                  </div>
+                  <div className='flex w-full justify-between mb-3 xl:text-sm'>
+                    <p>Food</p>
+                    <p>Ksh 800</p>
+                  </div>
+                  <div className='flex w-full justify-between mb-5 xl:text-sm'>
+                    <p>Cleaning fee</p>
+                    <p>Ksh 300</p>
+                  </div>
+                  <div className='flex w-full justify-between mt-5 xl:text-sm'>
+                    <p className='underline font-semibold'>Total(Ksh)</p>
+                    <p className='underline font-semibold'>Ksh 1500</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

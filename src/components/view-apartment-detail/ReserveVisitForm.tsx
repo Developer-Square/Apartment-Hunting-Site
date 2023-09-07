@@ -2,7 +2,11 @@ import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const ReserveVisitForm = () => {
+const ReserveVisitForm = ({
+  setShowConfirmAndPayModal,
+}: {
+  setShowConfirmAndPayModal: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const [date, setDate] = useState(new Date());
 
   const onChange = (date: Date) => {
@@ -32,7 +36,10 @@ const ReserveVisitForm = () => {
         <option>3 guests</option>
         <option>4+ guests</option>
       </select>
-      <button className='w-full h-12 my-6 rounded-lg bg-white text-black font-semibold'>
+      <button
+        className='w-full h-12 my-6 rounded-lg bg-white text-black font-semibold'
+        onClick={() => setShowConfirmAndPayModal(true)}
+      >
         Book
       </button>
       <div className='flex justify-between xl:text-sm'>
