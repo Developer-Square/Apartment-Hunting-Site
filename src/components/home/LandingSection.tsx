@@ -11,6 +11,7 @@ import Property7 from '@/assets/home/Property-11.webp';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface LandingSectionImageProps {
   town: string;
@@ -18,8 +19,15 @@ interface LandingSectionImageProps {
 }
 
 const LandingSectionImage = ({ town, img }: LandingSectionImageProps) => {
+  const navigate = useNavigate();
+  const isMobile = window.innerWidth < 768;
+
   const handleNavigate = () => {
-    window.open('/apartments', '_blank');
+    if (isMobile) {
+      navigate('/apartments');
+    } else {
+      window.open('/apartments', '_blank');
+    }
   };
 
   return (

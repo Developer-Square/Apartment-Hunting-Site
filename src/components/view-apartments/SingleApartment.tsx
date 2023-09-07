@@ -11,6 +11,7 @@ import ViewApartments4 from '@/assets/view-apartments/view-apartments-4.webp';
 import ViewApartments5 from '@/assets/view-apartments/view-apartments-5.webp';
 import { WishListModal, CreateWishListModal, FilterBackdrop } from './Helpers';
 import { ModalContext } from '@/context/modalContext';
+import { useNavigate } from 'react-router-dom';
 
 const SingleApartment = ({
   info,
@@ -33,6 +34,8 @@ const SingleApartment = ({
   const [wishlist, setWishlist] = useState<string[]>([]);
   const [isLargerScreen, setIsLargerScreen] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+  const isMobile = window.innerWidth < 768;
 
   const { setHideMenu } = useContext(ModalContext);
 
@@ -85,7 +88,12 @@ const SingleApartment = ({
   const handleNavigation = () => {
     // Store info in localStorage to be used in the new tab created for view-apartment-detail-page.
     localStorage.setItem('apartmentInfo', JSON.stringify(info));
-    window.open(`/view-apartment/${id}`, '_blank');
+
+    if (isMobile) {
+      navigate(`/view-apartment/${id}`);
+    } else {
+      window.open(`/view-apartment/${id}`, '_blank');
+    }
   };
 
   return (
