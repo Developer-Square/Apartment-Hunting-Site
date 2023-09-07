@@ -96,11 +96,7 @@ const LandingSection = () => {
 
   return (
     <div>
-      <div className='absolute bottom-0 sm:bottom-[5%] md:bottom-[4%] lg:bottom-[3%] xl:bottom-[5.5%] mx-5 w-full'>
-        <button className='w-[320px] xm:w-[368px] sm:w-[320px] lg:hidden text-black h-11 cursor-pointer rounded-2xl bg-[#FEFEFE] font-semibold'>
-          Search
-          <i className='fa-solid fa-house-chimney ml-1.5'></i>
-        </button>
+      <div className='mt-5 mx-5 w-full'>
         <div className='w-full mx-auto'>
           <h4 className='font-semibold mt-3.5 text-[#FFFFFF] flex items-center'>
             <span className='mr-2'>Top rated apartments</span>

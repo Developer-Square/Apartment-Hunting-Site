@@ -1,6 +1,6 @@
-import LandingPage from '@/assets/home/mobile-landing-page.png';
-import TabletPage from '@/assets/home/tablet-landing-page.jpg';
-import DesktopPage from '@/assets/home/desktop-landing-page.png';
+import LandingPage from '@/assets/home/mobile-landing-6.jpg';
+import TabletPage from '@/assets/home/mobile-landing-2.jpg';
+import DesktopPage from '@/assets/home/desktop-landing-1.jpg';
 import OurTopCitiesSection from '@/components/home/OurTopCitiesSection';
 import {
   AdditionalAbilitiesSection,
@@ -45,21 +45,23 @@ const Home = () => {
       className={`w-full ${show ? 'h-screen' : 'h-full'} bg-color text-white`}
     >
       {/* Landing Section */}
-      <div className='relative w-full h-full 2xl:w-[1440px] 3xl:w-[1700px] mx-auto'>
+      <div className='relative w-full h-full mx-auto'>
+        <div className='absolute w-full h-full bg-black/[.1]'></div>
+        <button className='absolute top-[60%] left-[50%] translate-x-[-50%] w-[320px] xm:w-[368px] sm:w-[85%] lg:hidden text-black h-11 sm:h-12 cursor-pointer rounded-2xl bg-[#FEFEFE] font-semibold'>
+          Search
+          <i className='fa-solid fa-house-chimney ml-1.5'></i>
+        </button>
         <picture>
           <source media='(max-width: 639px)' srcSet={LandingPage} />
-          <source
-            media='(min-width: 640px) && (max-width: 1023px)'
-            srcSet={TabletPage}
-          />
+          <source media='(max-width: 1023px)' srcSet={TabletPage} />
           <source media='(min-width: 1024px)' srcSet={DesktopPage} />
           <img
             src={LandingPage}
             alt='Landing'
-            className='w-full h-auto sm:h-[800px] lg:h-auto 2xl:h-[1440px] 3xl:max-w-[1700px]'
+            className='w-full h-auto sm:h-[600px] lg:h-auto 2xl:h-[900px] 3xl:h-[1000px]'
           />
         </picture>
-        <div className='max-w-[330px] xm:max-w-[360px] w-full'>
+        <div className='w-full'>
           <MobileMenu
             show={show}
             setShow={setShow}

@@ -12,15 +12,17 @@ const InputRange = ({
   setValue: React.Dispatch<React.SetStateAction<number>>;
 }) => (
   <div>
-    <span className='text-sm mt-2 ml-2'>{text}</span>
+    <span className='text-sm xl:text-xs mt-2 ml-2'>{text}</span>
     <div className='flex items-center ml-2'>
-      <span className='text-[#18AB18] text-base font-semibold'>Ksh</span>
+      <span className='text-[#18AB18] text-base xl:text-sm font-semibold'>
+        Ksh
+      </span>
       <input
         type='number'
         value={value}
         onChange={(e) => setValue(parseInt(e.target.value))}
         placeholder={placeholder}
-        className='w-full h-[44px] p-0 border-none focus:ring-0 outline-none ml-2 bg-transparent'
+        className='w-full xl:text-sm h-[40px] p-0 border-none focus:ring-0 outline-none ml-2 bg-transparent'
       />
     </div>
   </div>
@@ -47,12 +49,12 @@ const Search = () => {
   };
 
   return (
-    <div className='absolute rounded-l-[10px] left-[4.4%] rounded-b-[10px] top-[6.62%] w-[377px] xl:w-[470px] h-[697px] xl:h-[871px] 2xl:w-[529px] 3xl:w-[650px] 2xl:h-[981px] bg-white text-black'>
-      <div className='relative flex flex-col items-center pl-10 pt-[40%] 2xl:pt-[35%] pr-9'>
+    <div className='absolute rounded-l-[10px] top-8 2xl:top-12 left-12 2xl:left-16 rounded-b-[10px] w-[377px] xl:w-[470px] 2xl:w-[529px] h-auto bg-white text-black'>
+      <div className='relative flex flex-col items-center px-10 pt-20 pb-10'>
         <h3 className='text-4xl font-semibold w-[260px] xl:w-[360px] mr-auto'>
           House rentals with pools in Kenya
         </h3>
-        <p className='font-medium w-[290px] xl:w-[397px] xl:pl-3 mt-3 2xl:pl-0 2xl:mr-auto'>
+        <p className='font-medium xl:text-sm w-[290px] xl:w-[397px] xl:pl-3 mt-3 2xl:pl-0 2xl:mr-auto'>
           Book unique houses,vacation rentals and more on tecHive
         </p>
         <form>
@@ -62,7 +64,7 @@ const Search = () => {
             } mt-6 border-2 rounded-[10px] w-full h-[75px]`}
           >
             <span
-              className={`text-sm ${
+              className={`text-sm xl:text-xs ${
                 error.length ? 'text-red-600' : ''
               } mt-2 ml-2`}
             >
@@ -76,12 +78,12 @@ const Search = () => {
                 seterror(''), setlocation(e.target.value);
               }}
               placeholder='Anywhere'
-              className='w-full h-[44px] shadow-transparent p-0 border-transparent focus:ring-0 !outline-none border-none ml-2 bg-transparent'
+              className='w-full h-[40px] xl:text-sm shadow-transparent p-0 border-transparent focus:ring-0 !outline-none border-none ml-2 bg-transparent'
             />
           </div>
           <span className='text-xs my-2 text-red-600'>{error}</span>
 
-          <p className='w-full mt-2 mb-1'>Price range</p>
+          <p className='w-full xl:text-sm mt-2 mb-1'>Price range</p>
           <div className='border-black border-2 rounded-[10px] w-full h-[75px] flex'>
             <InputRange
               text='lowest price'
@@ -99,7 +101,7 @@ const Search = () => {
           </div>
           <button
             type='submit'
-            className='w-full mt-6 text-white h-12 cursor-pointer rounded-[8px] bg-[#1C323F] font-semibold'
+            className='w-full xl:text-sm mt-6 text-white h-12 cursor-pointer rounded-[8px] bg-[#1C323F] font-semibold'
             onClick={(e) => handleSubmit(e)}
           >
             Search
