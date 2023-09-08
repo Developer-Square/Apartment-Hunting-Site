@@ -82,21 +82,24 @@ const LandingSection = () => {
     const width = window.innerWidth;
     if (width > 639 && width < 767) {
       setCarouselNumber(4);
-    } else if (width >= 768 && width < 1279) {
+    } else if (width >= 768 && width < 1023) {
       setCarouselNumber(3);
       setSpaceBetween(60);
+    } else if (width >= 1024 && width < 1279) {
+      setCarouselNumber(4);
+      setSpaceBetween(90);
     } else if (width >= 1280) {
       setCarouselNumber(5);
-      setSpaceBetween(60);
+      setSpaceBetween(150);
     } else {
       setCarouselNumber(3);
-      setSpaceBetween(30);
+      setSpaceBetween(40);
     }
   }, []);
 
   return (
     <div>
-      <div className='mt-5 mx-5 w-full'>
+      <div className='mt-5 mx-5 w-full sm:max-w-[600px] md:max-w-[720px] lg:max-w-[850px] xl:max-w-[1045px] 2xl:max-w-[1200px] 3xl:max-w-[1700px] sm:mx-auto'>
         <div className='w-full mx-auto'>
           <h4 className='font-semibold mt-3.5 text-[#FFFFFF] flex items-center'>
             <span className='mr-2'>Top rated apartments</span>
