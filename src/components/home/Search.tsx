@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const InputRange = ({
+export const InputRange = ({
   text,
   placeholder,
   value,

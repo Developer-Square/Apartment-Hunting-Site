@@ -1,7 +1,6 @@
 import AboutUs from './AboutUs';
 import ContactUs from './ContactUs';
 import Home from './Home';
-import Help from './Help';
 import ListWithUs from './ListWithUs';
 import Account from './Account';
 import Login from './Login';
@@ -16,7 +15,6 @@ export {
   AboutUs,
   ContactUs,
   Home,
-  Help,
   ListWithUs,
   Account,
   Login,

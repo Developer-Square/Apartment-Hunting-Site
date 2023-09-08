@@ -6,6 +6,7 @@ import {
   AdditionalAbilitiesSection,
   ContactUsSection,
   DesktopMenu,
+  FilterBackdrop,
   Footer,
   LandingSection,
   PopularAmenitiesSection,
@@ -16,10 +17,12 @@ import { useEffect, useState } from 'react';
 
 import ProfileImg from '@/assets/home/Logo - dark surface.png';
 import MobileMenu from '@/components/home/MobileMenu';
+import { SearchApartmentModal } from '@/components/home/Helpers';
 
 const Home = () => {
   const [show, setShow] = useState(false);
   const [showStickyHeader, setShowStickyHeader] = useState(false);
+  const [searchApartmentModal, setSearchApartmentModal] = useState(false);
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -33,21 +36,34 @@ const Home = () => {
 
   useEffect(() => {
     // Stop outside scrolling when any of the modals are open.
-    if (show && window.innerWidth < 1024) {
-      document.body.classList.add('body-style');
-      return;
+    if (window.innerWidth < 1024) {
+      if (show || searchApartmentModal) {
+        document.body.classList.add('body-style');
+        return;
+      }
     }
     document.body.classList.remove('body-style');
-  }, [show]);
+  }, [show, searchApartmentModal]);
 
   return (
     <section
       className={`w-full ${show ? 'h-screen' : 'h-full'} bg-color text-white`}
     >
+      {searchApartmentModal ? (
+        <>
+          <FilterBackdrop show={searchApartmentModal} />
+          <SearchApartmentModal
+            setSearchApartmentModal={setSearchApartmentModal}
+          />
+        </>
+      ) : null}
       {/* Landing Section */}
       <div className='relative w-full h-full mx-auto'>
         <div className='absolute w-full h-full bg-black/[.1]'></div>
-        <button className='absolute top-[60%] left-[50%] translate-x-[-50%] w-[320px] xm:w-[368px] sm:w-[85%] lg:hidden text-black h-11 sm:h-12 cursor-pointer rounded-2xl bg-[#FEFEFE] font-semibold'>
+        <button
+          className='absolute top-[60%] left-[50%] translate-x-[-50%] w-[320px] xm:w-[368px] sm:w-[85%] lg:hidden text-black h-11 sm:h-12 cursor-pointer rounded-2xl bg-[#FEFEFE] font-semibold'
+          onClick={() => setSearchApartmentModal(true)}
+        >
           Search
           <i className='fa-solid fa-house-chimney ml-1.5'></i>
         </button>
