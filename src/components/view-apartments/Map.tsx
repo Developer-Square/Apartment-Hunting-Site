@@ -53,7 +53,7 @@ const Map = ({
     <div
       className={`${
         showFullMap
-          ? 'lg:w-full lg:h-screen'
+          ? 'lg:w-full change lg:h-screen'
           : 'lg:w-[460px] xl:w-[473px] 2xl:w-[568px] 3xl:w-[768px]'
       } relative`}
       style={{
