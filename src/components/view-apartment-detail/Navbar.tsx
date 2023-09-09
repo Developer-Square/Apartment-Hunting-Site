@@ -55,7 +55,7 @@ const navbarItems = ['Video Tour', 'Photos', 'Amenities', 'Agent', 'Location'];
 
 export const DesktopNav = () => {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
-  const [scrollHeight, setScrollHeight] = useState(600);
+  const scrollHeight = 600;
   const navigate = useNavigate();
 
   useEffect(() => {
