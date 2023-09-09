@@ -43,7 +43,7 @@ const ViewApartmentsPage = () => {
     }
 
     // Hide the popup menu on larger screens.
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth < 768) {
       setHideMenu(false);
     }
     document.body.classList.remove('body-style');
@@ -157,7 +157,7 @@ const ViewApartmentsPage = () => {
           />
         ) : null}
         <div className='w-full lg:flex lg:mx-2 2xl:max-w-[1500px] 3xl:max-w-[1700px] 2xl:mx-auto'>
-          {search.length ? (
+          {search.length || showFullMap ? (
             <Map showFullMap={showFullMap} setShowFullMap={setShowFullMap} />
           ) : null}
           {!showFullMap ? (

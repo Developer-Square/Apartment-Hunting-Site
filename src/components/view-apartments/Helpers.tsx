@@ -159,7 +159,7 @@ export const WishListModal = ({
         {/*content*/}
         <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
           {/*header*/}
-          <div className='flex items-center w-full p-3.5 border-b mb-5 border-black/[.2]  rounded-t'>
+          <div className='flex items-center w-full p-3.5 border-b mb-5 border-black/[.2] rounded-t'>
             <i
               className='fa-solid fa-xmark text-lg cursor-pointer'
               onClick={() => {
@@ -299,7 +299,7 @@ export const NavBarMenu = () => {
       {showMenu ? (
         <ul
           tabIndex={0}
-          className='dropdown-content z-[1] menu p-2 shadow bg-[#141b1f] rounded-box mt-3 w-52 xl:text-sm'
+          className='dropdown-content z-[1] menu p-2 shadow bg-[#141b1f] rounded-box mt-3 w-52 xl:text-[16px]'
         >
           <li>
             <a>Login</a>

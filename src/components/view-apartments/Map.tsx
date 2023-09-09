@@ -24,15 +24,6 @@ const Map = ({
   }, [showFullMap]);
 
   useEffect(() => {
-    if (window.innerWidth >= 768 && window.innerWidth < 1024) {
-      setSetShowMap(true);
-      setMapDimensions({
-        width: '0',
-        height: '0',
-      });
-      return;
-    }
-
     if (window.innerWidth >= 1024 && window.innerWidth < 1535) {
       setSetShowMap(false);
       setMapDimensions({
@@ -56,13 +47,13 @@ const Map = ({
       width: '100%',
       height: '416px',
     });
-  }, []);
+  }, [showFullMap]);
 
   return (
     <div
       className={`${
         showFullMap
-          ? 'lg:w-full lg:h-screen'
+          ? 'lg:w-full change lg:h-screen'
           : 'lg:w-[460px] xl:w-[473px] 2xl:w-[568px] 3xl:w-[768px]'
       } relative`}
       style={{

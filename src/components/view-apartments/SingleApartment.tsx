@@ -5,13 +5,13 @@ import { ApartmentInfoProps } from './Apartments';
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/pagination';
-import ViewApartments1 from '@/assets/view-apartments/view-apartments-1.png';
 import ViewApartments2 from '@/assets/view-apartments/view-apartments-2.webp';
 import ViewApartments3 from '@/assets/view-apartments/view-apartments-3.webp';
 import ViewApartments4 from '@/assets/view-apartments/view-apartments-4.webp';
 import ViewApartments5 from '@/assets/view-apartments/view-apartments-5.webp';
 import { WishListModal, CreateWishListModal, FilterBackdrop } from './Helpers';
 import { ModalContext } from '@/context/modalContext';
+import { useNavigate } from 'react-router-dom';
 
 const SingleApartment = ({
   info,
@@ -20,9 +20,8 @@ const SingleApartment = ({
   info: ApartmentInfoProps;
   setShowFilterBackdrop: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const { title, subtitle, propertyManager, price } = info;
+  const { title, subtitle, propertyManager, price, id } = info;
   const viewApartments = [
-    ViewApartments1,
     ViewApartments2,
     ViewApartments3,
     ViewApartments4,
@@ -35,6 +34,8 @@ const SingleApartment = ({
   const [wishlist, setWishlist] = useState<string[]>([]);
   const [isLargerScreen, setIsLargerScreen] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+  const isMobile = window.innerWidth < 768;
 
   const { setHideMenu } = useContext(ModalContext);
 
@@ -84,6 +85,17 @@ const SingleApartment = ({
     setWishListModal(true);
   };
 
+  const handleNavigation = () => {
+    // Store info in localStorage to be used in the new tab created for view-apartment-detail-page.
+    localStorage.setItem('apartmentInfo', JSON.stringify(info));
+
+    if (isMobile) {
+      navigate(`/view-apartment/${id}`);
+    } else {
+      window.open(`/view-apartment/${id}`, '_blank');
+    }
+  };
+
   return (
     <>
       {/* Show the Backdrop whenever any of the modals are open */}
@@ -119,7 +131,7 @@ const SingleApartment = ({
       ) : null}
 
       <div
-        className='mb-10 px-8 sm:px-6 lg:pr-5 lg:pl-3 xl:px-3'
+        className='mb-10 px-8 cursor-pointer sm:px-6 lg:pr-5 lg:pl-3 xl:px-3'
         onMouseEnter={() => setIsApartmentHovered(true)}
         onMouseLeave={() => setIsApartmentHovered(false)}
       >
@@ -152,6 +164,7 @@ const SingleApartment = ({
                     src={apartment}
                     className='w-full h-full rounded-xl'
                     alt='view apartments'
+                    onClick={() => handleNavigation()}
                   />
                   <animated.div
                     style={{

@@ -31,7 +31,7 @@ const DesktopMenu = () => {
   }, []);
   return (
     <div
-      className={`absolute top-[10%] z-20 w-full transition-all ease-in-out duration-[1s] 3xl:max-w-[1700px] ${
+      className={`absolute top-[5%] z-20 w-full transition-all ease-in-out duration-[1s] ${
         showStickyHeader ? 'stickyHeader !fixed !top-0 ' : ''
       } `}
     >

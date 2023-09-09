@@ -8,6 +8,7 @@ import PropertyManager5 from '@/assets/view-apartments/property-manager-5.jpg';
 import Pagination from './Pagination';
 
 export interface ApartmentInfoProps {
+  id: number;
   propertyManager: string;
   title: string;
   subtitle: string;
@@ -16,54 +17,63 @@ export interface ApartmentInfoProps {
 
 const apartmentInfo: ApartmentInfoProps[] = [
   {
+    id: 1,
     propertyManager: PropertyManager1,
     title: 'Haven woods apartments',
     subtitle: 'Nairobi apartment with 3 bedrooms',
     price: '20,000',
   },
   {
+    id: 2,
     propertyManager: PropertyManager2,
     title: 'Serenity heights apartment',
     subtitle: 'Stunning loft apartment facing the indian ocean',
     price: '25,000',
   },
   {
+    id: 3,
     propertyManager: PropertyManager3,
     title: 'Harmony haven apartments',
     subtitle: 'Haven apartments stunning view of Nakuru city',
     price: '35,000',
   },
   {
+    id: 4,
     propertyManager: PropertyManager4,
     title: 'Jambo Heights apartment',
     subtitle: 'Elevated Urban Living',
     price: '17,000',
   },
   {
+    id: 5,
     propertyManager: PropertyManager5,
     title: 'Mawingu Gardens apartment',
     subtitle: 'Serene Skyline Retreat',
     price: '32,000',
   },
   {
+    id: 6,
     propertyManager: PropertyManager5,
     title: 'Mawingu Gardens apartment',
     subtitle: 'Serene Skyline Retreat',
     price: '32,000',
   },
   {
+    id: 7,
     propertyManager: PropertyManager5,
     title: 'Mawingu Gardens apartment',
     subtitle: 'Serene Skyline Retreat',
     price: '32,000',
   },
   {
+    id: 8,
     propertyManager: PropertyManager5,
     title: 'Mawingu Gardens apartment',
     subtitle: 'Serene Skyline Retreat',
     price: '32,000',
   },
   {
+    id: 9,
     propertyManager: PropertyManager5,
     title: 'Mawingu Gardens apartment',
     subtitle: 'Serene Skyline Retreat',
