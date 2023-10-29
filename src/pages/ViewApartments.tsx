@@ -12,6 +12,8 @@ import {
 import { useBackToTop } from 'src/hooks/useBackToTop';
 import Navbar from '@/components/view-apartments/Navbar';
 import { ModalContext } from '@/context/modalContext';
+import LoginOrSignupModal from '@/components/auth/LoginOrSignupModal';
+import { ApartmentsContext } from '@/context/aparmentsContext';
 const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
   const [showFilters, setshowFilters] = useState(false);
@@ -25,6 +27,7 @@ const ViewApartmentsPage = () => {
   const [showFilterBtn, setShowFilterBtn] = useState(false);
 
   const { hideMenu, setHideMenu } = useContext(ModalContext);
+  const { showLoginModal, setShowLoginModal } = useContext(ApartmentsContext);
 
   useEffect(() => {
     if (window.innerWidth >= 768) {
@@ -96,6 +99,15 @@ const ViewApartmentsPage = () => {
 
   return (
     <section className='apartments-page w-full h-full pt-5 text-black'>
+      {/* Login and Signup Modal */}
+      {showLoginModal ? (
+        <>
+          <LoginOrSignupModal setShowLoginModal={setShowLoginModal} />
+          <FilterBackdrop show={true} />
+        </>
+      ) : (
+        <></>
+      )}
       {/* The following is meant to make it easier to give the sticky header a max-width of 1500px */}
       <div
         className={`w-full ${
