@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { ApartmentsContext } from '@/context/aparmentsContext';
+import { ApartmentsContext } from '@/context/apartmentsContext';
 import { useSpring, animated } from '@react-spring/web';
 import React, { SetStateAction, useContext, useState } from 'react';
 
@@ -18,7 +18,7 @@ export const FilterBackdrop = ({ show }: { show: boolean }) => {
         backgroundColor: '#FFFFFF',
         height: '100vh',
         width: '100%',
-        zIndex: '10',
+        zIndex: '20',
         backdropFilter: 'blur(5px)',
         background: 'rgba(255, 255, 255, 0.4)',
         ...props,

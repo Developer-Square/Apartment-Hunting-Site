@@ -1,4 +1,4 @@
-import { ApartmentsProvider } from './aparmentsContext';
+import { ApartmentsProvider } from './apartmentsContext';
 import { ModalProvider } from './modalContext';
 
 export { ApartmentsProvider, ModalProvider };

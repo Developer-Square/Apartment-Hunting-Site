@@ -13,7 +13,8 @@ import { useBackToTop } from 'src/hooks/useBackToTop';
 import Navbar from '@/components/view-apartments/Navbar';
 import { ModalContext } from '@/context/modalContext';
 import LoginOrSignupModal from '@/components/auth/LoginOrSignupModal';
-import { ApartmentsContext } from '@/context/aparmentsContext';
+import { ApartmentsContext } from '@/context/apartmentsContext';
+import SmsAuthentication from '@/components/auth/SmsAuthentication';
 const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
   const [showFilters, setshowFilters] = useState(false);
@@ -27,7 +28,12 @@ const ViewApartmentsPage = () => {
   const [showFilterBtn, setShowFilterBtn] = useState(false);
 
   const { hideMenu, setHideMenu } = useContext(ModalContext);
-  const { showLoginModal, setShowLoginModal } = useContext(ApartmentsContext);
+  const {
+    showLoginModal,
+    showConfirmPhoneNumber,
+    setShowLoginModal,
+    setShowConfirmPhoneNumber,
+  } = useContext(ApartmentsContext);
 
   useEffect(() => {
     if (window.innerWidth >= 768) {
@@ -39,7 +45,7 @@ const ViewApartmentsPage = () => {
 
   useEffect(() => {
     // Stop outside scrolling when any of the following modals are open.
-    if (showSearhBar || showFilters) {
+    if (showSearhBar || showFilters || showLoginModal) {
       document.body.classList.add('body-style');
       setHideMenu(true);
       return;
@@ -50,7 +56,7 @@ const ViewApartmentsPage = () => {
       setHideMenu(false);
     }
     document.body.classList.remove('body-style');
-  }, [showSearhBar, showFilters, setHideMenu]);
+  }, [showSearhBar, showFilters, setHideMenu, showLoginModal]);
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -102,7 +108,18 @@ const ViewApartmentsPage = () => {
       {/* Login and Signup Modal */}
       {showLoginModal ? (
         <>
-          <LoginOrSignupModal setShowLoginModal={setShowLoginModal} />
+          <LoginOrSignupModal
+            setShowLoginModal={setShowLoginModal}
+            setShowConfirmPhoneNumber={setShowConfirmPhoneNumber}
+          />
+          <FilterBackdrop show={true} />
+        </>
+      ) : (
+        <></>
+      )}
+      {showConfirmPhoneNumber ? (
+        <>
+          <SmsAuthentication setShowLoginModal={setShowLoginModal} />
           <FilterBackdrop show={true} />
         </>
       ) : (
