@@ -1,5 +1,6 @@
-import { SetStateAction, useState } from 'react';
+import { useContext, useState } from 'react';
 import ModalWrapper from './ModalWrapper';
+import { ApartmentsContext } from '@/context/apartmentsContext';
 
 const loginLinks = [
   {
@@ -16,14 +17,10 @@ const loginLinks = [
   },
 ];
 
-const LoginOrSignupModal = ({
-  setShowLoginModal,
-  setShowConfirmPhoneNumber,
-}: {
-  setShowLoginModal: React.Dispatch<SetStateAction<boolean>>;
-  setShowConfirmPhoneNumber: React.Dispatch<SetStateAction<boolean>>;
-}) => {
+const LoginOrSignupModal = () => {
   const [phoneNumber, setPhoneNumber] = useState('+254');
+  const { setShowLoginModal, setShowConfirmPhoneNumber } =
+    useContext(ApartmentsContext);
 
   const handleSubmit = () => {
     if (phoneNumber.length > 4) {

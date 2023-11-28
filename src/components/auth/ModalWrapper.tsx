@@ -23,7 +23,7 @@ const ModalWrapper = ({
         {/*content*/}
         <div className='border-0 h-full md:rounded-xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none text-sm'>
           {/*header*/}
-          <div className='flex items-center w-full h-12 mt-2 px-4'>
+          <div className='flex items-center w-full h-12 mt-2 px-4 border-b border-black/[.1]'>
             <i
               className={`fa-solid ${icon} cursor-pointer`}
               onClick={() => {

@@ -15,6 +15,8 @@ import { ModalContext } from '@/context/modalContext';
 import LoginOrSignupModal from '@/components/auth/LoginOrSignupModal';
 import { ApartmentsContext } from '@/context/apartmentsContext';
 import SmsAuthentication from '@/components/auth/SmsAuthentication';
+import FinishSignup from '@/components/auth/FinishSignup';
+import MoreOptions from '@/components/auth/MoreOptions';
 const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
   const [showFilters, setshowFilters] = useState(false);
@@ -31,8 +33,8 @@ const ViewApartmentsPage = () => {
   const {
     showLoginModal,
     showConfirmPhoneNumber,
-    setShowLoginModal,
-    setShowConfirmPhoneNumber,
+    showFinishSignupModal,
+    showMoreOptionsModal,
   } = useContext(ApartmentsContext);
 
   useEffect(() => {
@@ -45,7 +47,14 @@ const ViewApartmentsPage = () => {
 
   useEffect(() => {
     // Stop outside scrolling when any of the following modals are open.
-    if (showSearhBar || showFilters || showLoginModal) {
+    if (
+      showSearhBar ||
+      showFilters ||
+      showLoginModal ||
+      showConfirmPhoneNumber ||
+      showFinishSignupModal ||
+      showMoreOptionsModal
+    ) {
       document.body.classList.add('body-style');
       setHideMenu(true);
       return;
@@ -56,7 +65,15 @@ const ViewApartmentsPage = () => {
       setHideMenu(false);
     }
     document.body.classList.remove('body-style');
-  }, [showSearhBar, showFilters, setHideMenu, showLoginModal]);
+  }, [
+    showSearhBar,
+    showFilters,
+    setHideMenu,
+    showLoginModal,
+    showConfirmPhoneNumber,
+    showFinishSignupModal,
+    showMoreOptionsModal,
+  ]);
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -108,10 +125,7 @@ const ViewApartmentsPage = () => {
       {/* Login and Signup Modal */}
       {showLoginModal ? (
         <>
-          <LoginOrSignupModal
-            setShowLoginModal={setShowLoginModal}
-            setShowConfirmPhoneNumber={setShowConfirmPhoneNumber}
-          />
+          <LoginOrSignupModal />
           <FilterBackdrop show={true} />
         </>
       ) : (
@@ -119,7 +133,23 @@ const ViewApartmentsPage = () => {
       )}
       {showConfirmPhoneNumber ? (
         <>
-          <SmsAuthentication setShowLoginModal={setShowLoginModal} />
+          <SmsAuthentication />
+          <FilterBackdrop show={true} />
+        </>
+      ) : (
+        <></>
+      )}
+      {showMoreOptionsModal ? (
+        <>
+          <MoreOptions />
+          <FilterBackdrop show={true} />
+        </>
+      ) : (
+        <></>
+      )}
+      {showFinishSignupModal ? (
+        <>
+          <FinishSignup />
           <FilterBackdrop show={true} />
         </>
       ) : (

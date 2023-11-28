@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import ModalWrapper from './ModalWrapper';
+import { ApartmentsContext } from '@/context/apartmentsContext';
 
-type Props = Record<string, never>;
+const FinishSignup = () => {
+  const { setShowLoginModal, setShowFinishSignupModal } =
+    useContext(ApartmentsContext);
 
-const FinishSignup = (props: Props) => {
-  return <div>FinishSignup</div>;
+  const handleModalClose = () => {
+    setShowLoginModal(true);
+    setShowFinishSignupModal(false);
+  };
+  return (
+    <ModalWrapper
+      title='Finish signing up'
+      icon='fa-chevron-left text-base'
+      height='md:h-[90%]'
+      handleLoginModal={() => handleModalClose()}
+    >
+      FinishSignup
+    </ModalWrapper>
+  );
 };
 
 export default FinishSignup;
