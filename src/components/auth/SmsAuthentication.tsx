@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import ModalWrapper from './ModalWrapper';
 import VerificationInput from 'react-verification-input';
 import { ApartmentsContext } from '@/context/apartmentsContext';
