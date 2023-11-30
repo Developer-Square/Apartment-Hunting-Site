@@ -17,6 +17,7 @@ import { ApartmentsContext } from '@/context/apartmentsContext';
 import SmsAuthentication from '@/components/auth/SmsAuthentication';
 import FinishSignup from '@/components/auth/FinishSignup';
 import MoreOptions from '@/components/auth/MoreOptions';
+import WelcomeBackSignin from '@/components/auth/WelcomeBackSignin';
 const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
   const [showFilters, setshowFilters] = useState(false);
@@ -35,6 +36,7 @@ const ViewApartmentsPage = () => {
     showConfirmPhoneNumber,
     showFinishSignupModal,
     showMoreOptionsModal,
+    showWelcomeBackModal,
   } = useContext(ApartmentsContext);
 
   useEffect(() => {
@@ -53,7 +55,8 @@ const ViewApartmentsPage = () => {
       showLoginModal ||
       showConfirmPhoneNumber ||
       showFinishSignupModal ||
-      showMoreOptionsModal
+      showMoreOptionsModal ||
+      showWelcomeBackModal
     ) {
       document.body.classList.add('body-style');
       setHideMenu(true);
@@ -73,6 +76,7 @@ const ViewApartmentsPage = () => {
     showConfirmPhoneNumber,
     showFinishSignupModal,
     showMoreOptionsModal,
+    showWelcomeBackModal,
   ]);
 
   useEffect(() => {
@@ -123,6 +127,14 @@ const ViewApartmentsPage = () => {
   return (
     <section className='apartments-page w-full h-full pt-5 text-black'>
       {/* Login and Signup Modal */}
+      {showWelcomeBackModal ? (
+        <>
+          <WelcomeBackSignin />
+          <FilterBackdrop show={true} />
+        </>
+      ) : (
+        <></>
+      )}
       {showLoginModal ? (
         <>
           <LoginOrSignupModal />

@@ -289,7 +289,7 @@ export const CreateWishListModal = ({
 
 export const NavBarMenu = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const { setShowLoginModal } = useContext(ApartmentsContext);
+  const { setShowWelcomeBackModal } = useContext(ApartmentsContext);
   return (
     <div
       className='md:flex float-right hidden pl-3 pr-2 py-1.5 text-[#f0efe9] border border-[#f0efe9] rounded-3xl items-center cursor-pointer dropdown dropdown-bottom dropdown-end z-20'
@@ -303,10 +303,10 @@ export const NavBarMenu = () => {
           tabIndex={0}
           className='dropdown-content z-[1] menu p-2 shadow bg-[#141b1f] rounded-box mt-3 w-52 xl:text-[16px]'
         >
-          <li onClick={() => setShowLoginModal(true)}>
+          <li onClick={() => setShowWelcomeBackModal(true)}>
             <a>Login</a>
           </li>
-          <li onClick={() => setShowLoginModal(true)}>
+          <li onClick={() => setShowWelcomeBackModal(true)}>
             <a>Signup</a>
           </li>
           <div className='border border-white/[.3]'></div>

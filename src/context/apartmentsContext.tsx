@@ -13,6 +13,8 @@ interface ApartmentsContextProps {
   setShowFinishSignupModal: React.Dispatch<SetStateAction<boolean>>;
   showMoreOptionsModal: boolean;
   setShowMoreOptionsModal: React.Dispatch<SetStateAction<boolean>>;
+  showWelcomeBackModal: boolean;
+  setShowWelcomeBackModal: React.Dispatch<SetStateAction<boolean>>;
 }
 
 export const ApartmentsContext = createContext<ApartmentsContextProps>(
@@ -29,6 +31,7 @@ export const ApartmentsProvider = ({
   const [showConfirmPhoneNumber, setShowConfirmPhoneNumber] = useState(false);
   const [showFinishSignupModal, setShowFinishSignupModal] = useState(false);
   const [showMoreOptionsModal, setShowMoreOptionsModal] = useState(false);
+  const [showWelcomeBackModal, setShowWelcomeBackModal] = useState(false);
   return (
     <ApartmentsContext.Provider
       value={{
@@ -42,6 +45,8 @@ export const ApartmentsProvider = ({
         setShowFinishSignupModal,
         showMoreOptionsModal,
         setShowMoreOptionsModal,
+        showWelcomeBackModal,
+        setShowWelcomeBackModal,
       }}
     >
       {children}
