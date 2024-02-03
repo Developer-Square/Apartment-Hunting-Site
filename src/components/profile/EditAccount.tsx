@@ -1,9 +1,6 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-type Props = object;
-
-const EditAccount = (props: Props) => {
+const EditAccount = () => {
   const navigate = useNavigate();
   return (
     <div className='text-white'>

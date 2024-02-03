@@ -1,12 +1,10 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import ModalWrapper from './ModalWrapper';
 import { ApartmentsContext } from '@/context/apartmentsContext';
 
-type Props = Record<string, never>;
-
 const username = 'Ryan';
 
-const WelcomeBackSignin = (props: Props) => {
+const WelcomeBackSignin = () => {
   const { setShowWelcomeBackModal, setShowLoginModal } =
     useContext(ApartmentsContext);
 

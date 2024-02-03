@@ -1,10 +1,7 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import MpesaLogo from '@/assets/home/mpesa.png';
 
-type Props = object;
-
-const Payments = (props: Props) => {
+const Payments = () => {
   const navigate = useNavigate();
   return (
     <div className='text-white'>

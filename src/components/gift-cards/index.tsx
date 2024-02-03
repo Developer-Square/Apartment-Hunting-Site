@@ -1,11 +1,8 @@
-import React from 'react';
 import Logo from '@/assets/home/Logo - light surface.png';
 import Giftcard from '@/assets/home/giftcard.png';
 import { useNavigate } from 'react-router-dom';
 
-type Props = object;
-
-const GiftCards = (props: Props) => {
+const GiftCards = () => {
   const navigate = useNavigate();
   return (
     <div className='flex flex-col m-6 text-white '>
