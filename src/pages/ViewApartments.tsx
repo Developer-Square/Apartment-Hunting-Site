@@ -12,6 +12,12 @@ import {
 import { useBackToTop } from 'src/hooks/useBackToTop';
 import Navbar from '@/components/view-apartments/Navbar';
 import { ModalContext } from '@/context/modalContext';
+import LoginOrSignupModal from '@/components/auth/LoginOrSignupModal';
+import { ApartmentsContext } from '@/context/apartmentsContext';
+import SmsAuthentication from '@/components/auth/SmsAuthentication';
+import FinishSignup from '@/components/auth/FinishSignup';
+import MoreOptions from '@/components/auth/MoreOptions';
+import WelcomeBackSignin from '@/components/auth/WelcomeBackSignin';
 const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
   const [showFilters, setshowFilters] = useState(false);
@@ -25,6 +31,13 @@ const ViewApartmentsPage = () => {
   const [showFilterBtn, setShowFilterBtn] = useState(false);
 
   const { hideMenu, setHideMenu } = useContext(ModalContext);
+  const {
+    showLoginModal,
+    showConfirmPhoneNumber,
+    showFinishSignupModal,
+    showMoreOptionsModal,
+    showWelcomeBackModal,
+  } = useContext(ApartmentsContext);
 
   useEffect(() => {
     if (window.innerWidth >= 768) {
@@ -36,7 +49,15 @@ const ViewApartmentsPage = () => {
 
   useEffect(() => {
     // Stop outside scrolling when any of the following modals are open.
-    if (showSearhBar || showFilters) {
+    if (
+      showSearhBar ||
+      showFilters ||
+      showLoginModal ||
+      showConfirmPhoneNumber ||
+      showFinishSignupModal ||
+      showMoreOptionsModal ||
+      showWelcomeBackModal
+    ) {
       document.body.classList.add('body-style');
       setHideMenu(true);
       return;
@@ -47,7 +68,16 @@ const ViewApartmentsPage = () => {
       setHideMenu(false);
     }
     document.body.classList.remove('body-style');
-  }, [showSearhBar, showFilters, setHideMenu]);
+  }, [
+    showSearhBar,
+    showFilters,
+    setHideMenu,
+    showLoginModal,
+    showConfirmPhoneNumber,
+    showFinishSignupModal,
+    showMoreOptionsModal,
+    showWelcomeBackModal,
+  ]);
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -96,6 +126,47 @@ const ViewApartmentsPage = () => {
 
   return (
     <section className='apartments-page w-full h-full pt-5 text-black'>
+      {/* Login and Signup Modal */}
+      {showWelcomeBackModal ? (
+        <>
+          <WelcomeBackSignin />
+          <FilterBackdrop show={true} />
+        </>
+      ) : (
+        <></>
+      )}
+      {showLoginModal ? (
+        <>
+          <LoginOrSignupModal />
+          <FilterBackdrop show={true} />
+        </>
+      ) : (
+        <></>
+      )}
+      {showConfirmPhoneNumber ? (
+        <>
+          <SmsAuthentication />
+          <FilterBackdrop show={true} />
+        </>
+      ) : (
+        <></>
+      )}
+      {showMoreOptionsModal ? (
+        <>
+          <MoreOptions />
+          <FilterBackdrop show={true} />
+        </>
+      ) : (
+        <></>
+      )}
+      {showFinishSignupModal ? (
+        <>
+          <FinishSignup />
+          <FilterBackdrop show={true} />
+        </>
+      ) : (
+        <></>
+      )}
       {/* The following is meant to make it easier to give the sticky header a max-width of 1500px */}
       <div
         className={`w-full ${

@@ -3,8 +3,7 @@ import ContactUs from './ContactUs';
 import Home from './Home';
 import ListWithUs from './ListWithUs';
 import Account from './Account';
-import Login from './Login';
-import Signup from './Signup';
+import LoginOrSignupModal from '../components/auth/LoginOrSignupModal';
 import NoMatch from './NoMatch';
 import ViewApartmentDetail from './ViewApartmentDetail';
 import ViewApartments from './ViewApartments';
@@ -17,8 +16,7 @@ export {
   Home,
   ListWithUs,
   Account,
-  Login,
-  Signup,
+  LoginOrSignupModal,
   NoMatch,
   ViewApartmentDetail,
   ViewApartments,

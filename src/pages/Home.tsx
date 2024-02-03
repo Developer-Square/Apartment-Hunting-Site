@@ -1,6 +1,6 @@
-import LandingPage from '@/assets/home/mobile-landing-6.jpg';
-import TabletPage from '@/assets/home/mobile-landing-2.jpg';
-import DesktopPage from '@/assets/home/desktop-landing-1.jpg';
+import LandingPage from '@/assets/home/mobile-landing-6.webp';
+import TabletPage from '@/assets/home/mobile-landing-2.webp';
+import DesktopPage from '@/assets/home/desktop-landing-1.webp';
 import OurTopCitiesSection from '@/components/home/OurTopCitiesSection';
 import {
   AdditionalAbilitiesSection,

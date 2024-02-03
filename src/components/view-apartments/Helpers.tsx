@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import { ApartmentsContext } from '@/context/apartmentsContext';
 import { useSpring, animated } from '@react-spring/web';
-import React, { SetStateAction, useState } from 'react';
+import React, { SetStateAction, useContext, useState } from 'react';
 
 export const FilterBackdrop = ({ show }: { show: boolean }) => {
   const props = useSpring({
@@ -17,7 +18,7 @@ export const FilterBackdrop = ({ show }: { show: boolean }) => {
         backgroundColor: '#FFFFFF',
         height: '100vh',
         width: '100%',
-        zIndex: '10',
+        zIndex: '20',
         backdropFilter: 'blur(5px)',
         background: 'rgba(255, 255, 255, 0.4)',
         ...props,
@@ -288,6 +289,7 @@ export const CreateWishListModal = ({
 
 export const NavBarMenu = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const { setShowWelcomeBackModal } = useContext(ApartmentsContext);
   return (
     <div
       className='md:flex float-right hidden pl-3 pr-2 py-1.5 text-[#f0efe9] border border-[#f0efe9] rounded-3xl items-center cursor-pointer dropdown dropdown-bottom dropdown-end z-20'
@@ -301,10 +303,10 @@ export const NavBarMenu = () => {
           tabIndex={0}
           className='dropdown-content z-[1] menu p-2 shadow bg-[#141b1f] rounded-box mt-3 w-52 xl:text-[16px]'
         >
-          <li>
+          <li onClick={() => setShowWelcomeBackModal(true)}>
             <a>Login</a>
           </li>
-          <li>
+          <li onClick={() => setShowWelcomeBackModal(true)}>
             <a>Signup</a>
           </li>
           <div className='border border-white/[.3]'></div>
