@@ -1,7 +1,7 @@
 import { SetStateAction, useEffect, useState } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 
-const SearchBar = ({
+const SearchBarModal = ({
   show,
   setShow,
   search,
@@ -47,7 +47,7 @@ const SearchBar = ({
         backgroundColor: '#FFFFFF',
         height: largerScreen,
         width: '100%',
-        zIndex: '50',
+        zIndex: '30',
         ...props,
       }}
     >
@@ -89,4 +89,4 @@ const SearchBar = ({
   );
 };
 
-export default SearchBar;
+export default SearchBarModal;

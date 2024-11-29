@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Map = ({
   showFullMap,
@@ -9,21 +9,20 @@ const Map = ({
 }) => {
   const [showMap, setSetShowMap] = useState(false);
   const [mapDimension, setMapDimensions] = useState({
-    width: '100%',
-    height: '416px',
+    width: '',
+    height: '',
   });
 
-  useMemo(() => {
+  useEffect(() => {
     if (showFullMap) {
+      setSetShowMap(false);
       setMapDimensions({
         width: '100%',
         height: '100vh',
       });
       return;
     }
-  }, [showFullMap]);
 
-  useEffect(() => {
     if (window.innerWidth >= 1024 && window.innerWidth < 1535) {
       setSetShowMap(false);
       setMapDimensions({
@@ -53,9 +52,9 @@ const Map = ({
     <div
       className={`${
         showFullMap
-          ? 'lg:w-full change lg:h-screen'
+          ? 'lg:w-full lg:h-screen'
           : 'lg:w-[460px] xl:w-[473px] 2xl:w-[568px] 3xl:w-[768px]'
-      } relative`}
+      } h-screen relative`}
       style={{
         height: `${mapDimension.height}`,
       }}
@@ -63,14 +62,14 @@ const Map = ({
       {!showMap && (
         <>
           <div
-            className={`hidden lg:flex sticky justify-center items-center  ${
+            className={`hidden lg:flex absolute justify-center items-center top-4 right-4 ${
               showFullMap
-                ? 'w-36 xl:w-32 xl:h-8 h-10 top-[25%] left-[83%] 2xl:top-[23%] 2xl:left-[85%] 3xl:left-[76%]'
-                : 'top-[22%] left-[40%] xl:top-[24%] xl:left-[33%] 2xl:top-[22%] 2xl:left-[33%] 3xl:left-[43%] w-8 h-8'
+                ? 'w-36 h-10 xl:w-32 xl:h-8'
+                : 'w-8 h-8'
             } bg-white transition-all ease-in-out duration-500 text-black font-semibold z-[1] shadow-2xl rounded-lg xl:text-sm cursor-pointer`}
             onClick={() => setShowFullMap((prevState) => !prevState)}
           >
-            <i className='fa-solid fa-angle-right text-xl xl:text-lg py-1 px-3  text-black'></i>
+            <i className={`fa-solid ${showFullMap ? 'fa-angle-left' : 'fa-angle-right'} text-xl xl:text-lg py-1 px-3 text-black`}></i>
             {showFullMap ? 'Show List' : ''}
           </div>
           <iframe

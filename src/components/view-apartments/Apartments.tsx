@@ -92,10 +92,10 @@ const Apartments = ({
     <div className='lg:flex flex-1 flex-col'>
       {search.length ? (
         <>
-          <div className='h-9 flex flex-col justify-center items-center'>
+          <div className='h-7 flex flex-col justify-center items-center'>
             <span className='w-10 h-1 xl:w-8 bg-gray-500 rounded-lg'></span>
           </div>
-          <p className='text-sm xl:text-xs w-full text-center font-medium mb-4'>
+          <p className='text-sm xl:text-xs w-full text-center font-medium mb-3'>
             Over 1000 apartments
           </p>
         </>

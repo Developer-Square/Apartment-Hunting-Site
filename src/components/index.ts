@@ -7,7 +7,7 @@ import AdditionalAbilitiesSection from './home/AdditionalAbilitiesSection';
 import Footer from './home/Footer';
 import Search from './home/Search';
 import DesktopMenu from './home/DesktopMenu';
-import SearchBar from './view-apartments/SearchBar';
+import SearchBarModal from './view-apartments/SearchBarModal';
 import Filters from './view-apartments/Filters';
 import Apartments from './view-apartments/Apartments';
 import Map from './view-apartments/Map';
@@ -26,7 +26,7 @@ export {
   Footer,
   Search,
   DesktopMenu,
-  SearchBar,
+  SearchBarModal,
   Filters,
   FilterBackdrop,
   Apartments,
