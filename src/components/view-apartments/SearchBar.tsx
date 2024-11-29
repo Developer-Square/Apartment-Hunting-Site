@@ -37,6 +37,7 @@ const SearchBar = ({
       setShow(false);
     }
   };
+  console.log(show)
 
   return (
     <animated.div
@@ -46,7 +47,7 @@ const SearchBar = ({
         backgroundColor: '#FFFFFF',
         height: largerScreen,
         width: '100%',
-        zIndex: '10',
+        zIndex: '50',
         ...props,
       }}
     >
@@ -61,7 +62,7 @@ const SearchBar = ({
           Search Form
         </p>
       </div>
-      <div className=' bg-[#EBEBEB] relative w-[92%] 2xl:w-[50%] h-[60px] mt-7 mx-auto rounded-xl mb-5 flex items-center'>
+      <div className='bg-[#EBEBEB] relative w-[92%] 2xl:w-[50%] min-h-[60px] mt-7 mx-auto rounded-xl mb-5 flex items-center'>
         <i className='fa-solid fa-magnifying-glass text-black pl-4'></i>
         <input
           type='text'
@@ -69,7 +70,7 @@ const SearchBar = ({
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           onKeyUp={(e) => handleSearch(e)}
-          className='bg-transparent px-2 text-black outline-none border-none focus:ring-0 w-full h-full xl:text-sm'
+          className='bg-transparent px-2 text-black outline-none border-none focus:ring-0 w-full xl:text-sm'
         />
       </div>
       <div className='mt-5 ml-5 sm:mx-auto w-full sm:w-[92%] 2xl:w-[50%] xl:mr-auto'>

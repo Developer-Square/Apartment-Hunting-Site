@@ -105,7 +105,7 @@ const Filters = ({
         backgroundColor: '#FFFFFF',
         height: largerScreenHeight,
         width: largerScreenWidth,
-        zIndex: '10',
+        zIndex: '50',
         borderRadius: '1rem',
         overflow: 'hidden',
         ...props,

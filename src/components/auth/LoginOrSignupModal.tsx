@@ -35,7 +35,7 @@ const LoginOrSignupModal = () => {
       height='md:h-[90%]'
       handleLoginModal={() => setShowLoginModal(false)}
     >
-      <div className='max-h-[100vh] px-6 overflow-y-scroll text-base'>
+      <div className='max-h-[100vh] px-6 py-3 overflow-y-scroll text-base'>
         <h1 className='text-[24px] font-[600] mt-3 mb-1'>
           Welcome to Our Site
         </h1>

@@ -185,13 +185,13 @@ const ViewApartmentsPage = () => {
       {/* Hide the SearchBar and Filters components when the other is open */}
       {showSearhBar && (
         <>
-          <FilterBackdrop show={showSearhBar} />
           <SearchBar
             show={showSearhBar}
             setShow={setshowSearhBar}
             search={search}
             setSearch={setSearch}
           />
+          <FilterBackdrop show={showSearhBar} />
         </>
       )}
       {showFilters && (

@@ -104,7 +104,7 @@ const Apartments = ({
       <div
         className={`w-full sm:grid grid-cols-2 ${
           search.length
-            ? 'lg:grid-cols-2 xl:grid-cols-3 lg:h-[80vh] overflow-y-scroll'
+            ? 'lg:grid-cols-2 xl:grid-cols-3 overflow-y-scroll'
             : 'lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5'
         }`}
       >
