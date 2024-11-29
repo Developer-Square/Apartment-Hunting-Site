@@ -172,15 +172,14 @@ const ViewApartmentsPage = () => {
         <></>
       )}
       
-      <div className={`sticky top-0 z-10 bg-[#222222]`}>
+      <div className="fixed top-0 left-0 right-0 z-20 bg-[#222222]">
         <Navbar
           search={search}
           showStickyHeader={showStickySearchBar}
           handleFilters={handleFilters}
           handleSearchBar={handleSearchBar}
         />
-        {/* Hide other components when the SearchBar or Filters is open while on tablet and mobile screens */}
-        <div>
+        <div className='text-white'>
           {window.innerWidth >= 768 || !search.length ? (
             <FilterScrollbar
               search={search}
@@ -193,7 +192,7 @@ const ViewApartmentsPage = () => {
           ) : null}
         </div>
       </div>
-      <div className="w-full text-white lg:flex lg:mx-2 2xl:max-w-[1500px] 3xl:max-w-[1700px] 2xl:mx-auto">
+      <div className="w-full text-white lg:flex lg:mx-2 2xl:max-w-[1500px] 3xl:max-w-[1700px] 2xl:mx-auto pt-[185px]">
         {search.length || showFullMap ? (
           <Map showFullMap={showFullMap} setShowFullMap={setShowFullMap} />
         ) : null}

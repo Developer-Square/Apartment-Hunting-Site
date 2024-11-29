@@ -47,7 +47,7 @@ const SearchBarModal = ({
         backgroundColor: '#FFFFFF',
         height: largerScreen,
         width: '100%',
-        zIndex: '30',
+        zIndex: '50',
         ...props,
       }}
     >

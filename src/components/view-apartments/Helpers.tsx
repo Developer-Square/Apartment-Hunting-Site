@@ -18,7 +18,7 @@ export const FilterBackdrop = ({ show }: { show: boolean }) => {
         backgroundColor: '#FFFFFF',
         height: '100vh',
         width: '100%',
-        zIndex: '20',
+        zIndex: '30',
         backdropFilter: 'blur(5px)',
         background: 'rgba(255, 255, 255, 0.4)',
         ...props,
