@@ -1,10 +1,17 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import ModalWrapper from './ModalWrapper';
 import { ApartmentsContext } from '@/context/apartmentsContext';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const FinishSignup = () => {
   const { setShowLoginModal, setShowFinishSignupModal } =
     useContext(ApartmentsContext);
+  const [date, setDate] = useState(new Date());
+
+  const onChange = (date: Date) => {
+    setDate(date);
+  };
 
   const handleModalClose = () => {
     setShowLoginModal(true);
@@ -28,14 +35,18 @@ const FinishSignup = () => {
           placeholder='Last name'
           className='border border-black/[.3] h-11 rounded-b-lg focus:border-black focus:outline-none focus:ring-0 w-full xl:text-sm'
         />
-        <span className='mt-2 text-[12px] text-[#717171]'>
+        <span className='mt-2 text-[12px] text-[#afa2a2]'>
           Make sure it matches the name on your government ID.
         </span>
-        <input
-          type='text'
-          placeholder='Birthdate'
-          className='border border-black/[.3] mt-2.5 h-11 rounded-lg focus:border-black focus:outline-none focus:ring-0 w-full xl:text-sm'
-        />
+        
+        <div>
+        <span className='mt-2.5 text-sm text-[#717171]'>Date of Birth</span>
+        <div
+          className='border flex justify-start items-center border-black/[.3] h-11 rounded-lg focus:border-black focus:outline-none focus:ring-0 w-full xl:text-sm'
+        >
+          <DatePicker selected={date} onChange={onChange} />
+        </div>
+        </div>
         <span className='text-[12px] text-[#717171]'>
           To sign up, you need to be at least 18. Your birthday won’t be shared
           with other people.
