@@ -22,13 +22,10 @@ const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
   const [showFilters, setshowFilters] = useState(false);
   const [search, setSearch] = useState("");
-  const [showStickySearchBar, setShowStickySearchBar] = useState(false);
-  const [showStickyFilterBar, setShowStickyFilterBar] = useState(false);
   // Show FilterBackdrop for the apartment modals at 1024px view
   const [showFilterBackdrop, setShowFilterBackdrop] = useState(false);
   const [showFullMap, setShowFullMap] = useState(false);
   const [showFilterScrollbar, setShowFilterScrollbar] = useState(false);
-  const [showFilterBtn, setShowFilterBtn] = useState(false);
 
   const { hideMenu, setHideMenu } = useContext(ModalContext);
   const {
@@ -175,7 +172,6 @@ const ViewApartmentsPage = () => {
       <div className="fixed top-0 left-0 right-0 z-20 bg-[#0b1920]">
         <Navbar
           search={search}
-          showStickyHeader={showStickySearchBar}
           handleFilters={handleFilters}
           handleSearchBar={handleSearchBar}
         />
@@ -187,7 +183,6 @@ const ViewApartmentsPage = () => {
                 window.innerWidth >= 1024 ? showFilterScrollbar : showFilters
               }
               handleFilters={handleFilters}
-              showStickyHeader={showStickyFilterBar}
             />
           ) : null}
         </div>

@@ -5,7 +5,6 @@ import PropertyManager2 from '@/assets/view-apartments/property-manager-2.jpg';
 import PropertyManager3 from '@/assets/view-apartments/property-manager-3.jpg';
 import PropertyManager4 from '@/assets/view-apartments/property-manager-4.jpg';
 import PropertyManager5 from '@/assets/view-apartments/property-manager-5.jpg';
-import Pagination from './Pagination';
 import { useState, useEffect } from 'react';
 
 export interface ApartmentInfoProps {
@@ -135,7 +134,7 @@ const Apartments = ({
           />
         ))}
       </div>
-      <Pagination />
+      {/* TODO: Add Infinite scrolling */}
     </div>
   );
 };

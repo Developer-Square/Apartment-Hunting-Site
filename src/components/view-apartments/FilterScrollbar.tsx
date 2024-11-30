@@ -96,12 +96,10 @@ const FilterScrollbar = ({
   search,
   showFilters,
   handleFilters,
-  showStickyHeader,
 }: {
   search: string;
   showFilters: boolean;
   handleFilters: () => void;
-  showStickyHeader: boolean;
 }) => {
   const [selectedFilter, setSelectedFilter] = useState<Record<string, string>>(
     filters[0]

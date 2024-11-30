@@ -2,12 +2,10 @@ import { NavBarMenu } from './Helpers';
 
 const Navbar = ({
   search,
-  showStickyHeader,
   handleSearchBar,
   handleFilters,
 }: {
   search: string;
-  showStickyHeader: boolean;
   handleSearchBar: () => void;
   handleFilters: () => void;
 }) => {
@@ -35,7 +33,7 @@ const Navbar = ({
           <i className='fa-solid fa-sliders text-black sm:text-lg p-3'></i>
         </div>
       </div>
-      {!showStickyHeader && <NavBarMenu />}
+      <NavBarMenu />
     </div>
   );
 };
