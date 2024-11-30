@@ -89,7 +89,7 @@ const Apartments = ({
   setShowFilterBackdrop: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
-    <div className='lg:flex flex-1 flex-col'>
+    <div className={`lg:flex flex-1 flex-col bg-[#222222] relative ${search.length ? 'top-[384px]' : ''} `}>
       {search.length ? (
         <>
           <div className='h-7 flex flex-col justify-center items-center'>

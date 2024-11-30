@@ -1,4 +1,7 @@
-import { useEffect, useState } from 'react';
+import { GoogleMap, LoadScript } from "@react-google-maps/api";
+
+// Access the environment variable
+const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 const Map = ({
   showFullMap,
@@ -7,82 +10,43 @@ const Map = ({
   showFullMap: boolean;
   setShowFullMap: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const [showMap, setSetShowMap] = useState(false);
-  const [mapDimension, setMapDimensions] = useState({
-    width: '',
-    height: '',
-  });
-
-  useEffect(() => {
-    if (showFullMap) {
-      setSetShowMap(false);
-      setMapDimensions({
-        width: '100%',
-        height: '100vh',
-      });
-      return;
-    }
-
-    if (window.innerWidth >= 1024 && window.innerWidth < 1535) {
-      setSetShowMap(false);
-      setMapDimensions({
-        width: '460',
-        height: '100vh',
-      });
-      return;
-    }
-
-    if (window.innerWidth >= 1536) {
-      setSetShowMap(false);
-      setMapDimensions({
-        width: '568',
-        height: '100vh',
-      });
-      return;
-    }
-
-    setSetShowMap(false);
-    setMapDimensions({
-      width: '100%',
-      height: '416px',
-    });
-  }, [showFullMap]);
+  const center = {
+    lat: -1.2921,
+    lng: 36.8219,
+  };
 
   return (
     <div
       className={`${
         showFullMap
-          ? 'lg:w-full lg:h-screen'
-          : 'lg:w-[460px] xl:w-[473px] 2xl:w-[568px] 3xl:w-[768px]'
-      } h-screen relative`}
-      style={{
-        height: `${mapDimension.height}`,
-      }}
+          ? "lg:w-full lg:h-screen"
+          : "w-full h-[475px] lg:w-[40%] lg:h-[757px] fixed top-[89px]"
+      }`}
     >
-      {!showMap && (
-        <>
-          <div
-            className={`hidden lg:flex absolute justify-center items-center top-4 right-4 ${
-              showFullMap
-                ? 'w-36 h-10 xl:w-32 xl:h-8'
-                : 'w-8 h-8'
-            } bg-white transition-all ease-in-out duration-500 text-black font-semibold z-[1] shadow-2xl rounded-lg xl:text-sm cursor-pointer`}
-            onClick={() => setShowFullMap((prevState) => !prevState)}
-          >
-            <i className={`fa-solid ${showFullMap ? 'fa-angle-left' : 'fa-angle-right'} text-xl xl:text-lg py-1 px-3 text-black`}></i>
-            {showFullMap ? 'Show List' : ''}
-          </div>
-          <iframe
-            src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8171114.067109344!2d32.60700860264909!3d0.1649280505936471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182780d08350900f%3A0x403b0eb0a1976dd9!2sKenya!5e0!3m2!1sen!2ske!4v1688200074841!5m2!1sen!2ske'
-            width={mapDimension.width}
-            height={mapDimension.height}
-            allowFullScreen={false}
-            loading='lazy'
-            className='border-0 lg:sticky w-full h-full top-0'
-            referrerPolicy='no-referrer-when-downgrade'
-          ></iframe>
-        </>
-      )}
+      <div
+        className={`hidden lg:flex absolute justify-center items-center top-4 right-4 ${
+          showFullMap ? "w-36 h-10 xl:w-32 xl:h-8" : "w-8 h-8"
+        } bg-white transition-all ease-in-out duration-500 text-black font-semibold z-[1] shadow-2xl rounded-lg xl:text-sm cursor-pointer`}
+        onClick={() => setShowFullMap((prevState) => !prevState)}
+      >
+        <i
+          className={`fa-solid ${
+            showFullMap ? "fa-angle-left" : "fa-angle-right"
+          } text-xl xl:text-lg py-1 px-3 text-black`}
+        ></i>
+        {showFullMap ? "Show List" : ""}
+      </div>
+
+      <LoadScript googleMapsApiKey={GOOGLE_MAPS_API_KEY}>
+        <GoogleMap
+          mapContainerClassName="border-0 lg:sticky w-full h-full top-0"
+          center={center}
+          zoom={8}
+          options={{
+            fullscreenControl: false,
+          }}
+        />
+      </LoadScript>
     </div>
   );
 };

@@ -37,7 +37,6 @@ const SearchBarModal = ({
       setShow(false);
     }
   };
-  console.log(show)
 
   return (
     <animated.div
