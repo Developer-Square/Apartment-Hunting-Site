@@ -6,6 +6,7 @@ import PropertyManager3 from '@/assets/view-apartments/property-manager-3.jpg';
 import PropertyManager4 from '@/assets/view-apartments/property-manager-4.jpg';
 import PropertyManager5 from '@/assets/view-apartments/property-manager-5.jpg';
 import Pagination from './Pagination';
+import { useState, useEffect } from 'react';
 
 export interface ApartmentInfoProps {
   id: number;
@@ -88,8 +89,26 @@ const Apartments = ({
   search: string;
   setShowFilterBackdrop: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
+  const [isFixed, setIsFixed] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollTop = window.scrollY;
+      
+      // Calculate how close to bottom (e.g., 100px from bottom)
+      const bottomThreshold = 100;
+      const isNearBottom = documentHeight - (scrollTop + windowHeight) < bottomThreshold;
+      
+      setIsFixed(!isNearBottom);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   return (
-    <div className={`lg:flex flex-1 flex-col bg-[#222222] relative ${search.length ? 'top-[384px]' : ''} `}>
+    <div className={`lg:flex flex-1 flex-col bg-[#0b1920] lg:bg-transparent lg: relative ${search.length ? `top-[365px] lg:top-0 ${isFixed ? 'lg:ml-[40%]' : ''}` : ''} `}>
       {search.length ? (
         <>
           <div className='h-7 flex flex-col justify-center items-center'>
@@ -104,7 +123,7 @@ const Apartments = ({
       <div
         className={`w-full sm:grid grid-cols-2 ${
           search.length
-            ? 'lg:grid-cols-2 xl:grid-cols-3 overflow-y-scroll'
+            ? 'lg:grid-cols-2 xl:grid-cols-3'
             : 'lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5'
         }`}
       >

@@ -101,7 +101,7 @@ const ViewApartmentsPage = () => {
   };
 
   return (
-    <section className="apartments-page w-full h-full pt-2 text-black">
+    <section className="apartments-page w-full h-full pt-2 text-black relative">
       {/* Login and Signup Modal */}
       {showWelcomeBackModal ? (
         <>
@@ -172,7 +172,7 @@ const ViewApartmentsPage = () => {
         <></>
       )}
       
-      <div className="fixed top-0 left-0 right-0 z-20 bg-[#222222]">
+      <div className="fixed top-0 left-0 right-0 z-20 bg-[#0b1920]">
         <Navbar
           search={search}
           showStickyHeader={showStickySearchBar}
@@ -192,7 +192,7 @@ const ViewApartmentsPage = () => {
           ) : null}
         </div>
       </div>
-      <div className="w-full text-white lg:flex lg:mx-2 2xl:max-w-[1500px] 3xl:max-w-[1700px] 2xl:mx-auto pt-[185px]">
+      <div className="w-full text-white lg:flex lg:mx-2 2xl:max-w-[1500px] 3xl:max-w-[1700px] 2xl:mx-auto pt-[185px] relative">
         {search.length || showFullMap ? (
           <Map showFullMap={showFullMap} setShowFullMap={setShowFullMap} />
         ) : null}

@@ -118,13 +118,6 @@ input[type=number] {
   padding: 0 0.75rem 0 0.75rem;
 }
 
-/* Not Sure where this was used */
-/* @media screen and (min-width: 768px) {
-  html, body {
-    overflow-x: initial;
-  }
-} */
-
 @media screen and (min-width: 1280px) {
   html, body {
     font-size: 22px;
