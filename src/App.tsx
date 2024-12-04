@@ -4,6 +4,7 @@ import {
   Account,
   ContactUs,
   Home,
+  ListWithUs,
   ViewApartmentDetail,
   ViewApartments,
 } from '@/pages/index';
@@ -22,6 +23,7 @@ function App() {
         <Route path='/apartments' element={<ViewApartments />} />
         <Route path='/about' element={<AboutUs />} />
         <Route path='/contact' element={<ContactUs />} />
+        <Route path='/list-with-us' element={<ListWithUs />} />
         <Route path='/view-apartment/:id' element={<ViewApartmentDetail />} />
         <Route path='/account' element={<Account />} />
         <Route path='/account/personal-info' element={<PersonalInfo />} />

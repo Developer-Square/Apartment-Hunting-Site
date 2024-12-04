@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import ProfileImg from '@/assets/home/Logo - dark surface.png';
 import { ApartmentsContext } from '@/context/apartmentsContext';
 
-const menuLinks = ['List with us', 'About', 'Contact'];
+const menuLinks = [{title: 'List with us', path: '/list-with-us'}, {title: 'About', path: '/about'}, {title: 'Contact', path: '/contact'}];
 
 const DesktopMenu = () => {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
@@ -50,7 +50,7 @@ const DesktopMenu = () => {
             key={index}
             className='bg-black/[.3] mr-4 rounded-3xl cursor-pointer pt-2 px-4 uppercase text-sm xl:text-[13px]'
           >
-            <a href={`/${link.toLowerCase()}`}>{link}</a>
+            <a href={link.path}>{link.title}</a>
           </div>
         ))}
         <div className='bg-white flex items-center mr-4 rounded-3xl cursor-pointer py-2 px-4 uppercase text-sm xl:text-[13px]' onClick={() => setShowLoginModal(true)}>
