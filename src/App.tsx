@@ -1,6 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import {
+  AboutUs,
   Account,
+  ContactUs,
   Home,
   ViewApartmentDetail,
   ViewApartments,
@@ -18,6 +20,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/apartments' element={<ViewApartments />} />
+        <Route path='/about' element={<AboutUs />} />
+        <Route path='/contact' element={<ContactUs />} />
         <Route path='/view-apartment/:id' element={<ViewApartmentDetail />} />
         <Route path='/account' element={<Account />} />
         <Route path='/account/personal-info' element={<PersonalInfo />} />

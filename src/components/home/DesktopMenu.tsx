@@ -1,11 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import ProfileImg from '@/assets/home/Logo - dark surface.png';
+import { ApartmentsContext } from '@/context/apartmentsContext';
 
 const menuLinks = ['List with us', 'About', 'Contact'];
 
 const DesktopMenu = () => {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
   const [scrollHeight, setScrollHeight] = useState(600);
+  const { setShowLoginModal } = useContext(ApartmentsContext);
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -48,10 +50,10 @@ const DesktopMenu = () => {
             key={index}
             className='bg-black/[.3] mr-4 rounded-3xl cursor-pointer pt-2 px-4 uppercase text-sm xl:text-[13px]'
           >
-            {link}
+            <a href={`/${link.toLowerCase()}`}>{link}</a>
           </div>
         ))}
-        <div className='bg-white flex items-center mr-4 rounded-3xl cursor-pointer py-2 px-4 uppercase text-sm xl:text-[13px]'>
+        <div className='bg-white flex items-center mr-4 rounded-3xl cursor-pointer py-2 px-4 uppercase text-sm xl:text-[13px]' onClick={() => setShowLoginModal(true)}>
           <p className='text-black mr-2'>Login</p>
           <i className='text-black text-[17px] fa-solid fa-arrow-right'></i>
         </div>

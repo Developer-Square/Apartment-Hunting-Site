@@ -27,12 +27,7 @@
       "@/assets/*": ["src/assets/*"]
     }
   },
-  "exclude": ["node_modules"],
-  "include": [
-    "src",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-],
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts", "jest.setup.ts"],
+  "include": ["src", "**/*.ts", "**/*.tsx", "**/*.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

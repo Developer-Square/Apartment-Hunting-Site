@@ -13,16 +13,22 @@ import {
   Search,
   WhatCanYouDoSection,
 } from '@/components/index';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import ProfileImg from '@/assets/home/Logo - dark surface.png';
 import MobileMenu from '@/components/home/MobileMenu';
 import { SearchApartmentModal } from '@/components/home/Helpers';
+import LoginOrSignupModal from '@/components/auth/LoginOrSignupModal';
+import { ApartmentsContext } from '@/context/apartmentsContext';
+import FinishSignup from '@/components/auth/FinishSignup';
+import MoreOptions from '@/components/auth/MoreOptions';
+import SmsAuthentication from '@/components/auth/SmsAuthentication';
 
 const Home = () => {
   const [show, setShow] = useState(false);
   const [showStickyHeader, setShowStickyHeader] = useState(false);
   const [searchApartmentModal, setSearchApartmentModal] = useState(false);
+  const { showLoginModal, showConfirmPhoneNumber, showFinishSignupModal, showMoreOptionsModal } = useContext(ApartmentsContext);
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -57,6 +63,38 @@ const Home = () => {
           />
         </>
       ) : null}
+      {showLoginModal ? (
+        <>
+          <LoginOrSignupModal />
+          <FilterBackdrop show={true} />
+        </>
+      ) : (
+        <></>
+      )}
+      {showConfirmPhoneNumber ? (
+        <>
+          <SmsAuthentication />
+          <FilterBackdrop show={true} />
+        </>
+      ) : (
+        <></>
+      )}
+      {showMoreOptionsModal ? (
+        <>
+          <MoreOptions />
+          <FilterBackdrop show={true} />
+        </>
+      ) : (
+        <></>
+      )}
+      {showFinishSignupModal ? (
+        <>
+          <FinishSignup />
+          <FilterBackdrop show={true} />
+        </>
+      ) : (
+        <></>
+      )}
       {/* Landing Section */}
       <div className='relative w-full h-full mx-auto'>
         <div className='absolute w-full h-full bg-black/[.1]'></div>
