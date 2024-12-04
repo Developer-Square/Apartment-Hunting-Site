@@ -14,7 +14,7 @@ const ThreeDApartmentVideo = () => {
   }, []);
 
   return (
-    <div className='relative h-[630px] mx-6' id='video-tour'>
+    <div className='relative h-[630px] w-full mx-6' id='video-tour'>
       <video
         width='100%'
         height='100%'
