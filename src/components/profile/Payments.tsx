@@ -1,9 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import MpesaLogo from '@/assets/home/mpesa.png';
+import ErrorBoundary from '@/pages/ErrorBoundary';
 
 const Payments = () => {
   const navigate = useNavigate();
   return (
+    <ErrorBoundary>
     <div className='text-white'>
       <div className='w-full px-6 py-4 shadow-lg shadow-white/[.1] sticky'>
         <i
@@ -27,6 +29,7 @@ const Payments = () => {
         </div>
       </div>
     </div>
+    </ErrorBoundary>
   );
 };
 

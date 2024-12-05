@@ -1,8 +1,10 @@
+import ErrorBoundary from '@/pages/ErrorBoundary';
 import { useNavigate } from 'react-router-dom';
 
 const PersonalInfo = () => {
   const navigate = useNavigate();
   return (
+    <ErrorBoundary>
     <div className='text-white'>
       <div className='w-full px-6 py-4 shadow-lg shadow-white/[.1] sticky'>
         <i
@@ -79,6 +81,7 @@ const PersonalInfo = () => {
         </div>
       </div>
     </div>
+    </ErrorBoundary>
   );
 };
 

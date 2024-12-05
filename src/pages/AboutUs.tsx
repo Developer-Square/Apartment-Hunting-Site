@@ -1,5 +1,11 @@
+import ErrorBoundary from "./ErrorBoundary";
+
 const AboutUsPage = () => {
-  return <div>AboutUsPage</div>;
+  return (
+    <ErrorBoundary>
+      <div>AboutUsPage</div>
+    </ErrorBoundary>
+  );
 };
 
 export default AboutUsPage;

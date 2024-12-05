@@ -3,6 +3,7 @@ import { DesktopMenu } from "../components";
 import { useEffect, useState } from "react";
 import ProfileImg from "@/assets/home/Logo - dark surface.png";
 import ThreeDApartmentVideo from "@/components/view-apartment-detail/ThreeDApartmentVideo";
+import ErrorBoundary from "./ErrorBoundary";
 
 const ListWithUs = () => {
   const [show, setShow] = useState(false);
@@ -19,6 +20,7 @@ const ListWithUs = () => {
   }, []);
 
   return (
+    <ErrorBoundary>
     <section className="relative w-full h-screen mx-auto text-white xl:max-w-[1200px] xl:mx-auto">
       <MobileMenu
         show={show}
@@ -98,6 +100,7 @@ const ListWithUs = () => {
         </div>
       </div>
     </section>
+    </ErrorBoundary>
   );
 };
 

@@ -1,10 +1,12 @@
 import Logo from '@/assets/home/Logo - light surface.png';
 import Giftcard from '@/assets/home/giftcard.png';
+import ErrorBoundary from '@/pages/ErrorBoundary';
 import { useNavigate } from 'react-router-dom';
 
 const GiftCards = () => {
   const navigate = useNavigate();
   return (
+    <ErrorBoundary>
     <div className='flex flex-col m-6 text-white '>
       <div
         className='flex items-center cursor-pointer'
@@ -20,6 +22,7 @@ const GiftCards = () => {
         <img src={Giftcard} className='w-full h-full mt-10' alt='gift-card' />
       </div>
     </div>
+    </ErrorBoundary>
   );
 };
 

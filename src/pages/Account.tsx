@@ -3,6 +3,7 @@ import DesktopAccount from '@/components/account/DesktopAccount';
 import MobileAccount from '@/components/account/MobileAccount';
 import Footer from '@/components/home/Footer';
 import { useEffect, useState } from 'react';
+import ErrorBoundary from './ErrorBoundary';
 
 const Account = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -12,6 +13,7 @@ const Account = () => {
   }, []);
 
   return (
+    <ErrorBoundary>
     <div className='text-white mx-6 lg:container lg:mx-auto'>
       {/* <header className='flex py-3.5 justify-between border-b border-white/[.5]'>
         <img src={Logo} alt='logo' className='w-5 h-5 rounded-full' />
@@ -34,6 +36,7 @@ const Account = () => {
       {isMobile ? <MobileAccount /> : <DesktopAccount />}
       <Footer />
     </div>
+    </ErrorBoundary>
   );
 };
 

@@ -18,6 +18,7 @@ import SmsAuthentication from "@/components/auth/SmsAuthentication";
 import FinishSignup from "@/components/auth/FinishSignup";
 import MoreOptions from "@/components/auth/MoreOptions";
 import WelcomeBackSignin from "@/components/auth/WelcomeBackSignin";
+import ErrorBoundary from "./ErrorBoundary";
 const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
   const [showFilters, setshowFilters] = useState(false);
@@ -100,106 +101,127 @@ const ViewApartmentsPage = () => {
   return (
     <section className="apartments-page w-full h-full pt-2 text-black relative">
       {/* Login and Signup Modal */}
-      {showWelcomeBackModal ? (
-        <>
-          <WelcomeBackSignin />
-          <FilterBackdrop show={true} />
-        </>
-      ) : (
-        <></>
-      )}
-      {showLoginModal ? (
-        <>
-          <LoginOrSignupModal />
-          <FilterBackdrop show={true} />
-        </>
-      ) : (
-        <></>
-      )}
-      {showConfirmPhoneNumber ? (
-        <>
-          <SmsAuthentication />
-          <FilterBackdrop show={true} />
-        </>
-      ) : (
-        <></>
-      )}
-      {showMoreOptionsModal ? (
-        <>
-          <MoreOptions />
-          <FilterBackdrop show={true} />
-        </>
-      ) : (
-        <></>
-      )}
-      {showFinishSignupModal ? (
-        <>
-          <FinishSignup />
-          <FilterBackdrop show={true} />
-        </>
-      ) : (
-        <></>
-      )}
-      {/* Hide the SearchBar when the Filters modal is open and vice versa */}
-      {showSearhBar ? (
-        <>
-          <SearchBarModal
-            show={showSearhBar}
-            setShow={setshowSearhBar}
-            search={search}
-            setSearch={setSearch}
-          />
-          <FilterBackdrop show={showSearhBar} />
-        </>
-      ) : (
-        <></>
-      )}
-      {showFilters ? (
-        <>
-          <Filters show={showFilters} setShow={setshowFilters} />
-          <FilterBackdrop show={showFilters} />
-        </>
-      ) : (
-        <></>
-      )}
-      {/* Show FilterBackdrop for the apartment modals at 1024px view */}
-      {showFilterBackdrop && window.innerWidth >= 1024 ? (
-        <FilterBackdrop show={true} />
-      ) : (
-        <></>
-      )}
-      
-      <div className="fixed top-0 left-0 right-0 z-20 bg-[#0b1920]">
-        <Navbar
-          search={search}
-          handleFilters={handleFilters}
-          handleSearchBar={handleSearchBar}
-        />
-        <div className='text-white'>
-          {window.innerWidth >= 768 || !search.length ? (
-            <FilterScrollbar
+      <ErrorBoundary>
+        {showWelcomeBackModal ? (
+          <>
+            <WelcomeBackSignin />
+            <FilterBackdrop show={true} />
+          </>
+        ) : (
+          <></>
+        )}
+      </ErrorBoundary>
+      <ErrorBoundary>
+        {showLoginModal ? (
+          <>
+            <LoginOrSignupModal />
+            <FilterBackdrop show={true} />
+          </>
+        ) : (
+          <></>
+        )}
+      </ErrorBoundary>
+      <ErrorBoundary>
+        {showConfirmPhoneNumber ? (
+          <>
+            <SmsAuthentication />
+            <FilterBackdrop show={true} />
+          </>
+        ) : (
+          <></>
+        )}
+      </ErrorBoundary>
+      <ErrorBoundary>
+        {showMoreOptionsModal ? (
+          <>
+            <MoreOptions />
+            <FilterBackdrop show={true} />
+          </>
+        ) : (
+          <></>
+        )}
+      </ErrorBoundary>
+      <ErrorBoundary>
+        {showFinishSignupModal ? (
+          <>
+            <FinishSignup />
+            <FilterBackdrop show={true} />
+          </>
+        ) : (
+          <></>
+        )}
+      </ErrorBoundary>
+      <ErrorBoundary>
+        {showSearhBar ? (
+          <>
+            <SearchBarModal
+              show={showSearhBar}
+              setShow={setshowSearhBar}
               search={search}
-              showFilters={
-                window.innerWidth >= 1024 ? showFilterScrollbar : showFilters
-              }
-              handleFilters={handleFilters}
+              setSearch={setSearch}
             />
-          ) : null}
+            <FilterBackdrop show={showSearhBar} />
+          </>
+        ) : (
+          <></>
+        )}
+      </ErrorBoundary>
+      <ErrorBoundary>
+        {showFilters ? (
+          <>
+            <Filters show={showFilters} setShow={setshowFilters} />
+            <FilterBackdrop show={showFilters} />
+          </>
+        ) : (
+          <></>
+        )}
+      </ErrorBoundary>
+      <ErrorBoundary>
+        {showFilterBackdrop && window.innerWidth >= 1024 ? (
+          <FilterBackdrop show={true} />
+        ) : (
+          <></>
+        )}
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <div className="fixed top-0 left-0 right-0 z-20 bg-[#0b1920]">
+          <Navbar
+            search={search}
+            handleFilters={handleFilters}
+            handleSearchBar={handleSearchBar}
+          />
+          <div className="text-white">
+            {window.innerWidth >= 768 || !search.length ? (
+              <FilterScrollbar
+                search={search}
+                showFilters={
+                  window.innerWidth >= 1024 ? showFilterScrollbar : showFilters
+                }
+                handleFilters={handleFilters}
+              />
+            ) : null}
+          </div>
         </div>
-      </div>
+      </ErrorBoundary>
       <div className="w-full text-white lg:flex lg:mx-2 2xl:max-w-[1500px] 3xl:max-w-[1700px] 2xl:mx-auto pt-[185px] relative">
         {search.length || showFullMap ? (
-          <Map showFullMap={showFullMap} setShowFullMap={setShowFullMap} />
+          <ErrorBoundary>
+            <Map showFullMap={showFullMap} setShowFullMap={setShowFullMap} />
+          </ErrorBoundary>
         ) : null}
         {!showFullMap ? (
-          <Apartments
-            search={search}
-            setShowFilterBackdrop={setShowFilterBackdrop}
-          />
+          <ErrorBoundary>
+            <Apartments
+              search={search}
+              setShowFilterBackdrop={setShowFilterBackdrop}
+            />
+          </ErrorBoundary>
         ) : null}
       </div>
-      {!hideMenu && <PopupMenu />}
-      <Footer />
+      <ErrorBoundary>
+        {!hideMenu && <PopupMenu />}
+        <Footer />
+      </ErrorBoundary>
     </section>
   );
 };

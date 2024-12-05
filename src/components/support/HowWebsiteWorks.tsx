@@ -3,6 +3,7 @@ import Video1 from '@/assets/home/website-works-1.mp4';
 import Video2 from '@/assets/home/website_works_2.mp4';
 import Video3 from '@/assets/home/website-works-3.mp4';
 import { useNavigate } from 'react-router-dom';
+import ErrorBoundary from '@/pages/ErrorBoundary';
 
 const constantData = [
   {
@@ -59,6 +60,7 @@ const FAQ = ({ title, content }: { title: string; content: string }) => (
 const HowWebsiteWorks = () => {
   const navigate = useNavigate();
   return (
+    <ErrorBoundary>
     <div className='m-6 text-white'>
       <div
         className='flex mb-5 items-center cursor-pointer'
@@ -87,6 +89,7 @@ const HowWebsiteWorks = () => {
         </div>
       ))}
     </div>
+    </ErrorBoundary>
   );
 };
 

@@ -23,6 +23,7 @@ import { ApartmentsContext } from '@/context/apartmentsContext';
 import FinishSignup from '@/components/auth/FinishSignup';
 import MoreOptions from '@/components/auth/MoreOptions';
 import SmsAuthentication from '@/components/auth/SmsAuthentication';
+import ErrorBoundary from './ErrorBoundary';
 
 const Home = () => {
   const [show, setShow] = useState(false);
@@ -55,6 +56,7 @@ const Home = () => {
     <section
       className={`w-full ${show ? 'h-screen' : 'h-full'} bg-color text-white`}
     >
+      <ErrorBoundary>
       {searchApartmentModal ? (
         <>
           <FilterBackdrop show={searchApartmentModal} />
@@ -63,6 +65,8 @@ const Home = () => {
           />
         </>
       ) : null}
+      </ErrorBoundary>
+      <ErrorBoundary>
       {showLoginModal ? (
         <>
           <LoginOrSignupModal />
@@ -70,32 +74,40 @@ const Home = () => {
         </>
       ) : (
         <></>
-      )}
-      {showConfirmPhoneNumber ? (
-        <>
+        )}
+      </ErrorBoundary>
+      <ErrorBoundary>
+        {showConfirmPhoneNumber ? (
+          <>
           <SmsAuthentication />
           <FilterBackdrop show={true} />
         </>
       ) : (
         <></>
-      )}
-      {showMoreOptionsModal ? (
-        <>
-          <MoreOptions />
+        )}
+      </ErrorBoundary>
+      <ErrorBoundary>
+        {showMoreOptionsModal ? (
+          <>
+            <MoreOptions />
           <FilterBackdrop show={true} />
         </>
       ) : (
         <></>
-      )}
-      {showFinishSignupModal ? (
-        <>
-          <FinishSignup />
+        )}
+      </ErrorBoundary>
+      <ErrorBoundary>
+        {showFinishSignupModal ? (
+          <>
+            <FinishSignup />
           <FilterBackdrop show={true} />
         </>
       ) : (
-        <></>
-      )}
+          <></>
+        )}
+      </ErrorBoundary>
       {/* Landing Section */}
+      <ErrorBoundary>
       <div className='relative w-full h-full mx-auto'>
         <div className='absolute w-full h-full bg-black/[.1]'></div>
         <button
@@ -128,17 +140,29 @@ const Home = () => {
           </div>
           <LandingSection />
         </div>
-      </div>
+        </div>
+      </ErrorBoundary>
       {/* Other Sections */}
-
       <div className='amenities pt-10 xm:pt-14 sm:pt-8'>
         <div className='max-w-[330px] xm:max-w-[360px] sm:max-w-[600px] md:max-w-[720px] lg:max-w-[850px] xl:max-w-[1045px] 2xl:max-w-[1200px] 3xl:max-w-[1700px] mx-auto w-full'>
-          <PopularAmenitiesSection />
-          <WhatCanYouDoSection />
-          <ContactUsSection />
-          <AdditionalAbilitiesSection />
-          <OurTopCitiesSection />
-          <Footer />
+          <ErrorBoundary>
+            <PopularAmenitiesSection />
+          </ErrorBoundary>
+          <ErrorBoundary>
+            <WhatCanYouDoSection />
+          </ErrorBoundary>
+          <ErrorBoundary>
+            <ContactUsSection />
+          </ErrorBoundary>
+          <ErrorBoundary>
+            <AdditionalAbilitiesSection />
+          </ErrorBoundary>
+          <ErrorBoundary>
+            <OurTopCitiesSection />
+          </ErrorBoundary>
+          <ErrorBoundary>
+            <Footer />
+          </ErrorBoundary>
         </div>
       </div>
     </section>
