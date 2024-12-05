@@ -14,6 +14,8 @@ import Payments from "@/components/profile/Payments";
 import LoginAndSecurity from "./components/profile/Login&Security";
 import GiftCards from "@/components/gift-cards";
 import HowWebsiteWorks from "@/components/support/HowWebsiteWorks";
+import NotFound from "@/pages/NotFound";
+import ServerError from "./pages/ServerError";
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
             path="/account/how-website-works"
             element={<HowWebsiteWorks />}
           />
+          <Route path="/500" element={<ServerError />} />
+          <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
