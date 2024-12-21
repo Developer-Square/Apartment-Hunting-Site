@@ -23,6 +23,11 @@ export const SearchApartmentModal = ({
 
     navigate('/apartments');
   };
+  
+  const handleLocationSearch = (value: string) => {
+    seterror('')
+    setlocation(value);
+  }
 
   return (
     <div className='justify-center items-end md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none text-black'>
@@ -63,9 +68,7 @@ export const SearchApartmentModal = ({
                   required
                   type='text'
                   value={location}
-                  onChange={(e) => {
-                    seterror(''), setlocation(e.target.value);
-                  }}
+                  onChange={(e) => handleLocationSearch(e.target.value)}
                   placeholder='Anywhere'
                   className='w-full h-[40px] xl:text-sm shadow-transparent p-0 border-transparent focus:ring-0 !outline-none border-none ml-2 bg-transparent'
                 />

@@ -1,4 +1,11 @@
-import { useState } from 'react';
+import { ApartmentsContext } from '@/context/apartmentsContext';
+import { useContext, useState } from 'react';
+
+declare global {
+  interface Window {
+    google: any;
+  }
+}
 
 export const InputRange = ({
   text,
@@ -33,8 +40,11 @@ const Search = () => {
   const [error, seterror] = useState('');
   const [lowerRange, setlowerRange] = useState(10000);
   const [upperRange, setupperRange] = useState(100000);
+  const [predictions, setPredictions] = useState<any[]>([]);
+  const { setSelectedLocation } = useContext(ApartmentsContext);
 
-  const handleNavigate = () => {
+  const handleNavigate = (prediction: any) => {
+    setSelectedLocation(prediction.description)
     window.open('/apartments', '_blank');
   };
 
@@ -44,9 +54,29 @@ const Search = () => {
       seterror('Please enter a location');
       return;
     }
-
-    handleNavigate();
   };
+
+  const handleLocationSearch = async (value: string) => {
+    seterror('')
+    setlocation(value);
+
+    if (value === '') {
+      setPredictions([]);
+      return;
+    }
+
+    const autoCompleteService = new window.google.maps.places.AutocompleteService();
+    try {
+      const response = await autoCompleteService.getPlacePredictions({
+        input: value,
+        componentRestrictions: {country: 'KE'}
+      })
+      console.log(response?.predictions)
+      setPredictions(response?.predictions || []);
+    } catch (error) {
+      console.error('Error fetching predictions:', error);
+    }
+  }
 
   return (
     <div className='absolute rounded-l-[10px] top-8 2xl:top-12 left-12 2xl:left-16 rounded-b-[10px] w-[377px] xl:w-[470px] 2xl:w-[529px] h-auto bg-white text-black'>
@@ -74,12 +104,17 @@ const Search = () => {
               required
               type='text'
               value={location}
-              onChange={(e) => {
-                seterror(''), setlocation(e.target.value);
-              }}
-              placeholder='Anywhere'
+              onChange={(e) => handleLocationSearch(e.target.value)}
+              placeholder='Nairobi, Kenya'
               className='w-full h-[40px] xl:text-sm shadow-transparent p-0 border-transparent focus:ring-0 !outline-none border-none ml-2 bg-transparent'
             />
+            {predictions.length > 0 && (
+                  <ul className='absolute z-10 bg-white w-[356px] px-3 py-2 border border-black rounded-lg'>
+                    {predictions.map((prediction: any) => (
+                      <li key={prediction.place_id} className='text-sm my-2.5 hover:bg-gray-100 cursor-pointer' onClick={() => handleNavigate(prediction.description)}>{prediction.description}</li>
+                    ))}
+                  </ul>
+                )}
           </div>
           <span className='text-xs my-2 text-red-600'>{error}</span>
 

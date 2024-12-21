@@ -5,6 +5,8 @@ import { SetStateAction, createContext, useState } from 'react';
 interface ApartmentsContextProps {
   apartmentInfo: ApartmentInfoProps;
   setApartmentInfo: (info: ApartmentInfoProps) => void;
+  selectedLocation: string;
+  setSelectedLocation: React.Dispatch<SetStateAction<string>>;
   showLoginModal: boolean;
   setShowLoginModal: React.Dispatch<SetStateAction<boolean>>;
   showConfirmPhoneNumber: boolean;
@@ -27,6 +29,7 @@ export const ApartmentsProvider = ({
   children: React.ReactNode;
 }) => {
   const [apartmentInfo, setApartmentInfo] = useState({} as ApartmentInfoProps);
+  const [selectedLocation, setSelectedLocation] = useState('')
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showConfirmPhoneNumber, setShowConfirmPhoneNumber] = useState(false);
   const [showFinishSignupModal, setShowFinishSignupModal] = useState(false);
@@ -37,6 +40,8 @@ export const ApartmentsProvider = ({
       value={{
         apartmentInfo,
         setApartmentInfo,
+        selectedLocation,
+        setSelectedLocation,
         showLoginModal,
         setShowLoginModal,
         showConfirmPhoneNumber,
