@@ -1,32 +1,21 @@
 import { animated, useSpring } from '@react-spring/web';
 import { useContext, useEffect, useState } from 'react';
 import UserProfileModal from './UserProfileModal';
-import { ApartmentInfoProps } from './Apartments';
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/pagination';
-import ViewApartments2 from '@/assets/view-apartments/view-apartments-2.webp';
-import ViewApartments3 from '@/assets/view-apartments/view-apartments-3.webp';
-import ViewApartments4 from '@/assets/view-apartments/view-apartments-4.webp';
-import ViewApartments5 from '@/assets/view-apartments/view-apartments-5.webp';
 import { WishListModal, CreateWishListModal, FilterBackdrop } from './Helpers';
 import { ModalContext } from '@/context/modalContext';
 import { useNavigate } from 'react-router-dom';
 
 const SingleApartment = ({
-  info,
+  property,
   setShowFilterBackdrop,
 }: {
-  info: ApartmentInfoProps;
+  property: any;
   setShowFilterBackdrop: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const { title, subtitle, propertyManager, price, id } = info;
-  const viewApartments = [
-    ViewApartments2,
-    ViewApartments3,
-    ViewApartments4,
-    ViewApartments5,
-  ];
+  const { title, description, photos, price, id } = property;
   const [isApartmentHovered, setIsApartmentHovered] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [wishListModal, setWishListModal] = useState(false);
@@ -87,7 +76,7 @@ const SingleApartment = ({
 
   const handleNavigation = () => {
     // Store info in localStorage to be used in the new tab created for view-apartment-detail-page.
-    localStorage.setItem('apartmentInfo', JSON.stringify(info));
+    localStorage.setItem('apartmentInfo', JSON.stringify(property));
 
     if (isMobile) {
       navigate(`/view-apartment/${id}`);
@@ -105,7 +94,7 @@ const SingleApartment = ({
         : null}
       {showModal ? (
         <UserProfileModal
-          propertyManager={propertyManager}
+          propertyManager={photos[0]}
           name='Ryan Njoroge'
           occupation='Hospitality'
           location='Utawala, Nairobi'
@@ -147,7 +136,7 @@ const SingleApartment = ({
             }}
             className='w-full h-full'
           >
-            {viewApartments.map((apartment, index) => (
+            {photos.map((photo: any, index: any) => (
               <SwiperSlide key={index}>
                 <>
                   <div
@@ -161,7 +150,7 @@ const SingleApartment = ({
                     )}
                   </div>
                   <img
-                    src={apartment}
+                    src={photo}
                     className='w-full h-full rounded-xl'
                     alt='view apartments'
                     onClick={() => handleNavigation()}
@@ -182,7 +171,7 @@ const SingleApartment = ({
                     <div className='h-full w-3 border-[1.8px] border-r-[#C6B1A5]/[.6]'></div>
                     <div className='flex h-full w-full justify-center items-center'>
                       <img
-                        src={propertyManager}
+                        src={photos[0]}
                         alt='profile'
                         className='rounded-full w-10 h-10 xl:w-8 xl:h-8'
                       />
@@ -195,7 +184,7 @@ const SingleApartment = ({
         </div>
         <div className='mt-3.5'>
           <p className='font-bold xl:font-semibold xl:text-xs'>{title}</p>
-          <p className='opacity-60 mt-1.5 text-sm xl:text-xs'>{subtitle}</p>
+          <p className='opacity-60 mt-1.5 text-sm xl:text-xs'>{description.slice(0, 80)}...</p>
           <p className='mt-1.5 xl:text-xs'>
             <span className='text-[#1ACA17]'>Ksh </span>
             {price}

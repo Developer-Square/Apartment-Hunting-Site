@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useState, useCallback } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import {
   Apartments,
   FilterBackdrop,
@@ -29,7 +29,7 @@ const ViewApartmentsPage = () => {
   const [showFullMap, setShowFullMap] = useState(false);
   const [showFilterScrollbar, setShowFilterScrollbar] = useState(false);
   const [isGoogleLoaded, setIsGoogleLoaded] = useState(false);
-  console.log(predictions)
+  const [properties, setProperties] = useState([])
 
   const { hideMenu, setHideMenu } = useContext(ModalContext);
   const {
@@ -183,6 +183,7 @@ const ViewApartmentsPage = () => {
               setSearch={setSearch}
               predictions={predictions}
               setPredictions={setPredictions}
+              setProperties={setProperties}
             />
             <FilterBackdrop show={showSearhBar} />
           </>
@@ -238,6 +239,7 @@ const ViewApartmentsPage = () => {
             <Apartments
               search={search}
               setShowFilterBackdrop={setShowFilterBackdrop}
+              properties={properties}
             />
           </ErrorBoundary>
         ) : null}

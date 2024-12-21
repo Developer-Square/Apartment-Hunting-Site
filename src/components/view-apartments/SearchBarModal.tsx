@@ -1,5 +1,6 @@
 import { SetStateAction, useEffect, useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
+import axios from "axios";
 
 declare global {
   interface Window {
@@ -14,6 +15,7 @@ const SearchBarModal = ({
   setSearch,
   predictions,
   setPredictions,
+  setProperties
 }: {
   show: boolean;
   setShow: React.Dispatch<SetStateAction<boolean>>;
@@ -21,6 +23,7 @@ const SearchBarModal = ({
   setSearch: React.Dispatch<SetStateAction<string>>;
   predictions: any;
   setPredictions: React.Dispatch<SetStateAction<any>>;
+  setProperties: React.Dispatch<SetStateAction<any>>;
 }) => {
   const props = useSpring({
     from: { y: -100, opacity: 0 },
@@ -51,6 +54,33 @@ const SearchBarModal = ({
   const selectLocation = (location: string) => {
     setSearch(location);
     localStorage.setItem("location", location);
+
+    try {
+      const geocoder = new window.google.maps.Geocoder();
+      geocoder.geocode({ address: location }, async (results: any, status: any) => {
+        if (status === "OK" && results[0]) {
+          const lat = results[0].geometry.location.lat();
+          const lng = results[0].geometry.location.lng();
+          const distance = 20;
+
+          if (lat && lng) {
+            const url = `http://localhost:5000/api/v1/nearbyproperties?longitude=${lng}&latitude=${lat}&maxDistance=${distance}`
+            const response = await axios.get(url, {
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzYwNDkzYzQxYzQ0ZTQ5NWZmMzFkODkiLCJpYXQiOjE3MzQ3ODAwMjIsImV4cCI6MTczNDc4MTgyMiwidHlwZSI6ImFjY2VzcyJ9.WipGe51NtsyLtavwr6nKxn7uK1HdCQX6WdfgUNFpX3s`
+              }
+            })
+            setProperties(response.data.results)
+          }
+        } else {
+          console.error("Geocoding failed:", status);
+        }
+      });
+    } catch (error) {
+      console.error("Error getting coordinates:", error);
+    }
+
     setShow(false);
   };
 
