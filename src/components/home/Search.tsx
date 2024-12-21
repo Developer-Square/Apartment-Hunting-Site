@@ -1,5 +1,4 @@
-import { ApartmentsContext } from '@/context/apartmentsContext';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 
 declare global {
   interface Window {
@@ -41,11 +40,12 @@ const Search = () => {
   const [lowerRange, setlowerRange] = useState(10000);
   const [upperRange, setupperRange] = useState(100000);
   const [predictions, setPredictions] = useState<any[]>([]);
-  const { setSelectedLocation } = useContext(ApartmentsContext);
 
-  const handleNavigate = (prediction: any) => {
-    setSelectedLocation(prediction.description)
+  const handleNavigate = (description: any) => {
+    localStorage.setItem('location', description || '')
     window.open('/apartments', '_blank');
+    setlocation(description || '');
+    setPredictions([]);
   };
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -71,7 +71,6 @@ const Search = () => {
         input: value,
         componentRestrictions: {country: 'KE'}
       })
-      console.log(response?.predictions)
       setPredictions(response?.predictions || []);
     } catch (error) {
       console.error('Error fetching predictions:', error);

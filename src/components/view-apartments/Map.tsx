@@ -1,8 +1,11 @@
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import { GoogleMap } from "@react-google-maps/api";
 import { useState, useEffect } from "react";
 
-// Access the environment variable
-const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+declare global {
+  interface Window {
+    google: any;
+  }
+}
 
 const Map = ({
   showFullMap,
@@ -57,16 +60,14 @@ const Map = ({
         {showFullMap ? "Show List" : ""}
       </div>
 
-      <LoadScript googleMapsApiKey={GOOGLE_MAPS_API_KEY}>
-        <GoogleMap
-          mapContainerClassName="border-0 w-full h-full"
-          center={center}
-          zoom={8}
-          options={{
-            fullscreenControl: false,
-          }}
-        />
-      </LoadScript>
+      <GoogleMap
+        mapContainerClassName="border-0 w-full h-full"
+        center={center}
+        zoom={8}
+        options={{
+          fullscreenControl: false,
+        }}
+      />
     </div>
   );
 };

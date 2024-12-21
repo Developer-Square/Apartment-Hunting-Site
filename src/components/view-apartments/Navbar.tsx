@@ -9,6 +9,7 @@ const Navbar = ({
   handleSearchBar: () => void;
   handleFilters: () => void;
 }) => {
+  
   return (
     <div
       className={`w-full md:w-[92%] 2xl:max-w-[1500px] 3xl:max-w-[1700px] mb-4 sm:mb-6 xl:mb-1 md:mx-auto md:flex items-center justify-center pt-1`}

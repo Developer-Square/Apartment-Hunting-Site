@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState, useCallback } from "react";
 import {
   Apartments,
   FilterBackdrop,
@@ -23,10 +23,13 @@ const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
   const [showFilters, setshowFilters] = useState(false);
   const [search, setSearch] = useState("");
+  const [predictions, setPredictions] = useState([])
   // Show FilterBackdrop for the apartment modals at 1024px view
   const [showFilterBackdrop, setShowFilterBackdrop] = useState(false);
   const [showFullMap, setShowFullMap] = useState(false);
   const [showFilterScrollbar, setShowFilterScrollbar] = useState(false);
+  const [isGoogleLoaded, setIsGoogleLoaded] = useState(false);
+  console.log(predictions)
 
   const { hideMenu, setHideMenu } = useContext(ModalContext);
   const {
@@ -77,6 +80,13 @@ const ViewApartmentsPage = () => {
     showWelcomeBackModal,
   ]);
 
+  useEffect(() => {
+    const location = localStorage.getItem('location')
+    if (location?.length) {
+      setSearch(location)
+    }
+  }, [])
+
   // Hide the filter scrollbar when any of the modals are open.
   useMemo(() => {
     if (showSearhBar || showFilters || showFilterBackdrop) {
@@ -97,6 +107,18 @@ const ViewApartmentsPage = () => {
     setshowSearhBar(true);
     topFunction();
   };
+
+  useEffect(() => {
+    const checkGoogleMapsLoaded = () => {
+      if (window.google && window.google.maps) {
+        setIsGoogleLoaded(true);
+      } else {
+        setTimeout(checkGoogleMapsLoaded, 100);
+      }
+    };
+
+    checkGoogleMapsLoaded();
+  }, []);
 
   return (
     <section className="apartments-page w-full h-full pt-2 text-black relative">
@@ -159,6 +181,8 @@ const ViewApartmentsPage = () => {
               setShow={setshowSearhBar}
               search={search}
               setSearch={setSearch}
+              predictions={predictions}
+              setPredictions={setPredictions}
             />
             <FilterBackdrop show={showSearhBar} />
           </>
@@ -204,7 +228,7 @@ const ViewApartmentsPage = () => {
         </div>
       </ErrorBoundary>
       <div className="w-full text-white lg:flex lg:mx-2 2xl:max-w-[1500px] 3xl:max-w-[1700px] 2xl:mx-auto pt-[185px] relative">
-        {search.length || showFullMap ? (
+        {(search.length || showFullMap) && isGoogleLoaded ? (
           <ErrorBoundary>
             <Map showFullMap={showFullMap} setShowFullMap={setShowFullMap} />
           </ErrorBoundary>
