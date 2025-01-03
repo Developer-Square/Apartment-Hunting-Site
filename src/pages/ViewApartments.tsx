@@ -138,11 +138,11 @@ const ViewApartmentsPage = () => {
           const distance = 20;
 
           if (lat && lng) {
-            const url = `http://localhost:5000/api/v1/nearbyproperties?longitude=${lng}&latitude=${lat}&maxDistance=${distance}`
+            const endpoint = import.meta.env.PROD ? `https://property-management-site-backend.onrender.com` : `http://localhost:5000`
+            const url = `${endpoint}/api/v1/nearbyproperties?longitude=${lng}&latitude=${lat}&maxDistance=${distance}`
             const response = await axios.get(url, {
               headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzYwNDkzYzQxYzQ0ZTQ5NWZmMzFkODkiLCJpYXQiOjE3MzQ3ODAwMjIsImV4cCI6MTczNDc4MTgyMiwidHlwZSI6ImFjY2VzcyJ9.WipGe51NtsyLtavwr6nKxn7uK1HdCQX6WdfgUNFpX3s`
               }
             })
             setProperties(response.data.results)
