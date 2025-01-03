@@ -38,7 +38,7 @@ const Apartments = ({
             <span className='w-10 h-1 xl:w-8 bg-gray-500 rounded-lg'></span>
           </div>
           <p className='text-sm xl:text-xs w-full text-center font-medium mb-3'>
-            Over 1000 apartments
+            {properties.length ? `Over ${properties.length} apartments` : ''}
           </p>
         </>
       ) : null}
@@ -50,13 +50,13 @@ const Apartments = ({
             : 'lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5'
         }`}
       >
-        {properties.map((property: any, index: any) => (
+        {properties.length ? properties.map((property: any, index: any) => (
           <SingleApartment
             key={index}
             setShowFilterBackdrop={setShowFilterBackdrop}
             property={property}
           />
-        ))}
+        )) : <h2 className='text-white'>No apartments found...</h2>}
       </div>
       {/* TODO: Add Infinite scrolling */}
     </div>

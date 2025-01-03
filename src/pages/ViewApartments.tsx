@@ -19,6 +19,14 @@ import FinishSignup from "@/components/auth/FinishSignup";
 import MoreOptions from "@/components/auth/MoreOptions";
 import WelcomeBackSignin from "@/components/auth/WelcomeBackSignin";
 import ErrorBoundary from "./ErrorBoundary";
+import axios from "axios";
+
+declare global {
+  interface Window {
+    google: any;
+  }
+}
+
 const ViewApartmentsPage = () => {
   const [showSearhBar, setshowSearhBar] = useState(false);
   const [showFilters, setshowFilters] = useState(false);
@@ -26,9 +34,9 @@ const ViewApartmentsPage = () => {
   const [predictions, setPredictions] = useState([])
   // Show FilterBackdrop for the apartment modals at 1024px view
   const [showFilterBackdrop, setShowFilterBackdrop] = useState(false);
+  const [isGoogleLoaded, setIsGoogleLoaded] = useState(false);
   const [showFullMap, setShowFullMap] = useState(false);
   const [showFilterScrollbar, setShowFilterScrollbar] = useState(false);
-  const [isGoogleLoaded, setIsGoogleLoaded] = useState(false);
   const [properties, setProperties] = useState([])
 
   const { hideMenu, setHideMenu } = useContext(ModalContext);
@@ -82,10 +90,19 @@ const ViewApartmentsPage = () => {
 
   useEffect(() => {
     const location = localStorage.getItem('location')
-    if (location?.length) {
-      setSearch(location)
-    }
-  }, [])
+
+    const checkGoogleMapsLoaded = () => {
+      if (window.google && window.google.maps && location?.length) {
+        setSearch(location)
+        selectLocation(location)
+        setIsGoogleLoaded(true);
+      } else {
+        setTimeout(checkGoogleMapsLoaded, 100);
+      }
+    };
+
+    checkGoogleMapsLoaded();
+  }, []);
 
   // Hide the filter scrollbar when any of the modals are open.
   useMemo(() => {
@@ -108,17 +125,39 @@ const ViewApartmentsPage = () => {
     topFunction();
   };
 
-  useEffect(() => {
-    const checkGoogleMapsLoaded = () => {
-      if (window.google && window.google.maps) {
-        setIsGoogleLoaded(true);
-      } else {
-        setTimeout(checkGoogleMapsLoaded, 100);
-      }
-    };
+  const selectLocation = (location: string) => {
+    setSearch(location);
+    localStorage.setItem("location", location);
 
-    checkGoogleMapsLoaded();
-  }, []);
+    try {
+      const geocoder = new window.google.maps.Geocoder();
+      geocoder.geocode({ address: location }, async (results: any, status: any) => {
+        if (status === "OK" && results[0]) {
+          const lat = results[0].geometry.location.lat();
+          const lng = results[0].geometry.location.lng();
+          const distance = 20;
+
+          if (lat && lng) {
+            const url = `http://localhost:5000/api/v1/nearbyproperties?longitude=${lng}&latitude=${lat}&maxDistance=${distance}`
+            const response = await axios.get(url, {
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzYwNDkzYzQxYzQ0ZTQ5NWZmMzFkODkiLCJpYXQiOjE3MzQ3ODAwMjIsImV4cCI6MTczNDc4MTgyMiwidHlwZSI6ImFjY2VzcyJ9.WipGe51NtsyLtavwr6nKxn7uK1HdCQX6WdfgUNFpX3s`
+              }
+            })
+            setProperties(response.data.results)
+          }
+        } else {
+          setProperties([])
+          console.error("Geocoding failed:", status);
+        }
+      });
+    } catch (error) {
+      console.error("Error getting coordinates:", error);
+    }
+
+    setshowSearhBar(false);
+  };
 
   return (
     <section className="apartments-page w-full h-full pt-2 text-black relative">
@@ -184,6 +223,7 @@ const ViewApartmentsPage = () => {
               predictions={predictions}
               setPredictions={setPredictions}
               setProperties={setProperties}
+              selectLocation={selectLocation}
             />
             <FilterBackdrop show={showSearhBar} />
           </>
