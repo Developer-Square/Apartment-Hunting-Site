@@ -1,9 +1,8 @@
-import { ApartmentInfoProps } from '@/components/view-apartments/Apartments';
 import { SetStateAction, createContext, useState } from 'react';
 
 interface ApartmentsContextProps {
-  apartmentInfo: ApartmentInfoProps;
-  setApartmentInfo: (info: ApartmentInfoProps) => void;
+  apartmentInfo: any;
+  setApartmentInfo: (info: any) => void;
   showLoginModal: boolean;
   setShowLoginModal: React.Dispatch<SetStateAction<boolean>>;
   showConfirmPhoneNumber: boolean;
@@ -25,7 +24,7 @@ export const ApartmentsProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [apartmentInfo, setApartmentInfo] = useState({} as ApartmentInfoProps);
+  const [apartmentInfo, setApartmentInfo] = useState({title: '', subtitle: ''});
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showConfirmPhoneNumber, setShowConfirmPhoneNumber] = useState(false);
   const [showFinishSignupModal, setShowFinishSignupModal] = useState(false);

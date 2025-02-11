@@ -10,10 +10,9 @@ import PropertyManager2 from '@/assets/view-apartments/property-manager-2.jpg';
 import PropertyManager3 from '@/assets/view-apartments/property-manager-3.jpg';
 import PropertyManager4 from '@/assets/view-apartments/property-manager-4.jpg';
 import PropertyManager5 from '@/assets/view-apartments/property-manager-5.jpg';
-import { ApartmentInfoProps } from '../view-apartments/Apartments';
 import { useEffect, useState } from 'react';
 
-const apartmentInfo: ApartmentInfoProps[] = [
+const apartmentInfo = [
   {
     id: 1,
     propertyManager: PropertyManager2,
@@ -51,7 +50,7 @@ const apartmentInfo: ApartmentInfoProps[] = [
   },
 ];
 
-const SimilarApartment = ({ info }: { info: ApartmentInfoProps }) => {
+const SimilarApartment = ({ info }: { info: any }) => {
   const { title, subtitle, price } = info;
   const viewApartments = [
     ViewApartments2,

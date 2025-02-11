@@ -6,7 +6,6 @@ import {
 import { useState, useEffect } from "react";
 import { useSpring, animated } from "@react-spring/web";
 
-import { ApartmentInfoProps } from "@/components/view-apartments/Apartments";
 import {
   AboutApartmentModal,
   AlternativePictures,
@@ -131,7 +130,7 @@ const ViewApartmentDetailPage = () => {
   const [amenitiesModal, setAmenitiesModal] = useState(false);
   const [reserveVisitModal, setReserveVisitModal] = useState(false);
   const [wishlist, setWishlist] = useState<string[]>([]);
-  const [cleanedInfo, setCleanedInfo] = useState({} as ApartmentInfoProps);
+  const [cleanedInfo, setCleanedInfo] = useState({title: '', subtitle: ''});
   const [reportApartmentModal, setReportApartmentModal] = useState(false);
   const [showContent, setShowContent] = useState(false);
   const [isSaved, setIsSaved] = useState(false);

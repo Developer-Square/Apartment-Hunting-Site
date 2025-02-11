@@ -2,7 +2,6 @@ import { IAmenitiesProps } from '@/pages/ViewApartmentDetail';
 import { SetStateAction, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ViewApartments2 from '@/assets/view-apartments/view-apartments-2.webp';
-import { ApartmentInfoProps } from '../view-apartments/Apartments';
 
 export const AboutApartmentModal = ({
   setAboutApartmentModal,
@@ -171,7 +170,7 @@ export const ReserveVisitModal = ({
 }: {
   setReserveVisitModal: React.Dispatch<SetStateAction<boolean>>;
 }) => {
-  const [cleanedInfo, setCleanedInfo] = useState({} as ApartmentInfoProps);
+  const [cleanedInfo, setCleanedInfo] = useState({title: '', subtitle: ''});
 
   const paymentOptions = [
     {
@@ -469,7 +468,7 @@ export const ConfirmAndPayModal = ({
 }: {
   setConfirmAndPayModal: React.Dispatch<SetStateAction<boolean>>;
 }) => {
-  const [cleanedInfo, setCleanedInfo] = useState({} as ApartmentInfoProps);
+  const [cleanedInfo, setCleanedInfo] = useState({title: '', subtitle: ''});
 
   useEffect(() => {
     const info = localStorage.getItem('apartmentInfo');
