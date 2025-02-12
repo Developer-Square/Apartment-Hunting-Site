@@ -241,8 +241,8 @@ export const ReserveVisitModal = ({
               <h2 className='text-xl mb-6 font-semibold'>Your Visit</h2>
               <div className='flex w-full justify-between mb-6'>
                 <div className='flex flex-col'>
-                  <p className='font-semibold text-sm mb-1'>Dates</p>
-                  <p>Aug 14-15</p>
+                  <p className='font-semibold text-sm mb-1'>Visit date</p>
+                  <p>Aug 14</p>
                 </div>
                 <p className='font-semibold text-sm underline'>Edit</p>
               </div>
@@ -504,9 +504,9 @@ export const ConfirmAndPayModal = ({
                 <div className='flex w-full justify-between mb-6'>
                   <div className='flex flex-col'>
                     <p className='font-semibold text-sm xl:text-xs mb-1'>
-                      Dates
+                      Visit date
                     </p>
-                    <p className='xl:text-sm'>Aug 14-15</p>
+                    <p className='xl:text-sm'>Aug 14</p>
                   </div>
                   <p className='font-semibold text-sm xl:text-xs underline'>
                     Edit
@@ -685,13 +685,9 @@ export const ConfirmAndPayModal = ({
                     <p>Food</p>
                     <p>Ksh 800</p>
                   </div>
-                  <div className='flex w-full justify-between mb-5 xl:text-sm'>
-                    <p>Cleaning fee</p>
-                    <p>Ksh 300</p>
-                  </div>
                   <div className='flex w-full justify-between mt-5 xl:text-sm'>
                     <p className='underline font-semibold'>Total(Ksh)</p>
-                    <p className='underline font-semibold'>Ksh 1500</p>
+                    <p className='underline font-semibold'>Ksh 1300</p>
                   </div>
                 </div>
               </div>

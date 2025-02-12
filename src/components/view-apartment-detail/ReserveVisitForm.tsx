@@ -19,11 +19,7 @@ const ReserveVisitForm = ({
       <h3 className='text-xl xl:text-base font-bold'>Ksh 500 /day</h3>
       <div className='flex'>
         <div className='w-full border border-white/[.2] my-6 h-14 rounded-tl-lg'>
-          <p className='pt-2 px-4 text-xs uppercase'>Check-in</p>
-          <DatePicker selected={date} onChange={onChange} />
-        </div>
-        <div className='w-full border border-white/[.2] my-6 h-14 border-l-0 rounded-tr-lg'>
-          <p className='pt-2 px-4 text-xs uppercase'>Check-out</p>
+          <p className='pt-2 pl-3 text-xs uppercase'>Book a visit</p>
           <DatePicker selected={date} onChange={onChange} />
         </div>
       </div>
@@ -45,10 +41,6 @@ const ReserveVisitForm = ({
       <div className='flex justify-between xl:text-sm'>
         <p className='underline underline-offset-4'>Travel fee</p>
         <p>Ksh 250</p>
-      </div>
-      <div className='flex py-4 justify-between xl:text-sm'>
-        <p className='underline underline-offset-4'>Cleaning fee</p>
-        <p>Ksh 550</p>
       </div>
       <div className='pb-4 border-b border-[#f0efe9]/[.4]'></div>
       <div className='font-semibold flex mt-4 justify-between xl:text-sm'>
